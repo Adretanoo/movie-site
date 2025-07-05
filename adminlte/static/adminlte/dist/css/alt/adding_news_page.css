@@ -1,0 +1,391 @@
+
+.content-block {
+    padding-right: 70px;
+}
+
+.top-controls {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+
+.lang-buttons button {
+    padding: 4px 40px;
+}
+
+.lang-buttons {
+    display: inline-flex;
+    overflow: hidden;
+
+}
+
+.lang__buttons-left, .lang__buttons-right {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border: 1px solid #000;
+}
+
+
+.custom-switch {
+    position: relative;
+    display: inline-block;
+    width: 46px;
+    height: 26px;
+}
+
+.custom-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.custom-switch .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 34px;
+}
+
+.custom-switch .slider:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 3px;
+    top: 3px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+.custom-switch input:checked + .slider {
+    background-color: #4cd964;
+}
+
+.custom-switch input:checked + .slider:before {
+    transform: translateX(20px);
+}
+
+
+.main__controls-top {
+    margin-top: 30px;
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.form-group-inline {
+    display: flex;
+    flex: 1 1 calc(50% - 15px);
+    align-items: flex-start;
+    min-width: 300px;
+}
+
+.form-group-desc {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 12px;
+    width: 100%;
+}
+
+.form-group-desc label {
+    white-space: nowrap;
+    min-width: 80px;
+    font-weight: bold;
+}
+
+.form-group-desc textarea {
+    flex: 1;
+    min-height: 100px;
+    padding: 8px;
+    border: 1px solid #000;
+    border-radius: 4px;
+    box-sizing: border-box;
+    resize: vertical;
+}
+
+
+.form-group-inline label {
+    min-width: 140px;
+    white-space: nowrap;
+    font-weight: bold;
+}
+
+.form-group-inline input {
+    flex: 1;
+    padding: 4px 8px;
+    border: 1px solid #000;
+}
+
+
+.main__controls-center {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.main-image-label {
+    min-width: 130px;
+    font-weight: bold;
+}
+
+.main-image-group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    flex: 1;
+}
+
+.main-image img {
+    width: 130px;
+    height: 80px;
+    object-fit: contain;
+    border: 2px solid #000;
+    background-color: #e4e4e4;
+    padding: 4px;
+}
+
+
+.main-buttons {
+    display: flex;
+    gap: 50px;
+}
+
+.main-buttons button {
+    padding: 4px 15px;
+    border-radius: 6px;
+    border: 1px solid #000;
+    background-color: #f2f2f2;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.main-buttons button {
+    padding: 4px 15px;
+    border-radius: 6px;
+    border: 1px solid #000;
+    background-color: #f2f2f2;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.main-buttons button:hover {
+    background-color: #ddd;
+}
+
+
+.gallery-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.gallery-item {
+    position: relative;
+    width: 120px;
+    text-align: center;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: auto;
+    background: #eee;
+    border: 1px solid #aaa;
+    padding: 5px;
+}
+
+.gallery-item button {
+    margin-top: 5px;
+    width: 100%;
+    padding: 4px;
+    border-radius: 5px;
+    border: 1px solid #aaa;
+    background: #eee;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.gallery-item button:hover {
+    background: #ddd;
+    transform: scale(1.05);
+}
+
+.remove {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: #fff;
+    border: 1px solid #000;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 18px;
+    cursor: pointer;
+    text-align: center;
+}
+
+
+.gallery-block {
+    margin-top: 18px;
+    width: 100%;
+}
+
+.gallery-info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.gallery-info-row label {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.gallery-info-row small {
+    font-size: 14px;
+    color: #333;
+}
+
+
+.gallery-row {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.gallery-item {
+    position: relative;
+    text-align: center;
+    width: 120px;
+    box-sizing: border-box;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: auto;
+    border: 1px solid #000;
+    background: #eee;
+    padding: 5px;
+    display: block;
+}
+
+
+.gallery-item button {
+    margin-top: 8px;
+    padding: 5px 0;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid #aaa;
+    background: #eee;
+    cursor: pointer;
+}
+
+.gallery-item button:hover {
+    background: #ddd;
+}
+
+.remove {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: #fff;
+    border: 1px solid #000;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    line-height: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+    font-size: 16px;
+}
+
+.gallery-row h7 {
+    margin-top: 22px;
+}
+
+.btn-outline-primary-add {
+    margin-top: 30px;
+    max-height: 80px;
+    max-width: 60px;
+    white-space: normal;
+    word-break: break-word;
+}
+
+.from-group-inline-video {
+    margin-top: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+.seo-block {
+    margin-top: 20px;
+    padding: 10px;
+}
+
+.seo-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.seo-row label {
+    width: 120px;
+    min-width: 120px;
+    margin-right: 10px;
+    text-align: right;
+}
+
+.seo-row input,
+.seo-row textarea {
+    flex: 1;
+    padding: 5px;
+}
+
+.seo-row textarea {
+    height: 80px;
+    resize: vertical;
+}
+
+.save-block {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.save-block button {
+    padding: 8px 24px;
+    font-size: 16px;
+}
+
+
+
+
+
+
+
