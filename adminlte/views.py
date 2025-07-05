@@ -12,7 +12,7 @@ menu = [
     {'title': 'Акции', 'url_name': 'shares', 'icon': 'fa-tags'},
     {'title': 'Страницы', 'url_name': 'pages', 'icon': 'fa-file-alt'},
     {'title': 'Пользователи', 'url_name': 'users', 'icon': 'fa-users'},
-    {'title': 'Рассылка', 'url_name': 'newsletter', 'icon': 'fa-envelope'},
+    {'title': 'Рассылка', 'url_name': 'mailing', 'icon': 'fa-envelope'},
 ]
 
 
@@ -21,32 +21,32 @@ def statistics(request):
 
 
 def banners_sliders(request):
-    return HttpResponse("<UNK>")
+    return render(request, 'adminlte/pages/banners_sliders_table.html', context={'menu': menu})
 
 
 def movies(request):
-    return HttpResponse("<UNK>")
+    return render(request, 'adminlte/pages/movies_table.html', context={'menu': menu})
 
 
 def cinemas(request):
-    return HttpResponse("<UNK>")
+    return render(request, 'adminlte/pages/cinemas_table.html', context={'menu': menu})
 
 
 def news(request):
-    return HttpResponse("<UNK>")
+    return render(request, 'adminlte/pages/news_table.html', context={'menu': menu})
 
 
 def shares(request):
-    return HttpResponse("<UNK>")
+    return render(request, 'adminlte/pages/shares_table.html', context={'menu': menu})
 
 
 def pages(request):
-    return HttpResponse("<UNK>")
+    return render(request, 'adminlte/pages/pages_table.html', context={'menu': menu})
 
 
 def users(request):
-    return HttpResponse("<UNK>")
+    return render(request, 'adminlte/pages/users_table.html', context={'menu': menu})
 
 
-def newsletter(request):
-    return HttpResponse("<UNK>")
+def mailing(request):
+    return render(request, 'adminlte/pages/mailing.html', context={'menu': menu})

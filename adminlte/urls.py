@@ -10,6 +10,6 @@ urlpatterns= [
     path('shares/',views.shares, name='shares'),
     path('pages/',views.pages, name='pages'),
     path('users/',views.users, name='users'),
-    path('newsletter/',views.newsletter, name='newsletter')
+    path('mailing/',views.mailing, name='mailing')
 
 ]

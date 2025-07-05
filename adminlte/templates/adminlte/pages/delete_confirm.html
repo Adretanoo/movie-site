@@ -1,8 +1,0 @@
-<h2>Підтвердження видалення</h2>
-<p>Ти справді хочеш видалити публікацію <strong>{{ publication.title }}</strong>?</p>
-
-<form method="post">
-    {% csrf_token %}
-    <button type="submit">Так, видалити</button>
-    <a href="{% url 'news_page' %}">Скасувати</a>
-</form>
