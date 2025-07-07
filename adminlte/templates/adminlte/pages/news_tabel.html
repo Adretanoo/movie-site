@@ -1,0 +1,20 @@
+{% extends 'adminlte/pages/base_table.html' %}
+
+{% block title %}
+    <div class="title__button-text">Список Новостей</div>
+    <div class="title__button-block">
+        <a href="{% url 'add_news' %}" class="create-button">
+            <i class="fas fa-plus"></i> Создать Новость
+        </a>
+    </div>
+{% endblock %}
+
+{% block edit_url %}
+{% url 'edit_news' pub.id %}
+{% endblock %}
+
+{% block delete_url %}
+    {% url 'delete_news' 9999 %}
+{% endblock %}
+
+

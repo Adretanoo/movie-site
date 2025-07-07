@@ -11750,9 +11750,6 @@ body.sidebar-collapse:not(.sidebar-mini-xs):not(.sidebar-mini-md):not(.sidebar-m
   }
 }
 
-.content-wrapper {
-  background-color: #f4f6f9;
-}
 
 .content-wrapper > .content {
   padding: 0 0.5rem;
@@ -35346,7 +35343,6 @@ body.iframe-mode-fullscreen.layout-navbar-fixed .wrapper .content-wrapper {
   left: 0;
   width: 100%;
   display: none;
-  background-color: #f4f6f9;
 }
 
 .content-wrapper.iframe-mode .tab-loading > div {

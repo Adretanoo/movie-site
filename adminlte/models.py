@@ -24,6 +24,7 @@ class BackgroundType(models.TextChoices):
     BACKGROUND_PHOTO = 'background_photo'
     JUST_PHOTO = 'just_photo'
 
+
 class PublicationType(models.TextChoices):
     NEWS = 'news', 'Новини'
     SHARES = 'shares', 'Акції'
@@ -32,6 +33,7 @@ class PublicationType(models.TextChoices):
     VIP_HALL = 'vip_hall', 'VIP-зал'
     ADVERTISING = 'advertising', 'Реклама'
     CHILDREN_ROOM = 'children_room', 'Дитяча кімната'
+
 
 class ModelType(models.TextChoices):
     MOVIE = 'movie'
@@ -53,10 +55,10 @@ class ModelType(models.TextChoices):
 
 
 class FiledLabelTranslation(models.Model):
-    model_name = models.CharField(choices=ModelType.choices) # Publication
-    field_name = models.CharField(max_length=100) # title, label, ...
-    language_code = models.CharField(choices=Language.choices) # uk, ru
-    label = models.TextField(max_length=100) # Заголовок, Телефон
+    model_name = models.CharField(choices=ModelType.choices)  # Publication
+    field_name = models.CharField(max_length=100)  # title, label, ...
+    language_code = models.CharField(choices=Language.choices)  # uk, ru
+    label = models.TextField(max_length=100)  # Заголовок, Телефон
 
     def __str__(self):
         return self.label
@@ -64,6 +66,7 @@ class FiledLabelTranslation(models.Model):
     class Meta:
         db_table = 'filed_label_translation'
         unique_together = ('model_name', 'field_name', 'language_code')
+
 
 class City(models.Model):
     name = models.CharField(max_length=100)
@@ -111,8 +114,7 @@ class TopBanner(models.Model):
 
 class BackgroundBanner(models.Model):
     image = models.ImageField(upload_to='banners/bg/%Y/%m/%d/')
-    background_type = models.CharField(choices=BackgroundType.choices, default=BackgroundType.BACKGROUND_PHOTO,
-                                       max_length=20)
+    background_type = models.CharField(choices=BackgroundType.choices, default=BackgroundType.BACKGROUND_PHOTO, max_length=20)
 
     def __str__(self):
         return self.image.url
@@ -137,7 +139,7 @@ class NewsBanner(models.Model):
 # END BANNERS
 
 class SeoMetadata(models.Model):
-    url = models.URLField()
+    url = models.URLField(blank=True)
     title = models.CharField(max_length=255, blank=True)
     keywords = models.CharField(max_length=255, blank=True)
     description = models.TextField(blank=True)
@@ -204,13 +206,12 @@ class Publication(models.Model):
     main_image = models.ImageField(upload_to="publications/%Y/%m/%d/")
     video_url = models.URLField(blank=True)
     is_enabled = models.BooleanField(default=True)
-    gallery = models.ManyToManyField(Images,blank=True)
+    gallery = models.ManyToManyField(Images, blank=True)
     seo = models.OneToOneField(SeoMetadata, on_delete=models.CASCADE, related_name="publication")
-    publication_type = models.CharField(choices=PublicationType.choices, max_length=20)
+    publication_type = models.CharField(choices=PublicationType.choices, max_length=20, blank=True, null=True)
 
     def __str__(self):
         return f"{self.title} {self.publication_type}"
-
 
 
 class MainPage(models.Model):
@@ -229,18 +230,11 @@ class MainPage(models.Model):
 
 class ContactsPage(models.Model):
     name = models.CharField(max_length=255)
-    address = models.TextField(blank=True,null=True)
-    coordinates = models.CharField(max_length=255,blank=True,null=True)
+    address = models.TextField(blank=True, null=True)
+    coordinates = models.CharField(max_length=255, blank=True, null=True)
     is_enabled = models.BooleanField(default=True)
     logo = models.ImageField(upload_to='contacts/%Y/%m/%d/', blank=True)
     seo = models.OneToOneField(SeoMetadata, on_delete=models.CASCADE, related_name="contacts")
 
     class Meta:
         db_table = "contacts_page"
-
-
-
-
-
-
-

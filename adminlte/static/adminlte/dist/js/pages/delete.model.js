@@ -1,17 +1,26 @@
-document.querySelectorAll('.delete-button').forEach(btn => {
-    btn.addEventListener('click', e => {
-        e.preventDefault();
-        const id = btn.dataset.id;
-        const title = btn.dataset.title;
+document.addEventListener("DOMContentLoaded", () => {
+    const modal = document.getElementById("deleteModal");
+    const modalText = document.getElementById("modal-text");
+    const deleteForm = document.getElementById("delete-form");
+    const cancelBtn = document.getElementById("cancel-button");
 
-        document.getElementById('modal-text').innerText = `Видалити публікацію "${title}"?`;
-        const form = document.getElementById('delete-form');
-        form.action = `/pages/news/delete/${id}/`;
+    const urlTemplate = modal.dataset.urlTemplate;
 
-        document.getElementById('deleteModal').style.display = 'flex';
+    document.querySelectorAll(".delete-button").forEach(button => {
+        button.addEventListener("click", function (e) {
+            e.preventDefault();
+            const pubId = this.dataset.id;
+            const title = this.dataset.title;
+
+            modalText.textContent = `Видалити «${title}»?`;
+            deleteForm.action = urlTemplate.replace("9999", pubId);
+
+            modal.style.display = "flex";  // або block, залежить від стилів
+        });
     });
-});
 
-document.getElementById('cancel-button').addEventListener('click', () => {
-    document.getElementById('deleteModal').style.display = 'none';
+    cancelBtn.addEventListener("click", () => {
+        modal.style.display = "none";
+        deleteForm.action = "";
+    });
 });

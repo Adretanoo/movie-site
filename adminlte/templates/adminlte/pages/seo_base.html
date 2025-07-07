@@ -1,0 +1,31 @@
+{% load static %}
+{% load widget_tweaks %}
+
+{% block links %}
+<link rel="stylesheet" href="{% static 'adminlte/dist/css/alt/seo.css' %}">
+{% endblock %}
+{% load widget_tweaks %}  {# якщо хочеш кастомні класи #}
+
+<fieldset class="seo-block">
+    <legend>SEO блок:</legend>
+
+    <div class="seo-row">
+        <label for="{{ seo_form.url.id_for_label }}">URL:</label>
+        {{ seo_form.url }}
+    </div>
+
+    <div class="seo-row">
+        <label for="{{ seo_form.title.id_for_label }}">Title:</label>
+        {{ seo_form.title }}
+    </div>
+
+    <div class="seo-row">
+        <label for="{{ seo_form.keywords.id_for_label }}">Keywords:</label>
+        {{ seo_form.keywords }}
+    </div>
+
+    <div class="seo-row">
+        <label for="{{ seo_form.description.id_for_label }}">Description:</label>
+        {{ seo_form.description }}
+    </div>
+</fieldset>

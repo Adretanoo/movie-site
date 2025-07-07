@@ -1,6 +1,6 @@
 
 .content-block {
-    padding-right: 70px;
+    padding: 20px 40px;
 }
 
 .top-controls {
@@ -11,9 +11,15 @@
     align-items: flex-end;
 }
 
+.active {
+    background-color: #ddd;
+}
 
-.lang-buttons button {
+.lang-buttons a {
     padding: 4px 40px;
+    outline: none;
+    text-decoration: none;
+    color: black;
 }
 
 .lang-buttons {
@@ -88,6 +94,7 @@
     flex: 1 1 calc(50% - 15px);
     align-items: flex-start;
     min-width: 300px;
+    gap: 10px;
 }
 
 .form-group-desc {
@@ -150,9 +157,16 @@
     flex: 1;
 }
 
+.fade-out {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+
+
 .main-image img {
-    width: 130px;
-    height: 80px;
+    width: 140px;
+    height: 90px;
     object-fit: contain;
     border: 2px solid #000;
     background-color: #e4e4e4;
@@ -189,28 +203,30 @@
 }
 
 
-.gallery-row {
+.gallery-row, .gallery-preview  {
     display: flex;
     flex-wrap: wrap;
     gap: 15px;
-    margin-top: 10px;
 }
 
-.gallery-item {
+
+.gallery-item,.gallery-preview-item {
     position: relative;
-    width: 120px;
+    width: 140px;
     text-align: center;
+
 }
 
-.gallery-item img {
+.gallery-item img,.gallery-preview-item img {
+    height: 110px;
     width: 100%;
-    height: auto;
     background: #eee;
     border: 1px solid #aaa;
     padding: 5px;
+    object-fit: cover
 }
 
-.gallery-item button {
+.gallery-item button, .gallery-preview-item button {
     margin-top: 5px;
     width: 100%;
     padding: 4px;
@@ -221,7 +237,7 @@
     transition: 0.2s;
 }
 
-.gallery-item button:hover {
+.gallery-item button:hover, .gallery-preview-item button:hover {
     background: #ddd;
     transform: scale(1.05);
 }
@@ -272,36 +288,6 @@
     flex-wrap: wrap;
 }
 
-.gallery-item {
-    position: relative;
-    text-align: center;
-    width: 120px;
-    box-sizing: border-box;
-}
-
-.gallery-item img {
-    width: 100%;
-    height: auto;
-    border: 1px solid #000;
-    background: #eee;
-    padding: 5px;
-    display: block;
-}
-
-
-.gallery-item button {
-    margin-top: 8px;
-    padding: 5px 0;
-    width: 100%;
-    border-radius: 5px;
-    border: 1px solid #aaa;
-    background: #eee;
-    cursor: pointer;
-}
-
-.gallery-item button:hover {
-    background: #ddd;
-}
 
 .remove {
     position: absolute;
@@ -342,46 +328,6 @@
 
 
 
-
-
-.seo-block {
-    margin-top: 20px;
-    padding: 10px;
-}
-
-.seo-row {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-}
-
-.seo-row label {
-    width: 120px;
-    min-width: 120px;
-    margin-right: 10px;
-    text-align: right;
-}
-
-.seo-row input,
-.seo-row textarea {
-    flex: 1;
-    padding: 5px;
-}
-
-.seo-row textarea {
-    height: 80px;
-    resize: vertical;
-}
-
-.save-block {
-    text-align: center;
-    margin-top: 20px;
-}
-
-.save-block button {
-    padding: 8px 24px;
-    font-size: 16px;
-}
 
 
 

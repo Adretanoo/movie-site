@@ -1,11 +1,13 @@
 a {
     text-decoration: none;
+    color: black;
 }
 
 .container-fluid {
-    margin-top: 30px;
+    padding-top: 30px;
     display: flex;
     justify-content: center;
+
 }
 
 .title__block {
@@ -27,7 +29,11 @@ a {
     right: 20px;
     top: 0;
 }
-
+.title__button-block a {
+    outline: none;
+    text-decoration: none;
+    color: black;
+}
 .create-button {
     background: #e9e9e9;
     border: 1px solid #000;
@@ -38,6 +44,7 @@ a {
     align-items: center;
     gap: 8px;
     border-radius: 6px;
+    text-decoration: none;
     color: #000;
 }
 
@@ -122,24 +129,25 @@ th.no-bg {
 
 
 
-
 .modal {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100vw; height: 100vh;
-    background: rgba(0, 0, 0, 0.4);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 9999;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0, 0, 0, 0.4);
+  display: block;
+  z-index: 9999;
 }
 
 .modal-content {
-    background: white;
-    max-width: 30vw;
-    padding: 20px;
-    top: -100px;
-    border-radius: 8px;
-    text-align: center;
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 30px;
+  border-radius: 8px;
+  text-align: center;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.25);
 }
-

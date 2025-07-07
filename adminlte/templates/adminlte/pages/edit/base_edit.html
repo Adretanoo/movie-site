@@ -1,0 +1,117 @@
+{% extends 'adminlte/base.html' %}
+{% load widget_tweaks %}
+{% load static %}
+
+{% block links %}
+    <link rel="stylesheet" href="{% static 'adminlte/dist/css/alt/base_page.css' %}">
+{% endblock %}
+
+{% block content %}
+    <form id="newsForm" method="POST" action="" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="content-block">
+            <div class="top-controls">
+                <div class="switch-row">
+                    <label class="switch-label" for="is_enabled">ВКЛ</label>
+                    <label class="custom-switch">
+                        {# checkbox треба прив’язати до форми, тому: #}
+                        {{ form.is_enabled }}
+                        <span class="slider"></span>
+                    </label>
+                </div>
+
+                <div class="lang-buttons">
+                    <a href="?lang=uk" class="lang__buttons-left {% if lang == 'uk' %}active{% endif %}">Українська</a>
+                    <a href="?lang=ru" class="lang__buttons-right {% if lang == 'ru' %}active{% endif %}">Русский</a>
+                </div>
+            </div>
+
+            <div class="main__controls">
+                <div class="main__controls-top">
+                    <div class="form-group-inline">
+                        <label for="{{ form.title.id_for_label }}">{{ t.title }}</label>
+                        {{ form.title|add_class:"form-control" }}
+                    </div>
+                    <div class="form-group-inline">
+                        <label for="{{ form.published_at.id_for_label }}">{{ t.data }}</label>
+                        {{ form.published_at|add_class:"form-control" }}
+                    </div>
+                    <div class="form-group-desc">
+                        <label for="{{ form.description.id_for_label }}">{{ t.desc }}</label>
+                        {{ form.description|add_class:"form-control" }}
+                    </div>
+
+                </div>
+
+                <div class="main__controls-center">
+                    <label>{{ t.main_image }}</label>
+                    <div class="main-image-group">
+                        <div class="main-image">
+                            <img id="mainPreview"
+                                 src="
+                                         {% if form.instance.main_image %}{{ form.instance.main_image.url }}{% else %}{% static 'adminlte/dist/img/img-none.jpg' %}{% endif %}"
+                                 data-default="{% static 'adminlte/dist/img/img-none.jpg' %}"
+                                 alt="main image">
+                        </div>
+                        <div class="main-buttons">
+                            <button id="uploadBtn">{{ t.upload_btn }}</button>
+                            <button id="deleteBtn">{{ t.delete_btn }}</button>
+                            <input type="file" id="mainUpload" name="main_image" accept="image/*"
+                                   style="display: none;">
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-block">
+                    <div class="gallery-info-row">
+                        <label>{{ t.gallery_title }}</label>
+                    </div>
+
+                    <div id="banner-container"
+                         class="banner-row gallery-row"
+                         data-default="{% static 'adminlte/dist/img/img-none.jpg' %}"
+                         data-upload-btn="{{ t.gallery_add_photo }}"
+                         data-remove-btn="{{ t.delete_btn }}">
+
+
+                        <div class="gallery-preview">
+                            <h6>{{ t.size_title }}</h6>
+                            {# Початково порожньо, JS сам усе домалює #}
+
+                            <button type="button" class="btn btn-outline-primary btn-sm" id="add-banner">
+                                {{ t.add_photo }}
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="form-group-inline from-group-inline-video">
+                        <label for="{{ form.video_url.id_for_label }}">{{ t.video_link }}</label>
+                        {{ form.video_url|add_class:"form-control" }}
+                    </div>
+                </div>
+                <script id="gallery-images" type="application/json">
+                    [
+                    {% for image in gallery_images %}
+                        {
+                            "id": {{ image.id }},
+                "url": "{{ image.image_url.url }}"
+            }{% if not forloop.last %},{% endif %}
+        {% endfor %}
+                    ]
+                </script>
+
+
+                {% include 'adminlte/pages/seo_base.html' %}
+
+                <div class="save-block">
+                    <button type="submit" class="btn btn-outline-primary btn-sm">{{ t.save_button }}</button>
+                </div>
+            </div>
+        </div>
+    </form>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static 'adminlte/dist/js/pages/edit_gallery.js' %}"></script>
+{% endblock %}

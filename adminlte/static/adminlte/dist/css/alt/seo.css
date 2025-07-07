@@ -1,0 +1,39 @@
+.seo-block {
+    margin-top: 20px;
+}
+
+.seo-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.seo-row label {
+    width: 120px;
+    min-width: 120px;
+    margin-right: 10px;
+    text-align: right;
+}
+
+.seo-row input,
+.seo-row textarea {
+    flex: 1;
+    padding: 5px;
+}
+
+.seo-row textarea {
+    height: 80px;
+    resize: vertical;
+}
+
+.save-block {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.save-block button {
+    padding: 8px 24px;
+    font-size: 16px;
+}
+
+
