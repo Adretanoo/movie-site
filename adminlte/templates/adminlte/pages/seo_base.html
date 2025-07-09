@@ -2,30 +2,40 @@
 {% load widget_tweaks %}
 
 {% block links %}
-<link rel="stylesheet" href="{% static 'adminlte/dist/css/alt/seo.css' %}">
+    <link rel="stylesheet" href="{% static 'adminlte/dist/css/alt/seo.css' %}">
 {% endblock %}
-{% load widget_tweaks %}  {# якщо хочеш кастомні класи #}
 
 <fieldset class="seo-block">
     <legend>SEO блок:</legend>
 
     <div class="seo-row">
         <label for="{{ seo_form.url.id_for_label }}">URL:</label>
-        {{ seo_form.url }}
+        {{ seo_form.url|add_class:"form-control" }}
     </div>
 
-    <div class="seo-row">
-        <label for="{{ seo_form.title.id_for_label }}">Title:</label>
-        {{ seo_form.title }}
+    <div class="seo-row lang-field lang-uk" style="display: none;">
+        <label for="{{ seo_form.title_uk.id_for_label }}">Title (uk):</label>
+        {{ seo_form.title_uk|add_class:"form-control" }}
+    </div>
+    <div class="seo-row lang-field lang-uk" style="display: none;">
+        <label for="{{ seo_form.keywords_uk.id_for_label }}">Keywords (uk):</label>
+        {{ seo_form.keywords_uk|add_class:"form-control" }}
+    </div>
+    <div class="seo-row lang-field lang-uk" style="display: none;">
+        <label for="{{ seo_form.description_uk.id_for_label }}">Description (uk):</label>
+        {{ seo_form.description_uk|add_class:"form-control" }}
     </div>
 
-    <div class="seo-row">
-        <label for="{{ seo_form.keywords.id_for_label }}">Keywords:</label>
-        {{ seo_form.keywords }}
+    <div class="seo-row lang-field lang-ru">
+        <label for="{{ seo_form.title_ru.id_for_label }}">Title (ru):</label>
+        {{ seo_form.title_ru|add_class:"form-control" }}
     </div>
-
-    <div class="seo-row">
-        <label for="{{ seo_form.description.id_for_label }}">Description:</label>
-        {{ seo_form.description }}
+    <div class="seo-row lang-field lang-ru">
+        <label for="{{ seo_form.keywords_ru.id_for_label }}">Keywords (ru):</label>
+        {{ seo_form.keywords_ru|add_class:"form-control" }}
+    </div>
+    <div class="seo-row lang-field lang-ru">
+        <label for="{{ seo_form.description_ru.id_for_label }}">Description (ru):</label>
+        {{ seo_form.description_ru|add_class:"form-control" }}
     </div>
 </fieldset>

@@ -1,50 +1,65 @@
 {% extends 'adminlte/base.html' %}
 {% load widget_tweaks %}
 {% load static %}
-
 {% block links %}
     <link rel="stylesheet" href="{% static 'adminlte/dist/css/alt/base_page.css' %}">
 {% endblock %}
-
 {% block content %}
     <form id="newsForm" method="POST" action="" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="content-block">
             <div class="top-controls">
                 <div class="switch-row">
-                    <label class="switch-label" for="is_enabled">ВКЛ</label>
+                    <label class="switch-label" for="{{ form.is_enabled.id_for_label }}">ВКЛ</label>
                     <label class="custom-switch">
-                        {# checkbox треба прив’язати до форми, тому: #}
                         {{ form.is_enabled }}
                         <span class="slider"></span>
                     </label>
                 </div>
 
                 <div class="lang-buttons">
-                    <a href="?lang=uk" class="lang__buttons-left {% if lang == 'uk' %}active{% endif %}">Українська</a>
-                    <a href="?lang=ru" class="lang__buttons-right {% if lang == 'ru' %}active{% endif %}">Русский</a>
+                    <a href="?lang=uk"
+                       class="lang__buttons-left {% if lang == 'uk' %}active{% endif %}"
+                       data-lang="uk">Українська</a>
+                    <a href="?lang=ru"
+                       class="lang__buttons-right {% if lang == 'ru' %}active{% endif %}"
+                       data-lang="ru">Русский</a>
                 </div>
             </div>
 
             <div class="main__controls">
                 <div class="main__controls-top">
-                    <div class="form-group-inline">
-                        <label for="{{ form.title.id_for_label }}">{{ t.title }}</label>
-                        {{ form.title|add_class:"form-control" }}
-                    </div>
-                    <div class="form-group-inline">
-                        <label for="{{ form.published_at.id_for_label }}">{{ t.data }}</label>
-                        {{ form.published_at|add_class:"form-control" }}
-                    </div>
-                    <div class="form-group-desc">
-                        <label for="{{ form.description.id_for_label }}">{{ t.desc }}</label>
-                        {{ form.description|add_class:"form-control" }}
+                    <div class="form-group-inline lang-field lang-ru">
+                        <label for="{{ form.title_ru.id_for_label }}">Название {{ publication_type_label }}</label>
+                        {{ form.title_ru|add_class:"form-control" }}
                     </div>
 
+                    <div class="form-group-inline lang-field lang-uk" style="display: none;">
+                        <label for="{{ form.title_uk.id_for_label }}">Назва</label>
+                        {{ form.title_uk|add_class:"form-control" }}
+                    </div>
+
+                    <div class="form-group-inline form-group-inline-data">
+                        <label for="{{ form.published_at.id_for_label }}">Дата публикации</label>
+                        {{ form.published_at|add_class:"form-control" }}
+
+
+                    </div>
+
+
+                    <div class="form-group-desc lang-field lang-ru">
+                        <label for="{{ form.description_ru.id_for_label }}">Описание</label>
+                        {{ form.description_ru|add_class:"form-control" }}
+                    </div>
+
+                    <div class="form-group-desc lang-field lang-uk" style="display: none;">
+                        <label for="{{ form.description_uk.id_for_label }}">Опис</label>
+                        {{ form.description_uk|add_class:"form-control" }}
+                    </div>
                 </div>
 
                 <div class="main__controls-center">
-                    <label>{{ t.main_image }}</label>
+                    <label>Главная картинка</label>
                     <div class="main-image-group">
                         <div class="main-image">
                             <img id="mainPreview"
@@ -54,39 +69,34 @@
                                  alt="main image">
                         </div>
                         <div class="main-buttons">
-                            <button id="uploadBtn">{{ t.upload_btn }}</button>
-                            <button id="deleteBtn">{{ t.delete_btn }}</button>
-                            <input type="file" id="mainUpload" name="main_image" accept="image/*"
-                                   style="display: none;">
-
+                            <button id="uploadBtn" type="button">загрузить</button>
+                            <button id="deleteBtn" type="button">Удалить</button>
                         </div>
                     </div>
                 </div>
 
                 <div class="gallery-block">
                     <div class="gallery-info-row">
-                        <label>{{ t.gallery_title }}</label>
+                        <label>Галерея картинок</label>
                     </div>
 
                     <div id="banner-container"
                          class="banner-row gallery-row"
                          data-default="{% static 'adminlte/dist/img/img-none.jpg' %}"
-                         data-upload-btn="{{ t.gallery_add_photo }}"
-                         data-remove-btn="{{ t.delete_btn }}">
-
+                         data-upload-btn="Добавить"
+                         data-remove-btn="Удалить">
 
                         <div class="gallery-preview">
-                            <h6>{{ t.size_title }}</h6>
-                            {# Початково порожньо, JS сам усе домалює #}
-
+                            <h6>Размер: 1000x190</h6>
+                            {{ form.gallery }}
                             <button type="button" class="btn btn-outline-primary btn-sm" id="add-banner">
-                                {{ t.add_photo }}
+                                Добавить фото
                             </button>
                         </div>
                     </div>
 
                     <div class="form-group-inline from-group-inline-video">
-                        <label for="{{ form.video_url.id_for_label }}">{{ t.video_link }}</label>
+                        <label for="{{ form.video_url.id_for_label }}">Ссылка на видео</label>
                         {{ form.video_url|add_class:"form-control" }}
                     </div>
                 </div>
@@ -101,12 +111,30 @@
                     ]
                 </script>
 
-
-                {% include 'adminlte/pages/seo_base.html' %}
+                <div id="seo-fields">
+                    {% include 'adminlte/pages/seo_base.html' %}
+                </div>
 
                 <div class="save-block">
-                    <button type="submit" class="btn btn-outline-primary btn-sm">{{ t.save_button }}</button>
+                    <button type="submit" class="btn btn-outline-primary btn-sm">Сохранить</button>
                 </div>
+
+                <div id="form-errors" class="form-errors"></div>
+
+                {% if form.errors %}
+                    <div class="alert alert-danger">
+                        <ul>
+                            {% for field in form %}
+                                {% for error in field.errors %}
+                                    <li>{{ field.label }}: {{ error }}</li>
+                                {% endfor %}
+                            {% endfor %}
+                            {% for error in form.non_field_errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
             </div>
         </div>
     </form>
@@ -114,4 +142,5 @@
 
 {% block scripts %}
     <script src="{% static 'adminlte/dist/js/pages/edit_gallery.js' %}"></script>
+    <script src="{% static 'adminlte/dist/js/pages/eding_news.js' %}"></script>
 {% endblock %}

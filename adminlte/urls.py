@@ -18,9 +18,11 @@ urlpatterns = [
     path('news/delete/<int:pk>/', views.delete_news, name='delete_news'),
     path('news/edit/<int:pk>/', views.edit_news, name='edit_news'),
 
-    path('shares/add/', views.add_shares, name='add_shares'),
-    path('shares/delete/<int:pk>/', views.delete_shares, name='delete_shares'),
-    path('shares/edit/<int:pk>/', views.edit_shares, name='edit_shares'),
+    path("news/delete/<int:pk>/", views.delete_publication, name="delete_publication"),
+
+    # path('shares/add/', views.add_shares, name='add_shares'),
+    # path('shares/delete/<int:pk>/', views.delete_shares, name='delete_shares'),
+    # path('shares/edit/<int:pk>/', views.edit_shares, name='edit_shares'),
 
 ]
 

@@ -28,7 +28,6 @@ DEBUG = True
 ALLOWED_HOSTS = []
 INTERNAL_IPS = ["127.0.0.1"]
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -40,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_extensions',
     'widget_tweaks',
+    'modeltranslation',
     "debug_toolbar",
     'adminlte.apps.AdminlteConfig'
 ]
@@ -111,7 +111,12 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ru-Ru'
+
+LANGUAGES = [
+    ('uk', 'Ukrainian'),
+    ('ru', 'Russian'),
+]
 
 TIME_ZONE = 'UTC'
 

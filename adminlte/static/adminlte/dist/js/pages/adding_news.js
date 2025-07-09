@@ -87,3 +87,66 @@ deleteBtn?.addEventListener('click', (e) => {
     preview.src = preview.dataset.default;
     fileInput.value = '';
 });
+
+
+const translationsCache = {
+    uk: {},
+    ru: {}
+};
+
+function cacheCurrentTranslations(currentLang) {
+    if (!currentLang) return;
+
+    translationsCache[currentLang].title = document.querySelector(`[name="title_${currentLang}"]`)?.value || '';
+    translationsCache[currentLang].description = document.querySelector(`[name="description_${currentLang}"]`)?.value || '';
+
+    translationsCache[currentLang].seo_title = document.querySelector(`[name="seo_title_${currentLang}"]`)?.value || '';
+    translationsCache[currentLang].seo_keywords = document.querySelector(`[name="seo_keywords_${currentLang}"]`)?.value || '';
+    translationsCache[currentLang].seo_description = document.querySelector(`[name="seo_description_${currentLang}"]`)?.value || '';
+}
+
+function restoreCachedTranslations(lang) {
+    const cached = translationsCache[lang] || {};
+
+    const title = document.querySelector(`[name="title_${lang}"]`);
+    if (title) title.value = cached.title;
+
+    const description = document.querySelector(`[name="description_${lang}"]`);
+    if (description) description.value = cached.description;
+
+    const seoTitle = document.querySelector(`[name="seo_title_${lang}"]`);
+    if (seoTitle) seoTitle.value = cached.seo_title;
+
+    const seoKeywords = document.querySelector(`[name="seo_keywords_${lang}"]`);
+    if (seoKeywords) seoKeywords.value = cached.seo_keywords;
+
+    const seoDescription = document.querySelector(`[name="seo_description_${lang}"]`);
+    if (seoDescription) seoDescription.value = cached.seo_description;
+}
+
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const langButtons = document.querySelectorAll(".lang-buttons a");
+
+    langButtons.forEach(button => {
+        button.addEventListener("click", function (e) {
+            e.preventDefault();
+            const selectedLang = this.dataset.lang;
+
+            // Перемикаємо активну кнопку
+            langButtons.forEach(btn => btn.classList.remove("active"));
+            this.classList.add("active");
+
+            // Показуємо лише потрібну мову
+            document.querySelectorAll(".lang-field").forEach(el => {
+                if (el.classList.contains(`lang-${selectedLang}`)) {
+                    el.style.display = "";
+                } else {
+                    el.style.display = "none";
+                }
+            });
+        });
+    });
+});

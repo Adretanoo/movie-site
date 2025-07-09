@@ -80,6 +80,9 @@
     transform: translateX(20px);
 }
 
+.main__controls {
+    margin-top: 30px;
+}
 
 .main__controls-top {
     margin-top: 30px;
@@ -88,6 +91,8 @@
     align-items: center;
     flex-wrap: wrap;
 }
+
+
 
 .form-group-inline {
     display: flex;

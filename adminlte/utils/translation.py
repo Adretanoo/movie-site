@@ -1,7 +1,7 @@
-from adminlte.models import FiledLabelTranslation
+from adminlte.models import FiledValueTranslation
 
 def get_translation(model_name: str, language_code: str) -> dict:
     translations = (
-        FiledLabelTranslation.objects.filter(model_name=model_name,language_code=language_code).values_list('field_name','label')
+        FiledValueTranslation.objects.filter(model_name=model_name,language_code=language_code).values_list('field_name','value')
     )
     return dict(translations)

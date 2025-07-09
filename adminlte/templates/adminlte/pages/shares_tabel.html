@@ -1,20 +1,5 @@
-{% extends 'adminlte/pages/base_table.html' %}
+{% extends 'adminlte/base.html' %}
 
-{% block title %}
-    <div class="title__button-text">Список Акций</div>
-    <div class="title__button-block">
-        <a href="{% url 'add_shares' %}" class="create-button">
-            <i class="fas fa-plus"></i> Создать Акцию
-        </a>
-    </div>
+{% block content %}
+<h1>Акції</h1>
 {% endblock %}
-
-{% block edit_url %}
-{% url 'edit_shares' pub.id %}
-{% endblock %}
-
-{% block delete_url %}
-    {% url 'delete_shares' 9999 %}
-{% endblock %}
-
-

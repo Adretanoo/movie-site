@@ -3,24 +3,66 @@ document.addEventListener("DOMContentLoaded", () => {
     const modalText = document.getElementById("modal-text");
     const deleteForm = document.getElementById("delete-form");
     const cancelBtn = document.getElementById("cancel-button");
-
     const urlTemplate = modal.dataset.urlTemplate;
+
+    let currentPubId = null;
+    let currentRow = null;
 
     document.querySelectorAll(".delete-button").forEach(button => {
         button.addEventListener("click", function (e) {
             e.preventDefault();
-            const pubId = this.dataset.id;
+
+            currentPubId = this.dataset.id;
+            currentRow = this.closest("tr");
+
             const title = this.dataset.title;
-
             modalText.textContent = `Видалити «${title}»?`;
-            deleteForm.action = urlTemplate.replace("9999", pubId);
-
-            modal.style.display = "flex";  // або block, залежить від стилів
+            modal.style.display = "flex";
         });
     });
 
     cancelBtn.addEventListener("click", () => {
         modal.style.display = "none";
-        deleteForm.action = "";
+        currentPubId = null;
+        currentRow = null;
     });
+
+    deleteForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+        if (!currentPubId) return;
+
+        const deleteUrl = urlTemplate.replace("0", currentPubId);
+
+        fetch(deleteUrl, {
+            method: "POST",
+            headers: {
+                "X-CSRFToken": getCSRFToken(),
+                "Accept": "application/json",
+            },
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    if (currentRow) {
+                        currentRow.remove();
+                    }
+                    modal.style.display = "none";
+                } else {
+                    alert("Помилка: " + (data.error || "Невідома помилка"));
+                }
+            })
+            .catch(error => {
+                console.error("AJAX Error:", error);
+                alert("Сталася помилка при видаленні.");
+            });
+    });
+
+    function getCSRFToken() {
+        const name = 'csrftoken';
+        const cookieValue = document.cookie
+            .split('; ')
+            .find(row => row.startsWith(name + '='))
+            ?.split('=')[1];
+        return cookieValue || '';
+    }
 });

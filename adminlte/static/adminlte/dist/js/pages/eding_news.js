@@ -1,57 +1,71 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const mainUpload = document.getElementById("mainUpload");
-    const mainPreview = document.getElementById("mainPreview");
-    const uploadBtn = document.getElementById("uploadBtn");
-    const deleteBtn = document.getElementById("deleteBtn");
+const translationsCache = {
+    uk: {},
+    ru: {}
+};
 
-    if (uploadBtn && mainUpload && mainPreview) {
-        uploadBtn.addEventListener("click", function (e) {
+let currentLang = "ru";  // Мова за замовчуванням, можеш замінити
+
+function cacheCurrentTranslations(lang) {
+    if (!lang) return;
+
+    translationsCache[lang].title = document.querySelector(`[name="title_${lang}"]`)?.value || '';
+    translationsCache[lang].description = document.querySelector(`[name="description_${lang}"]`)?.value || '';
+    translationsCache[lang].seo_title = document.querySelector(`[name="seo_title_${lang}"]`)?.value || '';
+    translationsCache[lang].seo_keywords = document.querySelector(`[name="seo_keywords_${lang}"]`)?.value || '';
+    translationsCache[lang].seo_description = document.querySelector(`[name="seo_description_${lang}"]`)?.value || '';
+}
+
+function restoreCachedTranslations(lang) {
+    const cached = translationsCache[lang] || {};
+
+    const title = document.querySelector(`[name="title_${lang}"]`);
+    if (title) title.value = cached.title || title.value;
+
+    const description = document.querySelector(`[name="description_${lang}"]`);
+    if (description) description.value = cached.description || description.value;
+
+    const seoTitle = document.querySelector(`[name="seo_title_${lang}"]`);
+    if (seoTitle) seoTitle.value = cached.seo_title || seoTitle.value;
+
+    const seoKeywords = document.querySelector(`[name="seo_keywords_${lang}"]`);
+    if (seoKeywords) seoKeywords.value = cached.seo_keywords || seoKeywords.value;
+
+    const seoDescription = document.querySelector(`[name="seo_description_${lang}"]`);
+    if (seoDescription) seoDescription.value = cached.seo_description || seoDescription.value;
+}
+
+function switchLanguage(lang) {
+    cacheCurrentTranslations(currentLang);
+    restoreCachedTranslations(lang);
+
+    // Показуємо тільки потрібну мову
+    document.querySelectorAll('.lang-field').forEach(el => {
+        el.style.display = el.classList.contains(`lang-${lang}`) ? '' : 'none';
+    });
+
+    // Активна кнопка
+    document.querySelectorAll('.lang-buttons a').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    document.querySelector(`.lang-buttons a[data-lang="${lang}"]`)?.classList.add('active');
+
+    currentLang = lang;
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    const langButtons = document.querySelectorAll(".lang-buttons a");
+
+    // Перехоплюємо кліки
+    langButtons.forEach(button => {
+        button.addEventListener("click", function (e) {
             e.preventDefault();
-            mainUpload.click();
-        });
-
-        mainUpload.addEventListener("change", function () {
-            const file = this.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function (e) {
-                    mainPreview.src = e.target.result;
-                };
-                reader.readAsDataURL(file);
+            const selectedLang = this.dataset.lang;
+            if (selectedLang !== currentLang) {
+                switchLanguage(selectedLang);
             }
         });
+    });
 
-        deleteBtn.addEventListener("click", function (e) {
-            e.preventDefault();
-            const fallback = mainPreview.getAttribute("data-default");
-            mainPreview.src = fallback || "";
-            mainUpload.value = "";
-        });
-    }
-
-    const galleryUpload = document.getElementById("galleryUpload");
-    const galleryPreview = document.getElementById("gallery-preview");
-    const addBanner = document.getElementById("add-banner");
-
-    if (addBanner && galleryUpload && galleryPreview) {
-        addBanner.addEventListener("click", function () {
-            galleryUpload.click();
-        });
-
-        galleryUpload.addEventListener("change", function () {
-            galleryPreview.innerHTML = "";
-            Array.from(this.files).forEach(file => {
-                const reader = new FileReader();
-                reader.onload = function (e) {
-                    const img = document.createElement("img");
-                    img.src = e.target.result;
-                    img.style.height = "100px";
-                    img.style.margin = "5px";
-                    img.style.border = "1px solid #ccc";
-                    galleryPreview.appendChild(img);
-                };
-                reader.readAsDataURL(file);
-            });
-        });
-    }
+    // Ініціалізуємо на старті
+    switchLanguage(currentLang);
 });

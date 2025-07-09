@@ -26,7 +26,7 @@ class BackgroundType(models.TextChoices):
 
 
 class PublicationType(models.TextChoices):
-    NEWS = 'news', 'Новини'
+    NEWS = 'news', 'Новости'
     SHARES = 'shares', 'Акції'
     ABOUT = 'about', 'Про нас'
     CAFE_BAR = 'cafe_bar', 'Кафе/Бар'
@@ -54,17 +54,17 @@ class ModelType(models.TextChoices):
 # END ENUMS
 
 
-class FiledLabelTranslation(models.Model):
+class FiledValueTranslation(models.Model):
     model_name = models.CharField(choices=ModelType.choices)  # Publication
     field_name = models.CharField(max_length=100)  # title, label, ...
     language_code = models.CharField(choices=Language.choices)  # uk, ru
-    label = models.TextField(max_length=100)  # Заголовок, Телефон
+    value = models.TextField(max_length=100)  # Заголовок, Телефон
 
     def __str__(self):
-        return self.label
+        return self.value
 
     class Meta:
-        db_table = 'filed_label_translation'
+        db_table = 'filed_value_translation'
         unique_together = ('model_name', 'field_name', 'language_code')
 
 
