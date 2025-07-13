@@ -1,0 +1,244 @@
+{% extends 'adminlte/base.html' %}
+{% load static %}
+{% block links %}
+    <link rel="stylesheet" href="{% static 'adminlte/dist/css/alt/banners_sliders.css' %}">
+{% endblock %}
+{% block content %}
+    <form id="upper_banners" action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ top_image_formset.management_form }}
+
+        <div class="wrapper-upper">
+            <h3><b>На главной вверх</b></h3>
+            <div class="block-upper">
+                <div class="block-upper-top">
+                    <span class="banner-size">Размер: 1000x190</span>
+
+                    <div class="banner-toggle">
+                        <label class="custom-switch">
+                            {{ top_form.is_enabled }}
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="block-upper-row" id="upper-banner-container">
+                    {% for form in top_image_formset %}
+                        {% with forloop.counter0 as i %}
+                            <div class="gallery-item upper-gallery-item" id="gallery-item-{{ i }}">
+                                {% if form.DELETE %}
+                                    {{ form.DELETE }}
+                                    <label for="{{ form.DELETE.id_for_label }}" class="delete-label">×</label>
+                                {% endif %}
+
+                                <img id="mainPreview{{ i }}" src="{% if form.instance.image %}{{ form.instance.image.image_url.url }}{% else %}{% static 'adminlte/dist/img/img-none.jpg' %}{% endif %}"
+                                     data-default="{% static 'adminlte/dist/img/img-none.jpg' %}" class="image-preview">
+                                <button type="button"
+                                        onclick="buttonImagePreviewClickUpper('id_topbannerimage_set-{{ i }}-image_file')">
+                                    Завантажити
+                                </button>
+
+
+                                {{ form.id }}
+                                {{ form.image_file }}
+                                {{ form.url }}
+                                {{ form.text }}
+                                {% if form.image_file.errors %}
+                                    <p style="color:darkred">Загрузите фото!</p>
+                                {% endif %}
+
+                            </div>
+                        {% endwith %}
+                    {% empty %}
+                        <p>Банери ще не додані.</p>
+                    {% endfor %}
+
+                    <button type="button" class="block-upper-row__button" id="add-more-upper">
+                        Добав<br>ить<br>фото
+                    </button>
+                </div>
+
+                <div class="block-upper-footer">
+                    <div class="block-upper-footer__speed">
+                        <label class="me-2">Скорость вращения</label>
+                        <select class="form-select form-select-sm d-inline-block w-auto"
+                                name="{{ top_form.rotation_speed.name }}">
+                            {% for val, label in top_form.rotation_speed.field.choices %}
+                                <option value="{{ val }}"
+                                        {% if top_form.rotation_speed.value == val %}selected{% endif %}>{{ label }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <button class="block-upper-footer-button" type="submit" name="submit_upper_banners" value="true">
+                        Сохранить
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <script id="upper-empty-form-template" type="text/template">
+        <div class="gallery-item upper-gallery-item">
+            {% if top_image_formset.empty_form.DELETE %}
+                {{ top_image_formset.empty_form.DELETE }}
+                <label for="id_topbannerimage_set-__prefix__-DELETE" class="delete-label">×</label>
+            {% endif %}
+
+            <img id="mainPreview__prefix__" src="{% static 'adminlte/dist/img/img-none.jpg' %}"
+                 data-default="{% static 'adminlte/dist/img/img-none.jpg' %}" class="image-preview">
+
+            <button type="button" onclick="buttonImagePreviewClickUpper('id_topbannerimage_set-__prefix__-image_file')">
+                Завантажити
+            </button>
+
+            {{ top_image_formset.empty_form.id }}
+            {{ top_image_formset.empty_form.image_file }}
+            {{ top_image_formset.empty_form.url }}
+            {{ top_image_formset.empty_form.text }}
+        </div>
+    </script>
+
+
+
+    <form action="{% url 'banners-sliders-add' %}" id="background_banner" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="wrapper-main">
+            <h3><b>Сквозной банер на задне фоне</b></h3>
+            <div class="block-main">
+                <div class="block-main-top">
+                    <span class="banner-size">Размер: 2000x3000</span>
+                </div>
+                <div class="block-main-main">
+                    <div class="block-main-main__radio">
+                        {{ bg_form.background_type }}
+
+                    </div>
+                    <div class="image-preview">
+                        {{ bg_form.image }}
+                        <img id="mainPreview"
+                             src="{% if bg_form.instance.image %}{{ bg_form.instance.image.url }}{% else %}{% static 'adminlte/dist/img/img-none.jpg' %}{% endif %}"
+                             data-default="{% static 'adminlte/dist/img/img-none.jpg' %}"
+                             alt="main image">
+                    </div>
+                    <div class="block-main-main-buttons">
+                        <button class="block-upper-footer-button" onclick="buttonImagePreviewClick()" type="button">
+                            Добавить
+                        </button>
+                        <button class="block-upper-footer-button" onclick="buttonResetPreviewClick()" type="button">
+                            Удалить
+                        </button>
+                        <button class="block-upper-footer-button" type="submit" name="submit_background_banner"
+                                value="true">Сохранить
+                        </button>
+                    </div>
+
+
+                </div>
+
+
+            </div>
+        </div>
+    </form>
+
+
+
+    <form id="news_banners" action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ news_image_formset.management_form }}
+        <div class="wrapper-shares">
+            <h3><b>На главной Новости Акции</b></h3>
+            <div class="block-shares">
+                <div class="block-shares-top">
+                    <span class="banner-size">Размер: 1000x190</span>
+                    <div class="banner-toggle">
+                        <label class="custom-switch">
+                            {{ news_form.is_enabled }}
+                            <span class="slider"></span>
+                        </label>
+
+                    </div>
+                </div>
+
+                <div class="block-shares-row" id="shares-banner-container">
+                    {% for form in news_image_formset %}
+                        {% with forloop.counter0 as i %}
+                            <div class="gallery-item upper-gallery-item" id="gallery-item-{{ i }}">
+                                {% if form.DELETE %}
+                                    {{ form.DELETE }}
+                                    <label for="{{ form.DELETE.id_for_label }}" class="delete-label">×</label>
+                                {% endif %}
+
+                                <img id="mainPreviewNews{{ i }}"
+                                     src="{% if form.instance.image %}{{ form.instance.image.image_url.url }}{% else %}{% static 'adminlte/dist/img/img-none.jpg' %}{% endif %}"
+                                     data-default="{% static 'adminlte/dist/img/img-none.jpg' %}" class="image-preview">
+                                <button type="button"
+                                        onclick="buttonImagePreviewClickNews('id_newsbannerimage_set-{{ i }}-image_file_shares')">
+                                    Завантажити
+                                </button>
+                                {{ form.id }}
+                                {{ form.image_file_shares }}
+                                {{ form.url }}
+                                {{ form.text }}
+                                {% if form.image_file_shares.errors %}
+                                    <p style="color:darkred">Загрузите фото!</p>
+                                {% endif %}
+
+                            </div>
+                        {% endwith %}
+                    {% empty %}
+                        <p>Банери ще не додані.</p>
+                    {% endfor %}
+                    <button class="block-shares-row__button" id="add-more-shares">
+                        Добав<br>ить<br>фото
+                    </button>
+                </div>
+
+                <div class="block-shares-footer">
+                    <div class="block-shares-footer__speed">
+                        <label class="me-2">Скорость вращения</label>
+                        <select class="form-select form-select-sm d-inline-block w-auto"
+                                name="{{ news_form.rotation_speed.name }}">
+                            {% for val, label in news_form.rotation_speed.field.choices %}
+                                <option value="{{ val }}"
+                                        {% if news_form.rotation_speed.value == val %}selected{% endif %}>{{ label }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <button class="block-shares-footer-button" type="submit" name="submit_news_banners" value="true">
+                        Сохранить
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+
+
+    <script id="news-empty-form-template" type="text/template">
+        <div class="gallery-item news-gallery-item">
+            {% if news_image_formset.empty_form.DELETE %}
+                {{ news_image_formset.empty_form.DELETE }}
+                <label for="id_newsbannerimage_set-__prefix__-DELETE" class="delete-label">×</label>
+            {% endif %}
+
+            <img id="mainPreviewNews__prefix__" src="{% static 'adminlte/dist/img/img-none.jpg' %}"
+                 data-default="{% static 'adminlte/dist/img/img-none.jpg' %}" class="image-preview">
+
+            <button type="button"
+                    onclick="buttonImagePreviewClickNews('id_newsbannerimage_set-__prefix__-image_file_shares')">
+                {# <-- ВИПРАВЛЕНО: Використовуємо __prefix__ і image_file_shares #}
+                Завантажити
+            </button>
+
+            {{ news_image_formset.empty_form.id }}
+            {{ news_image_formset.empty_form.image_file_shares }}
+            {# Django генерує id="id_newsbannerimage_set-__prefix__-image_file_shares" #}
+            {{ news_image_formset.empty_form.url }}
+            {{ news_image_formset.empty_form.text }}
+        </div>
+    </script>
+
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static 'adminlte/dist/js/pages/banners_sliders.js' %}"></script>
+{% endblock %}

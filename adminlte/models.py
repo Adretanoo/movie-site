@@ -15,19 +15,19 @@ class Language(models.TextChoices):
 
 
 class RotationSpeed(models.IntegerChoices):
-    SPEED_5 = 5
-    SPEED_10 = 10
-    SPEED_15 = 15
+    SPEED_5 = 5, '5с'
+    SPEED_10 = 10, '10с'
+    SPEED_15 = 15, '15с'
 
 
 class BackgroundType(models.TextChoices):
-    BACKGROUND_PHOTO = 'background_photo'
-    JUST_PHOTO = 'just_photo'
+    BACKGROUND_PHOTO = 'background_photo', 'Фото на фон'
+    JUST_PHOTO = 'just_photo', 'Просто фото'
 
 
 class PublicationType(models.TextChoices):
     NEWS = 'news', 'Новости'
-    SHARES = 'shares', 'Акції'
+    SHARES = 'shares', 'Акции'
     ABOUT = 'about', 'Про нас'
     CAFE_BAR = 'cafe_bar', 'Кафе/Бар'
     VIP_HALL = 'vip_hall', 'VIP-зал'
@@ -83,7 +83,7 @@ class User(models.Model):
     phone = models.CharField(max_length=20)
     address = models.TextField()
     password_hash = models.CharField(max_length=255)
-    card_number = models.CharField(max_length=32)
+    card_number = models.CharField(max_length=32) # зашифруй неможна такі дані у відкритому тримати
     language = models.CharField(choices=Language.choices, max_length=2)
     gender = models.CharField(choices=Gender.choices, max_length=1)
     birthday = models.DateField()
@@ -102,14 +102,21 @@ class Images(models.Model):
 
 # BANNERS
 class TopBanner(models.Model):
-    images = models.ManyToManyField(Images)
-    url = models.URLField()
-    text = models.CharField(max_length=255)
     rotation_speed = models.IntegerField(choices=RotationSpeed.choices, default=RotationSpeed.SPEED_5)
     is_enabled = models.BooleanField(default=True)
 
     class Meta:
-        db_table = "top_banner"
+        db_table = 'top_banner'
+
+
+class TopBannerImage(models.Model):
+    banner = models.ForeignKey(TopBanner, on_delete=models.CASCADE, related_name='images')
+    image = models.ForeignKey(Images, on_delete=models.CASCADE)
+    url = models.URLField()
+    text = models.CharField(max_length=255)
+
+    class Meta:
+        db_table = 'top_banner_images'
 
 
 class BackgroundBanner(models.Model):
@@ -124,25 +131,31 @@ class BackgroundBanner(models.Model):
 
 
 class NewsBanner(models.Model):
-    images = models.ManyToManyField(Images)
-    url = models.URLField()
     rotation_speed = models.IntegerField(choices=RotationSpeed.choices, default=RotationSpeed.SPEED_5)
     is_enabled = models.BooleanField(default=True)
 
-    def __str__(self):
-        return f"Photo url: {self.url}"
+    class Meta:
+        db_table = 'news_banner'
+
+
+class NewsBannerImage(models.Model):
+    banner = models.ForeignKey(NewsBanner, on_delete=models.CASCADE, related_name='banner_images')
+    image = models.ForeignKey(Images, on_delete=models.CASCADE)
+    url = models.URLField()
+    text = models.CharField(max_length=255)
 
     class Meta:
-        db_table = "news_banner"
+        db_table = 'news_banner_images'
+        unique_together = ('banner', 'image')
 
 
 # END BANNERS
 
 class SeoMetadata(models.Model):
-    url = models.URLField(blank=True)
-    title = models.CharField(max_length=255, blank=True)
-    keywords = models.CharField(max_length=255, blank=True)
-    description = models.TextField(blank=True)
+    url = models.URLField()
+    title = models.CharField(max_length=255)
+    keywords = models.CharField(max_length=255)
+    description = models.TextField()
 
     def __str__(self):
         return self.title
@@ -204,11 +217,11 @@ class Publication(models.Model):
     published_at = models.DateTimeField()
     description = models.TextField()
     main_image = models.ImageField(upload_to="publications/%Y/%m/%d/")
-    video_url = models.URLField(blank=True)
+    video_url = models.URLField()
     is_enabled = models.BooleanField(default=True)
-    gallery = models.ManyToManyField(Images, blank=True)
+    gallery = models.ManyToManyField(Images)
     seo = models.OneToOneField(SeoMetadata, on_delete=models.CASCADE, related_name="publication")
-    publication_type = models.CharField(choices=PublicationType.choices, max_length=20, blank=True, null=True)
+    publication_type = models.CharField(choices=PublicationType.choices, max_length=20)
 
     def __str__(self):
         return f"{self.title} {self.publication_type}"

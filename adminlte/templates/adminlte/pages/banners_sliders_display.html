@@ -1,7 +1,37 @@
 {% extends 'adminlte/base.html' %}
+{% load static %}
+
+{% block links %}
+    <link rel="stylesheet" href="{% static 'adminlte/dist/css/alt/banners_sliders_display.css' %}">
+{% endblock %}
 
 {% block content %}
+    <div class="title__button-block-display">
+        <a href="{% url 'banners-sliders-add' %}" class="create-button-display">
+            <i class="fas fa-edit"></i> Редактировать Баннера/Слайдера
+        </a>
+    </div>
 
+    <div class="block__banners">
+        <div class="banner-section">
+            <div class="banner-label">Сквозной банер на задне фоне</div>
+            <img src="{% if bg_banner.image %}{{ bg_banner.image.url }}{% else %}{% static 'adminlte/dist/img/img-none.jpg' %}{% endif %}"
+                 alt="bg_banner">
+        </div>
+
+        <div class="banners-row">
+            <div class="banner-section">
+                <div class="banner-label">На главной вверх</div>
+                <img src="{% if top_banner.image_url %}{{ top_banner.image_url.url }}{% else %}{% static 'adminlte/dist/img/img-none.jpg' %}{% endif %}"
+                     alt="top_banner">
+            </div>
+            <div class="banner-section">
+                <div class="banner-label">На главной Новости Акции</div>
+                <img src="{% if news_banner.image_url %}{{ news_banner.image_url.url }}{% else %}{% static 'adminlte/dist/img/img-none.jpg' %}{% endif %}"
+                     alt="news_banner">
+            </div>
+        </div>
+    </div>
 
 
 {% endblock %}

@@ -14,15 +14,19 @@ urlpatterns = [
     path('users/', views.users, name='users'),
     path('mailing/', views.mailing, name='mailing'),
 
+    path('banners-sliders/add/', views.banners_sliders_add, name='banners-sliders-add'),
+
+    path('movie/add/', views.movie_add, name='movie_add'),
+
     path('news/add/', views.news_add, name='add_news'),
     path('news/delete/<int:pk>/', views.delete_news, name='delete_news'),
     path('news/edit/<int:pk>/', views.edit_news, name='edit_news'),
 
     path("news/delete/<int:pk>/", views.delete_publication, name="delete_publication"),
 
-    # path('shares/add/', views.add_shares, name='add_shares'),
-    # path('shares/delete/<int:pk>/', views.delete_shares, name='delete_shares'),
-    # path('shares/edit/<int:pk>/', views.edit_shares, name='edit_shares'),
+    path('shares/add/', views.shares_add, name='add_shares'),
+    path('shares/delete/<int:pk>/', views.shares_delete, name='delete_shares'),
+    path('shares/edit/<int:pk>/', views.shares_edit, name='edit_shares'),
 
 ]
 

@@ -1,43 +1,132 @@
+from django.contrib import messages
 from django.db import transaction
-from django.http import HttpResponse, JsonResponse
-from django.shortcuts import render, redirect, get_object_or_404
-from django.template.loader import render_to_string
-from django.views.decorators.http import require_POST
+from django.http import JsonResponse
+from django.shortcuts import get_object_or_404
 
-from .utils.translation import get_translation
-from adminlte.models import Publication, Images, PublicationType, FiledValueTranslation
-from .forms import PublicationForm, SeoMetadataForm
-
-menu = [
-    {'title': 'Статистика', 'url_name': 'statistics', 'group': ['statistics'], 'icon': 'fa-chart-line'},
-    {'title': 'Баннера/Слайдеры', 'url_name': 'banners-sliders', 'group': ['banners-sliders'], 'icon': 'fa-image'},
-    {'title': 'Фильмы', 'url_name': 'movies', 'group': ['movies'], 'icon': 'fa-film'},
-    {'title': 'Кинотеатры', 'url_name': 'cinemas', 'group': ['cinemas'], 'icon': 'fa-building'},
-    {'title': 'Новости', 'url_name': 'news', 'group': ['news', 'add_news', 'edit_news'], 'icon': 'fa-newspaper'},
-    {'title': 'Акции', 'url_name': 'shares', 'group': ['shares', ], 'icon': 'fa-tags'},  # 'add_shares','edit_shares'
-    {'title': 'Страницы', 'url_name': 'pages', 'group': ['pages'], 'icon': 'fa-file-alt'},
-    {'title': 'Пользователи', 'url_name': 'users', 'group': ['users'], 'icon': 'fa-users'},
-    {'title': 'Рассылка', 'url_name': 'mailing', 'group': ['mailing'], 'icon': 'fa-envelope'},
-]
+from adminlte.models import Publication, Images, PublicationType, TopBanner, NewsBanner, BackgroundBanner, \
+    TopBannerImage, NewsBannerImage
+from .forms import PublicationForm, SeoMetadataForm, BackgroundBannerForm, TopBannerForm, TopBannerImageForm, \
+    TopBannerImageFormSet, NewsBannerForm, NewsBannerImageFormSet
+from django.shortcuts import render, redirect
+from cinemasite.settings import menu
 
 
 def statistics(request):
     return render(request, "adminlte/pages/statistics.html", context={'menu': menu})
 
 
-
-
 def banners_sliders(request):
-    return render(request, 'adminlte/pages/banners_sliders_display.html', context={'menu': menu})
+    bg_banner = BackgroundBanner.objects.first()
+
+    top_banner_image = TopBannerImage.objects.first()
+    top_banner = Images.objects.filter(id=top_banner_image.image_id).first()
+    news_banner_image = NewsBannerImage.objects.first()
+    news_banner = Images.objects.filter(id=news_banner_image.image_id).first()
+
+    context = {
+        'bg_banner': bg_banner,
+        'menu': menu,
+        'top_banner': top_banner,
+        'news_banner': news_banner,
+    }
+    return render(request, 'adminlte/pages/banners_sliders_display.html', context)
+
 
 def banners_sliders_add(request):
-    return render(request, "adminlte/pages/add/banners_sliders_add.html", context={'menu': menu})
+    top_banner_instance, _ = TopBanner.objects.get_or_create(id=1)
+    news_banner_instance, _ = NewsBanner.objects.get_or_create(id=1)
 
+    bg_instance = BackgroundBanner.objects.first()
+    if not bg_instance:
+        bg_instance = BackgroundBanner()
 
+    top_form = TopBannerForm(instance=top_banner_instance)
+    news_form = NewsBannerForm(instance=news_banner_instance)
+    background_form = BackgroundBannerForm(instance=bg_instance)
+
+    top_image_formset = TopBannerImageFormSet(instance=top_banner_instance, prefix='topbannerimage_set')
+    news_image_formset = NewsBannerImageFormSet(instance=news_banner_instance, prefix='newsbannerimage_set')
+
+    if request.method == "POST":
+        if 'submit_upper_banners' in request.POST:
+            top_form = TopBannerForm(request.POST, request.FILES, instance=top_banner_instance)
+            top_image_formset = TopBannerImageFormSet(
+                request.POST,
+                request.FILES,
+                instance=top_banner_instance,
+                prefix='topbannerimage_set'
+            )
+            if top_form.is_valid() and top_image_formset.is_valid():
+                with transaction.atomic():
+                    top_form.save()
+                    instances_to_save = top_image_formset.save(commit=False)
+                    for instance in instances_to_save:
+                        instance.save()
+                    for obj in top_image_formset.deleted_objects:
+                        if obj.image:
+                            obj.image.delete()
+                        obj.delete()
+                messages.success(request, "Верхні банери успішно збережено та оновлено!")
+                return redirect('banners-sliders-add')
+            else:
+                messages.error(request, "Будь ласка, виправте помилки у верхніх банерах.")
+
+        elif 'submit_background_banner' in request.POST:
+            background_form = BackgroundBannerForm(request.POST, request.FILES, instance=bg_instance)
+            if background_form.is_valid():
+                background_form.save()
+                messages.success(request, "Фоновий банер успішно збережено!")
+                return redirect('banners-sliders-add')
+            else:
+                print("\n--- ПОМИЛКИ ВАЛІДАЦІЇ: Фоновий банер ---")
+                print("Помилки BackgroundBannerForm:", background_form.errors)
+                messages.error(request, "Будь ласка, виправте помилки у фоновому банері.")
+
+        elif 'submit_news_banners' in request.POST:
+            news_form = NewsBannerForm(request.POST, request.FILES, instance=news_banner_instance)
+            news_image_formset = NewsBannerImageFormSet(
+                request.POST,
+                request.FILES,
+                instance=news_banner_instance,
+                prefix='newsbannerimage_set'
+            )
+            if news_form.is_valid() and news_image_formset.is_valid():
+                with transaction.atomic():
+                    news_form.save()
+                    instances_to_save = news_image_formset.save(commit=False)
+                    for instance in instances_to_save:
+                        instance.save()
+                    for obj in news_image_formset.deleted_objects:
+                        if obj.image:
+                            obj.image.delete()
+                        obj.delete()
+
+                messages.success(request, "News успішно збережено та оновлено!")
+                return redirect('banners-sliders-add')
+            else:
+                messages.error(request, "Будь ласка, виправте помилки у News Banners.")
+
+        else:
+            messages.warning(request, "Не вдалося визначити, яка форма була надіслана.")
+
+    context = {
+        'menu': menu,
+        'bg_form': background_form,
+        'top_form': top_form,
+        'top_image_formset': top_image_formset,
+        'news_form': news_form,
+        'news_image_formset': news_image_formset,
+        'bg_instance': bg_instance,
+    }
+    return render(request, 'adminlte/pages/add/banners_sliders_full.html', context)
 
 
 def movies(request):
     return render(request, 'adminlte/pages/movies_table.html', context={'menu': menu})
+
+
+def movie_add(request):
+    return render(request, 'adminlte/pages/add/movie_add.html', context={'menu': menu})
 
 
 def cinemas(request):
@@ -57,6 +146,7 @@ def news_add(request):
         redirect_url='news'
     )
 
+
 def edit_news(request, pk):
     return edit_publication(
         request=request,
@@ -66,6 +156,14 @@ def edit_news(request, pk):
         redirect_url='news'
     )
 
+
+def shares_delete(request, pk):
+    return delete_publication(
+        request=request,
+        pk=pk,
+    )
+
+
 def delete_news(request, pk):
     return delete_publication(
         request=request,
@@ -73,9 +171,28 @@ def delete_news(request, pk):
     )
 
 
-
 def shares(request):
-    return render(request, 'adminlte/pages/shares_tabel.html', context={'menu': menu})
+    publications = Publication.objects.filter(publication_type=PublicationType.SHARES)
+    return render(request, 'adminlte/pages/shares_table.html', context={'menu': menu, 'publications': publications})
+
+
+def shares_add(request):
+    return add_publication(
+        request=request,
+        publication_type=PublicationType.SHARES,
+        template_name='adminlte/pages/add/base_add.html',
+        redirect_url='shares'
+    )
+
+
+def shares_edit(request, pk):
+    return edit_publication(
+        request=request,
+        pk=pk,
+        publication_type=PublicationType.SHARES,
+        template_name='adminlte/pages/edit/base_edit.html',
+        redirect_url='shares'
+    )
 
 
 def pages(request):
@@ -88,6 +205,7 @@ def users(request):
 
 def mailing(request):
     return render(request, 'adminlte/pages/mailing.html', context={'menu': menu})
+
 
 def add_publication(request, publication_type, template_name, redirect_url):
     language = request.GET.get('lang', 'ru')
@@ -170,6 +288,7 @@ def edit_publication(request, pk, publication_type, template_name, redirect_url)
         'publication_type_label': publication_type.label,
     })
 
+
 def delete_publication(request, pk):
     if request.method != 'POST':
         return JsonResponse({'success': False, 'error': 'Invalid request method'}, status=405)
@@ -188,4 +307,3 @@ def delete_publication(request, pk):
         return JsonResponse({"success": True})
     except Exception as e:
         return JsonResponse({"success": False, "error": str(e)}, status=500)
-

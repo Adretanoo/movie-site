@@ -1,0 +1,15 @@
+{% extends 'adminlte/base.html' %}
+{% load widget_tweaks %}
+{% load static %}
+{% block links %}
+    <link rel="stylesheet" href="{% static 'adminlte/dist/css/alt/base_page.css' %}">
+{% endblock %}
+{% block content %}
+    <form id="movieForm" method="POST" action="" enctype="multipart/form-data">
+        {% csrf_token %}
+    </form>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static 'adminlte/dist/js/pages/adding_news.js' %}"></script>
+{% endblock %}
