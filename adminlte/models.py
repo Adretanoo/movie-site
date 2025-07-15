@@ -1,3 +1,4 @@
+import datetime
 from random import choices
 
 from django.db import models
@@ -166,17 +167,28 @@ class SeoMetadata(models.Model):
 
 class Movie(models.Model):
     title = models.CharField(max_length=255)
+    published_at = models.DateTimeField()
     description = models.TextField()
-    main_image = models.ImageField(upload_to="movies/main//%Y/%m/%d/")
+    main_image = models.ImageField(upload_to="movies/main/%Y/%m/%d/")
     url = models.URLField()
     is_2d = models.BooleanField(default=False)
     is_3d = models.BooleanField(default=True)
     is_imax = models.BooleanField(default=False)
     seo = models.OneToOneField(SeoMetadata, on_delete=models.CASCADE, related_name="movie_seo")
-    gallery = models.ManyToManyField(Images)
+    gallery = models.ManyToManyField(Images, through='MovieGallery', related_name="movie_galleries")
 
     def __str__(self):
         return self.title
+
+
+
+class MovieGallery(models.Model):
+    movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
+    image = models.ForeignKey(Images, on_delete=models.CASCADE)
+
+    class Meta:
+        db_table = 'movie_gallery'
+
 
 
 class CardCinema(models.Model):

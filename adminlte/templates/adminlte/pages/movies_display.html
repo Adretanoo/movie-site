@@ -1,0 +1,97 @@
+{% extends 'adminlte/base.html' %}
+{% load static %}
+
+{% block links %}
+    <link rel="stylesheet" href="{% static 'adminlte/dist/css/alt/movie_display.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="title__button-block-display">
+        <a href="{% url 'movie_add' %}" class="create-button-display">
+            <i class="fas fa-plus"></i> Добавить фильм
+        </a>
+    </div>
+
+    <div class="block__movies">
+        <div class="block__movies-current">
+            <h3>Список фильмов текущих</h3>
+
+            <div class="block__current-movies">
+                {% for m in current_movies %}
+                    <div class="movie-item">
+                        <div class="movie-item-img">
+                            <img src="{{ m.main_image.url }}" alt="current-movie" class="loading-img">
+                            <div class="image-buttons">
+                                <a href="{% url 'movie_edit' m.pk%}" title="Редактировать">
+                                    <i class="fas fa-pencil-alt"></i>
+                                </a>
+                                <a href="{% url 'movie_delete' %}" class="delete-button" data-id="{{ m.id }}" data-title="{{ m.title }}">
+                                    <i class="fas fa-trash-alt"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <h5>{{ m.title }}</h5>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="block__movies-soon">
+            <h3>Список фильмов которые покажут скоро</h3>
+            <div class="block__soon-movies">
+                {% for m in soon_movies %}
+                    <div class="movie-item">
+                        <div class="movie-item-img">
+                            <img src="{{ m.main_image.url }}" alt="current-movie" class="loading-img">
+                            <div class="image-buttons">
+                                <a href="{% url 'movie_edit' m.pk%}" title="Редактировать">
+                                    <i class="fas fa-pencil-alt"></i>
+                                </a>
+                                <a href="{% url 'movie_delete' %}" class="delete-button" data-id="{{ m.id }}" data-title="{{ m.title }}">
+                                    <i class="fas fa-trash-alt"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <h5>{{ m.title }}</h5>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="block__movies-list">
+            <h3>Список фильмов</h3>
+            <div class="block__list-movies">
+                {% for m in list_movies %}
+                    <div class="movie-item">
+                        <div class="movie-item-img">
+                            <img src="{{ m.main_image.url }}" alt="current-movie" class="loading-img">
+                            <div class="image-buttons">
+                                <a href="{% url 'movie_edit' m.pk %}" title="Редактировать">
+                                    <i class="fas fa-pencil-alt"></i>
+                                </a>
+                                <a href="{% url 'movie_delete' %}" class="delete-button" data-id="{{ m.id }}" data-title="{{ m.title }}">
+                                    <i class="fas fa-trash-alt"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <h5>{{ m.title }}</h5>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div id="deleteModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <p id="deleteModalText"></p>
+            <form method="POST" action="{% url 'movie_delete' %}">
+                {% csrf_token %}
+                <input type="hidden" name="movie_id" id="deleteMovieId">
+                <button type="submit" class="confirm-delete">Так, видалити</button>
+                <button type="button" class="cancel-delete">Скасувати</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+{% block scripts %}
+    <script src="{% static 'adminlte/dist/js/pages/delete_base.js' %}"></script>
+{% endblock %}

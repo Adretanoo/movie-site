@@ -1,0 +1,374 @@
+
+.content-block {
+    padding: 20px 40px;
+}
+
+.top-controls {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.active {
+    background-color: #ddd;
+}
+
+.lang-buttons a {
+    padding: 4px 40px;
+    outline: none;
+    text-decoration: none;
+    color: black;
+}
+
+.lang-buttons {
+    display: inline-flex;
+    overflow: hidden;
+
+}
+
+.lang__buttons-left, .lang__buttons-right {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border: 1px solid #000;
+}
+
+
+.main__controls {
+    margin-top: 30px;
+}
+
+.main__controls-top {
+    margin-top: 30px;
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+
+.form-group-inline {
+    display: flex;
+    flex: 1 1 calc(50% - 15px);
+    align-items: flex-start;
+    min-width: 300px;
+    gap: 10px;
+}
+
+.form-group-desc {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 12px;
+    width: 100%;
+}
+
+.form-group-desc label {
+    white-space: nowrap;
+    min-width: 80px;
+    font-weight: bold;
+}
+
+.form-group-desc textarea {
+    flex: 1;
+    min-height: 100px;
+    padding: 8px;
+    border: 1px solid #000;
+    border-radius: 4px;
+    box-sizing: border-box;
+    resize: vertical;
+}
+
+
+.form-group-inline label {
+    min-width: 80px;
+    white-space: nowrap;
+    font-weight: bold;
+}
+
+.form-group-inline input {
+    flex: 1;
+    padding: 4px 8px;
+    border: 1px solid #000;
+}
+
+
+.main__controls-center {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.main-image-label {
+    min-width: 130px;
+    font-weight: bold;
+}
+
+.main-image-group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    flex: 1;
+}
+
+.fade-out {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+
+.main-image img {
+    width: 140px;
+    height: 90px;
+    object-fit: contain;
+    border: 2px solid #000;
+    background-color: #e4e4e4;
+    padding: 4px;
+}
+
+
+.main-buttons {
+    display: flex;
+    gap: 50px;
+}
+
+.main-buttons button {
+    padding: 4px 15px;
+    border-radius: 6px;
+    border: 1px solid #000;
+    background-color: #f2f2f2;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.main-buttons button {
+    padding: 4px 15px;
+    border-radius: 6px;
+    border: 1px solid #000;
+    background-color: #f2f2f2;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.main-buttons button:hover {
+    background-color: #ddd;
+}
+
+
+.gallery-row, .gallery-preview {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+
+.gallery-item, .gallery-preview-item {
+    position: relative;
+    width: 140px;
+    text-align: center;
+
+}
+
+.gallery-item img, .gallery-preview-item img {
+    height: 110px;
+    width: 100%;
+    background: #eee;
+    border: 1px solid #aaa;
+    padding: 5px;
+    object-fit: cover
+}
+
+.gallery-item button, .gallery-preview-item button {
+    margin-top: 5px;
+    width: 100%;
+    padding: 4px;
+    border-radius: 5px;
+    border: 1px solid #aaa;
+    background: #eee;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.gallery-item button:hover, .gallery-preview-item button:hover {
+    background: #ddd;
+    transform: scale(1.05);
+}
+
+.remove {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: #fff;
+    border: 1px solid #000;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 18px;
+    cursor: pointer;
+    text-align: center;
+}
+
+
+.gallery-block {
+    margin-top: 18px;
+    width: 100%;
+}
+
+.gallery-info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.gallery-info-row label {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.gallery-info-row small {
+    font-size: 14px;
+    color: #333;
+}
+
+
+.gallery-row {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+
+.remove {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: #fff;
+    border: 1px solid #000;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    line-height: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+    font-size: 16px;
+}
+
+.gallery-row h7 {
+    margin-top: 22px;
+}
+
+.btn-outline-primary-add {
+    margin-top: 30px;
+    max-height: 80px;
+    max-width: 60px;
+    white-space: normal;
+    word-break: break-word;
+}
+
+.from-group-inline-video {
+    margin-top: 20px;
+}
+
+
+.form-group-type-movie p {
+    font-weight: bold;
+    font-size: 16.3px;
+}
+
+.form-group-type-movie {
+    margin-top: 50px;
+    display: flex;
+    gap: 60px;
+}
+
+.form-group-type {
+    display: flex;
+    gap: 40px;
+}
+
+.form-group-type-3d, .form-group-type-2d, .form-group-type-imax {
+    font-size: 18px;
+}
+
+.blok-gallery-size {
+    display: flex;
+    gap: 30px;
+}
+
+.blok-gallery-size h6 {
+    margin-top: 20px;
+}
+
+.gallery-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.movie_button_add {
+    padding: 4px 14px;
+    border-radius: 6px;
+    border: 1px solid #000;
+    background-color: #f2f2f2;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.movie_button_add:hover {
+    background-color: #ddd;
+}
+
+.movie_button_add {
+    height: 90px;
+    order: 1;
+}
+
+
+.all-save-button {
+    padding: 4px 14px;
+    border-radius: 6px;
+    border: 1px solid #000;
+    background-color: #f2f2f2;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.all-save-button:hover {
+    background-color: #ddd;
+}
+
+
+input[type="checkbox"][name$="-DELETE"] {
+    display: none !important;
+}
+
+.delete-label {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: #fff;
+    border: 1px solid #000;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    line-height: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+    font-size: 16px;
+}
+
+
+

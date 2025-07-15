@@ -1,0 +1,184 @@
+{% extends 'adminlte/base.html' %}
+{% load widget_tweaks %}
+{% load static %}
+{% block links %}
+    <link rel="stylesheet" href="{% static 'adminlte/dist/css/alt/movie_add.css' %}">
+{% endblock %}
+{% block content %}
+    <form id="movieForm" method="POST" action="" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="content-block">
+            <div class="top-controls">
+                <div class="lang-buttons">
+                    <a href="?lang=uk"
+                       class="lang__buttons-left {% if lang == 'uk' %}active{% endif %}"
+                       data-lang="uk">Українська</a>
+                    <a href="?lang=ru"
+                       class="lang__buttons-right {% if lang == 'ru' %}active{% endif %}"
+                       data-lang="ru">Русский</a>
+                </div>
+            </div>
+
+            <div class="main__controls">
+                <div class="main__controls-top">
+                    <div class="form-group-inline lang-field lang-ru">
+                        <label for="{{ form.title_ru.id_for_label }}">Название
+                            фильма {{ publication_type_label }}</label>
+                        {{ form.title_ru|add_class:"form-control" }}
+                    </div>
+
+                    <div class="form-group-inline lang-field lang-uk">
+                        <label for="{{ form.title_uk.id_for_label }}">Название фильма</label>
+                        {{ form.title_uk|add_class:"form-control" }}
+                    </div>
+
+                    <div class="form-group-inline form-group-inline-data">
+                        <label for="{{ form.published_at.id_for_label }}">Дата публикации</label>
+                        {{ form.published_at|add_class:"form-control" }}
+                    </div>
+
+                    <div class="form-group-desc lang-field lang-ru">
+                        <label for="{{ form.description_ru.id_for_label }}">Описание</label>
+                        {{ form.description_ru|add_class:"form-control" }}
+                    </div>
+
+                    <div class="form-group-desc lang-field lang-uk">
+                        <label for="{{ form.description_uk.id_for_label }}">Описание</label>
+                        {{ form.description_uk|add_class:"form-control" }}
+                    </div>
+                </div>
+
+                <div class="main__controls-center">
+                    <label>Главная картинка</label>
+                    <div class="main-image-group">
+                        <div class="main-image">
+                            <img id="mainPreview"
+                                 src="
+
+
+
+
+
+
+
+
+
+
+                                         {% if form.instance.main_image %}{{ form.instance.main_image.url }}{% else %}{% static 'adminlte/dist/img/img-none.jpg' %}{% endif %}"
+                                 data-default="{% static 'adminlte/dist/img/img-none.jpg' %}"
+                                 alt="main image">
+                        </div>
+                        <div class="main-buttons">
+                            {{ form.main_image }}
+                            <button id="uploadBtn" type="button" onclick="buttonImagePreviewClick()">загрузить</button>
+                            <button id="deleteBtn" type="button" onclick="buttonResetPreviewClick()">Удалить</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-block">
+                    <div class="gallery-info-row">
+                        <label>Галерея картинок</label>
+                    </div>
+                    <div class="blok-gallery-size">
+                        <h6>Размер: 1000x190</h6>
+                        <div class="gallery-items" id="gallery-formset-container">
+                            {{ formset.management_form }}
+
+                            <div id="empty-gallery-form-template" style="display: none;">
+                                <div class="gallery-item">
+                                    <span class="remove gallery-delete-btn">×</span>
+                                    <img src="{% static 'adminlte/dist/img/img-none.jpg' %}"
+                                         data-default="{% static 'adminlte/dist/img/img-none.jpg' %}"
+                                         class="gallery-image-preview">
+
+                                    {{ formset.empty_form.image_file_upload }}
+
+
+                                    {{ formset.empty_form.id }}
+                                    {{ formset.empty_form.movie }}
+
+                                    <button type="button" class="upload-gallery-btn"
+                                            onclick="document.getElementById('id_basegallery_set-__prefix__-image_file_upload').click()">
+                                        Добавить
+                                    </button>
+                                </div>
+                            </div>
+
+                            {% for form in formset %}
+                                <div class="gallery-item">
+                                    {% if form.DELETE %}
+                                        {{ form.DELETE }}
+                                        <label for="{{ form.DELETE.id_for_label }}"
+                                               class="remove delete-label">×</label>
+                                    {% endif %}
+                                    <img src="
+                                            {% if form.instance.image and form.instance.image.image_url %}{{ form.instance.image.image_url.url }}{% else %}{% static 'adminlte/dist/img/img-none.jpg' %}{% endif %}"
+                                         data-default="{% static 'adminlte/dist/img/img-none.jpg' %}"
+                                         class="gallery-image-preview">
+
+                                    {{ form.id }}
+                                    {{ form.movie }}
+
+                                    {{ form.image_file_upload }}
+
+                                    <button type="button" class="upload-gallery-btn"
+                                            onclick="document.getElementById('{{ form.image_file_upload.id_for_label }}').click()">
+                                        Добавить
+                                    </button>
+                                </div>
+                            {% endfor %}
+
+                            <button type="button" class="movie_button_add" id="add-movie-gallery-item">
+                                Добав<br>ить<br>фото
+                            </button>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group-inline from-group-inline-video">
+                        <label for="{{ form.url.id_for_label }}">Ссылка на видео</label>
+                        {{ form.url|add_class:"form-control" }}
+                    </div>
+
+                    <div class="form-group-type-movie">
+                        <p>Тип кино</p>
+                        <div class="form-group-type">
+                            <div class="form-group-type-3d">
+                                {{ form.is_3d }}
+                                <label for="{{ form.is_3d.id_for_label }}">3D</label>
+
+                            </div>
+                            <div class="form-group-type-2d">
+                                {{ form.is_2d }}
+                                <label for="{{ form.is_2d.id_for_label }}">2D</label>
+
+                            </div>
+                            <div class="form-group-type-imax">
+                                {{ form.is_imax }}
+                                <label for="{{ form.is_imax.id_for_label }}">IMAX</label>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div id="seo-fields">
+                    {% include 'adminlte/pages/seo_base.html' %}
+                </div>
+
+                <div class="save-block">
+                    <button type="submit" class="all-save-button">Сохранить</button>
+                </div>
+
+            </div>
+        </div>
+    </form>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static 'adminlte/dist/js/pages/add_movie.js' %}" defer></script>
+    <script src="{% static 'adminlte/dist/js/pages/base_gallery_main-image.js' %}" defer></script>
+{% endblock %}

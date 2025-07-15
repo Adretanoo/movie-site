@@ -17,6 +17,31 @@ function buttonResetPreviewClick() {
     preview.src = preview.dataset.default;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function buttonImagePreviewClickUpper(inputId) {
     document.getElementById(inputId).click();
 }

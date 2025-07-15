@@ -16,7 +16,11 @@ urlpatterns = [
 
     path('banners-sliders/add/', views.banners_sliders_add, name='banners-sliders-add'),
 
+    path('cinemas/add', views.cinemas_add, name='cinemas_add'),
+
     path('movie/add/', views.movie_add, name='movie_add'),
+    path('movie/edit/<int:pk>/', views.movie_edit, name='movie_edit'),
+    path('movie/delete/', views.movies_delete, name='movie_delete'),
 
     path('news/add/', views.news_add, name='add_news'),
     path('news/delete/<int:pk>/', views.delete_news, name='delete_news'),

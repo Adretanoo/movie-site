@@ -225,13 +225,11 @@
 
             <button type="button"
                     onclick="buttonImagePreviewClickNews('id_newsbannerimage_set-__prefix__-image_file_shares')">
-                {# <-- ВИПРАВЛЕНО: Використовуємо __prefix__ і image_file_shares #}
                 Завантажити
             </button>
 
             {{ news_image_formset.empty_form.id }}
             {{ news_image_formset.empty_form.image_file_shares }}
-            {# Django генерує id="id_newsbannerimage_set-__prefix__-image_file_shares" #}
             {{ news_image_formset.empty_form.url }}
             {{ news_image_formset.empty_form.text }}
         </div>

@@ -1,12 +1,15 @@
+import datetime
+
 from django.contrib import messages
 from django.db import transaction
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
+from django.views.decorators.http import require_POST
 
 from adminlte.models import Publication, Images, PublicationType, TopBanner, NewsBanner, BackgroundBanner, \
-    TopBannerImage, NewsBannerImage
+    TopBannerImage, NewsBannerImage, Movie, MovieGallery, SeoMetadata
 from .forms import PublicationForm, SeoMetadataForm, BackgroundBannerForm, TopBannerForm, TopBannerImageForm, \
-    TopBannerImageFormSet, NewsBannerForm, NewsBannerImageFormSet
+    TopBannerImageFormSet, NewsBannerForm, NewsBannerImageFormSet, MovieForm, MovieGalleryFormSet
 from django.shortcuts import render, redirect
 from cinemasite.settings import menu
 
@@ -19,9 +22,14 @@ def banners_sliders(request):
     bg_banner = BackgroundBanner.objects.first()
 
     top_banner_image = TopBannerImage.objects.first()
-    top_banner = Images.objects.filter(id=top_banner_image.image_id).first()
+    top_banner = None
+    if top_banner_image and top_banner_image.image_id:
+        top_banner = Images.objects.filter(id=top_banner_image.image_id).first()
+
     news_banner_image = NewsBannerImage.objects.first()
-    news_banner = Images.objects.filter(id=news_banner_image.image_id).first()
+    news_banner = None
+    if news_banner_image and news_banner_image.image_id:
+        news_banner = Images.objects.filter(id=news_banner_image.image_id).first()
 
     context = {
         'bg_banner': bg_banner,
@@ -122,16 +130,121 @@ def banners_sliders_add(request):
 
 
 def movies(request):
-    return render(request, 'adminlte/pages/movies_table.html', context={'menu': menu})
+    current_data = datetime.datetime.now()
+
+    current_movies = Movie.objects.filter(published_at=format(current_data, '%Y-%m-%d'))
+    soon_movies = Movie.objects.filter(published_at__gt=format(current_data, '%Y-%m-%d'))
+    list_movies = Movie.objects.all()
+
+    context = {
+        'menu': menu,
+        'current_movies': current_movies,
+        'soon_movies': soon_movies,
+        'list_movies': list_movies,
+    }
+    return render(request, 'adminlte/pages/movies_display.html', context)
+
+
+def movie_edit(request, pk):
+    movie = get_object_or_404(Movie, pk=pk)
+    seo = get_object_or_404(SeoMetadata, pk=movie.seo_id)
+    lang = request.GET.get('lang', 'ru')
+
+    if request.method == 'POST':
+        main_form = MovieForm(request.POST, request.FILES, instance=movie, prefix='main')
+        seo_form = SeoMetadataForm(request.POST, instance=seo, prefix='seo')
+        formset = MovieGalleryFormSet(request.POST, request.FILES, instance=movie, prefix='basegallery_set')
+
+        if main_form.is_valid() and seo_form.is_valid() and formset.is_valid():
+            with transaction.atomic():
+                seo_instance = seo_form.save()
+                movie_instance = main_form.save(commit=False)
+                movie_instance.seo = seo_instance
+                movie_instance.save()
+
+                formset.instance = movie_instance
+                formset.save()
+
+            messages.success(request, 'Фільм успішно оновлено!')
+            return redirect('movies')
+        else:
+            messages.error(request, 'Будь ласка, виправте помилки у формі.')
+    else:
+        main_form = MovieForm(instance=movie, prefix='main')
+        seo_form = SeoMetadataForm(instance=seo, prefix='seo')
+        formset = MovieGalleryFormSet(instance=movie, prefix='basegallery_set')
+
+    context = {
+        'menu': menu,
+        'form': main_form,
+        'seo_form': seo_form,
+        'formset': formset,
+        'lang': lang,
+    }
+    return render(request, 'adminlte/pages/edit/movies_edit.html', context)
+
+
+@require_POST
+def movies_delete(request):
+    movie_id = request.POST.get('movie_id')
+    movie = get_object_or_404(Movie, id=movie_id)
+    movie.delete()
+    messages.success(request, f'Фільм "{movie.title}" було успішно видалено.')
+    return redirect('movies')
 
 
 def movie_add(request):
-    return render(request, 'adminlte/pages/add/movie_add.html', context={'menu': menu})
+    lang = request.GET.get('lang', 'ru')
+
+    if request.method == 'POST':
+        main_form = MovieForm(request.POST, request.FILES, prefix='main')
+        seo_form = SeoMetadataForm(request.POST, prefix='seo')
+        formset = MovieGalleryFormSet(request.POST, request.FILES, prefix='basegallery_set')
+
+        if main_form.is_valid() and seo_form.is_valid() and formset.is_valid():
+            with transaction.atomic():
+                seo_instance = seo_form.save()
+                movie_instance = main_form.save(commit=False)
+                movie_instance.seo = seo_instance
+                movie_instance.save()
+
+                formset.instance = movie_instance
+                formset.save()
+
+            messages.success(request, 'Фільм успішно додано!')
+            return redirect('movies')
+        else:
+            messages.error(request, 'Будь ласка, виправте помилки у формі.')
+    else:
+        main_form = MovieForm(prefix='main')
+        seo_form = SeoMetadataForm(prefix='seo')
+        formset = MovieGalleryFormSet(prefix='basegallery_set')
+
+    context = {
+        'menu': menu,
+        'lang': lang,
+        'form': main_form,
+        'seo_form': seo_form,
+        'formset': formset,
+    }
+    return render(request, 'adminlte/pages/add/movie_add.html', context)
 
 
 def cinemas(request):
-    return render(request, 'adminlte/pages/cinemas_table.html', context={'menu': menu})
+    return render(request, 'adminlte/pages/cinemas_display.html', context={'menu': menu})
 
+
+def cinemas(request):
+    return render(request, 'adminlte/pages/cinemas_display.html', context={'menu': menu})
+
+def cinemas_add(request):
+    lang = request.GET.get('lang', 'ru')
+
+    context = {
+        'menu': menu,
+        'lang': lang,
+    }
+    return render(request,'adminlte/pages/add/cinemas_add.html', context)
 
 def news(request):
     publications = Publication.objects.filter(publication_type=PublicationType.NEWS)

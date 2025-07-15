@@ -18,7 +18,7 @@ menu = [
     {'title': 'Статистика', 'url_name': 'statistics', 'group': ['statistics'], 'icon': 'fa-chart-line'},
     {'title': 'Баннера/Слайдеры', 'url_name': 'banners-sliders', 'group': ['banners-sliders', 'banners-sliders-add'],
      'icon': 'fa-image'},
-    {'title': 'Фильмы', 'url_name': 'movies', 'group': ['movies','movie_add'], 'icon': 'fa-film'},
+    {'title': 'Фильмы', 'url_name': 'movies', 'group': ['movies','movie_add','movie_edit'], 'icon': 'fa-film'},
     {'title': 'Кинотеатры', 'url_name': 'cinemas', 'group': ['cinemas'], 'icon': 'fa-building'},
     {'title': 'Новости', 'url_name': 'news', 'group': ['news', 'add_news', 'edit_news'], 'icon': 'fa-newspaper'},
     {'title': 'Акции', 'url_name': 'shares', 'group': ['shares', 'add_shares','edit_shares'], 'icon': 'fa-tags'},

@@ -1,7 +1,8 @@
 from django import forms
-from django.forms import DateInput, ClearableFileInput, modelformset_factory, inlineformset_factory
+from django.forms import DateInput, ClearableFileInput, inlineformset_factory
+
 from .models import Publication, SeoMetadata, Images, TopBanner, TopBannerImage, NewsBanner, NewsBannerImage, \
-    BackgroundBanner, BackgroundType
+    BackgroundBanner, Movie, MovieGallery
 
 
 class PublicationForm(forms.ModelForm):
@@ -22,13 +23,35 @@ class PublicationForm(forms.ModelForm):
 
 
 class SeoMetadataForm(forms.ModelForm):
+    title_ru = forms.CharField(widget=forms.TextInput(attrs={
+        'placeholder': 'Title'
+    }))
+    title_uk = forms.CharField(required=False, widget=forms.TextInput(attrs={
+        'placeholder': 'Title'
+    }))
+    description_ru = forms.CharField(widget=forms.Textarea(attrs={
+        'placeholder': 'Description'
+    }))
+    description_uk = forms.CharField(required=False, widget=forms.Textarea(attrs={
+        'placeholder': 'Description'
+    }))
+    keywords_ru = forms.CharField(widget=forms.TextInput(attrs={
+        'placeholder': 'word'
+    }))
+    keywords_uk = forms.CharField(required=False, widget=forms.TextInput(attrs={
+        'placeholder': 'word'
+    }))
+    url = forms.URLField(widget=forms.URLInput(attrs={
+        'placeholder': 'URL'
+    }))
+
     class Meta:
         model = SeoMetadata
         fields = [
             'url',
             'title_ru', 'title_uk',
-            'keywords_ru', 'keywords_uk',
             'description_ru', 'description_uk',
+            'keywords_ru', 'keywords_uk',
         ]
 
 
@@ -83,7 +106,6 @@ class TopBannerImageForm(forms.ModelForm):
         cleaned_data = super().clean()
         image_file = cleaned_data.get('image_file')
         if not self.instance.pk or (self.instance.pk and not self.instance.image):
-            # Якщо це нова форма, або існуюча без зображення, і нового файлу не надано
             if not image_file:
                 self.add_error('image_file', 'Це поле є обов\'язковим.')
 
@@ -166,12 +188,10 @@ class NewsBannerImageForm(forms.ModelForm):
             img = Images.objects.create(image_url=image_file_shares)
             instance.image = img
 
-        # Ця гілка для випадку, коли файл зображення був очищений на фронтенді
-        # (наприклад, користувач натиснув "скинути зображення")
         elif 'image_file_shares' in self.cleaned_data and self.cleaned_data['image_file_shares'] is False:
             try:
-                if instance.image:  # Перевірка, що посилання на зображення не є None
-                    instance.image.delete()  # Видаляємо старе зображення
+                if instance.image:
+                    instance.image.delete()
             except NewsBannerImage.image.RelatedObjectDoesNotExist:
                 print(
                     f"Попередження: Об'єкт NewsBannerImage (ID: {instance.pk}) має неіснуюче пов'язане зображення для очищення. Пропущено.")
@@ -182,6 +202,88 @@ class NewsBannerImageForm(forms.ModelForm):
             instance.save()
         return instance
 
+
+class MovieForm(forms.ModelForm):
+    title_ru = forms.CharField(widget=forms.TextInput(attrs={
+        'placeholder': 'Название фильма'
+    }))
+    title_uk = forms.CharField(required=False, widget=forms.TextInput(attrs={
+        'placeholder': 'Название фильма'
+    }))
+    description_ru = forms.CharField(widget=forms.Textarea(attrs={
+        'placeholder': 'текст'
+    }))
+    description_uk = forms.CharField(required=False, widget=forms.Textarea(attrs={
+        'placeholder': 'текст'
+    }))
+    published_at = forms.CharField(widget=forms.DateInput(attrs={
+        'type': 'date',
+        'class': 'form-control',
+    }, format='%Y-%m-%d'))
+
+    url = forms.URLField(widget=forms.URLInput(attrs={
+        'placeholder': 'Ссылка на видео'
+    }))
+
+    main_image = forms.ImageField(
+        widget=forms.FileInput(attrs={
+            'id': 'formPreview',
+            'style': 'display: none;',
+            'onchange': 'updateImagePreview(this)'
+        })
+    )
+
+    class Meta:
+        model = Movie
+        fields = [
+            'published_at', 'main_image', 'url',
+            'is_2d', 'is_3d', 'is_imax',
+            'title_ru', 'title_uk',
+            'description_ru', 'description_uk',
+        ]
+
+
+class MovieGalleryForm(forms.ModelForm):
+    image_file_upload = forms.ImageField(
+        required=False,
+        widget=forms.ClearableFileInput(
+            attrs={'class': 'gallery-file-input', 'accept': 'image/*', 'style': 'display:none'})
+    )
+
+    class Meta:
+        model = MovieGallery
+        fields = []
+
+    def clean(self):
+        cleaned_data = super().clean()
+        delete = cleaned_data.get('DELETE')
+
+        if delete:
+            return cleaned_data
+
+        uploaded_file = cleaned_data.get('image_file_upload')
+        has_existing_image = hasattr(self.instance, 'image') and self.instance.image_id is not None
+
+        if not uploaded_file and not has_existing_image:
+            self.add_error('image_file_upload', 'Завантажте зображення або видаліть елемент.')
+
+        return cleaned_data
+
+    def save(self, commit=True):
+        image_file = self.cleaned_data.get('image_file_upload')
+        if image_file:
+            image_instance = Images.objects.create(image_url=image_file)
+            self.instance.image = image_instance  # встановлюємо ForeignKey
+        return super().save(commit=commit)
+
+
+MovieGalleryFormSet = inlineformset_factory(
+    Movie,
+    MovieGallery,
+    form=MovieGalleryForm,
+    extra=0,
+    can_delete=True,
+)
 
 TopBannerImageFormSet = inlineformset_factory(
     TopBanner,
