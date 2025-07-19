@@ -7,7 +7,10 @@ function updateImagePreview(input) {
     if (input?.files && input.files[0]) {
         mainPreview.src = URL.createObjectURL(input.files[0]);
     }
+
 }
+
+
 
 function buttonResetPreviewClick() {
     const input = document.getElementById('formPreview');
@@ -15,6 +18,30 @@ function buttonResetPreviewClick() {
     input.value = '';
     preview.src = preview.dataset.default;
 }
+
+
+
+function buttonSubmitClick(event) {
+    const errorMainPreview = document.getElementById('main-image-error');
+    const mainPreviewInput = document.getElementById('formPreview');
+    const mainPreview = document.getElementById('mainPreview');
+    const defaultSrc = mainPreview.dataset.default;
+
+    if (mainPreviewInput?.files && mainPreviewInput.files[0]) {
+        errorMainPreview.style.display = 'none';
+        mainPreview.src = URL.createObjectURL(mainPreviewInput.files[0]);
+        return;
+    }
+
+    if (mainPreview?.src && !mainPreview.src.includes(defaultSrc)) {
+        errorMainPreview.style.display = 'none';
+        return;
+    }
+
+    errorMainPreview.style.display = 'block';
+    event.preventDefault();
+}
+
 
 // === Галерея ===
 document.addEventListener("DOMContentLoaded", () => {

@@ -26,19 +26,19 @@ class SeoMetadataForm(forms.ModelForm):
     title_ru = forms.CharField(widget=forms.TextInput(attrs={
         'placeholder': 'Title'
     }))
-    title_uk = forms.CharField(required=False, widget=forms.TextInput(attrs={
+    title_uk = forms.CharField(widget=forms.TextInput(attrs={
         'placeholder': 'Title'
     }))
     description_ru = forms.CharField(widget=forms.Textarea(attrs={
         'placeholder': 'Description'
     }))
-    description_uk = forms.CharField(required=False, widget=forms.Textarea(attrs={
+    description_uk = forms.CharField(widget=forms.Textarea(attrs={
         'placeholder': 'Description'
     }))
     keywords_ru = forms.CharField(widget=forms.TextInput(attrs={
         'placeholder': 'word'
     }))
-    keywords_uk = forms.CharField(required=False, widget=forms.TextInput(attrs={
+    keywords_uk = forms.CharField(widget=forms.TextInput(attrs={
         'placeholder': 'word'
     }))
     url = forms.URLField(widget=forms.URLInput(attrs={
@@ -207,13 +207,13 @@ class MovieForm(forms.ModelForm):
     title_ru = forms.CharField(widget=forms.TextInput(attrs={
         'placeholder': 'Название фильма'
     }))
-    title_uk = forms.CharField(required=False, widget=forms.TextInput(attrs={
+    title_uk = forms.CharField(widget=forms.TextInput(attrs={
         'placeholder': 'Название фильма'
     }))
     description_ru = forms.CharField(widget=forms.Textarea(attrs={
         'placeholder': 'текст'
     }))
-    description_uk = forms.CharField(required=False, widget=forms.Textarea(attrs={
+    description_uk = forms.CharField(widget=forms.Textarea(attrs={
         'placeholder': 'текст'
     }))
     published_at = forms.CharField(widget=forms.DateInput(attrs={

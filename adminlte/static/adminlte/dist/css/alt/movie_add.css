@@ -3,6 +3,18 @@
     padding: 20px 40px;
 }
 
+
+
+
+.label_main-image {
+    display: flex;
+    flex-direction: column;
+}
+#main-image-error{
+    display: none;
+    color: red;
+}
+
 .top-controls {
     display: flex;
     flex-direction: row;

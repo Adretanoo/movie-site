@@ -49,14 +49,14 @@
                 </div>
 
                 <div class="main__controls-center">
-                    <label>Главная картинка</label>
+                    <div class="label_main-image">
+                        <label>Главная картинка</label>
+                        <div id="main-image-error">Загрузите фото</div>
+                    </div>
                     <div class="main-image-group">
                         <div class="main-image">
                             <img id="mainPreview"
-                                 src="
-
-
-                                         {% if form.instance.main_image %}{{ form.instance.main_image.url }}{% else %}{% static 'adminlte/dist/img/img-none.jpg' %}{% endif %}"
+                                 src="{% if form.instance.main_image %}{{ form.instance.main_image.url }}{% else %}{% static 'adminlte/dist/img/img-none.jpg' %}{% endif %}"
                                  data-default="{% static 'adminlte/dist/img/img-none.jpg' %}"
                                  alt="main image">
                         </div>
@@ -101,6 +101,7 @@
                                 <div class="gallery-item">
 
                                     <img src="
+
 
 
                                             {% if form.instance.image and form.instance.image.image %}{{ form.instance.image.image.url }}{% else %}{% static 'adminlte/dist/img/img-none.jpg' %}{% endif %}"
@@ -159,7 +160,7 @@
                 </div>
 
                 <div class="save-block">
-                    <button type="submit" class="all-save-button">Сохранить</button>
+                    <button type="submit" class="all-save-button" onclick="buttonSubmitClick(event)">Сохранить</button>
                 </div>
 
             </div>
@@ -170,4 +171,5 @@
 {% block scripts %}
     <script src="{% static 'adminlte/dist/js/pages/add_movie.js' %}" defer></script>
     <script src="{% static 'adminlte/dist/js/pages/base_gallery_main-image.js' %}" defer></script>
+    <script src="{% static 'adminlte/dist/js/pages/alt_tab_menu.js' %}" defer></script>
 {% endblock %}
