@@ -73,7 +73,6 @@ def banners_sliders_add(request):
                             if not form.cleaned_data.get('DELETE', False):
                                 form.save()
                         elif form.cleaned_data.get('DELETE', False) and form.instance.pk:
-                            # Видалити форму навіть якщо вона невалідна, але позначена на видалення
                             if form.instance.image:
                                 form.instance.image.delete()
                             form.instance.delete()
@@ -102,7 +101,6 @@ def banners_sliders_add(request):
                             if not form.cleaned_data.get('DELETE', False):
                                 form.save()
                         elif form.cleaned_data.get('DELETE', False) and form.instance.pk:
-                            # Якщо форма невалідна, але позначена на видалення — видаляємо вручну
                             if form.instance.image:
                                 form.instance.image.delete()
                             form.instance.delete()
