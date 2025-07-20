@@ -31,7 +31,8 @@
                                     <label for="{{ form.DELETE.id_for_label }}" class="delete-label">×</label>
                                 {% endif %}
 
-                                <img id="mainPreview{{ i }}" src="{% if form.instance.image %}{{ form.instance.image.image_url.url }}{% else %}{% static 'adminlte/dist/img/img-none.jpg' %}{% endif %}"
+                                <img id="mainPreview{{ i }}" src="
+                                        {% if form.instance.image %}{{ form.instance.image.image_url.url }}{% else %}{% static 'adminlte/dist/img/img-none.jpg' %}{% endif %}"
                                      data-default="{% static 'adminlte/dist/img/img-none.jpg' %}" class="image-preview">
                                 <button type="button"
                                         onclick="buttonImagePreviewClickUpper('id_topbannerimage_set-{{ i }}-image_file')">
@@ -116,19 +117,24 @@
                     <div class="image-preview">
                         {{ bg_form.image }}
                         <img id="mainPreview"
-                             src="{% if bg_form.instance.image %}{{ bg_form.instance.image.url }}{% else %}{% static 'adminlte/dist/img/img-none.jpg' %}{% endif %}"
+                             src="
+                                     {% if bg_form.instance.image %}{{ bg_form.instance.image.url }}{% else %}{% static 'adminlte/dist/img/img-none.jpg' %}{% endif %}"
                              data-default="{% static 'adminlte/dist/img/img-none.jpg' %}"
                              alt="main image">
                     </div>
                     <div class="block-main-main-buttons">
-                        <button class="block-upper-footer-button" onclick="buttonImagePreviewClick()" type="button">
+                        <button class="block-upper-footer-button"
+                                onclick="buttonImagePreviewClick('{{ bg_form.image.id_for_label }}')" type="button">
                             Добавить
                         </button>
-                        <button class="block-upper-footer-button" onclick="buttonResetPreviewClick()" type="button">
+                        <button class="block-upper-footer-button"
+                                onclick="buttonResetPreviewClick('{{ bg_form.image.id_for_label }}', 'mainPreview')"
+                                type="button">
                             Удалить
                         </button>
                         <button class="block-upper-footer-button" type="submit" name="submit_background_banner"
-                                value="true">Сохранить
+                                value="true">
+                            Сохранить
                         </button>
                     </div>
 
@@ -169,7 +175,8 @@
                                 {% endif %}
 
                                 <img id="mainPreviewNews{{ i }}"
-                                     src="{% if form.instance.image %}{{ form.instance.image.image_url.url }}{% else %}{% static 'adminlte/dist/img/img-none.jpg' %}{% endif %}"
+                                     src="
+                                             {% if form.instance.image %}{{ form.instance.image.image_url.url }}{% else %}{% static 'adminlte/dist/img/img-none.jpg' %}{% endif %}"
                                      data-default="{% static 'adminlte/dist/img/img-none.jpg' %}" class="image-preview">
                                 <button type="button"
                                         onclick="buttonImagePreviewClickNews('id_newsbannerimage_set-{{ i }}-image_file_shares')">

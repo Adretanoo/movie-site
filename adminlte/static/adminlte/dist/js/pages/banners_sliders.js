@@ -1,94 +1,62 @@
-function buttonImagePreviewClick() {
-    document.getElementById('formPreview').click();
+function buttonImagePreviewClick(inputId) {
+    const input = document.getElementById(inputId);
+    if (input) input.click();
 }
 
-function updateImagePreview(input) {
-    const mainPreview = document.getElementById('mainPreview');
-    if (input.files && input.files[0]) {
-        const file = input.files[0];
-        mainPreview.src = URL.createObjectURL(file);
-    }
-}
-
-function buttonResetPreviewClick() {
-    const input = document.getElementById('formPreview');
-    const preview = document.getElementById('mainPreview');
-    input.value = '';
-    preview.src = preview.dataset.default;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function buttonImagePreviewClickUpper(inputId) {
-    document.getElementById(inputId).click();
-}
-
-function updateImagePreviewUpper(input, previewId) {
+function updateImagePreview(input, previewId) {
     const preview = document.getElementById(previewId);
     if (input.files && input.files[0]) {
         preview.src = URL.createObjectURL(input.files[0]);
     }
 }
 
-function buttonResetPreviewClickUpper(inputId, previewId) {
+function buttonResetPreviewClick(inputId, previewId) {
     const input = document.getElementById(inputId);
     const preview = document.getElementById(previewId);
-    input.value = '';
-    preview.src = preview.dataset.default;
+    if (input && preview) {
+        input.value = '';
+        preview.src = preview.dataset.default;
+    }
 }
 
-function toggleFormVisibilityUpper(checkbox) {
+
+
+function toggleFormVisibility(checkbox) {
     const formItem = checkbox.closest('.gallery-item');
     if (formItem) {
-        const urlInput = formItem.querySelector('input[name$="-url"]');
-        const imageFileInput = formItem.querySelector('input[name$="-image_file"]');
+        const formFields = formItem.querySelectorAll('input:not([type="hidden"]):not([type="checkbox"]), select, textarea');
 
         if (checkbox.checked) {
             formItem.style.display = 'none';
-            if (urlInput) {
-                urlInput.removeAttribute('required');
-                urlInput.value = '';
-            }
+            formFields.forEach(field => {
+                // Зберігаємо оригінальний стан 'required' перед видаленням
+                field.setAttribute('data-original-required', field.hasAttribute('required') ? 'true' : 'false');
+                field.removeAttribute('required');
+                field.setAttribute('disabled', 'true'); // Вимикаємо поля
+            });
+            const imageFileInput = formItem.querySelector('input[type="file"]');
             if (imageFileInput) {
-                imageFileInput.removeAttribute('required');
                 imageFileInput.value = '';
             }
         } else {
             formItem.style.display = '';
+            formFields.forEach(field => {
+                if (field.getAttribute('data-original-required') === 'true') {
+                    field.setAttribute('required', 'true');
+                }
+                field.removeAttribute('disabled'); // Вмикаємо поля
+            });
         }
     }
 }
 
-document.addEventListener('DOMContentLoaded', function () {
-    const addButtonUpper = document.getElementById('add-more-upper');
-    const containerUpper = document.getElementById('upper-banner-container');
-    const emptyFormTemplateUpper = document.getElementById('upper-empty-form-template').innerHTML;
-    const managementFormTotalFormsUpper = document.querySelector('#id_topbannerimage_set-TOTAL_FORMS');
+function initDynamicFormset(config) {
+    const addButton = document.getElementById(config.addButtonId);
+    const container = document.getElementById(config.containerId);
+    const emptyFormTemplate = document.getElementById(config.templateId).innerHTML;
+    const managementFormTotalForms = document.querySelector(config.totalFormsSelector);
 
-    function updateElementIndexUpper(element, prefix, index) {
+    function updateElementIndex(element, prefix, index) {
         if (element.name && (element.name.includes('TOTAL_FORMS') || element.name.includes('INITIAL_FORMS') || element.name.includes('MAX_NUM_FORMS'))) {
             return;
         }
@@ -106,239 +74,108 @@ document.addEventListener('DOMContentLoaded', function () {
         if (element.htmlFor) {
             element.htmlFor = element.htmlFor.replace(forRegex, `${prefix}-${index}-`);
         }
-        if (element.getAttribute('onclick')) {
+
+        if (element.getAttribute('onclick') && element.getAttribute('onclick').includes('__prefix__')) {
             const newOnClick = element.getAttribute('onclick').replace(/__prefix__/g, index);
             element.setAttribute('onclick', newOnClick);
         }
-        if (element.getAttribute('onchange')) {
-            if (element.getAttribute('onchange').includes('__prefix__')) {
-                const newOnChange = element.getAttribute('onchange').replace(/__prefix__/g, index);
-                element.setAttribute('onchange', newOnChange);
-            }
+        if (element.getAttribute('onchange') && element.getAttribute('onchange').includes('__prefix__')) {
+            const newOnChange = element.getAttribute('onchange').replace(/__prefix__/g, index);
+            element.setAttribute('onchange', newOnChange);
         }
-        if (element.id && element.id.startsWith('mainPreview')) {
-            element.id = `mainPreview${index}`;
+
+        if (element.classList.contains('image-preview')) {
+            element.id = `${config.previewPrefix}${index}`;
         }
     }
-
-    function reindexFormsUpper() {
+    function reindexForms() {
         let currentFormIndex = 0;
-        containerUpper.querySelectorAll('.gallery-item').forEach(function (formDiv) {
+        container.querySelectorAll('.gallery-item').forEach(function (formDiv) {
             formDiv.querySelectorAll('input, select, textarea, label, button, img').forEach(function (element) {
-                updateElementIndexUpper(element, 'topbannerimage_set', currentFormIndex);
+                updateElementIndex(element, config.prefix, currentFormIndex);
             });
-            formDiv.id = `gallery-item-${currentFormIndex}`;
-
+            formDiv.id = `${config.galleryItemIdPrefix}-${currentFormIndex}`;
             const deleteLabel = formDiv.querySelector('.delete-label');
             if (deleteLabel) {
-                deleteLabel.setAttribute('for', `id_topbannerimage_set-${currentFormIndex}-DELETE`);
+                deleteLabel.setAttribute('for', `id_${config.prefix}-${currentFormIndex}-DELETE`);
             }
-
             const deleteCheckbox = formDiv.querySelector('input[name$="-DELETE"][type="checkbox"]');
             if (deleteCheckbox) {
-                deleteCheckbox.setAttribute('onchange', 'toggleFormVisibilityUpper(this);');
+                deleteCheckbox.setAttribute('onchange', 'toggleFormVisibility(this);');
+            }
+            const imageFileInput = formDiv.querySelector(`input[name="${config.prefix}-${currentFormIndex}-${config.imageFieldName}"]`);
+            if (imageFileInput) {
+                imageFileInput.setAttribute('onchange', `updateImagePreview(this, "${config.previewPrefix}${currentFormIndex}")`);
+            }
+            const loadImageButton = formDiv.querySelector(`button[onclick*="buttonImagePreviewClick"]`);
+            if (loadImageButton) {
+                loadImageButton.setAttribute('onclick', `buttonImagePreviewClick('id_${config.prefix}-${currentFormIndex}-${config.imageFieldName}')`);
             }
 
             currentFormIndex++;
         });
-        updateManagementFormTotalsUpper();
+        updateManagementFormTotals();
     }
 
-    function updateManagementFormTotalsUpper() {
-        const totalFormsInDOM = containerUpper.querySelectorAll('.gallery-item').length;
-        managementFormTotalFormsUpper.value = totalFormsInDOM;
+    function updateManagementFormTotals() {
+        const totalFormsInDOM = container.querySelectorAll('.gallery-item').length;
+        managementFormTotalForms.value = totalFormsInDOM;
     }
 
-    addButtonUpper.addEventListener('click', function () {
-        const currentTotalForms = parseInt(managementFormTotalFormsUpper.value);
-        const newFormHtml = emptyFormTemplateUpper.replace(/__prefix__/g, currentTotalForms);
+    addButton.addEventListener('click', function () {
+        const currentTotalForms = parseInt(managementFormTotalForms.value);
+        const newFormHtml = emptyFormTemplate.replace(/__prefix__/g, currentTotalForms);
         const newFormDiv = document.createElement('div');
         newFormDiv.innerHTML = newFormHtml.trim();
         const newFormElement = newFormDiv.firstElementChild;
-        newFormElement.id = `gallery-item-${currentTotalForms}`;
+        newFormElement.id = `${config.galleryItemIdPrefix}-${currentTotalForms}`;
 
-        const newImageInput = newFormElement.querySelector(`input[name="topbannerimage_set-${currentTotalForms}-image_file"]`);
-        if (newImageInput) {
-            newImageInput.setAttribute('onchange', `updateImagePreviewUpper(this, "mainPreview${currentTotalForms}")`);
-        }
-
-        const newDeleteInput = newFormElement.querySelector('input[name$="-DELETE"][type="checkbox"]');
-        if (newDeleteInput) {
-            newDeleteInput.setAttribute('onchange', 'toggleFormVisibilityUpper(this);');
-        }
-
-        const newImagePreview = newFormElement.querySelector('img.image-preview');
-        if (newImagePreview) {
-            newImagePreview.id = `mainPreview${currentTotalForms}`;
-        }
-
-        containerUpper.appendChild(newFormElement);
-        reindexFormsUpper();
+        container.appendChild(newFormElement);
+        reindexForms();
     });
 
-    containerUpper.addEventListener('change', function (event) {
+    container.addEventListener('change', function (event) {
         if (event.target.type === 'checkbox' && event.target.name.endsWith('-DELETE')) {
-            toggleFormVisibilityUpper(event.target);
+            toggleFormVisibility(event.target);
         }
     });
 
-    reindexFormsUpper();
-});
-
-
-function buttonImagePreviewClickNews(inputId) {
-    document.getElementById(inputId).click();
-}
-
-function updateImagePreviewNews(input, previewId) {
-    const preview = document.getElementById(previewId);
-    if (input.files && input.files[0]) {
-        preview.src = URL.createObjectURL(input.files[0]);
-    }
-}
-
-function buttonResetPreviewClickNews(inputId, previewId) {
-    const input = document.getElementById(inputId);
-    const preview = document.getElementById(previewId);
-    input.value = '';
-    preview.src = preview.dataset.default;
-}
-
-function toggleFormVisibilityNews(checkbox) {
-    const formItem = checkbox.closest('.gallery-item');
-    if (formItem) {
-        const urlInput = formItem.querySelector('input[name$="-url"]');
-        const textInput = formItem.querySelector('input[name$="-text"]');
-        const imageFileInput = formItem.querySelector('input[name$="-image_file_shares"]');
-
-        if (checkbox.checked) {
-            formItem.style.display = 'none';
-            if (urlInput) {
-                urlInput.removeAttribute('required');
-                urlInput.value = '';
-            }
-            if (textInput) {
-                textInput.removeAttribute('required');
-                textInput.value = '';
-            }
-            if (imageFileInput) {
-                imageFileInput.removeAttribute('required');
-                imageFileInput.value = '';
-            }
-        } else {
-            formItem.style.display = '';
-
-        }
-    }
+    reindexForms();
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-    const addButtonNews = document.getElementById('add-more-shares');
-    const containerNews = document.getElementById('shares-banner-container');
-    const emptyFormTemplateNews = document.getElementById('news-empty-form-template').innerHTML;
-    const managementFormTotalFormsNews = document.querySelector('#id_newsbannerimage_set-TOTAL_FORMS');
+    initDynamicFormset({
+        addButtonId: 'add-more-upper',
+        containerId: 'upper-banner-container',
+        templateId: 'upper-empty-form-template',
+        totalFormsSelector: '#id_topbannerimage_set-TOTAL_FORMS',
+        prefix: 'topbannerimage_set',
+        imageFieldName: 'image_file',
+        previewPrefix: 'mainPreview',
+        galleryItemIdPrefix: 'gallery-item'
+    });
 
-    // Функція reindexFormsNews має бути оновлена, щоб враховувати 'mainPreviewNews'
-    function updateElementIndexNews(element, prefix, index) {
-        if (element.name && (element.name.includes('TOTAL_FORMS') || element.name.includes('INITIAL_FORMS') || element.name.includes('MAX_NUM_FORMS'))) {
-            return;
-        }
+    initDynamicFormset({
+        addButtonId: 'add-more-shares',
+        containerId: 'shares-banner-container',
+        templateId: 'news-empty-form-template',
+        totalFormsSelector: '#id_newsbannerimage_set-TOTAL_FORMS',
+        prefix: 'newsbannerimage_set',
+        imageFieldName: 'image_file_shares',
+        previewPrefix: 'mainPreviewNews',
+        galleryItemIdPrefix: 'gallery-item'
+    });
 
-        const idRegex = new RegExp(`(${prefix}-(\\d+)-)|(${prefix}-__prefix__-)`);
-        const nameRegex = new RegExp(`(${prefix}-(\\d+)-)|(${prefix}-__prefix__-)`);
-        const forRegex = new RegExp(`(${prefix}-(\\d+)-)|(${prefix}-__prefix__-)`);
+    const formPreviewInput = document.getElementById('formPreview');
+    const mainPreviewImg = document.getElementById('mainPreview');
 
-        if (element.id) {
-            element.id = element.id.replace(idRegex, `${prefix}-${index}-`);
-        }
-        if (element.name) {
-            element.name = element.name.replace(nameRegex, `${prefix}-${index}-`);
-        }
-        if (element.htmlFor) {
-            element.htmlFor = element.htmlFor.replace(forRegex, `${prefix}-${index}-`);
-        }
-        if (element.getAttribute('onclick')) {
-            const newOnClick = element.getAttribute('onclick').replace(/__prefix__/g, index);
-            element.setAttribute('onclick', newOnClick);
-        }
-        if (element.getAttribute('onchange')) {
-            if (element.getAttribute('onchange').includes('__prefix__')) {
-                const newOnChange = element.getAttribute('onchange').replace(/__prefix__/g, index);
-                element.setAttribute('onchange', newOnChange);
-            }
-        }
-        // Оновлено: Використовуємо 'mainPreviewNews' для унікальності ID в News Banner
-        if (element.id && element.id.startsWith('mainPreview')) { // Перевіряємо, чи ID починається з "mainPreview"
-            element.id = `mainPreviewNews${index}`; // Змінюємо на "mainPreviewNews"
-        }
-    }
-
-    function reindexFormsNews() {
-        let currentFormIndex = 0;
-        containerNews.querySelectorAll('.gallery-item').forEach(function (formDiv) {
-            formDiv.querySelectorAll('input, select, textarea, label, button, img').forEach(function (element) {
-                updateElementIndexNews(element, 'newsbannerimage_set', currentFormIndex);
-            });
-            formDiv.id = `gallery-item-${currentFormIndex}`;
-
-            const deleteLabel = formDiv.querySelector('.delete-label');
-            if (deleteLabel) {
-                deleteLabel.setAttribute('for', `id_newsbannerimage_set-${currentFormIndex}-DELETE`);
-            }
-
-            const deleteCheckbox = formDiv.querySelector('input[name$="-DELETE"][type="checkbox"]');
-            if (deleteCheckbox) {
-                deleteCheckbox.setAttribute('onchange', 'toggleFormVisibilityNews(this);');
-            }
-
-            currentFormIndex++;
+    if (formPreviewInput && mainPreviewImg) {
+        formPreviewInput.addEventListener('change', function() {
+            updateImagePreview(this, 'mainPreview');
         });
-        updateManagementFormTotalsNews();
     }
-
-    function updateManagementFormTotalsNews() {
-        const totalFormsInDOM = containerNews.querySelectorAll('.gallery-item:not([style*="display: none"])').length; // Рахуємо тільки видимі форми
-        managementFormTotalFormsNews.value = totalFormsInDOM;
-    }
-
-    addButtonNews.addEventListener('click', function () {
-        const currentTotalForms = parseInt(managementFormTotalFormsNews.value);
-        const newFormHtml = emptyFormTemplateNews.replace(/__prefix__/g, currentTotalForms);
-        const newFormDiv = document.createElement('div');
-        newFormDiv.innerHTML = newFormHtml.trim();
-        const newFormElement = newFormDiv.firstElementChild;
-        newFormElement.id = `gallery-item-${currentTotalForms}`;
-
-        const newImageInput = newFormElement.querySelector(`input[name="newsbannerimage_set-${currentTotalForms}-image_file_shares"]`);
-        if (newImageInput) {
-            newImageInput.id = `id_newsbannerimage_set-${currentTotalForms}-image_file_shares`;
-            newImageInput.setAttribute('onchange', `updateImagePreviewNews(this, "mainPreviewNews${currentTotalForms}")`);
-        }
-
-        const newLoadButton = newFormElement.querySelector('button[onclick*="__prefix__"]');
-        if (newLoadButton) {
-            newLoadButton.setAttribute('onclick', `buttonImagePreviewClickNews('id_newsbannerimage_set-${currentTotalForms}-image_file_shares')`);
-        }
-
-        const newImagePreview = newFormElement.querySelector('img.image-preview');
-        if (newImagePreview) {
-            newImagePreview.id = `mainPreviewNews${currentTotalForms}`; // Оновлено: Встановлюємо ID на 'mainPreviewNewsX'
-        }
-
-        const newDeleteInput = newFormElement.querySelector('input[name$="-DELETE"][type="checkbox"]');
-        if (newDeleteInput) {
-            newDeleteInput.setAttribute('onchange', 'toggleFormVisibilityNews(this);');
-        }
-
-        containerNews.appendChild(newFormElement);
-        reindexFormsNews();
-    });
-
-    containerNews.addEventListener('change', function (event) {
-        if (event.target.type === 'checkbox' && event.target.name.endsWith('-DELETE')) {
-            toggleFormVisibilityNews(event.target);
-        }
-    });
-
-    reindexFormsNews();
+    window.buttonImagePreviewClick = buttonImagePreviewClick;
+    window.updateImagePreview = updateImagePreview;
+    window.buttonResetPreviewClick = buttonResetPreviewClick;
+    window.toggleFormVisibility = toggleFormVisibility;
 });

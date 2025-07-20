@@ -64,31 +64,26 @@ def banners_sliders_add(request):
                 instance=top_banner_instance,
                 prefix='topbannerimage_set'
             )
-            if top_form.is_valid() and top_image_formset.is_valid():
+
+            if top_form.is_valid():
                 with transaction.atomic():
                     top_form.save()
-                    instances_to_save = top_image_formset.save(commit=False)
-                    for instance in instances_to_save:
-                        instance.save()
-                    for obj in top_image_formset.deleted_objects:
-                        if obj.image:
-                            obj.image.delete()
-                        obj.delete()
-                messages.success(request, "Верхні банери успішно збережено та оновлено!")
+                    for form in top_image_formset.forms:
+                        if form.is_valid():
+                            if not form.cleaned_data.get('DELETE', False):
+                                form.save()
+                        elif form.cleaned_data.get('DELETE', False) and form.instance.pk:
+                            # Видалити форму навіть якщо вона невалідна, але позначена на видалення
+                            if form.instance.image:
+                                form.instance.image.delete()
+                            form.instance.delete()
                 return redirect('banners-sliders-add')
-            else:
-                messages.error(request, "Будь ласка, виправте помилки у верхніх банерах.")
 
         elif 'submit_background_banner' in request.POST:
             background_form = BackgroundBannerForm(request.POST, request.FILES, instance=bg_instance)
             if background_form.is_valid():
                 background_form.save()
-                messages.success(request, "Фоновий банер успішно збережено!")
                 return redirect('banners-sliders-add')
-            else:
-                print("\n--- ПОМИЛКИ ВАЛІДАЦІЇ: Фоновий банер ---")
-                print("Помилки BackgroundBannerForm:", background_form.errors)
-                messages.error(request, "Будь ласка, виправте помилки у фоновому банері.")
 
         elif 'submit_news_banners' in request.POST:
             news_form = NewsBannerForm(request.POST, request.FILES, instance=news_banner_instance)
@@ -98,24 +93,20 @@ def banners_sliders_add(request):
                 instance=news_banner_instance,
                 prefix='newsbannerimage_set'
             )
-            if news_form.is_valid() and news_image_formset.is_valid():
+
+            if news_form.is_valid():
                 with transaction.atomic():
                     news_form.save()
-                    instances_to_save = news_image_formset.save(commit=False)
-                    for instance in instances_to_save:
-                        instance.save()
-                    for obj in news_image_formset.deleted_objects:
-                        if obj.image:
-                            obj.image.delete()
-                        obj.delete()
-
-                messages.success(request, "News успішно збережено та оновлено!")
+                    for form in news_image_formset.forms:
+                        if form.is_valid():
+                            if not form.cleaned_data.get('DELETE', False):
+                                form.save()
+                        elif form.cleaned_data.get('DELETE', False) and form.instance.pk:
+                            # Якщо форма невалідна, але позначена на видалення — видаляємо вручну
+                            if form.instance.image:
+                                form.instance.image.delete()
+                            form.instance.delete()
                 return redirect('banners-sliders-add')
-            else:
-                messages.error(request, "Будь ласка, виправте помилки у News Banners.")
-
-        else:
-            messages.warning(request, "Не вдалося визначити, яка форма була надіслана.")
 
     context = {
         'menu': menu,
