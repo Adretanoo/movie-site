@@ -2,7 +2,7 @@ from django import forms
 from django.forms import DateInput, ClearableFileInput, inlineformset_factory
 
 from .models import Publication, SeoMetadata, Images, TopBanner, TopBannerImage, NewsBanner, NewsBannerImage, \
-    BackgroundBanner, Movie, MovieGallery
+    BackgroundBanner, Movie, MovieGallery, CardCinema, CardCinemaGallery, CardHall, CardHallGallery
 
 
 class PublicationForm(forms.ModelForm):
@@ -273,9 +273,170 @@ class MovieGalleryForm(forms.ModelForm):
         image_file = self.cleaned_data.get('image_file_upload')
         if image_file:
             image_instance = Images.objects.create(image_url=image_file)
-            self.instance.image = image_instance  # встановлюємо ForeignKey
+            self.instance.image = image_instance
         return super().save(commit=commit)
 
+
+class CardCinemaForm(forms.ModelForm):
+    name_ru = forms.CharField(widget=forms.TextInput(attrs={
+        'placeholder': 'Название кинотеатра'
+    }))
+    name_uk = forms.CharField(widget=forms.TextInput(attrs={
+        'placeholder': 'Название кинотеатра'
+    }))
+    description_ru = forms.CharField(widget=forms.Textarea(attrs={
+        'placeholder': 'текст'
+    }))
+    description_uk = forms.CharField(widget=forms.Textarea(attrs={
+        'placeholder': 'текст'
+    }))
+    term_ru = forms.CharField(widget=forms.Textarea(attrs={
+        'placeholder': 'текст'
+    }))
+    term_uk = forms.CharField(widget=forms.Textarea(attrs={
+        'placeholder': 'текст'
+    }))
+    logo_image = forms.ImageField(
+        widget=forms.FileInput(attrs={
+            'id': 'logoPreviewInput',
+            'style': 'display: none;',
+            'onchange': 'updateImagePreview(this, "logo")'
+        })
+    )
+
+    top_banner = forms.ImageField(
+        widget=forms.FileInput(attrs={
+            'id': 'bannerPreviewInput',
+            'style': 'display: none;',
+            'onchange': 'updateImagePreview(this, "banner")'
+        })
+    )
+
+    class Meta:
+        model = CardCinema
+        fields = ['name_ru', 'name_uk', 'description_ru', 'description_uk', 'term_ru', 'term_uk','top_banner','logo_image']
+
+
+
+
+class CardCinemaGalleryForm(forms.ModelForm):
+    image_file_upload = forms.ImageField(
+        required=False,
+        widget=forms.ClearableFileInput(
+            attrs={'class': 'gallery-file-input', 'accept': 'image/*', 'style': 'display:none'})
+    )
+
+    class Meta:
+        model = CardCinemaGallery
+        fields = []
+
+    def clean(self):
+        cleaned_data = super().clean()
+        delete = cleaned_data.get('DELETE')
+
+        if delete:
+            return cleaned_data
+
+        uploaded_file = cleaned_data.get('image_file_upload')
+        has_existing_image = hasattr(self.instance, 'image') and self.instance.image_id is not None
+
+        if not uploaded_file and not has_existing_image:
+            self.add_error('image_file_upload', 'Завантажте зображення або видаліть елемент.')
+
+        return cleaned_data
+
+    def save(self, commit=True):
+        image_file = self.cleaned_data.get('image_file_upload')
+        if image_file:
+            image_instance = Images.objects.create(image_url=image_file)
+            self.instance.image = image_instance
+        return super().save(commit=commit)
+
+
+
+class CardHallForm(forms.ModelForm):
+    name_ru = forms.CharField(widget=forms.TextInput(attrs={
+        'placeholder': '8 зал'
+    }))
+    name_uk = forms.CharField(widget=forms.TextInput(attrs={
+        'placeholder': '8 зал'
+    }))
+    description_ru = forms.CharField(widget=forms.Textarea(attrs={
+        'placeholder': 'текст'
+    }))
+    description_uk = forms.CharField(widget=forms.Textarea(attrs={
+        'placeholder': 'текст'
+    }))
+
+    schema_image = forms.ImageField(
+        widget=forms.FileInput(attrs={
+            'id': 'logoPreviewInput',
+            'style': 'display: none;',
+            'onchange': 'updateImagePreview(this, "logo")'
+        })
+    )
+
+    top_banner = forms.ImageField(
+        widget=forms.FileInput(attrs={
+            'id': 'bannerPreviewInput',
+            'style': 'display: none;',
+            'onchange': 'updateImagePreview(this, "banner")'
+        })
+    )
+    class Meta:
+        model = CardHall
+        fields = ['name_ru', 'name_uk', 'description_ru', 'description_uk','schema_image','top_banner']
+
+class CardHallGalleryForm(forms.ModelForm):
+    image_file_upload = forms.ImageField(
+        required=False,
+        widget=forms.ClearableFileInput(
+            attrs={'class': 'gallery-file-input', 'accept': 'image/*', 'style': 'display:none'})
+    )
+
+    class Meta:
+        model = CardHallGallery
+        fields = []
+
+    def clean(self):
+        cleaned_data = super().clean()
+        delete = cleaned_data.get('DELETE')
+
+        if delete:
+            return cleaned_data
+
+        uploaded_file = cleaned_data.get('image_file_upload')
+        has_existing_image = hasattr(self.instance, 'image') and self.instance.image_id is not None
+
+        if not uploaded_file and not has_existing_image:
+            self.add_error('image_file_upload', 'Завантажте зображення або видаліть елемент.')
+
+        return cleaned_data
+
+    def save(self, commit=True):
+        image_file = self.cleaned_data.get('image_file_upload')
+        if image_file:
+            image_instance = Images.objects.create(image_url=image_file)
+            self.instance.image = image_instance
+        return super().save(commit=commit)
+
+
+
+CardHallGalleryFormSet = inlineformset_factory(
+    CardHall,
+    CardHallGallery,
+    form=CardHallGalleryForm,
+    extra=0,
+    can_delete=True
+)
+
+CardCinemaGalleryFormSet = inlineformset_factory(
+    CardCinema,
+    CardCinemaGallery,
+    form=CardCinemaGalleryForm,
+    extra=0,
+    can_delete=True,
+)
 
 MovieGalleryFormSet = inlineformset_factory(
     Movie,

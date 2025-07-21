@@ -25,7 +25,7 @@ document.addEventListener("keydown", function (e) {
 
 
 document.addEventListener("DOMContentLoaded", function () {
-    const form = document.getElementById("movieForm");
+    const form = document.getElementById("formBase");
     const saveButton = form.querySelector(".all-save-button");
 
     saveButton.addEventListener("click", function (e) {
@@ -53,3 +53,4 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
+

@@ -197,7 +197,7 @@ class CardCinema(models.Model):
     term = models.TextField()
     logo_image = models.ImageField(upload_to="cinemas/logos/%Y/%m/%d/")
     top_banner = models.ImageField(upload_to="cinemas/banners/%Y/%m/%d/")
-    gallery = models.ManyToManyField(Images)
+    gallery = models.ManyToManyField(Images, through='CardCinemaGallery', related_name="cinema_galleries")
     seo = models.OneToOneField(SeoMetadata, on_delete=models.CASCADE, related_name="card_cinema")
 
     def __str__(self):
@@ -206,14 +206,22 @@ class CardCinema(models.Model):
     class Meta:
         db_table = "card_cinema"
 
+class CardCinemaGallery(models.Model):
+    card_cinema = models.ForeignKey(CardCinema, on_delete=models.CASCADE)
+    image = models.ForeignKey(Images, on_delete=models.CASCADE)
+
+    class Meta:
+        db_table = "card_cinema_gallery"
+
+
 
 class CardHall(models.Model):
     name = models.CharField(max_length=255)
     description = models.TextField(blank=True)
-    schema_image = models.ImageField(upload_to="halls/schema/%Y/%m/%d/", blank=True, null=True)
-    top_banner = models.ImageField(upload_to="halls/banners/%Y/%m/%d/", blank=True, null=True)
+    schema_image = models.ImageField(upload_to="halls/schema/%Y/%m/%d/")
+    top_banner = models.ImageField(upload_to="halls/banners/%Y/%m/%d/")
     created_at = models.DateTimeField(auto_now_add=True)
-    gallery = models.ManyToManyField(Images)
+    gallery = models.ManyToManyField(Images, through='CardHallGallery', related_name="hall_galleries")
     seo = models.OneToOneField(SeoMetadata, on_delete=models.CASCADE, related_name="card_hall")
     card_cinema = models.ForeignKey(CardCinema, on_delete=models.CASCADE)
 
@@ -222,6 +230,20 @@ class CardHall(models.Model):
 
     class Meta:
         db_table = "card_hall"
+
+
+
+class CardHallGallery(models.Model):
+    card_hall = models.ForeignKey(CardHall, on_delete=models.CASCADE)
+    image = models.ForeignKey(Images, on_delete=models.CASCADE)
+
+    class Meta:
+        db_table = "card_hall_gallery"
+
+
+
+
+
 
 
 class Publication(models.Model):

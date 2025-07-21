@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="{% static 'adminlte/dist/css/alt/movie_add.css' %}">
 {% endblock %}
 {% block content %}
-    <form id="movieForm" method="POST" action="" enctype="multipart/form-data">
+    <form id="formBase" method="POST" action="" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="content-block">
             <div class="top-controls">

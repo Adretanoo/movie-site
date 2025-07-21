@@ -1,0 +1,177 @@
+{% extends 'adminlte/base.html' %}
+{% load widget_tweaks %}
+{% load static %}
+
+
+
+
+{% block links %}
+    <link rel="stylesheet" href="{% static 'adminlte/dist/css/alt/cinema.css' %}">
+{% endblock %}
+
+
+
+{% block content %}
+    <form id="formBase" method="POST" action="" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="content-block">
+            <div class="top-controls">
+                <div class="lang-buttons">
+                    <a href="?lang=uk"
+                       class="lang__buttons-left {% if lang == 'uk' %}active{% endif %}"
+                       data-lang="uk">Українська</a>
+                    <a href="?lang=ru"
+                       class="lang__buttons-right {% if lang == 'ru' %}active{% endif %}"
+                       data-lang="ru">Русский</a>
+                </div>
+            </div>
+
+            <div class="main__controls">
+                <div class="main__controls-top">
+                    <div class="form-group-inline lang-field lang-ru">
+                        <label for="{{ form.name_ru.id_for_label }}">Номер зала
+                            {{ publication_type_label }}</label>
+                        {{ form.name_ru|add_class:"form-control" }}
+                    </div>
+
+                    <div class="form-group-inline lang-field lang-uk">
+                        <label for="{{ form.name_uk.id_for_label }}">Номер зала</label>
+                        {{ form.name_uk|add_class:"form-control" }}
+                    </div>
+
+                    <div class="form-group-desc lang-field lang-ru">
+                        <label for="{{ form.description_ru.id_for_label }}">Описание зала</label>
+                        {{ form.description_ru|add_class:"form-control" }}
+                    </div>
+
+                    <div class="form-group-desc lang-field lang-uk">
+                        <label for="{{ form.description_uk.id_for_label }}">Описание зала</label>
+                        {{ form.description_uk|add_class:"form-control" }}
+                    </div>
+
+                </div>
+
+
+                <!-- LOGO -->
+                <div class="logo__controls-center">
+                    <div class="label_main-image">
+                        <label>Логотип</label>
+                        <div id="logo-image-error">Загрузите фото</div>
+                    </div>
+                    <div class="main-image-group">
+                        <div class="main-image">
+                            <img id="logoPreview"
+                                 src="
+
+
+                                         {% if form.instance.schema_image %}{{ form.instance.schema_image.url }}{% else %}{% static 'adminlte/dist/img/img-none.jpg' %}{% endif %}"
+                                 data-default="{% static 'adminlte/dist/img/img-none.jpg' %}"
+                                 alt="logo image">
+                        </div>
+                        <div class="main-buttons">
+                            {{ form.schema_image }}
+                            <button type="button" onclick="buttonImagePreviewClick('logo')">Загрузить</button>
+                            <button type="button" onclick="buttonResetPreviewClick('logo')">Удалить</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BANNER -->
+                <div class="top-banner__controls-center">
+                    <div class="label_main-image">
+                        <label>Фото верхнего<br>баннера</label>
+                        <div id="banner-image-error">Загрузите фото</div>
+                    </div>
+                    <div class="main-image-group">
+                        <div class="main-image">
+                            <img id="bannerPreview"
+                                 src="
+
+
+                                         {% if form.instance.top_banner %}{{ form.instance.top_banner.url }}{% else %}{% static 'adminlte/dist/img/img-none.jpg' %}{% endif %}"
+                                 data-default="{% static 'adminlte/dist/img/img-none.jpg' %}"
+                                 alt="banner image">
+                        </div>
+                        <div class="main-buttons">
+                            {{ form.top_banner }}
+                            <button type="button" onclick="buttonImagePreviewClick('banner')">Загрузить</button>
+                            <button type="button" onclick="buttonResetPreviewClick('banner')">Удалить</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-block">
+                    <div class="gallery-info-row">
+                        <label>Галерея картинок</label>
+                    </div>
+                    <div class="blok-gallery-size">
+                        <h6>Размер: 1000x190</h6>
+                        <div class="gallery-items" id="gallery-formset-container">
+                            {{ formset.management_form }}
+
+                            <div id="empty-gallery-form-template" style="display: none;">
+                                <div class="gallery-item">
+                                    <span class="remove gallery-delete-btn">×</span>
+                                    <img src="{% static 'adminlte/dist/img/img-none.jpg' %}"
+                                         data-default="{% static 'adminlte/dist/img/img-none.jpg' %}"
+                                         class="gallery-image-preview">
+
+                                    {{ formset.empty_form.image_file_upload }}
+
+
+                                    {{ formset.empty_form.id }}
+                                    {{ formset.empty_form.movie }}
+
+                                    <button type="button" class="upload-gallery-btn"
+                                            onclick="document.getElementById('id_basegallery_set-__prefix__-image_file_upload').click()">
+                                        Добавить
+                                    </button>
+                                </div>
+                            </div>
+
+                            {% for form in formset %}
+                                <div class="gallery-item">
+
+                                    <img src="
+                                            {% if form.instance.image and form.instance.image.image %}{{ form.instance.image.image.url }}{% else %}{% static 'adminlte/dist/img/img-none.jpg' %}{% endif %}"
+                                         data-default="{% static 'adminlte/dist/img/img-none.jpg' %}"
+                                         class="gallery-image-preview">
+
+                                    {{ form.id }}
+                                    {{ form.movie }}
+                                    {{ form.image_file_upload }}
+
+                                    <button type="button" class="upload-gallery-btn"
+                                            onclick="document.getElementById('{{ form.image_file_upload.id_for_label }}').click()">
+                                        Добавить
+                                    </button>
+                                </div>
+                            {% endfor %}
+
+                            <button type="button" class="movie_button_add" id="add-movie-gallery-item">
+                                Добав<br>ить<br>фото
+                            </button>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <div id="seo-fields">
+                    {% include 'adminlte/pages/seo_base.html' %}
+                </div>
+
+                <div class="save-block">
+                    <button type="submit" class="all-save-button" onclick="buttonSubmitClick(event)">Сохранить</button>
+                </div>
+            </div>
+        </div>
+    </form>
+{% endblock %}
+
+
+{% block scripts %}
+    <script src="{% static 'adminlte/dist/js/pages/translation_hall.js' %}"></script>
+    <script src="{% static 'adminlte/dist/js/pages/alt_tab_menu.js' %}"></script>
+    <script src="{% static 'adminlte/dist/js/pages/cinema-hall_upload_base.js' %}"></script>
+{% endblock %}

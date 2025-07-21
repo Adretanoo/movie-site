@@ -1,0 +1,161 @@
+.block__content-cinema {
+    padding: 30px 10px;
+}
+
+.block__content-cinema h3{
+    text-align: center;
+    font-weight: 700;
+    margin: 0 auto;
+}
+
+
+.create-button-display {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: end;
+    width: 120px;
+    height: 120px;
+    border-radius: 12px;
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.create-button-display:hover {
+    transform: scale(1.05);
+}
+
+.plus-icon {
+    color: #4CAF50;
+    font-size: 90px;
+    line-height: 1;
+    margin-bottom: 11px;
+    font-weight: bold;
+    transition: transform 0.3s ease;
+}
+
+.create-button-display:hover .plus-icon {
+    transform: rotate(90deg);
+}
+
+.add-text {
+    color: black;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+
+.title__button-block-display {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
+    order: 1;
+    flex-wrap: wrap;
+}
+
+
+
+
+a {
+    text-decoration: none;
+    color: black;
+
+}
+
+.movie-item-img {
+    position: relative;
+    display: inline-block;
+
+}
+
+
+.movie-item-img img {
+    display: block;
+    border-radius: 4px;
+}
+
+.image-buttons {
+    position: absolute;
+    top: 3px;
+    right: 5px;
+    display: flex;
+    gap: 8px;
+    background-color: #E6E6E6;
+    padding: 0 4px;
+    border-radius: 4px;
+
+}
+
+.image-buttons a {
+    font-size: 23px;
+}
+.delete-button:hover {
+    color: red;
+}
+
+.container-fluid {
+    padding: 20px 150px 50px 150px;
+}
+
+.block__movies-soon, .block__movies-list {
+    margin-top: 40px;
+}
+
+.block__current-movies{
+    margin-top: 30px;
+    text-align: center;
+    display: flex;
+    gap: 45px;
+    flex-wrap: wrap;
+}
+
+.movie-item-img img {
+    object-fit: cover;
+    width: 230px;
+    height: 150px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.modal {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0, 0, 0, 0.4);
+  display: block;
+  z-index: 9999;
+}
+
+.modal-content {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 30px;
+  border-radius: 8px;
+  text-align: center;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.25);
+}
+
+.block__model-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}

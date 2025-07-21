@@ -84,7 +84,7 @@
 
 .form-group-desc textarea {
     flex: 1;
-    min-height: 100px;
+    height: 150px;
     padding: 8px;
     border: 1px solid #000;
     border-radius: 4px;
@@ -319,6 +319,7 @@
 
 .blok-gallery-size h6 {
     margin-top: 20px;
+    width: 135px;
 }
 
 .gallery-items {

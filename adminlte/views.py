@@ -7,9 +7,10 @@ from django.shortcuts import get_object_or_404
 from django.views.decorators.http import require_POST
 
 from adminlte.models import Publication, Images, PublicationType, TopBanner, NewsBanner, BackgroundBanner, \
-    TopBannerImage, NewsBannerImage, Movie, MovieGallery, SeoMetadata
+    TopBannerImage, NewsBannerImage, Movie, MovieGallery, SeoMetadata, CardCinema, CardHall
 from .forms import PublicationForm, SeoMetadataForm, BackgroundBannerForm, TopBannerForm, TopBannerImageForm, \
-    TopBannerImageFormSet, NewsBannerForm, NewsBannerImageFormSet, MovieForm, MovieGalleryFormSet
+    TopBannerImageFormSet, NewsBannerForm, NewsBannerImageFormSet, MovieForm, MovieGalleryFormSet, CardCinemaForm, \
+    CardCinemaGalleryFormSet, CardHallForm, CardHallGalleryForm, CardHallGalleryFormSet
 from django.shortcuts import render, redirect
 from cinemasite.settings import menu
 
@@ -178,7 +179,6 @@ def movies_delete(request):
     movie_id = request.POST.get('movie_id')
     movie = get_object_or_404(Movie, id=movie_id)
     movie.delete()
-    messages.success(request, f'Фільм "{movie.title}" було успішно видалено.')
     return redirect('movies')
 
 
@@ -220,20 +220,176 @@ def movie_add(request):
 
 
 def cinemas(request):
-    return render(request, 'adminlte/pages/cinemas_display.html', context={'menu': menu})
+    cinema = CardCinema.objects.all()
+    context = {
+        'menu': menu,
+        'cinema': cinema,
+    }
+    return render(request, 'adminlte/pages/cinemas_display.html', context)
 
 
-def cinemas(request):
-    return render(request, 'adminlte/pages/cinemas_display.html', context={'menu': menu})
+def cinemas_edit(request, pk):
+    lang = request.GET.get('lang', 'ru')
+    cinema = get_object_or_404(CardCinema, pk=pk)
+    seo = get_object_or_404(SeoMetadata, pk=cinema.seo.pk)
+
+    halls = CardHall.objects.filter(card_cinema=cinema)
+
+    if request.method == 'POST':
+        main_form = CardCinemaForm(request.POST, request.FILES, instance=cinema, prefix='main')
+        seo_form = SeoMetadataForm(request.POST, instance=seo, prefix='seo')
+        formset = CardCinemaGalleryFormSet(request.POST, request.FILES, instance=cinema, prefix='basegallery_set')
+
+        if main_form.is_valid() and seo_form.is_valid() and formset.is_valid():
+            with transaction.atomic():
+                seo_instance = seo_form.save()
+                cinema_instance = main_form.save(commit=False)
+                cinema_instance.seo = seo_instance
+                cinema_instance.save()
+
+                formset.instance = cinema_instance
+                formset.save()
+
+            return redirect('cinemas')
+    else:
+        main_form = CardCinemaForm(instance=cinema, prefix='main')
+        seo_form = SeoMetadataForm(instance=seo, prefix='seo')
+        formset = CardCinemaGalleryFormSet(instance=cinema, prefix='basegallery_set')
+    context = {
+        'menu': menu,
+        'lang': lang,
+        'cinema': cinema,
+        'form': main_form,
+        'seo_form': seo_form,
+        'formset': formset,
+        'halls': halls
+    }
+    return render(request, 'adminlte/pages/edit/cinema_edit.html', context)
+
 
 def cinemas_add(request):
     lang = request.GET.get('lang', 'ru')
 
+    if request.method == 'POST':
+        main_form = CardCinemaForm(request.POST, request.FILES, prefix='main')
+        formset = CardCinemaGalleryFormSet(request.POST, request.FILES, prefix='basegallery_set')
+        seo_form = SeoMetadataForm(request.POST, prefix='seo')
+        if main_form.is_valid() and formset.is_valid() and seo_form.is_valid():
+            with transaction.atomic():
+                seo_instance = seo_form.save()
+                cinema_instance = main_form.save(commit=False)
+                cinema_instance.seo = seo_instance
+                cinema_instance.save()
+
+                formset.instance = cinema_instance
+                formset.save()
+
+            return redirect('cinemas')
+    else:
+        main_form = CardCinemaForm(prefix='main')
+        seo_form = SeoMetadataForm(prefix='seo')
+        formset = CardCinemaGalleryFormSet(prefix='basegallery_set')
+
     context = {
+        'form': main_form,
+        'formset': formset,
+        'seo_form': seo_form,
         'menu': menu,
         'lang': lang,
     }
-    return render(request,'adminlte/pages/add/cinemas_add.html', context)
+    return render(request, 'adminlte/pages/add/cinemas_add.html', context)
+
+@require_POST
+def cinemas_delete(request):
+    cinema_id = request.POST.get('cinema_id')
+    cinema = get_object_or_404(CardCinema, pk=cinema_id)
+    cinema.delete()
+    return redirect('cinemas')
+
+
+def hall_add(request):
+    lang = request.GET.get('lang', 'ru')
+    cinema = get_object_or_404(CardCinema, pk=request.GET.get('cinema_id'))
+
+    if request.method == 'POST':
+        main_form = CardHallForm(request.POST, request.FILES, prefix='main')
+        formset = CardHallGalleryFormSet(request.POST, request.FILES, prefix='basegallery_set')
+        seo_form = SeoMetadataForm(request.POST, prefix='seo')
+        if main_form.is_valid() and formset.is_valid() and seo_form.is_valid():
+            with transaction.atomic():
+                seo_instance = seo_form.save()
+
+                hall_instance = main_form.save(commit=False)
+                hall_instance.seo = seo_instance
+                hall_instance.card_cinema = cinema
+                hall_instance.save()
+
+                formset.instance = hall_instance
+                formset.save()
+            return redirect('cinemas_edit', pk=cinema.pk)
+    else:
+        main_form = CardHallForm(prefix='main')
+        seo_form = SeoMetadataForm(prefix='seo')
+        formset = CardCinemaGalleryFormSet(prefix='basegallery_set')
+
+    context = {
+        'menu': menu,
+        'lang': lang,
+        'cinema': cinema,
+        'form': main_form,
+        'formset': formset,
+        'seo_form': seo_form,
+    }
+    return render(request, 'adminlte/pages/add/hall_add.html', context)
+
+
+def hall_edit(request, pk):
+    lang = request.GET.get('lang', 'ru')
+    cinema = get_object_or_404(CardCinema, pk=request.GET.get('cinema_id'))
+    hall = get_object_or_404(CardHall, pk=pk)
+    seo = hall.seo
+
+    if request.method == 'POST':
+        main_form = CardHallForm(request.POST, request.FILES, prefix='main', instance=hall)
+        seo_form = SeoMetadataForm(request.POST, prefix='seo', instance=seo)
+        formset = CardHallGalleryFormSet(request.POST, request.FILES, prefix='basegallery_set', instance=hall)
+
+        if main_form.is_valid() and seo_form.is_valid() and formset.is_valid():
+            with transaction.atomic():
+                seo_instance = seo_form.save()
+
+                hall_instance = main_form.save(commit=False)
+                hall_instance.seo = seo_instance
+                hall_instance.card_cinema = cinema
+                hall_instance.save()
+
+                formset.instance = hall_instance
+                formset.save()
+            return redirect('cinemas_edit', pk=cinema.pk)
+
+    else:
+        main_form = CardHallForm(prefix='main', instance=hall)
+        seo_form = SeoMetadataForm(prefix='seo', instance=seo)
+        formset = CardHallGalleryFormSet(prefix='basegallery_set', instance=hall)
+
+    context = {
+        'menu': menu,
+        'lang': lang,
+        'cinema': cinema,
+        'form': main_form,
+        'formset': formset,
+        'seo_form': seo_form,
+    }
+    return render(request, 'adminlte/pages/edit/hall_edit.html', context)
+
+
+@require_POST
+def hall_delete(request, pk):
+    hall = get_object_or_404(CardHall, pk=pk)
+    cinema_pk = hall.card_cinema.pk
+    hall.delete()
+    return redirect('cinemas_edit', pk=cinema_pk)
+
 
 def news(request):
     publications = Publication.objects.filter(publication_type=PublicationType.NEWS)
