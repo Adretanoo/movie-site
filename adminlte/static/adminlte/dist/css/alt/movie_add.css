@@ -386,3 +386,32 @@ input[type="checkbox"][name$="-DELETE"] {
 
 
 
+
+.block__menu-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+.block-reset a {
+    text-decoration: none;
+    color: black;
+    padding: 10px 24px;
+    border-radius: 6px;
+    border: 1px solid #000;
+    background-color: #f2f2f2;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.block-reset a:hover {
+    background-color: #ddd;
+}
+
+
+
+
+
+

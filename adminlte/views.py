@@ -170,6 +170,7 @@ def movie_edit(request, pk):
         'seo_form': seo_form,
         'formset': formset,
         'lang': lang,
+        'movie':movie
     }
     return render(request, 'adminlte/pages/edit/movies_edit.html', context)
 

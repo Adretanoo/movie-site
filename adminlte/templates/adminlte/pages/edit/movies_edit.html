@@ -56,7 +56,9 @@
                     <div class="main-image-group">
                         <div class="main-image">
                             <img id="mainPreview"
-                                 src="{% if form.instance.main_image %}{{ form.instance.main_image.url }}{% else %}{% static 'adminlte/dist/img/img-none.jpg' %}{% endif %}"
+                                 src="
+
+                                         {% if form.instance.main_image %}{{ form.instance.main_image.url }}{% else %}{% static 'adminlte/dist/img/img-none.jpg' %}{% endif %}"
                                  data-default="{% static 'adminlte/dist/img/img-none.jpg' %}"
                                  alt="main image">
                         </div>
@@ -105,6 +107,8 @@
                                                class="remove delete-label">×</label>
                                     {% endif %}
                                     <img src="
+
+
 
                                             {% if form.instance.image and form.instance.image.image_url %}{{ form.instance.image.image_url.url }}{% else %}{% static 'adminlte/dist/img/img-none.jpg' %}{% endif %}"
                                          data-default="{% static 'adminlte/dist/img/img-none.jpg' %}"
@@ -162,8 +166,14 @@
                     {% include 'adminlte/pages/seo_base.html' %}
                 </div>
 
-                <div class="save-block">
-                    <button type="submit" class="all-save-button" onclick="buttonSubmitClick(event)">Сохранить</button>
+                <div class="block__menu-buttons">
+                    <div class="save-block">
+                        <button type="submit" class="all-save-button" onclick="buttonSubmitClick(event)">Сохранить
+                        </button>
+                    </div>
+                    <div class="block-reset">
+                        <a href="{% url 'movie_edit' movie.pk%}">Вернуть базовую версию</a>
+                    </div>
                 </div>
 
 
