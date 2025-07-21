@@ -333,10 +333,117 @@
 
 
 
+.blok-gallery-size {
+    display: flex;
+    gap: 30px;
+}
+
+.blok-gallery-size h6 {
+    margin-top: 20px;
+    width: 135px;
+}
+
+
+.gallery-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    width: 100%;
+}
+
+
+.gallery-item, .gallery-preview-item {
+    position: relative;
+    width: 140px;
+    text-align: center;
+
+}
+
+.gallery-item img, .gallery-preview-item img {
+    height: 110px;
+    width: 100%;
+    background: #eee;
+    border: 1px solid #aaa;
+    padding: 5px;
+    object-fit: cover
+}
+
+.gallery-item button, .gallery-preview-item button {
+    margin-top: 5px;
+    width: 100%;
+    padding: 4px;
+    border-radius: 5px;
+    border: 1px solid #aaa;
+    background: #eee;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.gallery-item button:hover, .gallery-preview-item button:hover {
+    background: #ddd;
+    transform: scale(1.05);
+}
+
+
+#main-image-error{
+    display: none;
+    color: red;
+}
+
+.movie_button_add {
+    padding: 4px 14px;
+    border-radius: 6px;
+    border: 1px solid #000;
+    background-color: #f2f2f2;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.movie_button_add:hover {
+    background-color: #ddd;
+}
+
+.movie_button_add {
+    height: 90px;
+    order: 1;
+}
+
+.all-save-button {
+    padding: 4px 14px;
+    border-radius: 6px;
+    border: 1px solid #000;
+    background-color: #f2f2f2;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.all-save-button:hover {
+    background-color: #ddd;
+}
 
 
 
 
+input[type="checkbox"][name$="-DELETE"] {
+    display: none !important;
+}
 
+.delete-label {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: #fff;
+    border: 1px solid #000;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    line-height: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+    font-size: 16px;
+}
 
 

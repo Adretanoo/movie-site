@@ -189,8 +189,6 @@ class MovieGallery(models.Model):
     class Meta:
         db_table = 'movie_gallery'
 
-
-
 class CardCinema(models.Model):
     name = models.CharField(max_length=255)
     description = models.TextField()
@@ -213,8 +211,6 @@ class CardCinemaGallery(models.Model):
     class Meta:
         db_table = "card_cinema_gallery"
 
-
-
 class CardHall(models.Model):
     name = models.CharField(max_length=255)
     description = models.TextField(blank=True)
@@ -230,8 +226,6 @@ class CardHall(models.Model):
 
     class Meta:
         db_table = "card_hall"
-
-
 
 class CardHallGallery(models.Model):
     card_hall = models.ForeignKey(CardHall, on_delete=models.CASCADE)
@@ -253,12 +247,22 @@ class Publication(models.Model):
     main_image = models.ImageField(upload_to="publications/%Y/%m/%d/")
     video_url = models.URLField()
     is_enabled = models.BooleanField(default=True)
-    gallery = models.ManyToManyField(Images)
+    gallery = models.ManyToManyField(Images, through='PublicationGallery', related_name="publication_galleries")
     seo = models.OneToOneField(SeoMetadata, on_delete=models.CASCADE, related_name="publication")
     publication_type = models.CharField(choices=PublicationType.choices, max_length=20)
 
     def __str__(self):
         return f"{self.title} {self.publication_type}"
+
+
+
+class PublicationGallery(models.Model):
+    publication = models.ForeignKey(Publication, on_delete=models.CASCADE)
+    image = models.ForeignKey(Images, on_delete=models.CASCADE)
+    class Meta:
+        db_table = "publication_gallery"
+
+
 
 
 class MainPage(models.Model):

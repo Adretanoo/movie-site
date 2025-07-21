@@ -2,10 +2,40 @@ from django import forms
 from django.forms import DateInput, ClearableFileInput, inlineformset_factory
 
 from .models import Publication, SeoMetadata, Images, TopBanner, TopBannerImage, NewsBanner, NewsBannerImage, \
-    BackgroundBanner, Movie, MovieGallery, CardCinema, CardCinemaGallery, CardHall, CardHallGallery
+    BackgroundBanner, Movie, MovieGallery, CardCinema, CardCinemaGallery, CardHall, CardHallGallery, PublicationType, \
+    PublicationGallery
 
 
 class PublicationForm(forms.ModelForm):
+    title_ru = forms.CharField(widget=forms.TextInput(attrs={
+        'placeholder': 'Название'
+    }))
+    title_uk = forms.CharField(widget=forms.TextInput(attrs={
+        'placeholder': 'Название'
+    }))
+    description_ru = forms.CharField(widget=forms.Textarea(attrs={
+        'placeholder': 'текст'
+    }))
+    description_uk = forms.CharField(widget=forms.Textarea(attrs={
+        'placeholder': 'текст'
+    }))
+    published_at = forms.CharField(widget=forms.DateInput(attrs={
+        'type': 'date',
+        'class': 'form-control',
+    }, format='%Y-%m-%d'))
+
+    video_url = forms.URLField(widget=forms.URLInput(attrs={
+        'placeholder': 'Ссылка на видео в youtube'
+    }))
+
+
+    main_image = forms.ImageField(
+        widget=forms.FileInput(attrs={
+            'id': 'formPreview',
+            'style': 'display: none;',
+            'onchange': 'updateImagePreview(this)'
+        })
+    )
     class Meta:
         model = Publication
         fields = [
@@ -16,11 +46,39 @@ class PublicationForm(forms.ModelForm):
             'video_url',
             'is_enabled',
         ]
-        widgets = {
-            'published_at': DateInput(attrs={'type': 'date', 'class': 'form-control'}, format='%Y-%m-%d'),
-            'main_image': ClearableFileInput(attrs={'id': 'mainUpload', 'class': 'd-none', 'accept': 'image/*'}),
-        }
 
+class PublicationGalleryForm(forms.ModelForm):
+    image_file_upload = forms.ImageField(
+        required=False,
+        widget=forms.ClearableFileInput(
+            attrs={'class': 'gallery-file-input', 'accept': 'image/*', 'style': 'display:none'})
+    )
+
+    class Meta:
+        model = PublicationGallery
+        fields = []
+
+    def clean(self):
+        cleaned_data = super().clean()
+        delete = cleaned_data.get('DELETE')
+
+        if delete:
+            return cleaned_data
+
+        uploaded_file = cleaned_data.get('image_file_upload')
+        has_existing_image = hasattr(self.instance, 'image') and self.instance.image_id is not None
+
+        if not uploaded_file and not has_existing_image:
+            self.add_error('image_file_upload', 'Завантажте зображення або видаліть елемент.')
+
+        return cleaned_data
+
+    def save(self, commit=True):
+        image_file = self.cleaned_data.get('image_file_upload')
+        if image_file:
+            image_instance = Images.objects.create(image_url=image_file)
+            self.instance.image = image_instance
+        return super().save(commit=commit)
 
 class SeoMetadataForm(forms.ModelForm):
     title_ru = forms.CharField(widget=forms.TextInput(attrs={
@@ -54,7 +112,6 @@ class SeoMetadataForm(forms.ModelForm):
             'keywords_ru', 'keywords_uk',
         ]
 
-
 class BackgroundBannerForm(forms.ModelForm):
     image = forms.ImageField(widget=forms.FileInput(attrs={
         'id': 'formPreview',
@@ -69,12 +126,10 @@ class BackgroundBannerForm(forms.ModelForm):
             'background_type': forms.RadioSelect(attrs={'class': 'option'}),
         }
 
-
 class TopBannerForm(forms.ModelForm):
     class Meta:
         model = TopBanner
         fields = ['rotation_speed', 'is_enabled']
-
 
 class TopBannerImageForm(forms.ModelForm):
     image_file = forms.ImageField(
@@ -123,7 +178,6 @@ class TopBannerImageForm(forms.ModelForm):
             instance.save()
         return instance
 
-
 class NewsBannerForm(forms.ModelForm):
     class Meta:
         model = NewsBanner  # <<< ВИПРАВЛЕНО: Зв'язано з NewsBanner
@@ -133,7 +187,6 @@ class NewsBannerForm(forms.ModelForm):
                                            choices=[(5, '5с'), (10, '10с'), (15, '15с')]),
             'is_enabled': forms.CheckboxInput(attrs={'class': 'custom-switch-input'})
         }
-
 
 class NewsBannerImageForm(forms.ModelForm):
     image_file_shares = forms.ImageField(
@@ -202,7 +255,6 @@ class NewsBannerImageForm(forms.ModelForm):
             instance.save()
         return instance
 
-
 class MovieForm(forms.ModelForm):
     title_ru = forms.CharField(widget=forms.TextInput(attrs={
         'placeholder': 'Название фильма'
@@ -242,7 +294,6 @@ class MovieForm(forms.ModelForm):
             'description_ru', 'description_uk',
         ]
 
-
 class MovieGalleryForm(forms.ModelForm):
     image_file_upload = forms.ImageField(
         required=False,
@@ -275,7 +326,6 @@ class MovieGalleryForm(forms.ModelForm):
             image_instance = Images.objects.create(image_url=image_file)
             self.instance.image = image_instance
         return super().save(commit=commit)
-
 
 class CardCinemaForm(forms.ModelForm):
     name_ru = forms.CharField(widget=forms.TextInput(attrs={
@@ -316,9 +366,6 @@ class CardCinemaForm(forms.ModelForm):
         model = CardCinema
         fields = ['name_ru', 'name_uk', 'description_ru', 'description_uk', 'term_ru', 'term_uk','top_banner','logo_image']
 
-
-
-
 class CardCinemaGalleryForm(forms.ModelForm):
     image_file_upload = forms.ImageField(
         required=False,
@@ -351,8 +398,6 @@ class CardCinemaGalleryForm(forms.ModelForm):
             image_instance = Images.objects.create(image_url=image_file)
             self.instance.image = image_instance
         return super().save(commit=commit)
-
-
 
 class CardHallForm(forms.ModelForm):
     name_ru = forms.CharField(widget=forms.TextInput(attrs={
@@ -421,6 +466,20 @@ class CardHallGalleryForm(forms.ModelForm):
         return super().save(commit=commit)
 
 
+
+
+
+
+
+
+
+PublicationGalleryFormSet = inlineformset_factory(
+    Publication,
+    PublicationGallery,
+    form=PublicationGalleryForm,
+    extra=0,
+    can_delete=True
+)
 
 CardHallGalleryFormSet = inlineformset_factory(
     CardHall,

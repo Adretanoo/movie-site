@@ -10,7 +10,7 @@ from adminlte.models import Publication, Images, PublicationType, TopBanner, New
     TopBannerImage, NewsBannerImage, Movie, MovieGallery, SeoMetadata, CardCinema, CardHall
 from .forms import PublicationForm, SeoMetadataForm, BackgroundBannerForm, TopBannerForm, TopBannerImageForm, \
     TopBannerImageFormSet, NewsBannerForm, NewsBannerImageFormSet, MovieForm, MovieGalleryFormSet, CardCinemaForm, \
-    CardCinemaGalleryFormSet, CardHallForm, CardHallGalleryForm, CardHallGalleryFormSet
+    CardCinemaGalleryFormSet, CardHallForm, CardHallGalleryForm, CardHallGalleryFormSet, PublicationGalleryFormSet
 from django.shortcuts import render, redirect
 from cinemasite.settings import menu
 
@@ -405,7 +405,6 @@ def news_add(request):
         redirect_url='news'
     )
 
-
 def edit_news(request, pk):
     return edit_publication(
         request=request,
@@ -415,13 +414,11 @@ def edit_news(request, pk):
         redirect_url='news'
     )
 
-
 def shares_delete(request, pk):
     return delete_publication(
         request=request,
         pk=pk,
     )
-
 
 def delete_news(request, pk):
     return delete_publication(
@@ -429,11 +426,9 @@ def delete_news(request, pk):
         pk=pk,
     )
 
-
 def shares(request):
     publications = Publication.objects.filter(publication_type=PublicationType.SHARES)
     return render(request, 'adminlte/pages/shares_table.html', context={'menu': menu, 'publications': publications})
-
 
 def shares_add(request):
     return add_publication(
@@ -442,7 +437,6 @@ def shares_add(request):
         template_name='adminlte/pages/add/base_add.html',
         redirect_url='shares'
     )
-
 
 def shares_edit(request, pk):
     return edit_publication(
@@ -467,84 +461,73 @@ def mailing(request):
 
 
 def add_publication(request, publication_type, template_name, redirect_url):
-    language = request.GET.get('lang', 'ru')
+    lang = request.GET.get('lang', 'ru')
 
     if request.method == "POST":
-        form = PublicationForm(request.POST, request.FILES, prefix="pub")
+        main_form = PublicationForm(request.POST, request.FILES, prefix="main")
         seo_form = SeoMetadataForm(request.POST, prefix="seo")
+        formset = PublicationGalleryFormSet(request.POST,request.FILES, prefix="basegallery_set")
 
-        if form.is_valid() and seo_form.is_valid():
+        if main_form.is_valid() and seo_form.is_valid() and formset.is_valid():
             with transaction.atomic():
                 seo_instance = seo_form.save()
-                publication = form.save(commit=False)
-                publication.publication_type = publication_type
-                publication.seo = seo_instance
-                publication.save()
-                form.save_m2m()
+                publication_instance = main_form.save(commit=False)
+                publication_instance.publication_type = publication_type
+                publication_instance.seo = seo_instance
+                publication_instance.save()
 
-                for f in request.FILES.getlist("gallery_images"):
-                    img = Images.objects.create(image_url=f)
-                    publication.gallery.add(img)
-
+                formset.instance = publication_instance
+                formset.save()
             return redirect(redirect_url)
     else:
-        form = PublicationForm(prefix="pub")
+        main_form = PublicationForm(prefix="main")
         seo_form = SeoMetadataForm(prefix="seo")
+        formset = PublicationGalleryFormSet(prefix="basegallery_set")
 
     return render(request, template_name, {
-        "form": form,
+        "form": main_form,
         "seo_form": seo_form,
-        "lang": language,
+        "lang": lang,
+        "formset": formset,
         "publication_type_label": publication_type.label,
         "menu": menu,
     })
 
 
 def edit_publication(request, pk, publication_type, template_name, redirect_url):
+    lang = request.GET.get('lang', 'ru')
     publication = get_object_or_404(Publication, pk=pk)
-    seo_instance = publication.seo
-
-    language = request.GET.get('lang', 'ru')
+    seo = get_object_or_404(SeoMetadata, pk=publication.seo_id)
 
     if request.method == "POST":
-        form = PublicationForm(request.POST, request.FILES, instance=publication, prefix='pub')
-        seo_form = SeoMetadataForm(request.POST, instance=seo_instance, prefix='seo')
+        main_form = PublicationForm(request.POST, request.FILES,instance=publication, prefix="main")
+        seo_form = SeoMetadataForm(request.POST,instance=seo, prefix="seo")
+        formset = PublicationGalleryFormSet(request.POST,request.FILES, instance=publication, prefix="basegallery_set")
 
-        if form.is_valid() and seo_form.is_valid():
+        if main_form.is_valid() and seo_form.is_valid() and formset.is_valid():
             with transaction.atomic():
-                seo = seo_form.save()
-                pub = form.save(commit=False)
-                pub.seo = seo
+                seo_instance = seo_form.save()
+                publication_instance = main_form.save(commit=False)
+                publication_instance.seo = seo_instance
+                publication_instance.save()
 
-                pub.published_at = form.cleaned_data.get('published_at')
-
-                pub.save()
-                form.save_m2m()
-
-                images_to_delete = request.POST.get("images_to_delete", "")
-                if images_to_delete:
-                    ids = [int(i) for i in images_to_delete.split(",") if i.strip().isdigit()]
-                    for image in Images.objects.filter(id__in=ids):
-                        pub.gallery.remove(image)
-                        image.delete()
-
-                for f in request.FILES.getlist('gallery_images'):
-                    img = Images.objects.create(image_url=f)
-                    pub.gallery.add(img)
+                formset.instance = publication_instance
+                formset.save()
 
             return redirect(redirect_url)
-
     else:
-        form = PublicationForm(instance=publication, prefix='pub')
-        seo_form = SeoMetadataForm(instance=seo_instance, prefix='seo')
+        main_form = PublicationForm(instance=publication, prefix='main')
+        seo_form = SeoMetadataForm(instance=seo, prefix='seo')
+        formset = PublicationGalleryFormSet(instance=publication, prefix='basegallery_set')
 
     return render(request, template_name, {
-        'form': form,
+        'form': main_form,
         'seo_form': seo_form,
         'menu': menu,
-        'lang': language,
+        'lang': lang,
         'gallery_images': publication.gallery.all(),
         'publication_type_label': publication_type.label,
+        'formset': formset,
     })
 
 
