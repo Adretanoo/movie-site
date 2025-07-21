@@ -1,0 +1,73 @@
+{% extends 'adminlte/base.html' %}
+{% load widget_tweaks %}
+{% load static %}
+{% block links %}
+    <link rel="stylesheet" href="{% static 'adminlte/dist/css/alt/main_page.css' %}">
+{% endblock %}
+{% block content %}
+
+    <form id="formBase" method="POST" action="" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="content-block">
+            <div class="top-controls">
+                <div class="switch-row">
+                    <label class="switch-label" for="{{ form.is_enabled.id_for_label }}"></label>
+                    <label class="custom-switch">
+                        {{ form.is_enabled }}
+                        <span class="slider"></span>
+                    </label>
+                </div>
+
+                <div class="lang-buttons">
+                    <a href="?lang=uk"
+                       class="lang__buttons-left {% if lang == 'uk' %}active{% endif %}"
+                       data-lang="uk">Українська</a>
+                    <a href="?lang=ru"
+                       class="lang__buttons-right {% if lang == 'ru' %}active{% endif %}"
+                       data-lang="ru">Русский</a>
+                </div>
+
+            </div>
+
+            <div class="main__controls">
+                <div class="main__controls-top">
+
+                    <div class="form-group-inline">
+                        <label for="{{ form.phone_1.id_for_label }}">Телефон</label>
+                        <div class="form-group-inline-inputs">
+                            {{ form.phone_1|add_class:"form-control" }}
+                            {{ form.phone_2|add_class:"form-control" }}
+                        </div>
+                    </div>
+
+
+                    <div class="form-group-desc lang-field lang-ru"
+                         {% if lang != 'ru' %}style="display:none"{% endif %}>
+                        <label for="{{ form.seo_text_ru.id_for_label }}">SEO текст:</label>
+                        {{ form.seo_text_ru|add_class:"form-control" }}
+                    </div>
+
+                    <div class="form-group-desc lang-field lang-uk"
+                         {% if lang != 'uk' %}style="display:none"{% endif %}>
+                        <label for="{{ form.seo_text_uk.id_for_label }}">SEO текст:</label>
+                        {{ form.seo_text_uk|add_class:"form-control" }}
+                    </div>
+                </div>
+
+                <div id="seo-fields">
+                    {% include 'adminlte/pages/seo_base.html' %}
+                </div>
+
+                <div class="save-block">
+                    <button type="submit" class="all-save-button" onclick="buttonSubmitClick(event)">Сохранить</button>
+                </div>
+            </div>
+        </div>
+    </form>
+
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static 'adminlte/dist/js/pages/translation_main-page.js' %}" defer></script>
+    <script src="{% static 'adminlte/dist/js/pages/alt_tab_menu.js' %}" defer></script>
+{% endblock %}

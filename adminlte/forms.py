@@ -3,7 +3,7 @@ from django.forms import DateInput, ClearableFileInput, inlineformset_factory
 
 from .models import Publication, SeoMetadata, Images, TopBanner, TopBannerImage, NewsBanner, NewsBannerImage, \
     BackgroundBanner, Movie, MovieGallery, CardCinema, CardCinemaGallery, CardHall, CardHallGallery, PublicationType, \
-    PublicationGallery
+    PublicationGallery, MainPage
 
 
 class PublicationForm(forms.ModelForm):
@@ -465,6 +465,25 @@ class CardHallGalleryForm(forms.ModelForm):
             self.instance.image = image_instance
         return super().save(commit=commit)
 
+class MainPageForm(forms.ModelForm):
+    phone_1 = forms.CharField(widget=forms.TextInput(attrs={
+        'type': 'tel',
+        'placeholder':'777 85 98'
+    }))
+    phone_2 = forms.CharField(widget=forms.TextInput(attrs={
+        'type': 'tel',
+        'placeholder': '777 85 98'
+    }))
+    seo_text_ru = forms.CharField(widget=forms.Textarea(attrs={
+        'placeholder': 'текст'
+    }))
+    seo_text_uk = forms.CharField(widget=forms.Textarea(attrs={
+        'placeholder': 'текст'
+    }))
+
+    class Meta:
+        model = MainPage
+        fields = ['is_enabled','phone_1','phone_2','seo_text_ru','seo_text_uk']
 
 
 

@@ -1,0 +1,114 @@
+[
+  {
+    "model": "adminlte.seometadata",
+    "pk": 1,
+    "fields": {
+      "url": "https://www.youtube.com/",
+      "title": "main_page ru",
+      "title_uk": "main_page uk",
+      "title_ru": "main_page ru",
+      "keywords": "ru",
+      "keywords_uk": "uk",
+      "keywords_ru": "ru",
+      "description": "text ru",
+      "description_uk": "text uk",
+      "description_ru": "text ru"
+    }
+  },
+  {
+    "model": "adminlte.seometadata",
+    "pk": 2,
+    "fields": {
+      "url": "https://www.youtube.com/",
+      "title": "about ru",
+      "title_uk": "about uk",
+      "title_ru": "about ru",
+      "keywords": "ru",
+      "keywords_uk": "uk",
+      "keywords_ru": "ru",
+      "description": "text ru",
+      "description_uk": "text uk",
+      "description_ru": "text ru"
+    }
+  },
+  {
+    "model": "adminlte.seometadata",
+    "pk": 3,
+    "fields": {
+      "url": "https://www.youtube.com/",
+      "title": "cafe_bar ru",
+      "title_uk": "cafe_bar uk",
+      "title_ru": "cafe_bar ru",
+      "keywords": "ru",
+      "keywords_uk": "uk",
+      "keywords_ru": "ru",
+      "description": "text ru",
+      "description_uk": "text uk",
+      "description_ru": "text ru"
+    }
+  },
+  {
+    "model": "adminlte.seometadata",
+    "pk": 4,
+    "fields": {
+      "url": "https://www.youtube.com/",
+      "title": "vip_hall ru",
+      "title_uk": "vip_hall uk",
+      "title_ru": "vip_hall ru",
+      "keywords": "ru",
+      "keywords_uk": "uk",
+      "keywords_ru": "ru",
+      "description": "text ru",
+      "description_uk": "text uk",
+      "description_ru": "text ru"
+    }
+  },
+  {
+    "model": "adminlte.seometadata",
+    "pk": 5,
+    "fields": {
+      "url": "https://www.youtube.com/",
+      "title": "advertising ru",
+      "title_uk": "advertising uk",
+      "title_ru": "advertising ru",
+      "keywords": "ru",
+      "keywords_uk": "uk",
+      "keywords_ru": "ru",
+      "description": "text ru",
+      "description_uk": "text uk",
+      "description_ru": "text ru"
+    }
+  },
+  {
+    "model": "adminlte.seometadata",
+    "pk": 6,
+    "fields": {
+      "url": "https://www.youtube.com/",
+      "title": "children_room ru",
+      "title_uk": "children_room uk",
+      "title_ru": "children_room ru",
+      "keywords": "ru",
+      "keywords_uk": "uk",
+      "keywords_ru": "ru",
+      "description": "text ru",
+      "description_uk": "text uk",
+      "description_ru": "text ru"
+    }
+  },
+  {
+    "model": "adminlte.seometadata",
+    "pk": 7,
+    "fields": {
+      "url": "https://www.youtube.com/",
+      "title": "contact ru",
+      "title_uk": "contact uk",
+      "title_ru": "contact ru",
+      "keywords": "ru",
+      "keywords_uk": "uk",
+      "keywords_ru": "ru",
+      "description": "contact ru",
+      "description_uk": "text uk",
+      "description_ru": "contact ru"
+    }
+  }
+]

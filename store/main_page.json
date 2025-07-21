@@ -1,0 +1,15 @@
+[
+  {
+    "model": "adminlte.mainpage",
+    "pk": 1,
+    "fields": {
+      "is_enabled": true,
+      "phone_1": "0",
+      "phone_2": "0",
+      "seo_text": "main_page ru",
+      "seo_text_uk": "main_page uk",
+      "seo_text_ru": "main_page ru",
+      "seo": 1
+    }
+  }
+]

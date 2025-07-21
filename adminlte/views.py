@@ -7,10 +7,11 @@ from django.shortcuts import get_object_or_404
 from django.views.decorators.http import require_POST
 
 from adminlte.models import Publication, Images, PublicationType, TopBanner, NewsBanner, BackgroundBanner, \
-    TopBannerImage, NewsBannerImage, Movie, MovieGallery, SeoMetadata, CardCinema, CardHall
+    TopBannerImage, NewsBannerImage, Movie, MovieGallery, SeoMetadata, CardCinema, CardHall, MainPage, ContactsPage
 from .forms import PublicationForm, SeoMetadataForm, BackgroundBannerForm, TopBannerForm, TopBannerImageForm, \
     TopBannerImageFormSet, NewsBannerForm, NewsBannerImageFormSet, MovieForm, MovieGalleryFormSet, CardCinemaForm, \
-    CardCinemaGalleryFormSet, CardHallForm, CardHallGalleryForm, CardHallGalleryFormSet, PublicationGalleryFormSet
+    CardCinemaGalleryFormSet, CardHallForm, CardHallGalleryForm, CardHallGalleryFormSet, PublicationGalleryFormSet, \
+    MainPageForm
 from django.shortcuts import render, redirect
 from cinemasite.settings import menu
 
@@ -170,7 +171,7 @@ def movie_edit(request, pk):
         'seo_form': seo_form,
         'formset': formset,
         'lang': lang,
-        'movie':movie
+        'movie': movie
     }
     return render(request, 'adminlte/pages/edit/movies_edit.html', context)
 
@@ -300,6 +301,7 @@ def cinemas_add(request):
     }
     return render(request, 'adminlte/pages/add/cinemas_add.html', context)
 
+
 @require_POST
 def cinemas_delete(request):
     cinema_id = request.POST.get('cinema_id')
@@ -405,6 +407,7 @@ def news_add(request):
         redirect_url='news'
     )
 
+
 def edit_news(request, pk):
     return edit_publication(
         request=request,
@@ -414,11 +417,13 @@ def edit_news(request, pk):
         redirect_url='news'
     )
 
+
 def shares_delete(request, pk):
     return delete_publication(
         request=request,
         pk=pk,
     )
+
 
 def delete_news(request, pk):
     return delete_publication(
@@ -426,9 +431,11 @@ def delete_news(request, pk):
         pk=pk,
     )
 
+
 def shares(request):
     publications = Publication.objects.filter(publication_type=PublicationType.SHARES)
     return render(request, 'adminlte/pages/shares_table.html', context={'menu': menu, 'publications': publications})
+
 
 def shares_add(request):
     return add_publication(
@@ -437,6 +444,7 @@ def shares_add(request):
         template_name='adminlte/pages/add/base_add.html',
         redirect_url='shares'
     )
+
 
 def shares_edit(request, pk):
     return edit_publication(
@@ -449,7 +457,102 @@ def shares_edit(request, pk):
 
 
 def pages(request):
-    return render(request, 'adminlte/pages/pages_table.html', context={'menu': menu})
+    publications = [
+        {'name': 'Главная страница', 'obj': MainPage.objects.get(pk=1), 'url': 'main_page'},
+        {'name': 'О кинотеатре', 'obj': Publication.objects.filter(publication_type=PublicationType.ABOUT).first(),
+         'url': 'about'},
+        {'name': 'Кафе - Бар', 'obj': Publication.objects.filter(publication_type=PublicationType.CAFE_BAR).first(),
+         'url': 'cafe_bar'},
+        {'name': 'Vip - зал', 'obj': Publication.objects.filter(publication_type=PublicationType.VIP_HALL).first(),
+         'url': 'vip_hall'},
+        {'name': 'Реклама', 'obj': Publication.objects.filter(publication_type=PublicationType.ADVERTISING).first(),
+         'url': 'advertising'},
+        {'name': 'Детская комната', 'obj': Publication.objects.filter(publication_type=PublicationType.CHILDREN_ROOM).first(),
+         'url': 'children_room'},
+        {'name': 'Контакты', 'obj': ContactsPage.objects.get(pk=1), 'url': 'news'},
+    ]
+
+    context = {
+        'publications': publications,
+        'menu': menu,
+    }
+    return render(request, 'adminlte/pages/pages_table.html', context)
+
+def main_page(request):
+    lang = request.GET.get('lang', 'ru')
+    main_page = MainPage.objects.get(pk=1)
+    seo = get_object_or_404(SeoMetadata,pk=main_page.seo_id)
+
+    if request.method == 'POST':
+        main_form = MainPageForm(request.POST, instance=main_page, prefix='main')
+        seo_form = SeoMetadataForm(request.POST, instance=seo, prefix='seo')
+
+        if main_form.is_valid() and seo_form.is_valid():
+            seo_instance = seo_form.save()
+            main_page_instance = main_form.save()
+            main_page_instance.seo = seo_instance
+            main_page_instance.save()
+
+        return redirect('pages')
+    else:
+        main_form = MainPageForm(instance=main_page, prefix='main')
+        seo_form = SeoMetadataForm(instance=seo, prefix='seo')
+
+    context = {
+        'lang': lang,
+        'form': main_form,
+        'seo_form': seo_form,
+        'menu': menu,
+    }
+    return render(request,'adminlte/pages/edit/main_page.html',context)
+
+
+def advertising(request):
+    return edit_publication(
+        request=request,
+        publication_type=PublicationType.ADVERTISING,
+        pk=Publication.objects.filter(publication_type=PublicationType.ADVERTISING).first().pk,
+        template_name='adminlte/pages/edit/base_pages_edit.html',
+        redirect_url='pages'
+    )
+
+def children_room(request):
+    return edit_publication(
+        request=request,
+        publication_type=PublicationType.CHILDREN_ROOM,
+        pk=Publication.objects.filter(publication_type=PublicationType.CHILDREN_ROOM).first().pk,
+        template_name='adminlte/pages/edit/base_pages_edit.html',
+        redirect_url='pages'
+    )
+
+def about(request):
+    return edit_publication(
+        request=request,
+        pk=Publication.objects.filter(publication_type=PublicationType.ABOUT).first().pk,
+        publication_type=PublicationType.ABOUT,
+        template_name='adminlte/pages/edit/base_pages_edit.html',
+        redirect_url='pages'
+    )
+
+def cafe_bar(request):
+    return edit_publication(
+        request=request,
+        pk=Publication.objects.filter(publication_type=PublicationType.CAFE_BAR).first().pk,
+        publication_type=PublicationType.CAFE_BAR,
+        template_name='adminlte/pages/edit/base_pages_edit.html',
+        redirect_url='pages'
+    )
+
+def vip_hall(request):
+    return edit_publication(
+        request=request,
+        pk=Publication.objects.filter(publication_type=PublicationType.VIP_HALL).first().pk,
+        publication_type=PublicationType.VIP_HALL,
+        template_name='adminlte/pages/edit/base_pages_edit.html',
+        redirect_url='pages'
+    )
+
+
 
 
 def users(request):
@@ -466,7 +569,7 @@ def add_publication(request, publication_type, template_name, redirect_url):
     if request.method == "POST":
         main_form = PublicationForm(request.POST, request.FILES, prefix="main")
         seo_form = SeoMetadataForm(request.POST, prefix="seo")
-        formset = PublicationGalleryFormSet(request.POST,request.FILES, prefix="basegallery_set")
+        formset = PublicationGalleryFormSet(request.POST, request.FILES, prefix="basegallery_set")
 
         if main_form.is_valid() and seo_form.is_valid() and formset.is_valid():
             with transaction.atomic():
@@ -500,9 +603,9 @@ def edit_publication(request, pk, publication_type, template_name, redirect_url)
     seo = get_object_or_404(SeoMetadata, pk=publication.seo_id)
 
     if request.method == "POST":
-        main_form = PublicationForm(request.POST, request.FILES,instance=publication, prefix="main")
-        seo_form = SeoMetadataForm(request.POST,instance=seo, prefix="seo")
-        formset = PublicationGalleryFormSet(request.POST,request.FILES, instance=publication, prefix="basegallery_set")
+        main_form = PublicationForm(request.POST, request.FILES, instance=publication, prefix="main")
+        seo_form = SeoMetadataForm(request.POST, instance=seo, prefix="seo")
+        formset = PublicationGalleryFormSet(request.POST, request.FILES, instance=publication, prefix="basegallery_set")
 
         if main_form.is_valid() and seo_form.is_valid() and formset.is_valid():
             with transaction.atomic():

@@ -1,0 +1,92 @@
+[
+  {
+    "model": "adminlte.publication",
+    "pk": 1,
+    "fields": {
+      "title": "about",
+      "title_uk": "about uk",
+      "title_ru": "about",
+      "published_at": "2025-07-24T00:00:00Z",
+      "description": "RU",
+      "description_uk": "UK",
+      "description_ru": "RU",
+      "main_image": "publications/2025/07/21/optimus.jpg",
+      "video_url": "https://www.youtube.com/",
+      "is_enabled": true,
+      "seo": 2,
+      "publication_type": "about"
+    }
+  },
+  {
+    "model": "adminlte.publication",
+    "pk": 3,
+    "fields": {
+      "title": "CAFE_BAR",
+      "title_uk": "CAFE_BAR uk",
+      "title_ru": "CAFE_BAR",
+      "published_at": "2025-07-24T00:00:00Z",
+      "description": "RU",
+      "description_uk": "UK",
+      "description_ru": "RU",
+      "main_image": "publications/2025/07/21/optimus.jpg",
+      "video_url": "https://www.youtube.com/",
+      "is_enabled": true,
+      "seo": 3,
+      "publication_type": "cafe_bar"
+    }
+  },
+  {
+    "model": "adminlte.publication",
+    "pk": 4,
+    "fields": {
+      "title": "VIP_HALL",
+      "title_uk": "VIP_HALL uk",
+      "title_ru": "VIP_HALL",
+      "published_at": "2025-07-24T00:00:00Z",
+      "description": "RU",
+      "description_uk": "UK",
+      "description_ru": "RU",
+      "main_image": "publications/2025/07/21/optimus.jpg",
+      "video_url": "https://www.youtube.com/",
+      "is_enabled": true,
+      "seo": 4,
+      "publication_type": "vip_hall"
+    }
+  },
+  {
+    "model": "adminlte.publication",
+    "pk": 5,
+    "fields": {
+      "title": "ADVERTISING",
+      "title_uk": "ADVERTISING uk",
+      "title_ru": "ADVERTISING",
+      "published_at": "2025-07-24T00:00:00Z",
+      "description": "RU",
+      "description_uk": "UK",
+      "description_ru": "RU",
+      "main_image": "publications/2025/07/21/optimus.jpg",
+      "video_url": "https://www.youtube.com/",
+      "is_enabled": true,
+      "seo": 5,
+      "publication_type": "advertising"
+    }
+  },
+  {
+    "model": "adminlte.publication",
+    "pk": 6,
+    "fields": {
+      "title": "CHILDREN_ROOM",
+      "title_uk": "CHILDREN_ROOM uk",
+      "title_ru": "CHILDREN_ROOM",
+      "published_at": "2025-07-24T00:00:00Z",
+      "description": "RU",
+      "description_uk": "UK",
+      "description_ru": "RU",
+      "main_image": "publications/2025/07/21/optimus.jpg",
+      "video_url": "https://www.youtube.com/",
+      "is_enabled": true,
+      "seo": 6,
+      "publication_type": "children_room"
+    }
+  }
+]

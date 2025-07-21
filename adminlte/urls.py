@@ -37,6 +37,14 @@ urlpatterns = [
     path('shares/delete/<int:pk>/', views.shares_delete, name='delete_shares'),
     path('shares/edit/<int:pk>/', views.shares_edit, name='edit_shares'),
 
+    path('pages/about/', views.about, name='about'),
+    path('pages/cafe-bar/', views.cafe_bar, name='cafe_bar'),
+    path('pages/vip-hall/', views.vip_hall, name='vip_hall'),
+    path('pages/advertising/', views.advertising, name='advertising'),
+    path('pages/children-room/', views.children_room, name='children_room'),
+    path('pages/main-page/', views.main_page, name='main_page'),
+
+
 ]
 
 if settings.DEBUG:

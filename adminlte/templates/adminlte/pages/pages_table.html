@@ -1,5 +1,74 @@
 {% extends 'adminlte/base.html' %}
+{% load static %}
+
+
+{% block links %}
+
+    <link rel="stylesheet" href="{% static 'adminlte/dist/css/alt/table.style.css' %}"/>
+{% endblock %}
 
 {% block content %}
-<h1>Сторінки</h1>
+
+    <div class="content-block">
+        <div class="title__block">
+            <div class="title__button-text">Список Страниц</div>
+            <div class="title__button-block">
+                <a href="{% url 'add_shares' %}" class="create-button">
+                    <i class="fas fa-plus"></i> Создать Новою
+                </a>
+            </div>
+        </div>
+
+        <div class="table-block">
+            <table>
+                <thead>
+                <tr>
+                    <th>Название</th>
+                    <th>Дата создания</th>
+                    <th>Статус</th>
+                    <th class="no-bg"></th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for pub in publications %}
+                    <tr>
+                        <td>{{ pub.name }}</td>
+                            <td>{{ pub.obj.published_at|date:"d.m.Y" }}</td>
+                            <td>{% if pub.obj.is_enabled %}ВКЛ{% else %}ВЫКЛ{% endif %}</td>
+                            <td class="no-border">
+                                <a href="{% url pub.url %}" title="Редактировать">
+                                    <i class="fas fa-pencil-alt"></i>
+                                </a>
+                            </td>
+                        {% empty %}
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div id="deleteModal"
+             class="modal"
+             style="display: none;"
+             data-url-template="{% url 'delete_publication' 0 %}">
+
+            <div class="modal-content">
+                <p id="modal-text">Видалити?</p>
+                <form id="delete-form" method="post">
+                    {% csrf_token %}
+                    <button type="submit">Так, видалити</button>
+                    <button type="button" id="cancel-button">Скасувати</button>
+                </form>
+            </div>
+        </div>
+
+{#                                                                <a href="#" class="delete-button" data-id="{{ pub.id }}" data-title="{{ pub.title }}">#}
+{#                                                                    <i class="fas fa-trash-alt" style="color:red;"></i>#}
+{#                                                                </a>#}
+    </div>
+{% endblock %}
+
+
+{% block scripts %}
+    <script src="{% static 'adminlte/dist/js/pages/delete.model.js' %}"></script>
 {% endblock %}
