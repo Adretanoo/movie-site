@@ -66,6 +66,9 @@
 
 
 
+
+
+
                                          {% if form.instance.schema_image %}{{ form.instance.schema_image.url }}{% else %}{% static 'adminlte/dist/img/img-none.jpg' %}{% endif %}"
                                  data-default="{% static 'adminlte/dist/img/img-none.jpg' %}"
                                  alt="logo image">
@@ -88,6 +91,9 @@
                         <div class="main-image">
                             <img id="bannerPreview"
                                  src="
+
+
+
 
 
 
@@ -145,6 +151,9 @@
 
 
 
+
+
+
                                             {% if form.instance.image and form.instance.image.image_url %}{{ form.instance.image.image_url.url }}{% else %}{% static 'adminlte/dist/img/img-none.jpg' %}{% endif %}"
                                          data-default="{% static 'adminlte/dist/img/img-none.jpg' %}"
                                          class="gallery-image-preview">
@@ -173,9 +182,16 @@
                     {% include 'adminlte/pages/seo_base.html' %}
                 </div>
 
-                <div class="save-block">
-                    <button type="submit" class="all-save-button" onclick="buttonSubmitClick(event)">Сохранить</button>
+                <div class="block__menu-buttons">
+                    <div class="save-block">
+                        <button type="submit" class="all-save-button" onclick="buttonSubmitClick(event)">Сохранить
+                        </button>
+                    </div>
+                    <div class="back-block">
+                        <a href="{% url 'cinemas_edit' cinema.pk %}">Назад</a>
+                    </div>
                 </div>
+
             </div>
         </div>
     </form>
