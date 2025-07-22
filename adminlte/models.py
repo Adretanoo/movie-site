@@ -231,8 +231,6 @@ class PublicationGallery(models.Model):
         db_table = "publication_gallery"
 
 
-
-
 class MainPage(models.Model):
     is_enabled = models.BooleanField(default=True)
     published_at = models.DateTimeField(default=datetime.datetime.now)
@@ -249,16 +247,19 @@ class MainPage(models.Model):
 
 
 class ContactsPage(models.Model):
-    name = models.CharField(max_length=255)
-    address = models.TextField(blank=True, null=True)
-    coordinates = models.CharField(max_length=255, blank=True, null=True)
     published_at = models.DateTimeField(default=datetime.datetime.now)
-    is_enabled = models.BooleanField(default=True)
-    logo = models.ImageField(upload_to='contacts/%Y/%m/%d/', blank=True)
     seo = models.OneToOneField(SeoMetadata, on_delete=models.CASCADE, related_name="contacts")
 
     class Meta:
         db_table = "contacts_page"
 
-    def __str__(self):
-        return f"{self.name}"
+class ContactsPageLocation(models.Model):
+    name = models.CharField(max_length=255)
+    address = models.TextField(blank=True)
+    coordinates = models.CharField(max_length=255, blank=True)
+    is_enabled = models.BooleanField(default=True)
+    logo = models.ImageField(upload_to='contacts/%Y/%m/%d/', blank=True)
+    contacts_page = models.ForeignKey(ContactsPage, on_delete=models.CASCADE)
+
+    class Meta:
+        db_table = "contacts_page_location"

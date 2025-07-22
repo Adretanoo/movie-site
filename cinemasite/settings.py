@@ -22,7 +22,7 @@ menu = [
     {'title': 'Кинотеатры', 'url_name': 'cinemas', 'group': ['cinemas','cinemas_add','cinemas_edit','hall_add','hall_edit'], 'icon': 'fa-building'},
     {'title': 'Новости', 'url_name': 'news', 'group': ['news', 'add_news', 'edit_news'], 'icon': 'fa-newspaper'},
     {'title': 'Акции', 'url_name': 'shares', 'group': ['shares', 'add_shares','edit_shares'], 'icon': 'fa-tags'},
-    {'title': 'Страницы', 'url_name': 'pages', 'group': ['pages','about','cafe_bar','vip_hall','advertising','children_room','main_page'], 'icon': 'fa-file-alt'},
+    {'title': 'Страницы', 'url_name': 'pages', 'group': ['pages','about','cafe_bar','vip_hall','advertising','children_room','main_page','contacts_page'], 'icon': 'fa-file-alt'},
     {'title': 'Пользователи', 'url_name': 'users', 'group': ['users'], 'icon': 'fa-users'},
     {'title': 'Рассылка', 'url_name': 'mailing', 'group': ['mailing'], 'icon': 'fa-envelope'},
 ]

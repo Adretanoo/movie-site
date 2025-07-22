@@ -3,7 +3,7 @@ from django.forms import DateInput, ClearableFileInput, inlineformset_factory
 
 from .models import Publication, SeoMetadata, Images, TopBanner, TopBannerImage, NewsBanner, NewsBannerImage, \
     BackgroundBanner, Movie, MovieGallery, CardCinema, CardCinemaGallery, CardHall, CardHallGallery, PublicationType, \
-    PublicationGallery, MainPage
+    PublicationGallery, MainPage, ContactsPage, ContactsPageLocation
 
 
 class PublicationForm(forms.ModelForm):
@@ -28,7 +28,6 @@ class PublicationForm(forms.ModelForm):
         'placeholder': 'Ссылка на видео в youtube'
     }))
 
-
     main_image = forms.ImageField(
         widget=forms.FileInput(attrs={
             'id': 'formPreview',
@@ -36,6 +35,7 @@ class PublicationForm(forms.ModelForm):
             'onchange': 'updateImagePreview(this)'
         })
     )
+
     class Meta:
         model = Publication
         fields = [
@@ -46,6 +46,7 @@ class PublicationForm(forms.ModelForm):
             'video_url',
             'is_enabled',
         ]
+
 
 class PublicationGalleryForm(forms.ModelForm):
     image_file_upload = forms.ImageField(
@@ -80,6 +81,7 @@ class PublicationGalleryForm(forms.ModelForm):
             self.instance.image = image_instance
         return super().save(commit=commit)
 
+
 class SeoMetadataForm(forms.ModelForm):
     title_ru = forms.CharField(widget=forms.TextInput(attrs={
         'placeholder': 'Title'
@@ -112,6 +114,7 @@ class SeoMetadataForm(forms.ModelForm):
             'keywords_ru', 'keywords_uk',
         ]
 
+
 class BackgroundBannerForm(forms.ModelForm):
     image = forms.ImageField(widget=forms.FileInput(attrs={
         'id': 'formPreview',
@@ -126,10 +129,12 @@ class BackgroundBannerForm(forms.ModelForm):
             'background_type': forms.RadioSelect(attrs={'class': 'option'}),
         }
 
+
 class TopBannerForm(forms.ModelForm):
     class Meta:
         model = TopBanner
         fields = ['rotation_speed', 'is_enabled']
+
 
 class TopBannerImageForm(forms.ModelForm):
     image_file = forms.ImageField(
@@ -178,6 +183,7 @@ class TopBannerImageForm(forms.ModelForm):
             instance.save()
         return instance
 
+
 class NewsBannerForm(forms.ModelForm):
     class Meta:
         model = NewsBanner  # <<< ВИПРАВЛЕНО: Зв'язано з NewsBanner
@@ -187,6 +193,7 @@ class NewsBannerForm(forms.ModelForm):
                                            choices=[(5, '5с'), (10, '10с'), (15, '15с')]),
             'is_enabled': forms.CheckboxInput(attrs={'class': 'custom-switch-input'})
         }
+
 
 class NewsBannerImageForm(forms.ModelForm):
     image_file_shares = forms.ImageField(
@@ -255,6 +262,7 @@ class NewsBannerImageForm(forms.ModelForm):
             instance.save()
         return instance
 
+
 class MovieForm(forms.ModelForm):
     title_ru = forms.CharField(widget=forms.TextInput(attrs={
         'placeholder': 'Название фильма'
@@ -294,6 +302,7 @@ class MovieForm(forms.ModelForm):
             'description_ru', 'description_uk',
         ]
 
+
 class MovieGalleryForm(forms.ModelForm):
     image_file_upload = forms.ImageField(
         required=False,
@@ -326,6 +335,7 @@ class MovieGalleryForm(forms.ModelForm):
             image_instance = Images.objects.create(image_url=image_file)
             self.instance.image = image_instance
         return super().save(commit=commit)
+
 
 class CardCinemaForm(forms.ModelForm):
     name_ru = forms.CharField(widget=forms.TextInput(attrs={
@@ -364,7 +374,9 @@ class CardCinemaForm(forms.ModelForm):
 
     class Meta:
         model = CardCinema
-        fields = ['name_ru', 'name_uk', 'description_ru', 'description_uk', 'term_ru', 'term_uk','top_banner','logo_image']
+        fields = ['name_ru', 'name_uk', 'description_ru', 'description_uk', 'term_ru', 'term_uk', 'top_banner',
+                  'logo_image']
+
 
 class CardCinemaGalleryForm(forms.ModelForm):
     image_file_upload = forms.ImageField(
@@ -399,6 +411,7 @@ class CardCinemaGalleryForm(forms.ModelForm):
             self.instance.image = image_instance
         return super().save(commit=commit)
 
+
 class CardHallForm(forms.ModelForm):
     name_ru = forms.CharField(widget=forms.TextInput(attrs={
         'placeholder': '8 зал'
@@ -428,9 +441,11 @@ class CardHallForm(forms.ModelForm):
             'onchange': 'updateImagePreview(this, "banner")'
         })
     )
+
     class Meta:
         model = CardHall
-        fields = ['name_ru', 'name_uk', 'description_ru', 'description_uk','schema_image','top_banner']
+        fields = ['name_ru', 'name_uk', 'description_ru', 'description_uk', 'schema_image', 'top_banner']
+
 
 class CardHallGalleryForm(forms.ModelForm):
     image_file_upload = forms.ImageField(
@@ -465,10 +480,11 @@ class CardHallGalleryForm(forms.ModelForm):
             self.instance.image = image_instance
         return super().save(commit=commit)
 
+
 class MainPageForm(forms.ModelForm):
     phone_1 = forms.CharField(widget=forms.TextInput(attrs={
         'type': 'tel',
-        'placeholder':'777 85 98'
+        'placeholder': '777 85 98'
     }))
     phone_2 = forms.CharField(widget=forms.TextInput(attrs={
         'type': 'tel',
@@ -483,7 +499,39 @@ class MainPageForm(forms.ModelForm):
 
     class Meta:
         model = MainPage
-        fields = ['is_enabled','phone_1','phone_2','seo_text_ru','seo_text_uk']
+        fields = ['is_enabled', 'phone_1', 'phone_2', 'seo_text_ru', 'seo_text_uk']
+
+
+class ContactsPageForm(forms.ModelForm):
+    class Meta:
+        model = ContactsPage
+        fields = []
+
+class ContactsPageLocationForm(forms.ModelForm):
+    name = forms.CharField(widget=forms.TextInput(attrs={
+        'placeholder': 'Название кинотеатра'
+    }))
+    address = forms.CharField(widget=forms.Textarea(attrs={
+        'placeholder': """
+Кинотеатр "Золотой Дюк"
+Одесса, проспект Академика Глушко, 11ж
+Бронирование билетов: (048) 746-32-33, (048) 746-32-20
+e-mail: goldduke@kino.odessa.ua""",
+        'rows': 6
+
+    }))
+    coordinates = forms.CharField(widget=forms.TextInput(attrs={
+        'placeholder': 'Кардинаты для карты'
+    }))
+    logo = forms.ImageField(widget=forms.FileInput(attrs={
+        'id': 'logoPreviewInput',
+        'style': 'display: none;',
+        'onchange': 'updateImagePreview(this)'
+    }))
+
+    class Meta:
+        model = ContactsPageLocation
+        fields = ['name', 'address', 'coordinates', 'logo']
 
 
 
@@ -491,7 +539,13 @@ class MainPageForm(forms.ModelForm):
 
 
 
-
+ContactsPageLocationFormSet = inlineformset_factory(
+    ContactsPage,
+    ContactsPageLocation,
+    form=ContactsPageLocationForm,
+    extra=1,
+    can_delete=True
+)
 PublicationGalleryFormSet = inlineformset_factory(
     Publication,
     PublicationGallery,

@@ -11,7 +11,7 @@ from adminlte.models import Publication, Images, PublicationType, TopBanner, New
 from .forms import PublicationForm, SeoMetadataForm, BackgroundBannerForm, TopBannerForm, TopBannerImageForm, \
     TopBannerImageFormSet, NewsBannerForm, NewsBannerImageFormSet, MovieForm, MovieGalleryFormSet, CardCinemaForm, \
     CardCinemaGalleryFormSet, CardHallForm, CardHallGalleryForm, CardHallGalleryFormSet, PublicationGalleryFormSet, \
-    MainPageForm
+    MainPageForm, ContactsPageForm, ContactsPageLocationFormSet
 from django.shortcuts import render, redirect
 from cinemasite.settings import menu
 
@@ -469,7 +469,7 @@ def pages(request):
          'url': 'advertising'},
         {'name': 'Детская комната', 'obj': Publication.objects.filter(publication_type=PublicationType.CHILDREN_ROOM).first(),
          'url': 'children_room'},
-        {'name': 'Контакты', 'obj': ContactsPage.objects.get(pk=1), 'url': 'news'},
+        {'name': 'Контакты', 'obj': ContactsPage.objects.get(pk=1), 'url': 'contacts_page'},
     ]
 
     context = {
@@ -552,7 +552,13 @@ def vip_hall(request):
         redirect_url='pages'
     )
 
-
+def contacts_page(request):
+    context = {
+        'menu': menu,
+        'form': ContactsPageForm(),
+        'formset': ContactsPageLocationFormSet(prefix='basegallery_set'),
+    }
+    return render(request, 'adminlte/pages/edit/contacts_page.html', context)
 
 
 def users(request):

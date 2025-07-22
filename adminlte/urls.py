@@ -43,6 +43,8 @@ urlpatterns = [
     path('pages/advertising/', views.advertising, name='advertising'),
     path('pages/children-room/', views.children_room, name='children_room'),
     path('pages/main-page/', views.main_page, name='main_page'),
+    path('pages/contacts-page/', views.contacts_page, name='contacts_page'),
+
 
 
 ]

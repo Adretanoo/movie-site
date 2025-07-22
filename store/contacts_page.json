@@ -3,11 +3,7 @@
     "model": "adminlte.contactspage",
     "pk": 1,
     "fields": {
-      "name": "test 1",
-      "address": "testss address",
-      "coordinates": "3245",
-      "is_enabled": true,
-      "logo": "",
+      "published_at": "2025-07-22T08:53:05.492Z",
       "seo": 7
     }
   }

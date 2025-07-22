@@ -1,0 +1,157 @@
+{% extends 'adminlte/base.html' %}
+{% load widget_tweaks %}
+{% load static %}
+{% block links %}
+    <link rel="stylesheet" href="{% static 'adminlte/dist/css/alt/contacts_page.css' %}">
+{% endblock %}
+
+{% block content %}
+
+
+
+    <form id="formBase" method="POST" action="" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ formset.management_form }}
+        {% for f in formset %}
+            {% if forloop.first %}
+                <div class="block-upper-contacts-one">
+                    <div class="top-block">
+                        <div class="form-group-inline">
+                            <label for="{{ f.name.id_for_label }}">Название
+                                кинотеатра {{ publication_type_label }}</label>
+                            {{ f.name|add_class:"form-control" }}
+                        </div>
+
+                        <div class="form-group-address">
+                            <label for="{{ f.address.id_for_label }}">
+                                Адресс {{ publication_type_label }}
+                            </label>
+                            {{ f.address|add_class:"form-control" }}
+                        </div>
+
+                        <div class="form-group-coordinates">
+                            <label for="{{ f.coordinates.id_for_label }}">Кардинаты для карты
+                                {{ publication_type_label }}</label>
+                            {{ f.coordinates|add_class:"form-control" }}
+                        </div>
+                    </div>
+                    <div class="logo__controls-center">
+                        <div class="label_logo-image">
+                            <label>Лого</label>
+                            {#                        <div id="logo-image-error">Загрузите фото</div>#}
+                        </div>
+                        <div class="logo-image-group">
+                            <div class="logo-image">
+                                <img id="logoPreview{{ forloop.counter }}"
+                                     src="
+
+
+
+
+
+
+
+
+                                             {% if f.instance.logo %}{{ f.instance.logo.url }}{% else %}{% static 'adminlte/dist/img/img-none.jpg' %}{% endif %}"
+                                     data-default="{% static 'adminlte/dist/img/img-none.jpg' %}"
+                                     alt="logo image"
+                                     width="150">
+                            </div>
+                            <div class="logo-buttons">
+                                {{ f.logo }}
+                                <button type="button" onclick="triggerInput({{ forloop.counter }})">Загрузить</button>
+                                <button type="button" onclick="resetImage({{ forloop.counter }})">Удалить</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% else %}
+                <div class="block-upper-contacts-one">
+                    <div class="top-block">
+                        <div class="top-block-items">
+                            <div class="form-group-inline-two">
+                                <label for="{{ f.name.id_for_label }}">Название
+                                    кинотеатра {{ publication_type_label }}</label>
+                                {{ f.name|add_class:"form-control" }}
+                            </div>
+                            <div class="top-block-menu">
+                                <div class="switch-row">
+                                    <label class="switch-label" for="{{ f.is_enabled.id_for_label }}"></label>
+                                    <label class="custom-switch">
+                                        {{ f.is_enabled }}
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                                <a href="#" class="delete-button">{#data-id="{{ f.id }}" data-title="{{ f.name }} #}
+                                    <i class="fas fa-trash-alt" style="color:red;"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="form-group-address">
+                            <label for="{{ f.address.id_for_label }}">
+                                Адресс {{ publication_type_label }}
+                            </label>
+                            {{ f.address|add_class:"form-control" }}
+                        </div>
+
+                        <div class="form-group-coordinates">
+                            <label for="{{ f.coordinates.id_for_label }}">Кардинаты для карты
+                                {{ publication_type_label }}</label>
+                            {{ f.coordinates|add_class:"form-control" }}
+                        </div>
+                    </div>
+                    <div class="logo__controls-center">
+                        <div class="label_logo-image">
+                            <label>Лого</label>
+                            {#                        <div id="logo-image-error">Загрузите фото</div>#}
+                        </div>
+                        <div class="logo-image-group">
+                            <div class="logo-image">
+                                <img id="logoPreview{{ forloop.counter }}"
+                                     src="
+
+
+
+
+
+
+
+
+                                             {% if f.instance.logo %}{{ f.instance.logo.url }}{% else %}{% static 'adminlte/dist/img/img-none.jpg' %}{% endif %}"
+                                     data-default="{% static 'adminlte/dist/img/img-none.jpg' %}"
+                                     alt="logo image"
+                                     width="150">
+                            </div>
+                            <div class="logo-buttons">
+                                {{ f.logo }}
+                                <button type="button" onclick="triggerInput({{ forloop.counter }})">Загрузить</button>
+                                <button type="button" onclick="resetImage({{ forloop.counter }})">Удалить</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+        <div class="block-button-add">
+            <div class="plus-icon">+</div>
+            <button type="button" class="cinemas-gallery-btn"
+                    onclick="document.getElementById('{{ form.logo.id_for_label }}').click()">
+                Добавить еще кинотеатр
+            </button>
+        </div>
+        <div id="seo-fields">
+            {% include 'adminlte/pages/seo_base.html' %}
+        </div>
+
+        <div class="save-block">
+            <button type="submit" class="all-save-button" onclick="buttonSubmitClick(event)">Сохранить</button>
+        </div>
+    </form>
+{% endblock %}
+
+
+
+{% block scripts %}
+    <script src="{% static 'adminlte/dist/js/pages/contacts_page.js' %}"></script>
+{% endblock %}
