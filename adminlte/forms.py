@@ -83,22 +83,13 @@ class PublicationGalleryForm(forms.ModelForm):
 
 
 class SeoMetadataForm(forms.ModelForm):
-    title_ru = forms.CharField(widget=forms.TextInput(attrs={
+    title = forms.CharField(widget=forms.TextInput(attrs={
         'placeholder': 'Title'
     }))
-    title_uk = forms.CharField(widget=forms.TextInput(attrs={
-        'placeholder': 'Title'
-    }))
-    description_ru = forms.CharField(widget=forms.Textarea(attrs={
+    description = forms.CharField(widget=forms.Textarea(attrs={
         'placeholder': 'Description'
     }))
-    description_uk = forms.CharField(widget=forms.Textarea(attrs={
-        'placeholder': 'Description'
-    }))
-    keywords_ru = forms.CharField(widget=forms.TextInput(attrs={
-        'placeholder': 'word'
-    }))
-    keywords_uk = forms.CharField(widget=forms.TextInput(attrs={
+    keywords = forms.CharField(widget=forms.TextInput(attrs={
         'placeholder': 'word'
     }))
     url = forms.URLField(widget=forms.URLInput(attrs={
@@ -109,9 +100,9 @@ class SeoMetadataForm(forms.ModelForm):
         model = SeoMetadata
         fields = [
             'url',
-            'title_ru', 'title_uk',
-            'description_ru', 'description_uk',
-            'keywords_ru', 'keywords_uk',
+            'title',
+            'description',
+            'keywords',
         ]
 
 
@@ -507,6 +498,7 @@ class ContactsPageForm(forms.ModelForm):
         model = ContactsPage
         fields = []
 
+
 class ContactsPageLocationForm(forms.ModelForm):
     name = forms.CharField(widget=forms.TextInput(attrs={
         'placeholder': 'Название кинотеатра'
@@ -532,11 +524,6 @@ e-mail: goldduke@kino.odessa.ua""",
     class Meta:
         model = ContactsPageLocation
         fields = ['name', 'address', 'coordinates', 'logo']
-
-
-
-
-
 
 
 ContactsPageLocationFormSet = inlineformset_factory(

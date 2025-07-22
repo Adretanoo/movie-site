@@ -14,9 +14,6 @@ function cacheCurrentTranslations(lang) {
     translationsCache[lang].title = document.querySelector(`[name="name_${lang}"]`)?.value || '';
     translationsCache[lang].description = document.querySelector(`[name="description_${lang}"]`)?.value || '';
     translationsCache[lang].trem = document.querySelector(`[name="trem_${lang}"]`)?.value || '';
-    translationsCache[lang].seo_title = document.querySelector(`[name="seo_title_${lang}"]`)?.value || '';
-    translationsCache[lang].seo_keywords = document.querySelector(`[name="seo_keywords_${lang}"]`)?.value || '';
-    translationsCache[lang].seo_description = document.querySelector(`[name="seo_description_${lang}"]`)?.value || '';
 }
 
 function restoreCachedTranslations(lang) {
@@ -28,10 +25,6 @@ function restoreCachedTranslations(lang) {
     setValue(`[name="name_${lang}"]`, cached.title);
     setValue(`[name="description_${lang}"]`, cached.description);
     setValue(`[name="trem_${lang}"]`, cached.description);
-
-    setValue(`[name="seo_title_${lang}"]`, cached.seo_title);
-    setValue(`[name="seo_keywords_${lang}"]`, cached.seo_keywords);
-    setValue(`[name="seo_description_${lang}"]`, cached.seo_description);
 }
 
 document.addEventListener("DOMContentLoaded", () => {

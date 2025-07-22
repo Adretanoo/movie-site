@@ -12,9 +12,6 @@ function updateFieldVisibility(lang) {
 function cacheCurrentTranslations(lang) {
     if (!lang) return;
     translationsCache[lang].title = document.querySelector(`[name="seo_text_${lang}"]`)?.value || '';
-    translationsCache[lang].seo_title = document.querySelector(`[name="seo_title_${lang}"]`)?.value || '';
-    translationsCache[lang].seo_keywords = document.querySelector(`[name="seo_keywords_${lang}"]`)?.value || '';
-    translationsCache[lang].seo_description = document.querySelector(`[name="seo_description_${lang}"]`)?.value || '';
 }
 
 function restoreCachedTranslations(lang) {

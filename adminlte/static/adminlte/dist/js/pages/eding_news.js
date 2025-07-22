@@ -10,9 +10,6 @@ function cacheCurrentTranslations(lang) {
 
     translationsCache[lang].title = document.querySelector(`[name="title_${lang}"]`)?.value || '';
     translationsCache[lang].description = document.querySelector(`[name="description_${lang}"]`)?.value || '';
-    translationsCache[lang].seo_title = document.querySelector(`[name="seo_title_${lang}"]`)?.value || '';
-    translationsCache[lang].seo_keywords = document.querySelector(`[name="seo_keywords_${lang}"]`)?.value || '';
-    translationsCache[lang].seo_description = document.querySelector(`[name="seo_description_${lang}"]`)?.value || '';
 }
 
 function restoreCachedTranslations(lang) {
@@ -23,15 +20,6 @@ function restoreCachedTranslations(lang) {
 
     const description = document.querySelector(`[name="description_${lang}"]`);
     if (description) description.value = cached.description || description.value;
-
-    const seoTitle = document.querySelector(`[name="seo_title_${lang}"]`);
-    if (seoTitle) seoTitle.value = cached.seo_title || seoTitle.value;
-
-    const seoKeywords = document.querySelector(`[name="seo_keywords_${lang}"]`);
-    if (seoKeywords) seoKeywords.value = cached.seo_keywords || seoKeywords.value;
-
-    const seoDescription = document.querySelector(`[name="seo_description_${lang}"]`);
-    if (seoDescription) seoDescription.value = cached.seo_description || seoDescription.value;
 }
 
 function switchLanguage(lang) {

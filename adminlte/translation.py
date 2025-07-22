@@ -5,8 +5,7 @@ from .models import Publication, SeoMetadata, Movie, CardHall, CardCinema, MainP
 class PublicationTranslationOptions(TranslationOptions):
     fields = ('title', 'description',)
 
-class SeoMetadataTranslationOptions(TranslationOptions):
-    fields = ('title', 'keywords', 'description',)
+
 
 class MovieTranslationOptions(TranslationOptions):
     fields = {'title','description'}
@@ -22,7 +21,6 @@ class MainPageTranslationOptions(TranslationOptions):
 
 
 translator.register(Publication, PublicationTranslationOptions)
-translator.register(SeoMetadata, SeoMetadataTranslationOptions)
 translator.register(Movie, MovieTranslationOptions)
 translator.register(CardCinema, CardCinemaTranslationOptions)
 translator.register(CardHall, CardHallTranslationOptions)
