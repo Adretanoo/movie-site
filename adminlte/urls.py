@@ -44,6 +44,9 @@ urlpatterns = [
     path('pages/children-room/', views.children_room, name='children_room'),
     path('pages/main-page/', views.main_page, name='main_page'),
     path('pages/contacts-page/', views.contacts_page, name='contacts_page'),
+    path('pages/new-page/add/', views.new_page_add, name='new_page_add'),
+    path('pages/new-page/edit/<int:pk>/', views.new_page_edit, name='new_page_edit'),
+    path('pages/new-page/delete/<int:pk>', views.new_page_delete, name='new_page_delete'),
 
 
 

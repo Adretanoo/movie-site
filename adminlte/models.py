@@ -34,6 +34,7 @@ class PublicationType(models.TextChoices):
     VIP_HALL = 'vip_hall', 'VIP-зал'
     ADVERTISING = 'advertising', 'Реклама'
     CHILDREN_ROOM = 'children_room', 'Дитяча кімната'
+    NEW_PAGE = 'new_page','Новая страница'
 
 # END ENUMS
 
@@ -247,6 +248,7 @@ class MainPage(models.Model):
 
 
 class ContactsPage(models.Model):
+    is_enabled = models.BooleanField(default=True)
     published_at = models.DateTimeField(default=datetime.datetime.now)
     seo = models.OneToOneField(SeoMetadata, on_delete=models.CASCADE, related_name="contacts")
 

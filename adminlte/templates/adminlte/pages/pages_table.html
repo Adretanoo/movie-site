@@ -13,7 +13,7 @@
         <div class="title__block">
             <div class="title__button-text">Список Страниц</div>
             <div class="title__button-block">
-                <a href="{% url 'add_shares' %}" class="create-button">
+                <a href="{% url 'new_page_add' %}" class="create-button">
                     <i class="fas fa-plus"></i> Создать Новою
                 </a>
             </div>
@@ -33,14 +33,23 @@
                 {% for pub in publications %}
                     <tr>
                         <td>{{ pub.name }}</td>
-                            <td>{{ pub.obj.published_at|date:"d.m.Y" }}</td>
-                            <td>{% if pub.obj.is_enabled %}ВКЛ{% else %}ВЫКЛ{% endif %}</td>
-                            <td class="no-border">
+                        <td>{{ pub.obj.published_at|date:"d.m.Y" }}</td>
+                        <td>{% if pub.obj.is_enabled %}ВКЛ{% else %}ВЫКЛ{% endif %}</td>
+                        <td class="no-border">
+                            {% if pub.obj.publication_type == PublicationType.NEW_PAGE %}
+                                <a href="{% url pub.url pub.obj.pk %}" title="Редактировать">
+                                    <i class="fas fa-pencil-alt"></i>
+                                </a>
+
+                                <a href="{% url pub.url_delete pub.obj.pk%}" class="delete-button" data-id="{{ pub.obj.id }}" data-title="{{ pub.name }}">
+                                    <i class="fas fa-trash-alt" style="color:red;"></i>
+                                </a>
+                            {% else %}
                                 <a href="{% url pub.url %}" title="Редактировать">
                                     <i class="fas fa-pencil-alt"></i>
                                 </a>
-                            </td>
-                        {% empty %}
+                            {% endif %}
+                        </td>
                     </tr>
                 {% endfor %}
                 </tbody>
@@ -50,7 +59,7 @@
         <div id="deleteModal"
              class="modal"
              style="display: none;"
-             data-url-template="{% url 'delete_publication' 0 %}">
+             data-url-template="{% url 'new_page_delete' 0 %}">
 
             <div class="modal-content">
                 <p id="modal-text">Видалити?</p>
@@ -62,13 +71,11 @@
             </div>
         </div>
 
-{#                                                                <a href="#" class="delete-button" data-id="{{ pub.id }}" data-title="{{ pub.title }}">#}
-{#                                                                    <i class="fas fa-trash-alt" style="color:red;"></i>#}
-{#                                                                </a>#}
+
     </div>
 {% endblock %}
 
 
 {% block scripts %}
-    <script src="{% static 'adminlte/dist/js/pages/delete.model.js' %}"></script>
+    <script src="{% static 'adminlte/dist/js/pages/delete_new_page.js' %}"></script>
 {% endblock %}

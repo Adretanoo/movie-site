@@ -473,9 +473,20 @@ def pages(request):
         {'name': 'Контакты', 'obj': ContactsPage.objects.get(pk=1), 'url': 'contacts_page'},
     ]
 
+    new_pages = Publication.objects.filter(publication_type=PublicationType.NEW_PAGE)
+
+    for page in new_pages:
+        publications.append({
+            'name': 'Новая страница',
+            'obj': page,
+            'url': 'new_page_edit',
+            'url_delete': 'new_page_delete'
+        })
+
     context = {
         'publications': publications,
         'menu': menu,
+        'PublicationType': PublicationType,
     }
     return render(request, 'adminlte/pages/pages_table.html', context)
 
@@ -558,6 +569,28 @@ def vip_hall(request):
         redirect_url='pages'
     )
 
+def new_page_add(request):
+    return add_publication(
+        request=request,
+        publication_type=PublicationType.NEW_PAGE,
+        template_name='adminlte/pages/add/base_add.html',
+        redirect_url='pages'
+    )
+
+def new_page_edit(request, pk):
+    return edit_publication(
+        request=request,
+        pk=pk,
+        publication_type=PublicationType.NEW_PAGE,
+        template_name='adminlte/pages/edit/base_edit.html',
+        redirect_url='pages'
+    )
+
+def new_page_delete(request, pk):
+    return delete_publication(
+        request=request,
+        pk=pk,
+    )
 
 def contacts_page(request):
     contacts_page_obj, created = ContactsPage.objects.get_or_create(pk=1)
@@ -575,7 +608,7 @@ def contacts_page(request):
                 contacts_page_instance.seo = seo_instance
                 contacts_page_instance.save()
                 formset.save()
-            return redirect('pages')
+                return redirect('contacts_page')
 
     else:
         form = ContactsPageForm(instance=contacts_page_obj)

@@ -1,0 +1,14 @@
+[
+  {
+    "model": "adminlte.contactspagelocation",
+    "pk": 2,
+    "fields": {
+      "name": "main",
+      "address": "main",
+      "coordinates": "0.0.0.0",
+      "is_enabled": false,
+      "logo": "contacts/2025/07/23/foxi_insta_bpE0WfZ.jpg",
+      "contacts_page": 1
+    }
+  }
+]

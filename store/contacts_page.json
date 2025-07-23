@@ -3,6 +3,7 @@
     "model": "adminlte.contactspage",
     "pk": 1,
     "fields": {
+      "is_enabled": true,
       "published_at": "2025-07-22T08:53:05.492Z",
       "seo": 7
     }
