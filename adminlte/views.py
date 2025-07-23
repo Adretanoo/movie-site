@@ -467,7 +467,8 @@ def pages(request):
          'url': 'vip_hall'},
         {'name': 'Реклама', 'obj': Publication.objects.filter(publication_type=PublicationType.ADVERTISING).first(),
          'url': 'advertising'},
-        {'name': 'Детская комната', 'obj': Publication.objects.filter(publication_type=PublicationType.CHILDREN_ROOM).first(),
+        {'name': 'Детская комната',
+         'obj': Publication.objects.filter(publication_type=PublicationType.CHILDREN_ROOM).first(),
          'url': 'children_room'},
         {'name': 'Контакты', 'obj': ContactsPage.objects.get(pk=1), 'url': 'contacts_page'},
     ]
@@ -478,10 +479,11 @@ def pages(request):
     }
     return render(request, 'adminlte/pages/pages_table.html', context)
 
+
 def main_page(request):
     lang = request.GET.get('lang', 'ru')
     main_page = MainPage.objects.get(pk=1)
-    seo = get_object_or_404(SeoMetadata,pk=main_page.seo_id)
+    seo = get_object_or_404(SeoMetadata, pk=main_page.seo_id)
 
     if request.method == 'POST':
         main_form = MainPageForm(request.POST, instance=main_page, prefix='main')
@@ -504,7 +506,7 @@ def main_page(request):
         'seo_form': seo_form,
         'menu': menu,
     }
-    return render(request,'adminlte/pages/edit/main_page.html',context)
+    return render(request, 'adminlte/pages/edit/main_page.html', context)
 
 
 def advertising(request):
@@ -516,6 +518,7 @@ def advertising(request):
         redirect_url='pages'
     )
 
+
 def children_room(request):
     return edit_publication(
         request=request,
@@ -524,6 +527,7 @@ def children_room(request):
         template_name='adminlte/pages/edit/base_pages_edit.html',
         redirect_url='pages'
     )
+
 
 def about(request):
     return edit_publication(
@@ -534,6 +538,7 @@ def about(request):
         redirect_url='pages'
     )
 
+
 def cafe_bar(request):
     return edit_publication(
         request=request,
@@ -542,6 +547,7 @@ def cafe_bar(request):
         template_name='adminlte/pages/edit/base_pages_edit.html',
         redirect_url='pages'
     )
+
 
 def vip_hall(request):
     return edit_publication(
@@ -552,14 +558,38 @@ def vip_hall(request):
         redirect_url='pages'
     )
 
+
 def contacts_page(request):
+    contacts_page_obj, created = ContactsPage.objects.get_or_create(pk=1)
+
+    if request.method == 'POST':
+        form = ContactsPageForm(request.POST, request.FILES, instance=contacts_page_obj)
+        formset = ContactsPageLocationFormSet(request.POST, request.FILES, instance=contacts_page_obj,
+                                              prefix='location_set')
+        seo_form = SeoMetadataForm(request.POST, prefix='seo', instance=contacts_page_obj.seo)
+
+        with transaction.atomic():
+            if form.is_valid() and formset.is_valid() and seo_form.is_valid():
+                contacts_page_instance = form.save(commit=False)
+                seo_instance = seo_form.save()
+                contacts_page_instance.seo = seo_instance
+                contacts_page_instance.save()
+                formset.save()
+            return redirect('pages')
+
+    else:
+        form = ContactsPageForm(instance=contacts_page_obj)
+        formset = ContactsPageLocationFormSet(instance=contacts_page_obj, prefix='location_set')
+        seo_form = SeoMetadataForm(prefix='seo', instance=contacts_page_obj.seo)
+
     context = {
         'menu': menu,
-        'form': ContactsPageForm(),
-        'formset': ContactsPageLocationFormSet(prefix='basegallery_set'),
+        'form': form,
+        'formset': formset,
+        'seo_form': seo_form,
+        'publication_type_label': ''
     }
     return render(request, 'adminlte/pages/edit/contacts_page.html', context)
-
 
 def users(request):
     return render(request, 'adminlte/pages/users_table.html', context={'menu': menu})

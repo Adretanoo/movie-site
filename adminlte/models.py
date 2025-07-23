@@ -255,10 +255,10 @@ class ContactsPage(models.Model):
 
 class ContactsPageLocation(models.Model):
     name = models.CharField(max_length=255)
-    address = models.TextField(blank=True)
-    coordinates = models.CharField(max_length=255, blank=True)
+    address = models.TextField()
+    coordinates = models.CharField(max_length=255)
     is_enabled = models.BooleanField(default=True)
-    logo = models.ImageField(upload_to='contacts/%Y/%m/%d/', blank=True)
+    logo = models.ImageField(upload_to='contacts/%Y/%m/%d/')
     contacts_page = models.ForeignKey(ContactsPage, on_delete=models.CASCADE)
 
     class Meta:

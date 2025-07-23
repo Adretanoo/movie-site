@@ -1,156 +1,234 @@
 {% extends 'adminlte/base.html' %}
 {% load widget_tweaks %}
 {% load static %}
+
 {% block links %}
     <link rel="stylesheet" href="{% static 'adminlte/dist/css/alt/contacts_page.css' %}">
 {% endblock %}
-
 {% block content %}
-
-
-
     <form id="formBase" method="POST" action="" enctype="multipart/form-data">
         {% csrf_token %}
         {{ formset.management_form }}
-        {% for f in formset %}
-            {% if forloop.first %}
-                <div class="block-upper-contacts-one">
-                    <div class="top-block">
-                        <div class="form-group-inline">
-                            <label for="{{ f.name.id_for_label }}">Название
-                                кинотеатра {{ publication_type_label }}</label>
-                            {{ f.name|add_class:"form-control" }}
-                        </div>
 
-                        <div class="form-group-address">
-                            <label for="{{ f.address.id_for_label }}">
-                                Адресс {{ publication_type_label }}
-                            </label>
-                            {{ f.address|add_class:"form-control" }}
-                        </div>
-
-                        <div class="form-group-coordinates">
-                            <label for="{{ f.coordinates.id_for_label }}">Кардинаты для карты
-                                {{ publication_type_label }}</label>
-                            {{ f.coordinates|add_class:"form-control" }}
-                        </div>
-                    </div>
-                    <div class="logo__controls-center">
-                        <div class="label_logo-image">
-                            <label>Лого</label>
-                            {#                        <div id="logo-image-error">Загрузите фото</div>#}
-                        </div>
-                        <div class="logo-image-group">
-                            <div class="logo-image">
-                                <img id="logoPreview{{ forloop.counter }}"
-                                     src="
-
-
-
-
-
-
-
-
-                                             {% if f.instance.logo %}{{ f.instance.logo.url }}{% else %}{% static 'adminlte/dist/img/img-none.jpg' %}{% endif %}"
-                                     data-default="{% static 'adminlte/dist/img/img-none.jpg' %}"
-                                     alt="logo image"
-                                     width="150">
+        <div id="forms-container">
+            {% if formset|length > 0 %}
+                {% with form=formset.0 %}
+                    <div class="block-upper-contacts-one formset-form" data-form-id="{{ form.instance.pk }}">
+                        <div class="top-block">
+                            <div class="top-block-items">
+                                <div class="form-group-inline-two">
+                                    <label for="{{ form.name.id_for_label }}">Название кинотеатра</label>
+                                    {{ form.name|add_class:"form-control" }}
+                                </div>
+                                <div class="top-block-menu">
+{#                                    <div class="switch-row">#}
+{#                                        <label class="switch-label" data-label-for="is_enabled"></label>#}
+{#                                        <label class="custom-switch">#}
+{#                                            {{ formset.empty_form.is_enabled }}#}
+{#                                            <span class="slider"></span>#}
+{#                                        </label>#}
+{#                                    </div>#}
+                                    {{ form.id }}
+                                </div>
                             </div>
-                            <div class="logo-buttons">
-                                {{ f.logo }}
-                                <button type="button" onclick="triggerInput({{ forloop.counter }})">Загрузить</button>
-                                <button type="button" onclick="resetImage({{ forloop.counter }})">Удалить</button>
+
+                            <div class="form-group-address">
+                                <label for="{{ form.address.id_for_label }}">Адресс</label>
+                                {{ form.address|add_class:"form-control" }}
+                            </div>
+
+                            <div class="form-group-coordinates">
+                                <label for="{{ form.coordinates.id_for_label }}">Координаты для карты</label>
+                                {{ form.coordinates|add_class:"form-control" }}
                             </div>
                         </div>
+
+                        <div class="logo__controls-center">
+                            <div class="label_logo-image">
+                                <label>Лого</label>
+                            </div>
+                            <div class="logo-image-group">
+                                <div class="logo-image">
+                                    <img id="logoPreview0"
+                                         src="
+                                                 {% if form.instance.logo %}{{ form.instance.logo.url }}{% else %}{% static 'adminlte/dist/img/img-none.jpg' %}{% endif %}"
+                                         data-default="{% static 'adminlte/dist/img/img-none.jpg' %}"
+                                         alt="logo image"
+                                         width="150">
+                                </div>
+                                <div class="logo-buttons">
+                                    {{ form.logo }}
+                                    <button type="button" class="upload-button" data-input-id="id_location_set-0-logo">
+                                        Загрузить
+                                    </button>
+                                    <button type="button" class="reset-button" data-input-id="id_location_set-0-logo">
+                                        Удалить
+                                    </button>
+                                </div>
+                            </div>
+                            {{ form.logo.errors }}
+                        </div>
                     </div>
-                </div>
-            {% else %}
-                <div class="block-upper-contacts-one">
+                {% endwith %}
+            {% endif %}
+            {% for form in formset|slice:"1:" %}
+                <div class="block-upper-contacts-one formset-form" data-form-id="{{ form.instance.pk }}">
                     <div class="top-block">
                         <div class="top-block-items">
                             <div class="form-group-inline-two">
-                                <label for="{{ f.name.id_for_label }}">Название
-                                    кинотеатра {{ publication_type_label }}</label>
-                                {{ f.name|add_class:"form-control" }}
+                                <label for="{{ form.name.id_for_label }}">Название кинотеатра</label>
+                                {{ form.name|add_class:"form-control" }}
                             </div>
                             <div class="top-block-menu">
                                 <div class="switch-row">
-                                    <label class="switch-label" for="{{ f.is_enabled.id_for_label }}"></label>
+                                    <label class="switch-label" for="{{ form.is_enabled.id_for_label }}"></label>
                                     <label class="custom-switch">
-                                        {{ f.is_enabled }}
+                                        {{ form.is_enabled }}
                                         <span class="slider"></span>
                                     </label>
                                 </div>
-                                <a href="#" class="delete-button">{#data-id="{{ f.id }}" data-title="{{ f.name }} #}
+                                <a href="#" class="delete-button">
                                     <i class="fas fa-trash-alt" style="color:red;"></i>
                                 </a>
+                                {{ form.DELETE | attr:"hidden" }}
+                                {{ form.id }}
                             </div>
                         </div>
 
                         <div class="form-group-address">
-                            <label for="{{ f.address.id_for_label }}">
-                                Адресс {{ publication_type_label }}
-                            </label>
-                            {{ f.address|add_class:"form-control" }}
+                            <label for="{{ form.address.id_for_label }}">Адресс</label>
+                            {{ form.address|add_class:"form-control" }}
                         </div>
 
                         <div class="form-group-coordinates">
-                            <label for="{{ f.coordinates.id_for_label }}">Кардинаты для карты
-                                {{ publication_type_label }}</label>
-                            {{ f.coordinates|add_class:"form-control" }}
+                            <label for="{{ form.coordinates.id_for_label }}">Координаты для карты</label>
+                            {{ form.coordinates|add_class:"form-control" }}
                         </div>
                     </div>
+
                     <div class="logo__controls-center">
                         <div class="label_logo-image">
                             <label>Лого</label>
-                            {#                        <div id="logo-image-error">Загрузите фото</div>#}
                         </div>
                         <div class="logo-image-group">
                             <div class="logo-image">
-                                <img id="logoPreview{{ forloop.counter }}"
+                                <img id="logoPreview{{ forloop.counter0 | add:1 }}"
                                      src="
-
-
-
-
-
-
-
-
-                                             {% if f.instance.logo %}{{ f.instance.logo.url }}{% else %}{% static 'adminlte/dist/img/img-none.jpg' %}{% endif %}"
+                                             {% if form.instance.logo %}{{ form.instance.logo.url }}{% else %}{% static 'adminlte/dist/img/img-none.jpg' %}{% endif %}"
                                      data-default="{% static 'adminlte/dist/img/img-none.jpg' %}"
                                      alt="logo image"
                                      width="150">
                             </div>
                             <div class="logo-buttons">
-                                {{ f.logo }}
-                                <button type="button" onclick="triggerInput({{ forloop.counter }})">Загрузить</button>
-                                <button type="button" onclick="resetImage({{ forloop.counter }})">Удалить</button>
+                                {{ form.logo }}
+                                <button type="button" class="upload-button"
+                                        data-input-id="id_location_set-{{ forloop.counter0 | add:1 }}-logo">Загрузить
+                                </button>
+                                <button type="button" class="reset-button"
+                                        data-input-id="id_location_set-{{ forloop.counter0 | add:1 }}-logo">Удалить
+                                </button>
                             </div>
                         </div>
+                        {{ form.logo.errors }}
                     </div>
+                    {% if form.non_field_errors %}
+                        <div class="text-danger">
+                            {% for error in form.non_field_errors %}
+                                {{ error }}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+            {% if formset.non_form_errors %}
+                <div class="text-danger">
+                    {% for error in formset.non_form_errors %}
+                        {{ error }}
+                    {% endfor %}
                 </div>
             {% endif %}
-        {% endfor %}
+        </div>
+
         <div class="block-button-add">
             <div class="plus-icon">+</div>
-            <button type="button" class="cinemas-gallery-btn"
-                    onclick="document.getElementById('{{ form.logo.id_for_label }}').click()">
+            <button type="button" class="cinemas-gallery-btn" id="add-more-cinemas">
                 Добавить еще кинотеатр
             </button>
         </div>
+
         <div id="seo-fields">
             {% include 'adminlte/pages/seo_base.html' %}
         </div>
 
         <div class="save-block">
-            <button type="submit" class="all-save-button" onclick="buttonSubmitClick(event)">Сохранить</button>
+            <button type="submit" class="all-save-button">Сохранить</button>
         </div>
     </form>
+
+    <template id="empty-form-template">
+        <div class="block-upper-contacts-one">
+            <div class="top-block">
+                <div class="top-block-items">
+                    <div class="form-group-inline-two">
+                        <label data-label-for="name">Название кинотеатра *</label>
+                        {{ formset.empty_form.name|add_class:"form-control" }}
+                        {{ formset.empty_form.name.errors }}
+                    </div>
+                    <div class="top-block-menu">
+                        <div class="switch-row">
+                            <label class="switch-label" data-label-for="is_enabled"></label>
+                            <label class="custom-switch">
+                                {{ formset.empty_form.is_enabled }}
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <a href="#" class="delete-button">
+                            <i class="fas fa-trash-alt" style="color:red;"></i>
+                        </a>
+                        {{ formset.empty_form.DELETE | attr:"hidden" }}
+                        {{ formset.empty_form.id }}
+                    </div>
+                </div>
+
+                <div class="form-group-address">
+                    <label data-label-for="address">Адресс</label>
+                    {{ formset.empty_form.address|add_class:"form-control" }}
+                    {{ formset.empty_form.address.errors }}
+                </div>
+
+                <div class="form-group-coordinates">
+                    <label data-label-for="coordinates">Координаты для карты</label>
+                    {{ formset.empty_form.coordinates|add_class:"form-control" }}
+                    {{ formset.empty_form.coordinates.errors }}
+                </div>
+            </div>
+            <div class="logo__controls-center">
+                <div class="label_logo-image">
+                    <label>Лого</label>
+                </div>
+                <div class="logo-image-group">
+                    <div class="logo-image">
+                        <img class="logo-preview-image"
+                             src="{% static 'adminlte/dist/img/img-none.jpg' %}"
+                             data-default="{% static 'adminlte/dist/img/img-none.jpg' %}"
+                             alt="logo image"
+                             width="150">
+                    </div>
+                    <div class="logo-buttons">
+                        {{ formset.empty_form.logo }}
+                        <button type="button" class="upload-button" data-input-id="id_location_set-__prefix__-logo">
+                            Загрузить
+                        </button>
+                        <button type="button" class="reset-button" data-input-id="id_location_set-__prefix__-logo">
+                            Удалить
+                        </button>
+                    </div>
+                </div>
+                {{ formset.empty_form.logo.errors }}
+            </div>
+        </div>
+    </template>
 {% endblock %}
-
-
 
 {% block scripts %}
     <script src="{% static 'adminlte/dist/js/pages/contacts_page.js' %}"></script>

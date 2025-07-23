@@ -281,8 +281,21 @@ label {
     cursor: pointer;
     font-weight: 500;
     transition: all 0.2s ease;
+    margin: 30px 0;
 }
 
 .all-save-button:hover {
     background-color: #ddd;
+}
+
+
+
+
+
+input[type="checkbox"][name$="-DELETE"] {
+    display: none !important;
+}
+
+input[type="hidden"][name$="-id"] {
+    display: none !important;
 }

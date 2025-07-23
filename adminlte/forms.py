@@ -500,37 +500,42 @@ class ContactsPageForm(forms.ModelForm):
 
 
 class ContactsPageLocationForm(forms.ModelForm):
-    name = forms.CharField(widget=forms.TextInput(attrs={
-        'placeholder': 'Название кинотеатра'
-    }))
-    address = forms.CharField(widget=forms.Textarea(attrs={
-        'placeholder': """
+    logo = forms.ImageField(widget=forms.FileInput(attrs={
+        'style': 'display: none;',
+    }), required=True)
+
+    class Meta:
+        model = ContactsPageLocation
+        fields = ['name', 'address', 'coordinates', 'logo', 'is_enabled']
+        widgets = {
+            'name': forms.TextInput(attrs={
+                'placeholder': 'Название кинотеатра',
+                'required': ''
+            }),
+            'address': forms.Textarea(attrs={
+                'placeholder': """
 Кинотеатр "Золотой Дюк"
 Одесса, проспект Академика Глушко, 11ж
 Бронирование билетов: (048) 746-32-33, (048) 746-32-20
 e-mail: goldduke@kino.odessa.ua""",
-        'rows': 6
+                'rows': 6,
+                'required': ''
+            }),
+            'coordinates': forms.TextInput(attrs={
+                'placeholder': 'Координаты для карты',
+                'required': ''
+            }),
 
-    }))
-    coordinates = forms.CharField(widget=forms.TextInput(attrs={
-        'placeholder': 'Кардинаты для карты'
-    }))
-    logo = forms.ImageField(widget=forms.FileInput(attrs={
-        'id': 'logoPreviewInput',
-        'style': 'display: none;',
-        'onchange': 'updateImagePreview(this)'
-    }))
+            'is_enabled': forms.CheckboxInput(attrs={'class': 'custom-switch-input'})
+        }
 
-    class Meta:
-        model = ContactsPageLocation
-        fields = ['name', 'address', 'coordinates', 'logo']
 
 
 ContactsPageLocationFormSet = inlineformset_factory(
     ContactsPage,
     ContactsPageLocation,
     form=ContactsPageLocationForm,
-    extra=1,
+    extra=0,
     can_delete=True
 )
 PublicationGalleryFormSet = inlineformset_factory(
