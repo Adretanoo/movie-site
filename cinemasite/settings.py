@@ -13,20 +13,21 @@ import os
 from dotenv import load_dotenv
 from pathlib import Path
 
-
 menu = [
     {'title': 'Статистика', 'url_name': 'statistics', 'group': ['statistics'], 'icon': 'fa-chart-line'},
     {'title': 'Баннера/Слайдеры', 'url_name': 'banners-sliders', 'group': ['banners-sliders', 'banners-sliders-add'],
      'icon': 'fa-image'},
-    {'title': 'Фильмы', 'url_name': 'movies', 'group': ['movies','movie_add','movie_edit'], 'icon': 'fa-film'},
-    {'title': 'Кинотеатры', 'url_name': 'cinemas', 'group': ['cinemas','cinemas_add','cinemas_edit','hall_add','hall_edit'], 'icon': 'fa-building'},
+    {'title': 'Фильмы', 'url_name': 'movies', 'group': ['movies', 'movie_add', 'movie_edit'], 'icon': 'fa-film'},
+    {'title': 'Кинотеатры', 'url_name': 'cinemas',
+     'group': ['cinemas', 'cinemas_add', 'cinemas_edit', 'hall_add', 'hall_edit'], 'icon': 'fa-building'},
     {'title': 'Новости', 'url_name': 'news', 'group': ['news', 'add_news', 'edit_news'], 'icon': 'fa-newspaper'},
-    {'title': 'Акции', 'url_name': 'shares', 'group': ['shares', 'add_shares','edit_shares'], 'icon': 'fa-tags'},
-    {'title': 'Страницы', 'url_name': 'pages', 'group': ['pages','about','cafe_bar','vip_hall','advertising','children_room','main_page','contacts_page','new_page_add','new_page_edit'], 'icon': 'fa-file-alt'},
-    {'title': 'Пользователи', 'url_name': 'users', 'group': ['users'], 'icon': 'fa-users'},
+    {'title': 'Акции', 'url_name': 'shares', 'group': ['shares', 'add_shares', 'edit_shares'], 'icon': 'fa-tags'},
+    {'title': 'Страницы', 'url_name': 'pages',
+     'group': ['pages', 'about', 'cafe_bar', 'vip_hall', 'advertising', 'children_room', 'main_page', 'contacts_page',
+               'new_page_add', 'new_page_edit'], 'icon': 'fa-file-alt'},
+    {'title': 'Пользователи', 'url_name': 'users', 'group': ['users','user_edit'], 'icon': 'fa-users'},
     {'title': 'Рассылка', 'url_name': 'mailing', 'group': ['mailing'], 'icon': 'fa-envelope'},
 ]
-
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -54,6 +55,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_extensions',
+    'ajax_datatable',
     'widget_tweaks',
     'modeltranslation',
     "debug_toolbar",

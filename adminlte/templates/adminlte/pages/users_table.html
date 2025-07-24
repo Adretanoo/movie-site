@@ -1,5 +1,99 @@
 {% extends 'adminlte/base.html' %}
+{% load static %}
+
+{% block links %}
+    <link rel="stylesheet" href="{% static 'adminlte/dist/css/alt/table.style.css' %}"/>
+    <link rel="stylesheet" href="{% static 'adminlte/dist/css/alt/table_users.css' %}">
+    <link href="{% static 'ajax_datatable/css/style.css' %}" rel="stylesheet"/>
+    <link href="//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css"/>
+{% endblock %}
+
 
 {% block content %}
-<h1>Юзери</h1>
+
+    <div class="content-block">
+        <div class="title__block">
+            <h3><b>Пользователи</b></h3>
+            <div class="container-search">
+                <input type="search" id="customSearchInput" class="form-control" placeholder="Пошук">
+                <div class="input-group-append">
+                    <button id="searchButton">Поиск</button>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="table-block">
+            <table id="users_table" class="display">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Дата регистрации</th>
+                    <th>День рождения</th>
+                    <th>Email</th>
+                    <th>Телефон</th>
+                    <th>ФИО</th>
+                    <th>Псевдоним</th>
+                    <th>Город</th>
+                    <th class="no-bg"></th>
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div id="deleteModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <p id="deleteModalText"></p>
+            <form method="POST" id="deleteForm">
+                {% csrf_token %}
+                <button type="submit" class="confirm-delete">Так, видалити</button>
+                <button type="button" class="cancel-delete">Скасувати</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block scripts %}
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script type="text/javascript" src="{% static 'ajax_datatable/js/utils.js' %}"></script>
+    <script src="//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+    <script src="{% static 'adminlte/dist/js/pages/delete_user.js' %}"></script>
+
+    <script>
+        $(document).ready(function () {
+            AjaxDatatableViewUtils.initialize_table(
+                $('#users_table'),
+                "{% url 'ajax_datatable_users' %}",
+                {
+                    dom: 'lrtip',
+                    info: false,
+                    processing: false,
+                    autoWidth: false,
+                    full_row_select: false,
+                    scrollX: false,
+                    lengthChange: false,
+                    order: [[0, 'asc']],
+                    language: {search: ""},
+                    pageLength: 10
+                },
+                {},
+            );
+
+            $('#searchButton').on('click', function () {
+                const value = $('#customSearchInput').val();
+                $('#users_table').DataTable().search(value).draw();
+            });
+            $('#customSearchInput').on('keypress', function (e) {
+                if (e.which === 13) {
+                    $('#searchButton').click();
+                }
+            });
+        });
+
+    </script>
 {% endblock %}

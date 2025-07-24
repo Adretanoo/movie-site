@@ -4,14 +4,20 @@ from django.contrib import messages
 from django.db import transaction
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
+from django.urls.base import reverse_lazy, reverse
+from django.utils.formats import date_format
 from django.views.decorators.http import require_POST
+from ajax_datatable.views import AjaxDatatableView
+from django.contrib.auth.models import Permission
 
 from adminlte.models import Publication, Images, PublicationType, TopBanner, NewsBanner, BackgroundBanner, \
-    TopBannerImage, NewsBannerImage, Movie, MovieGallery, SeoMetadata, CardCinema, CardHall, MainPage, ContactsPage
+    TopBannerImage, NewsBannerImage, Movie, MovieGallery, SeoMetadata, CardCinema, CardHall, MainPage, ContactsPage, \
+    User
+from .fake_data import generate_fake_users
 from .forms import PublicationForm, SeoMetadataForm, BackgroundBannerForm, TopBannerForm, TopBannerImageForm, \
     TopBannerImageFormSet, NewsBannerForm, NewsBannerImageFormSet, MovieForm, MovieGalleryFormSet, CardCinemaForm, \
     CardCinemaGalleryFormSet, CardHallForm, CardHallGalleryForm, CardHallGalleryFormSet, PublicationGalleryFormSet, \
-    MainPageForm, ContactsPageForm, ContactsPageLocationFormSet
+    MainPageForm, ContactsPageForm, ContactsPageLocationFormSet, UserForm
 from django.shortcuts import render, redirect
 from cinemasite.settings import menu
 
@@ -458,7 +464,7 @@ def shares_edit(request, pk):
 
 def pages(request):
     publications = [
-        {'name': 'Главная страница', 'obj': MainPage.objects.get(pk=1), 'url': 'main_page'},
+        {'name': 'Главная страница', 'obj': MainPage.objects.first(), 'url': 'main_page'},
         {'name': 'О кинотеатре', 'obj': Publication.objects.filter(publication_type=PublicationType.ABOUT).first(),
          'url': 'about'},
         {'name': 'Кафе - Бар', 'obj': Publication.objects.filter(publication_type=PublicationType.CAFE_BAR).first(),
@@ -470,7 +476,7 @@ def pages(request):
         {'name': 'Детская комната',
          'obj': Publication.objects.filter(publication_type=PublicationType.CHILDREN_ROOM).first(),
          'url': 'children_room'},
-        {'name': 'Контакты', 'obj': ContactsPage.objects.get(pk=1), 'url': 'contacts_page'},
+        {'name': 'Контакты', 'obj': ContactsPage.objects.first(), 'url': 'contacts_page'},
     ]
 
     new_pages = Publication.objects.filter(publication_type=PublicationType.NEW_PAGE)
@@ -569,6 +575,7 @@ def vip_hall(request):
         redirect_url='pages'
     )
 
+
 def new_page_add(request):
     return add_publication(
         request=request,
@@ -576,6 +583,7 @@ def new_page_add(request):
         template_name='adminlte/pages/add/base_add.html',
         redirect_url='pages'
     )
+
 
 def new_page_edit(request, pk):
     return edit_publication(
@@ -586,11 +594,13 @@ def new_page_edit(request, pk):
         redirect_url='pages'
     )
 
+
 def new_page_delete(request, pk):
     return delete_publication(
         request=request,
         pk=pk,
     )
+
 
 def contacts_page(request):
     contacts_page_obj, created = ContactsPage.objects.get_or_create(pk=1)
@@ -624,9 +634,80 @@ def contacts_page(request):
     }
     return render(request, 'adminlte/pages/edit/contacts_page.html', context)
 
+
+class UsersAjaxDataTable(AjaxDatatableView):
+    model = User
+    title = "Користувачі"
+    initial_order = [["id", "asc"]]
+
+    column_defs = [
+        {"name": "id", "title": "ID","searchable": False, "orderable": True,'width': 10},
+        {"name": "created_at", "title": "Дата регистрации","searchable": True,"orderable": True,'width': 90},
+        {"name": "birthday", "title": "День рождения","searchable": True,"orderable": True,'width': 80},
+        {"name": "email", "title": "Email","searchable": True,"orderable": True,'width': 20},
+        {"name": "phone", "title": "Телефон","searchable": True,"orderable": True,'width': 50},
+        {"name": "last_name", "title": "ФИО", "placeholder": True, "searchable": True, "orderable": True,'width': 70},
+        {"name": "username", "title": "Псевдоним","searchable": True,"orderable": True,'width': 50},
+        {"name": "city", "title": "Город", "foreign_field": "city__name","searchable": True,"orderable": True,'width': 50},
+        {"name": "actions","visible": True, "title": "", "placeholder": True, "searchable": False, "orderable": False,'width': 10},
+    ]
+
+    def get_queryset(self, request=None):
+        return self.model.objects.select_related('city')
+
+    def customize_row(self, row, obj):
+        edit_url = reverse('user_edit', args=[obj.id])
+        row['last_name'] = obj.full_name
+        row['birthday'] = date_format(obj.birthday, 'Y-m-d')
+        row['created_at'] = date_format(obj.created_at, 'Y-m-d H:i')
+
+        delete_url = reverse('user_delete')
+        row['actions'] = f'''
+            <a href="{edit_url}" title="Редактировать">
+                <i class="fas fa-pencil-alt"></i>
+            </a>
+            <a href="#" class="delete-button" 
+               data-url="{delete_url}" 
+               data-id="{obj.id}" 
+               data-title="{obj.last_name}">
+                <i class="fas fa-trash-alt" style="color:red;"></i>
+            </a>
+        '''
+
+        return row
+
+
 def users(request):
     return render(request, 'adminlte/pages/users_table.html', context={'menu': menu})
 
+
+@require_POST
+def user_delete(request):
+    user_id = request.POST.get('user_id')
+    user = get_object_or_404(User, pk=user_id)
+    user.delete()
+    return redirect('users')
+
+
+
+def user_edit(request, pk):
+    user = User.objects.get(pk=pk)
+
+    if request.method == 'POST':
+        form = UserForm(request.POST, instance=user)
+        if form.is_valid():
+            with transaction.atomic():
+                form.save()
+            return redirect('users')
+    else:
+        form = UserForm(instance=user)
+
+    context = {
+        'menu': menu,
+        'form': form,
+        'user': user,
+    }
+    return render(request, 'adminlte/pages/edit/user_edit.html', context)
 
 def mailing(request):
     return render(request, 'adminlte/pages/mailing.html', context={'menu': menu})

@@ -1,0 +1,96 @@
+{% extends 'adminlte/base.html' %}
+{% load widget_tweaks %}
+{% load static %}
+
+
+{% block links %}
+    <link rel="stylesheet" href="{% static 'adminlte/dist/css/alt/user_edit.css' %}">
+{% endblock %}
+
+{% block content %}
+    <form id="formBase" action="{% url 'user_edit' pk=user.id %}" method="POST">
+        {% csrf_token %}
+        <div class="block-wrapper">
+            <div class="block-one">
+                <div class="form-group-inline">
+                    <label for="{{ form.first_name.id_for_label }}">Имя</label>
+                    {{ form.first_name|add_class:'form-control' }}
+                </div>
+                <div class="form-group-inline">
+                    <label for="{{ form.last_name.id_for_label }}">Фамилия</label>
+                    {{ form.last_name|add_class:'form-control' }}
+                </div>
+                <div class="form-group-inline">
+                    <label for="{{ form.username.id_for_label }}">Псевдоним</label>
+                    {{ form.username|add_class:'form-control' }}
+                </div>
+                <div class="form-group-inline">
+                    <label for="{{ form.email.id_for_label }}">Email</label>
+                    {{ form.email|add_class:'form-control' }}
+                </div>
+                <div class="form-group-inline">
+                    <label for="{{ form.address.id_for_label }}">Адресс</label>
+                    {{ form.address|add_class:'form-control' }}
+                </div>
+                <div class="form-group-inline">
+                    <label for="{{ form.password_hash.id_for_label }}">Пароль</label>
+                    {{ form.password_hash|add_class:'form-control' }}
+                </div>
+                <div class="form-group-inline">
+                    <label for="{{ form.card_number.id_for_label }}">Номер карты</label>
+                    {{ form.card_number|add_class:'form-control' }}
+                </div>
+            </div>
+            <div class="block-two">
+                <div class="form-group-checkbox">
+                    <label for="{{ form.language.id_for_label }}">Язык</label>
+                    <div class="from-group-checkbox-wrapper">
+                        {% for radio in form.language %}
+                            <label>
+                                {{ radio.tag }}
+                                {{ radio.choice_label }}
+                            </label>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div class="form-group-checkbox">
+                    <label for="{{ form.gender.id_for_label }}">Пол</label>
+                    <div class="from-group-checkbox-wrapper">
+                        {% for radio in form.gender %}
+                            <label>
+                                {{ radio.tag }}
+                                {{ radio.choice_label }}
+                            </label>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div class="form-group-inline">
+                    <label for="{{ form.phone.id_for_label }}">Телефон</label>
+                    {{ form.phone|add_class:'form-control' }}
+                </div>
+
+                <div class="form-group-inline">
+                    <label for="{{ form.birthday.id_for_label }}">Дата рождения</label>
+                    {{ form.birthday|add_class:'form-control' }}
+                </div>
+
+                <div class="form-group-inline">
+                    <label for="{{ form.city.id_for_label }}">Город</label>
+                    {{ form.city|add_class:'form-control' }}
+                </div>
+
+
+            </div>
+        </div>
+        <div class="save-block">
+            <button type="submit" class="all-save-button">Сохранить</button>
+        </div>
+
+    </form>
+{% endblock %}
+
+
+{% block scripts %}
+{% endblock %}

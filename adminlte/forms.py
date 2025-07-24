@@ -3,7 +3,7 @@ from django.forms import DateInput, ClearableFileInput, inlineformset_factory
 
 from .models import Publication, SeoMetadata, Images, TopBanner, TopBannerImage, NewsBanner, NewsBannerImage, \
     BackgroundBanner, Movie, MovieGallery, CardCinema, CardCinemaGallery, CardHall, CardHallGallery, PublicationType, \
-    PublicationGallery, MainPage, ContactsPage, ContactsPageLocation
+    PublicationGallery, MainPage, ContactsPage, ContactsPageLocation, User, Language, Gender, City
 
 
 class PublicationForm(forms.ModelForm):
@@ -529,6 +529,35 @@ e-mail: goldduke@kino.odessa.ua""",
             'is_enabled': forms.CheckboxInput(attrs={'class': 'custom-switch-input'})
         }
 
+
+class UserForm(forms.ModelForm):
+    language = forms.ChoiceField(
+        choices=Language.choices,
+        widget=forms.RadioSelect,
+        required=True
+    )
+    gender = forms.ChoiceField(
+        choices=Gender.choices,
+        widget=forms.RadioSelect,
+        required=True
+    )
+    birthday = forms.DateField(widget=forms.DateInput(attrs={
+        'type': 'date',
+    }, format='%Y-%m-%d'))
+
+    city = forms.ModelChoiceField(
+        queryset=City.objects.all(),
+        required=True,
+        empty_label=None,
+        widget=forms.Select(attrs={'class': 'form-control'})
+    )
+    card_number = forms.CharField(widget=forms.NumberInput(attrs={
+        'type': 'tel',
+    }))
+
+    class Meta:
+        model = User
+        fields = ['first_name', 'last_name','username','email','phone','address','password_hash','card_number', 'language', 'gender', 'birthday', 'city']
 
 
 ContactsPageLocationFormSet = inlineformset_factory(

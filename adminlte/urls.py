@@ -3,6 +3,8 @@ from . import views
 from django.conf import settings
 from django.conf.urls.static import static
 
+from .views import UsersAjaxDataTable
+
 urlpatterns = [
     path('statistics/', views.statistics, name='statistics'),
     path('banners-sliders/', views.banners_sliders, name='banners-sliders'),
@@ -48,8 +50,10 @@ urlpatterns = [
     path('pages/new-page/edit/<int:pk>/', views.new_page_edit, name='new_page_edit'),
     path('pages/new-page/delete/<int:pk>', views.new_page_delete, name='new_page_delete'),
 
+    path('users-data/', UsersAjaxDataTable.as_view(), name='ajax_datatable_users'),
 
-
+    path('users/edit/<int:pk>/', views.user_edit, name='user_edit'),
+    path('users/delete/', views.user_delete, name='user_delete'),
 ]
 
 if settings.DEBUG:
