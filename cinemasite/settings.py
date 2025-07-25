@@ -14,7 +14,7 @@ from dotenv import load_dotenv
 from pathlib import Path
 
 menu = [
-    {'title': 'Статистика', 'url_name': 'statistics', 'group': ['statistics'], 'icon': 'fa-chart-line'},
+    {'title': 'Статистика', 'url_name': 'statistics', 'group': ['statistics','statistics_users'], 'icon': 'fa-chart-line'},
     {'title': 'Баннера/Слайдеры', 'url_name': 'banners-sliders', 'group': ['banners-sliders', 'banners-sliders-add'],
      'icon': 'fa-image'},
     {'title': 'Фильмы', 'url_name': 'movies', 'group': ['movies', 'movie_add', 'movie_edit'], 'icon': 'fa-film'},

@@ -7,6 +7,8 @@ from .views import UsersAjaxDataTable
 
 urlpatterns = [
     path('statistics/', views.statistics, name='statistics'),
+    path('statistics/users/',views.statistics_users,name='statistics_users'),
+
     path('banners-sliders/', views.banners_sliders, name='banners-sliders'),
     path('movies/', views.movies, name='movies'),
     path('cinemas/', views.cinemas, name='cinemas'),

@@ -1,7 +1,10 @@
 import datetime
+import json
 
 from django.contrib import messages
 from django.db import transaction
+from django.db.models.aggregates import Count
+from django.db.models.functions.datetime import ExtractYear, TruncDate
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
 from django.urls.base import reverse_lazy, reverse
@@ -12,7 +15,7 @@ from django.contrib.auth.models import Permission
 
 from adminlte.models import Publication, Images, PublicationType, TopBanner, NewsBanner, BackgroundBanner, \
     TopBannerImage, NewsBannerImage, Movie, MovieGallery, SeoMetadata, CardCinema, CardHall, MainPage, ContactsPage, \
-    User
+    User, Gender, City
 from .fake_data import generate_fake_users
 from .forms import PublicationForm, SeoMetadataForm, BackgroundBannerForm, TopBannerForm, TopBannerImageForm, \
     TopBannerImageFormSet, NewsBannerForm, NewsBannerImageFormSet, MovieForm, MovieGalleryFormSet, CardCinemaForm, \
@@ -23,7 +26,50 @@ from cinemasite.settings import menu
 
 
 def statistics(request):
-    return render(request, "adminlte/pages/statistics.html", context={'menu': menu})
+    user_count = User.objects.count()
+    context = {
+        'user_count': user_count,
+        'menu': menu,
+    }
+    return render(request, "adminlte/pages/statistics.html", context)
+
+
+def statistics_users(request):
+    gender_labels = ['Мужчины', 'Женщины']
+    gender_data = [User.objects.filter(gender=Gender.MALE).count(), User.objects.filter(gender=Gender.WOMEN).count()]
+
+    cities = City.objects.all()
+
+    city_labels = list(cities.values_list('name', flat=True))
+    city_data = [User.objects.filter(city=city).count() for city in cities]
+
+    birthday_order = User.objects.annotate(year=ExtractYear('birthday')).values('year').annotate(
+        count=Count('id')).order_by('year')
+    birthday_labels = [entry['year'] for entry in birthday_order]
+    birthday_data = [entry['count'] for entry in birthday_order]
+
+    registrations_by_day = (
+        User.objects
+        .annotate(day=TruncDate('created_at'))
+        .values('day')
+        .annotate(count=Count('id'))
+        .order_by('day')
+    )
+    register_labels = [entry['day'].strftime('%Y-%m-%d') for entry in registrations_by_day]
+    register_data = [entry['count'] for entry in registrations_by_day]
+
+    context = {
+        'menu': menu,
+        'gender_labels': json.dumps(gender_labels),
+        'gender_data': json.dumps(gender_data),
+        'city_labels': json.dumps(city_labels),
+        'city_data': json.dumps(city_data),
+        'birthday_labels': json.dumps(birthday_labels),
+        'birthday_data': json.dumps(birthday_data),
+        'registration_labels': json.dumps(register_labels),
+        'registration_data': json.dumps(register_data),
+    }
+    return render(request, 'adminlte/pages/statistics_users.html', context)
 
 
 def banners_sliders(request):
@@ -641,15 +687,17 @@ class UsersAjaxDataTable(AjaxDatatableView):
     initial_order = [["id", "asc"]]
 
     column_defs = [
-        {"name": "id", "title": "ID","searchable": False, "orderable": True,'width': 10},
-        {"name": "created_at", "title": "Дата регистрации","searchable": True,"orderable": True,'width': 90},
-        {"name": "birthday", "title": "День рождения","searchable": True,"orderable": True,'width': 80},
-        {"name": "email", "title": "Email","searchable": True,"orderable": True,'width': 20},
-        {"name": "phone", "title": "Телефон","searchable": True,"orderable": True,'width': 50},
-        {"name": "last_name", "title": "ФИО", "placeholder": True, "searchable": True, "orderable": True,'width': 70},
-        {"name": "username", "title": "Псевдоним","searchable": True,"orderable": True,'width': 50},
-        {"name": "city", "title": "Город", "foreign_field": "city__name","searchable": True,"orderable": True,'width': 50},
-        {"name": "actions","visible": True, "title": "", "placeholder": True, "searchable": False, "orderable": False,'width': 10},
+        {"name": "id", "title": "ID", "searchable": False, "orderable": True, 'width': 10},
+        {"name": "created_at", "title": "Дата регистрации", "searchable": True, "orderable": True, 'width': 90},
+        {"name": "birthday", "title": "День рождения", "searchable": True, "orderable": True, 'width': 80},
+        {"name": "email", "title": "Email", "searchable": True, "orderable": True, 'width': 20},
+        {"name": "phone", "title": "Телефон", "searchable": True, "orderable": True, 'width': 50},
+        {"name": "last_name", "title": "ФИО", "placeholder": True, "searchable": True, "orderable": True, 'width': 70},
+        {"name": "username", "title": "Псевдоним", "searchable": True, "orderable": True, 'width': 50},
+        {"name": "city", "title": "Город", "foreign_field": "city__name", "searchable": True, "orderable": True,
+         'width': 50},
+        {"name": "actions", "visible": True, "title": "", "placeholder": True, "searchable": False, "orderable": False,
+         'width': 10},
     ]
 
     def get_queryset(self, request=None):
@@ -689,7 +737,6 @@ def user_delete(request):
     return redirect('users')
 
 
-
 def user_edit(request, pk):
     user = User.objects.get(pk=pk)
 
@@ -708,6 +755,7 @@ def user_edit(request, pk):
         'user': user,
     }
     return render(request, 'adminlte/pages/edit/user_edit.html', context)
+
 
 def mailing(request):
     return render(request, 'adminlte/pages/mailing.html', context={'menu': menu})

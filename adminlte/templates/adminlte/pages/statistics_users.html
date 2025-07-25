@@ -1,0 +1,296 @@
+{% extends 'adminlte/base.html' %}
+{% load static %}
+
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-6">
+            <!-- DONUT CHART -->
+            <div class="card card-danger">
+                <div class="card-header bg-warning">
+                    <h3 class="card-title">Пол</h3>
+
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                        <button type="button" class="btn btn-tool" data-card-widget="remove">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="chartjs-size-monitor">
+                        <div class="chartjs-size-monitor-expand">
+                            <div class=""></div>
+                        </div>
+                        <div class="chartjs-size-monitor-shrink">
+                            <div class=""></div>
+                        </div>
+                    </div>
+                    <canvas id="donutChart"
+                            style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%; display: block; width: 745px;"
+                            width="745" height="250" class="chartjs-render-monitor"></canvas>
+                </div>
+                <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+
+            <!-- STACKED BAR CHART -->
+            <div class="card card-success">
+                <div class="card-header bg-warning">
+                    <h3 class="card-title">Пользователи по годам рождения</h3>
+
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                        <button type="button" class="btn btn-tool" data-card-widget="remove">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="chart">
+                        <div class="chartjs-size-monitor">
+                            <div class="chartjs-size-monitor-expand">
+                                <div class=""></div>
+                            </div>
+                            <div class="chartjs-size-monitor-shrink">
+                                <div class=""></div>
+                            </div>
+                        </div>
+                        <canvas id="birthChart"
+                                style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%; display: block; width: 745px;"
+                                width="745" height="250" class="chartjs-render-monitor"></canvas>
+                    </div>
+                </div>
+                <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+        </div>
+        <!-- /.card -->
+
+        <div class="col-md-6">
+            <!-- PIE CHART -->
+            <div class="card card-danger">
+                <div class="card-header bg-warning">
+                    <h3 class="card-title">Статистика пользователей по городам</h3>
+
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                        <button type="button" class="btn btn-tool" data-card-widget="remove">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="chartjs-size-monitor">
+                        <div class="chartjs-size-monitor-expand">
+                            <div class=""></div>
+                        </div>
+                        <div class="chartjs-size-monitor-shrink">
+                            <div class=""></div>
+                        </div>
+                    </div>
+                    <canvas id="pieChart"
+                            style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%; display: block; width: 745px;"
+                            width="745" height="250" class="chartjs-render-monitor"></canvas>
+                </div>
+                <!-- /.card-body -->
+            </div>
+
+            <div class="card card-primary">
+                <div class="card-header bg-warning">
+                    <h3 class="card-title">Регистрации по датам</h3>
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                        <button type="button" class="btn btn-tool" data-card-widget="remove">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <canvas id="areaChart" style="min-height: 250px; height: 250px;"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+    <script src="{% static 'adminlte/dist/js/pages/dashboard.js' %}"></script>
+    <!-- Bootstrap 4 -->
+    <script src="{% static 'adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <!-- ChartJS -->
+    <script src="{% static 'adminlte/plugins/chart.js/Chart.min.js' %}"></script>
+    <!-- Sparkline -->
+    <script src="{% static 'adminlte/plugins/sparklines/sparkline.js' %}"></script>
+    <!-- JQVMap -->
+    <script src="{% static 'adminlte/plugins/jqvmap/jquery.vmap.min.js' %}"></script>
+    <script src="{% static 'adminlte/plugins/jqvmap/maps/jquery.vmap.usa.js' %}"></script>
+    <!-- jQuery Knob Chart -->
+    <script src="{% static 'adminlte/plugins/jquery-knob/jquery.knob.min.js' %}"></script>
+    <!-- daterangepicker -->
+    <script src="{% static 'adminlte/plugins/moment/moment.min.js' %}"></script>
+    <script src="{% static 'adminlte/plugins/daterangepicker/daterangepicker.js' %}"></script>
+    <!-- Tempusdominus Bootstrap 4 -->
+    <script src="{% static 'adminlte/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js' %}"></script>
+    <!-- Summernote -->
+    <script src="{% static 'adminlte/plugins/summernote/summernote-bs4.min.js' %}"></script>
+    <!-- overlayScrollbars -->
+    <script src="{% static 'adminlte/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js' %}"></script>
+    <!-- AdminLTE App -->
+    <script>
+        const donutLabels = {{ gender_labels|safe }};
+        const donutData = {{ gender_data|safe }};
+
+        const ctxDonut = document.getElementById('donutChart').getContext('2d');
+        new Chart(ctxDonut, {
+            type: 'doughnut',
+            data: {
+                labels: donutLabels,
+                datasets: [{
+                    data: donutData,
+                    backgroundColor: [
+                        '#00baff', '#e054f5', '#f39c12', '#00c0ef', '#3c8dbc', '#d2d6de'
+                    ],
+                }]
+            },
+            options: {
+                maintainAspectRatio: false,
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }
+        });
+
+        const pieLabels = {{ city_labels|safe }};
+        const pieData = {{ city_data|safe }};
+        const backgroundColors = generateColors(pieData.length);
+        const pieCtx = document.getElementById('pieChart').getContext('2d');
+
+        new Chart(pieCtx, {
+            type: 'pie',
+            data: {
+                labels: pieLabels,
+                datasets: [{
+                    data: pieData,
+                    backgroundColor: backgroundColors,
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {position: 'top'},
+                    title: {
+                        display: true,
+                        text: 'Pie Chart'
+                    }
+                }
+            }
+        });
+
+        function generateColors(count) {
+            const colors = [];
+            for (let i = 0; i < count; i++) {
+                const color = '#' + Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0');
+                colors.push(color);
+            }
+            return colors;
+        }
+
+        const ctx = document.getElementById('birthChart').getContext('2d');
+        const birthChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: {{ birthday_labels|safe }},
+                datasets: [{
+                    label: 'Пользователи',
+                    data: {{ birthday_data|safe }},
+                    backgroundColor: '#3c8dbc',
+                }]
+            },
+            options: {
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Пользователи по годам рождения'
+                    }
+                },
+                responsive: true,
+                scales: {
+                    x: {
+                        stacked: true,
+                        title: {
+                            display: true,
+                            text: 'Год рождения'
+                        }
+                    },
+                    y: {
+                        stacked: true,
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Количество'
+                        }
+                    }
+                }
+            }
+        });
+
+
+        const register_labels = {{ registration_labels|safe }};
+        const register_data = {{ registration_data|safe }};
+
+        const register_ctx = document.getElementById('areaChart').getContext('2d');
+
+        new Chart(register_ctx, {
+            type: 'line',      // Area chart робиться як line chart із fill: true
+            data: {
+                labels: register_labels,
+                datasets: [{
+                    label: 'Кількість реєстрацій',
+                    data: register_data,
+                    fill: true,
+                    backgroundColor: 'rgba(60,141,188,0.2)',  // блакитна заливка
+                    borderColor: 'rgba(60,141,188,1)',        // синя лінія
+                    tension: 0.3,
+                    pointRadius: 3,
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    x: {
+                        display: true,
+                        title: {
+                            display: true,
+                            text: 'Дата'
+                        }
+                    },
+                    y: {
+                        display: true,
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Количество пользователей'
+                        },
+                        ticks: {
+                            precision: 0  // цілі числа
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+
+{% endblock %}
