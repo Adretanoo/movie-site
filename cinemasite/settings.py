@@ -14,7 +14,8 @@ from dotenv import load_dotenv
 from pathlib import Path
 
 menu = [
-    {'title': 'Статистика', 'url_name': 'statistics', 'group': ['statistics','statistics_users'], 'icon': 'fa-chart-line'},
+    {'title': 'Статистика', 'url_name': 'statistics', 'group': ['statistics', 'statistics_users'],
+     'icon': 'fa-chart-line'},
     {'title': 'Баннера/Слайдеры', 'url_name': 'banners-sliders', 'group': ['banners-sliders', 'banners-sliders-add'],
      'icon': 'fa-image'},
     {'title': 'Фильмы', 'url_name': 'movies', 'group': ['movies', 'movie_add', 'movie_edit'], 'icon': 'fa-film'},
@@ -25,7 +26,7 @@ menu = [
     {'title': 'Страницы', 'url_name': 'pages',
      'group': ['pages', 'about', 'cafe_bar', 'vip_hall', 'advertising', 'children_room', 'main_page', 'contacts_page',
                'new_page_add', 'new_page_edit'], 'icon': 'fa-file-alt'},
-    {'title': 'Пользователи', 'url_name': 'users', 'group': ['users','user_edit'], 'icon': 'fa-users'},
+    {'title': 'Пользователи', 'url_name': 'users', 'group': ['users', 'user_edit'], 'icon': 'fa-users'},
     {'title': 'Рассылка', 'url_name': 'mailing', 'group': ['mailing'], 'icon': 'fa-envelope'},
 ]
 
@@ -56,6 +57,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_extensions',
     'ajax_datatable',
+    'main',
     'widget_tweaks',
     'modeltranslation',
     "debug_toolbar",
@@ -65,12 +67,14 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     "debug_toolbar.middleware.DebugToolbarMiddleware",
+
 ]
 
 ROOT_URLCONF = 'cinemasite.urls'
@@ -129,18 +133,21 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
 
-LANGUAGE_CODE = 'ru-Ru'
-
-LANGUAGES = [
-    ('uk', 'Ukrainian'),
-    ('ru', 'Russian'),
-]
-
-TIME_ZONE = 'UTC'
+LANGUAGE_CODE = 'ru'
 
 USE_I18N = True
-
+USE_L10N = True
 USE_TZ = True
+
+LANGUAGES = [
+    ('ru', 'Рус'),
+    ('uk', 'Укр'),
+]
+LOCALE_PATHS = [
+    os.path.join(BASE_DIR, 'locale'),
+]
+TIME_ZONE = 'UTC'
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
@@ -148,6 +155,7 @@ USE_TZ = True
 STATIC_URL = 'static/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 

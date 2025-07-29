@@ -757,8 +757,13 @@ def user_edit(request, pk):
     return render(request, 'adminlte/pages/edit/user_edit.html', context)
 
 
+
 def mailing(request):
-    return render(request, 'adminlte/pages/mailing.html', context={'menu': menu})
+
+    context = {
+        'menu': menu
+    }
+    return render(request, 'adminlte/pages/mailing.html', context)
 
 
 def add_publication(request, publication_type, template_name, redirect_url):

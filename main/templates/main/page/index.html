@@ -1,0 +1,466 @@
+{% load l10n %}
+{% load static %}
+{% load i18n %}
+{% load date_filters %}
+{% get_current_language as lang %}
+{% get_current_language as CURRENT_LANGUAGE %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+
+    <meta name="keywords" content="{{ main_page.seo.keywords }}"/>
+    <meta name="description" content="{{ main_page.seo.description }}"/>
+
+
+    <title>{{ main_page.seo.title }}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+          crossorigin="anonymous"/>
+
+
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+
+    <link rel="stylesheet" href="{% static 'main/css/index.css' %}">
+</head>
+<body>
+
+
+<div class="header-wrapper" style="
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        z-index: -100;
+
+        {% if bg_banner.background_type == bg_type.BACKGROUND_PHOTO %}
+            background-image: url('{{ bg_banner.image.url }}');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        {% elif bg_banner.background_type == bg_type.JUST_BACKGROUND %}
+            background-color: white;
+        {% endif %}
+        ">
+</div>
+
+<div class="container container-header">
+    <header class="block-main-menu">
+        <div class="row align-items-center py-2 header-top-row block-menu-phone">
+            <!-- 1. ЛОГОТИП -->
+            <div class="col-lg-2 col-md-5  d-flex justify-content-center justify-content-md-start mb-2 mb-md-0 logo-col order-0">
+                <a href="#" class="logo-link">
+                    <img src="{% static 'adminlte/dist/img/img-none.jpg' %}" alt="Логотип"
+                         class="img-fluid logo-img">
+                </a>
+            </div>
+
+            <!-- 3. ПОШУК -->
+            <div class="col-lg-3 col-md-4 col-12 mb-2 mb-md-0 search-col order-2 d-none d-lg-block">
+                <form class="d-flex search-form">
+                    <input class="form-control me-2" type="search" placeholder="{% trans 'search-title' %}" aria-label="Search">
+                </form>
+            </div>
+
+            <!-- 4. СОЦМЕРЕЖІ -->
+            <div class="col-lg-3 col-md-5 col-12 text-center social-icons-col d-flex justify-content-center mt-2 mt-md-0 mb-2 mb-md-0 order-3 d-none d-lg-flex">
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="https://x.com/" target="_blank"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="https://vk.com/" target="_blank"><i class="fa-brands fa-vk"></i></a>
+                    <a href="https://ok.ru/" target="_blank"><i class="fa-brands fa-odnoklassniki"></i></a>
+                    <a href="https://www.instagram.com/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+
+            <!-- 5. ТЕЛЕФОНИ -->
+            <div class="col-lg-3 col-md-5 col-sm-4 col-4 text-center text-md-end phone-numbers-col mt-0 mt-md-0 mb-0 mb-md-0 order-4 phones">
+                {% if main_page.is_enabled %}
+                    <div><a href="tel:{{ main_page.phone_1 }}">{{ main_page.phone_1 }}</a></div>
+                    <div><a href="tel:{{ main_page.phone_2 }}">{{ main_page.phone_2 }}</a></div>
+                {% endif %}
+            </div>
+        </div>
+
+
+        <nav class="navbar navbar-expand-lg main-navbar-row">
+            <div class="container-fluid px-0 menu-bar">
+                <button class="navbar-toggler ms-auto" type="button" id="openMenuButton"
+                        aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-between" id="mainMenu">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 main-nav-list">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">{% trans "Poster" %}</a>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">{% trans "Schedule" %}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">{% trans "Soon" %}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">{% trans "Movie-theaters" %}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">{% trans "Promotions" %}</a>
+                        </li>
+                        <li class="nav-item dropdown position-relative">
+                            <div class="block-about-cinema-a" style="gap: 0px;">
+                                <a class="nav-link" href="#">{% trans "About-cinema" %}</a>
+                                <a class="nav-link dropdown-toggle dropdown-toggle-split"
+                                   href="#" id="aboutUsDropdown"
+                                   role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <span class="visually-hidden">Toggle Dropdown</span>
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="aboutUsDropdown">
+                                    <li><a class="dropdown-item" href="#">{% trans "News" %}</a></li>
+                                    <li><a class="dropdown-item" href="#">{% trans "Advertisement" %}</a></li>
+                                    <li><a class="dropdown-item" href="#">{% trans "Cafe-Bar" %}</a></li>
+                                    <li><a class="dropdown-item" href="#">{% trans "Contacts" %}</a></li>
+                                </ul>
+                            </div>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="langDropdown" role="button"
+                               data-bs-toggle="dropdown" aria-expanded="false">
+                                {% if CURRENT_LANGUAGE == 'uk' %}
+                                    Укр
+                                {% else %}
+                                    Рус
+                                {% endif %}
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="langDropdown">
+                                {% if CURRENT_LANGUAGE == 'ru' %}
+                                    <li>
+                                        <form action="{% url 'set_language' %}" method="post" class="lang-switch-form">
+                                            {% csrf_token %}
+                                            <input name="next" type="hidden" value="{{ request.get_full_path }}">
+                                            <input name="language" type="hidden" value="uk">
+                                            <button type="submit" class="dropdown-item">
+                                                Укр
+                                            </button>
+                                        </form>
+                                    </li>
+                                {% elif CURRENT_LANGUAGE == 'uk' %}
+                                    <li>
+                                        <form action="{% url 'set_language' %}" method="post" class="lang-switch-form">
+                                            {% csrf_token %}
+                                            <input name="next" type="hidden" value="{{ request.get_full_path }}">
+                                            <input name="language" type="hidden" value="ru">
+                                            {# <--- Ось тут має бути "ru"! #}
+                                            <button type="submit" class="dropdown-item">
+                                                Рус
+                                            </button>
+                                        </form>
+                                    </li>
+                                {% endif %}
+                            </ul>
+                        </li>
+
+                    </ul>
+                    <div class="block-buttons">
+                        <a href="#"
+                           class="btn btn-outline-dark me-2 btn-auth w-100 w-md-auto button-login">{% trans 'login' %}</a>
+                        <a href="#"
+                           class="btn btn-primary btn-auth w-100 w-md-auto button-register">{% trans "register" %}</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+
+        <!-- Повноекранне меню -->
+        <div id="fullScreenMenu" class="fullscreen-menu">
+            <button id="closeMenuButton" class="close-menu-button" aria-label="Закрити меню">&times;</button>
+
+            <ul class="fullscreen-nav">
+                <li><a href="#">{% trans "Poster" %}</a></li>
+                <li><a href="#">{% trans "Schedule" %}</a></li>
+                <li><a href="#">{% trans "Soon" %}</a></li>
+                <li><a href="#">{% trans "Movie-theaters" %}</a></li>
+                <li><a href="#">{% trans "Promotions" %}</a></li>
+
+                <li class="nav-item dropdown position-relative">
+                    <div class="block-about-cinema-a" style="gap: 15px;">
+                        <a class="nav-link" href="#">{% trans "About-cinema" %}</a>
+                        <a class="nav-link dropdown-toggle dropdown-toggle-split"
+                           href="#" id="aboutUsDropdown"
+                           role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span class="visually-hidden">Toggle Dropdown</span>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="aboutUsDropdown">
+                            <li><a class="dropdown-item" href="#">{% trans "News" %}</a></li>
+                            <li><a class="dropdown-item" href="#">{% trans "Advertisement" %}</a></li>
+                            <li><a class="dropdown-item" href="#">{% trans "Cafe-Bar" %}</a></li>
+                            <li><a class="dropdown-item" href="#">{% trans "Contacts" %}</a></li>
+                        </ul>
+                    </div>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="langDropdown" role="button"
+                       data-bs-toggle="dropdown" aria-expanded="false">
+                        {% if CURRENT_LANGUAGE == 'uk' %}
+                            Укр
+                        {% else %}
+                            Рус
+                        {% endif %}
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="langDropdown">
+                        {% if CURRENT_LANGUAGE == 'ru' %}
+                            <li>
+                                <form action="{% url 'set_language' %}" method="post" class="lang-switch-form">
+                                    {% csrf_token %}
+                                    <input name="next" type="hidden" value="{{ request.get_full_path }}">
+                                    <input name="language" type="hidden" value="uk">
+                                    <button type="submit" class="dropdown-item">
+                                        Укр
+                                    </button>
+                                </form>
+                            </li>
+                        {% elif CURRENT_LANGUAGE == 'uk' %}
+                            <li>
+                                <form action="{% url 'set_language' %}" method="post" class="lang-switch-form">
+                                    {% csrf_token %}
+                                    <input name="next" type="hidden" value="{{ request.get_full_path }}">
+                                    <input name="language" type="hidden" value="ru">
+                                    <button type="submit" class="dropdown-item">
+                                        Рус
+                                    </button>
+                                </form>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </li>
+            </ul>
+
+            <div class="block-buttons mt-4">
+                <a href="#" class="btn btn-outline-dark w-100 mb-2">{% trans "login" %}</a>
+                <a href="#" class="btn btn-primary w-100">{% trans "register" %}</a>
+            </div>
+        </div>
+
+
+    </header>
+    <div class="sliders">
+        {% if top_banner.is_enabled %}
+            <div id="customCarousel" class="carousel slide" data-bs-ride="carousel"
+                 data-bs-interval="{% widthratio top_banner.rotation_speed 1 1000 %}">
+
+
+                <div class="carousel-indicators">
+                    {% for item in top_banner_images %}
+                        <button type="button" data-bs-target="#customCarousel"
+                                data-bs-slide-to="{{ forloop.counter0 }}"
+                                class="{% if forloop.first %}active{% endif %}"
+                                aria-current="{% if forloop.first %}true{% endif %}"
+                                aria-label="{{ item.text }}"></button>
+                    {% endfor %}
+                </div>
+
+                <div class="carousel-inner">
+                    {% for slide in top_banner_images %}
+                        <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                            <a href="{{ slide.url }}" target="_blank">
+                                <img src="{{ slide.image.image_url.url }}"
+                                     class="d-block w-100"
+                                     alt="{{ slide.text }}">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5>{{ slide.text }}</h5>
+                                </div>
+                            </a>
+                        </div>
+                    {% endfor %}
+                </div>
+
+                <button class="carousel-control-prev" type="button" data-bs-target="#customCarousel"
+                        data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#customCarousel"
+                        data-bs-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </button>
+            </div>
+        {% endif %}
+    </div>
+
+</div>
+
+
+<div class="container container-main">
+    <main>
+        <div class="block-watch-today">
+            <div class="block-watch-today-title">
+                <h2><b>{% trans "watch-today" %}</b></h2>
+                <h2 id="current-date"></h2>
+            </div>
+            <div class="block-movies">
+                {% for m in movie_today %}
+                    <div class="block-movie-item">
+
+                        <a href="#">
+                            <img src="{{ m.main_image.url }}" alt="">
+                        </a>
+                        <a href="#"><b>{{ m.title }}</b></a>
+                        <div>
+                            <a class="button-movie-item" href="#">{% trans "buy-ticket" %}</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="block-watch-soon">
+            <div class="block-watch-soon-title">
+                <h2><b>{% trans "watch-soon" %}</b></h2>
+            </div>
+            <div class="block-movies">
+                {% get_current_language as lang %}
+                {% for m in movie_soon %}
+                    <div class="block-movie-item">
+                        <a href="#">
+                            <img src="{{ m.main_image.url }}" alt="">
+                        </a>
+                        <a><b>{{ m.title }}</b></a>
+                        <div>
+                            <a href="#" class="movie-soon-link">с {{ m.published_at|format_date_localized:lang }}</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+        </div>
+        <div class="block-shares">
+            <div class="sliders">
+                {% if news_banner.is_enabled %}
+                    <div class="block-watch-soon-title">
+                        <h2><b>{% trans "news-shares-title" %}</b></h2>
+                    </div>
+                    <div id="newsCarousel" class="carousel slide" data-bs-ride="carousel"
+                         data-bs-interval="{% widthratio news_banner.rotation_speed 1 1000 %}">
+
+                        <div class="carousel-indicators">
+                            {% for item in news_banner_images %}
+                                <button type="button" data-bs-target="#newsCarousel"
+                                        data-bs-slide-to="{{ forloop.counter0 }}"
+                                        class="{% if forloop.first %}active{% endif %}"
+                                        aria-current="{% if forloop.first %}true{% endif %}"
+                                        aria-label="{{ item.text }}"></button>
+                            {% endfor %}
+                        </div>
+
+                        <div class="carousel-inner carousel-inner-shares">
+                            {% for slide in news_banner_images %}
+                                <div class="carousel-item carousel-item-shares {% if forloop.first %}active{% endif %}">
+                                    <a href="{{ slide.url }}" target="_blank">
+                                        <img src="{{ slide.image.image_url.url }}"
+                                             class="d-block w-100"
+                                             alt="{{ slide.text }}">
+                                        <div class="carousel-caption d-none d-md-block">
+                                            <h5>{{ slide.text }}</h5>
+                                        </div>
+                                    </a>
+                                </div>
+                            {% endfor %}
+                        </div>
+
+                        <button class="carousel-control-prev" type="button" data-bs-target="#newsCarousel"
+                                data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon"></span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#newsCarousel"
+                                data-bs-slide="next">
+                            <span class="carousel-control-next-icon"></span>
+                        </button>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+        {% if main_page.is_enabled %}
+            <div class="block-seo">
+                <div class="block-seo-title">
+                    <h6><b>CEO текст</b></h6>
+                </div>
+                <div class="block-seo-texts">
+                    {{ main_page.seo_text }}
+                </div>
+            </div>
+        {% endif %}
+    </main>
+</div>
+
+
+<div class="container">
+    <footer>
+        <div class="line-block" style="flex-grow: 1;"></div>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>{% trans "mobile-title" %}</h3>
+                <div class="app-links">
+                    <a href="https://play.google.com/store/apps?hl=uk&pli=1" target="_blank">
+                        <img src="{% static 'main/img/icons/google-play.png' %}" alt="google-play">
+                        Google Play
+                    </a>
+                    <a href="https://www.apple.com/app-store/" target="_blank">
+                        <img src="{% static 'main/img/icons/apple.png' %}" alt="app-store">
+                        App Store
+                    </a>
+                </div>
+                <div class="developer-info">
+
+                    {% trans "Разработка сайтов: AVADA-MEDIA" %}
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h3><a href="#">{% trans "Poster" %}</a></h3>
+                <ul>
+                    <li><a href="#">{% trans "Schedule" %}</a></li>
+                    <li><a href="#">{% trans "coming-soon" %}</a></li>
+                    <li><a href="#">{% trans "Movie-theaters" %}</a></li>
+                    <li><a href="#">{% trans "Promotions" %}</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3><a href="#">{% trans "About-cinema" %}</a></h3>
+                <ul>
+                    <li><a href="#">{% trans "News" %}</a></li>
+                    <li><a href="#">{% trans "Advertisement" %}</a></li>
+                    <li><a href="#">{% trans "Cafe-Bar" %}</a></li>
+                    <li><a href="#">{% trans "Contacts" %}</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="https://x.com/" target="_blank"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="https://vk.com/" target="_blank"><i class="fa-brands fa-vk"></i></a>
+                    <a href="https://ok.ru/" target="_blank"><i class="fa-brands fa-odnoklassniki"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy;KinoCMS 2016. All rights reserved
+        </div>
+    </footer>
+</div>
+<script src="{% static 'main/js/header-menu.js' %}" defer></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</body>
+</html>

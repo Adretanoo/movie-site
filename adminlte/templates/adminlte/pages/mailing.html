@@ -1,5 +1,92 @@
 {% extends 'adminlte/base.html' %}
+{% load static %}
 
+{% block links %}
+    <link rel="stylesheet" href="{% static 'adminlte/dist/css/alt/malling.css' %}">
+{% endblock %}
 {% block content %}
-<h1>Розсилка</h1>
+    <div class="block-wrapper">
+        <div class="block-malling-sms">
+            <h2><b>SMS</b></h2>
+            <div class="block-sms-top">
+                <p>Выбрать пользователей кому слать</p>
+                <div>
+                    <label for="users-all">Все пользователи</label>
+                    <input name="user_filter" id="users-all" value="Все пользователи" type="radio" checked>
+                </div>
+                <div>
+                    <label for="users">Выборочно</label>
+                    <input name="user_filter" id="users" value="Выборочно" type="radio">
+                </div>
+                <button class="button-style button-sms-users">Выбрать пользователей</button>
+            </div>
+            <div class="block-sms-main">
+                <div class="textarea-block">
+                    <div class="block-counter">
+                        <label for="sms-massage">Текст SMS</label>
+                        <p>Символов:&nbsp;<span id="char-count">0</span></p>
+                    </div>
+                    <textarea placeholder="Введите текст" name="" id="sms-massage" cols="30" rows="10"></textarea>
+                </div>
+                <div class="block-progress">
+                    <h6>Кол-во SMS:</h6>
+                    <h6>Рассылка выполнена на:</h6>
+                </div>
+            </div>
+            <button class="button-style button-sms-submit">Начать рассылку</button>
+        </div>
+
+
+        <div class="block-malling-email">
+            <h2><b>E-mail</b></h2>
+            <div class="block-email-top">
+                <p>Выбрать пользователей кому слать</p>
+                <div>
+                    <label for="users-all-email">Все пользователи</label>
+                    <input name="user_filter_email" id="users-all-email" value="Все пользователи" type="radio" checked>
+                </div>
+                <div>
+                    <label for="users-email">Выборочно</label>
+                    <input name="user_filter_email" id="users-email" value="Выборочно" type="radio">
+                </div>
+                <button class="button-style button-email-users">Выбрать пользователей</button>
+            </div>
+            <div class="block-full-email">
+                <div class="block-email-left">
+                    <div class="block-email-upload">
+                        <p>Загрузить HTML-письмо</p>
+                        <button class="button-style" id="upload-html-button">Загрузить</button>
+                        <input type="file" id="actual-file-input" accept=".html,.htm" style="display: none;">
+                    </div>
+                    <div class="block-email-info">
+                        <p>Загружен файл:&nbsp;</p>
+                        <span id="uploaded-file-name"></span>
+                    </div>
+                    <div class="block-email-used">
+                        <p>Шаблон используемый в текущей рассылке:&nbsp;</p>
+                        <span id="current-template-name"></span>
+                    </div>
+                    <div class="block-email-progress">
+                        <p>Кол-во писем:&nbsp;</p>
+                        <p>Рассылка выполнена на:&nbsp;</p>
+                    </div>
+                </div>
+
+                <div class="block-email-right">
+                    <p>Список последних загруженных шаблонов</p>
+                    <ul class="template-list" id="template-list">
+                    </ul>
+                </div>
+            </div>
+            <button class="button-style button-sms-submit" id="start-malling-button">Начать рассылку</button>
+        </div>
+    </div>
+
+
+
+
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static 'adminlte/dist/js/pages/mailing.js' %}"></script>
 {% endblock %}

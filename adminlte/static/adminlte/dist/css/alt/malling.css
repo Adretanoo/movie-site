@@ -1,0 +1,170 @@
+p {
+    margin: 0;
+}
+
+label {
+    cursor: pointer;
+    font-weight: normal !important;
+    margin: 0;
+}
+.container-fluid {
+    padding: 20px 30px 60px;
+}
+.block-malling-email  {
+    margin-top: 30px;
+}
+.block-malling-sms,.block-malling-email {
+    padding: 16px;
+    border: 1px solid black;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 20px;
+}
+.block-malling-email {
+    padding: 16px 80px;
+}
+.block-malling-sms h2,.block-malling-email h2 {
+    max-width: max-content;
+    margin: 10px auto 30px;
+}
+
+.block-sms-top,.block-email-top {
+    display: flex;
+    gap: 40px;
+}
+
+
+.textarea-block {
+    width: 100%;
+    max-width: 600px;
+}
+
+.textarea-block textarea {
+    width: 100%;
+}
+
+.textarea-block div {
+    display: flex;
+    justify-content: space-between;
+    height: 30px;
+}
+
+.block-progress {
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    margin-top: 40px;
+}
+
+.block-sms-main {
+    width: 100%;
+
+    display: flex;
+    gap: 50px;
+}
+
+.button-style {
+    padding: 4px 14px;
+    border-radius: 6px;
+    border: 1px solid #000;
+    background-color: #f2f2f2;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.button-style:hover {
+    background-color: #ddd;
+}
+
+.button-sms-users {
+    padding: 4px 20px;
+    width: max-content;
+}
+
+.button-sms-submit {
+    padding: 4px 20px;
+    width: max-content;
+    margin: 10px auto;
+}
+
+
+.block-full-email {
+    margin-top: 20px;
+    display: flex;
+    gap: 30px;
+    align-items: start;
+
+}
+
+.block-email-upload,.block-email-info,.block-email-used {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin: 8px 0;
+}
+.block-email-progress {
+    display: flex;
+    margin-top: 30px;
+    gap: 100px;
+}
+
+.block-email-info {
+
+}
+
+.block-email-left {
+    max-width: 500px;
+    width: 100%;
+}
+.block-email-right {
+    padding: 16px;
+    border: 1px solid black;
+    max-width: 400px;
+    min-height: 200px;
+    width: 100%;
+    display: flex;
+    border-radius: 10px;
+    flex-direction: column;
+}
+
+
+
+
+.template-list {
+    list-style: none;
+    padding: 0;
+    margin: 5px 0 0 10px;
+}
+
+.template-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 3px;
+}
+
+.template-item input[type="radio"] {
+    margin-right: 10px;
+}
+
+.template-item button {
+    background: transparent;
+    border: none;
+    color: red;
+    cursor: pointer;
+}
+.template-item label {
+    max-width: 200px;
+    width: 100%;
+}
+.button-email-users {
+    display: none;
+}
+
+#current-template-name, #uploaded-file-name {
+    color: #0c84ff;
+}

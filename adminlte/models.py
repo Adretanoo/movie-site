@@ -23,7 +23,7 @@ class RotationSpeed(models.IntegerChoices):
 
 class BackgroundType(models.TextChoices):
     BACKGROUND_PHOTO = 'background_photo', 'Фото на фон'
-    JUST_PHOTO = 'just_photo', 'Просто фото'
+    JUST_BACKGROUND = 'just_background', 'Просто фон'
 
 
 class PublicationType(models.TextChoices):
@@ -271,3 +271,4 @@ class ContactsPageLocation(models.Model):
 
     class Meta:
         db_table = "contacts_page_location"
+

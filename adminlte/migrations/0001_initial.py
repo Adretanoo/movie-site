@@ -18,7 +18,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('image', models.ImageField(upload_to='banners/bg/%Y/%m/%d/')),
-                ('background_type', models.CharField(choices=[('background_photo', 'Фото на фон'), ('just_photo', 'Просто фото')], default='background_photo', max_length=20)),
+                ('background_type', models.CharField(choices=[('background_photo', 'Фото на фон'), ('just_background', 'Просто фото')], default='background_photo', max_length=20)),
             ],
             options={
                 'db_table': 'background_banner',
