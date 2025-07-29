@@ -99,6 +99,16 @@ msgstr "Дивитися сьогодні,"
 msgid "buy-ticket"
 msgstr "Купити білет"
 
+
+
+msgid "vip-hall"
+msgstr "Vip - зал"
+
+
+msgid "children-room"
+msgstr "Дитяча комната"
+
+
 #: main/templates/main/page/index.html:290
 msgid "watch-soon"
 msgstr "Дивитися скоро"

@@ -3,9 +3,7 @@ from datetime import date
 
 from django.shortcuts import render
 from adminlte.models import MainPage, TopBanner, TopBannerImage, BackgroundBanner, BackgroundType, Movie, NewsBanner, \
-    NewsBannerImage
-
-
+    NewsBannerImage, Publication, PublicationType
 
 
 def main(request):
@@ -19,6 +17,9 @@ def main(request):
     news_banner = NewsBanner.objects.first()
     news_banner_images = NewsBannerImage.objects.all()
 
+    news_pages = Publication.objects.filter(publication_type=PublicationType.NEW_PAGE)
+    print(news_pages)
+
 
 
     context = {
@@ -31,5 +32,6 @@ def main(request):
         'movie_soon': movie_soon,
         'news_banner': news_banner,
         'news_banner_images': news_banner_images,
+        'news_pages': news_pages,
     }
     return render(request, 'main/page/index.html',context)

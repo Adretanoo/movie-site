@@ -116,6 +116,15 @@ msgstr "Мобильные приложения"
 
 msgid "search-title"
 msgstr "Поиск"
+
+
+msgid "vip-hall"
+msgstr "Vip - зал"
+
+msgid "children-room"
+msgstr "Детская комната"
+
+
 #: venv/lib/python3.12/site-packages/ajax_datatable/columns.py:113
 #: venv/lib/python3.12/site-packages/ajax_datatable/views.py:196
 #: venv/lib/python3.12/site-packages/ajax_datatable/views.py:198
