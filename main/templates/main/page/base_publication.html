@@ -1,0 +1,46 @@
+{% extends 'main/page/base.html' %}
+{% load static %}
+{% load i18n %}
+{% load date_filters %}
+{% get_current_language as lang %}
+{% get_current_language as CURRENT_LANGUAGE %}
+
+
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'main/css/publication.css' %}">
+
+    <meta name="keywords" content="{{ publication.seo.keywords }}"/>
+    <meta name="description" content="{{ publication.seo.description }}"/>
+
+
+    <title>{{ publication.seo.title }}</title>
+{% endblock %}
+
+{% block content %}
+    {% if publication.is_enabled %}
+        <div class="block-image">
+            <img src="{{ publication.main_image.url }}" alt="">
+        </div>
+        <div class="container">
+            <div class="block-information">
+                <h3>{{ publication.title }}</h3>
+                <div>{{ desc_with_video|safe }}</div>
+                <div class="gallery-container">
+                    {% for item in gallery %}
+                        <div class="gallery-item">
+                            <img src="{{ item.image.image_url.url }}"
+                                 alt="{{ item.image.title|default:'Зображення галереї' }}">
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}
+
+
+
+
+{% block scripts %}
+{% endblock %}

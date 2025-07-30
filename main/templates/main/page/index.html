@@ -8,128 +8,137 @@
 {% get_current_language as CURRENT_LANGUAGE %}
 
 
+{% block head %}
+    <meta name="keywords" content="{{ main_page.seo.keywords }}"/>
+    <meta name="description" content="{{ main_page.seo.description }}"/>
+
+
+    <title>{{ main_page.seo.title }}</title>
+{% endblock %}
+
 {% block content %}
 
-<div class="header-wrapper" style="
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100vh;
-        z-index: -100;
+    <div class="header-wrapper" style="
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: -100;
 
-        {% if bg_banner.background_type == bg_type.BACKGROUND_PHOTO %}
-            background-image: url('{{ bg_banner.image.url }}');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-        {% elif bg_banner.background_type == bg_type.JUST_BACKGROUND %}
-            background-color: white;
-        {% endif %}
-        ">
-</div>
+            {% if bg_banner.background_type == bg_type.BACKGROUND_PHOTO %}
+                background-image: url('{{ bg_banner.image.url }}');
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+            {% elif bg_banner.background_type == bg_type.JUST_BACKGROUND %}
+                background-color: white;
+            {% endif %}
+            ">
+    </div>
 
 
-<div class="container container-main">
-    <main>
-        <div class="block-watch-today">
-            <div class="block-watch-today-title">
-                <h2><b>{% trans "watch-today" %}</b></h2>
-                <h2 id="current-date"></h2>
-            </div>
-            <div class="block-movies">
-                {% for m in movie_today %}
-                    <div class="block-movie-item">
-
-                        <a href="#">
-                            <img src="{{ m.main_image.url }}" alt="">
-                        </a>
-                        <a href="#"><b>{{ m.title }}</b></a>
-                        <div>
-                            <a class="button-movie-item" href="#">{% trans "buy-ticket" %}</a>
-                        </div>
-                    </div>
-                {% endfor %}
-            </div>
-        </div>
-        <div class="block-watch-soon">
-            <div class="block-watch-soon-title">
-                <h2><b>{% trans "watch-soon" %}</b></h2>
-            </div>
-            <div class="block-movies">
-                {% get_current_language as lang %}
-                {% for m in movie_soon %}
-                    <div class="block-movie-item">
-                        <a href="#">
-                            <img src="{{ m.main_image.url }}" alt="">
-                        </a>
-                        <a><b>{{ m.title }}</b></a>
-                        <div>
-                            <a href="#" class="movie-soon-link">с {{ m.published_at|format_date_localized:lang }}</a>
-                        </div>
-                    </div>
-                {% endfor %}
-            </div>
-
-        </div>
-        <div class="block-shares">
-            <div class="sliders">
-                {% if news_banner.is_enabled %}
-                    <div class="block-watch-soon-title">
-                        <h2><b>{% trans "news-shares-title" %}</b></h2>
-                    </div>
-                    <div id="newsCarousel" class="carousel slide" data-bs-ride="carousel"
-                         data-bs-interval="{% widthratio news_banner.rotation_speed 1 1000 %}">
-
-                        <div class="carousel-indicators">
-                            {% for item in news_banner_images %}
-                                <button type="button" data-bs-target="#newsCarousel"
-                                        data-bs-slide-to="{{ forloop.counter0 }}"
-                                        class="{% if forloop.first %}active{% endif %}"
-                                        aria-current="{% if forloop.first %}true{% endif %}"
-                                        aria-label="{{ item.text }}"></button>
-                            {% endfor %}
-                        </div>
-
-                        <div class="carousel-inner carousel-inner-shares">
-                            {% for slide in news_banner_images %}
-                                <div class="carousel-item carousel-item-shares {% if forloop.first %}active{% endif %}">
-                                    <a href="{{ slide.url }}" target="_blank">
-                                        <img src="{{ slide.image.image_url.url }}"
-                                             class="d-block w-100"
-                                             alt="{{ slide.text }}">
-                                        <div class="carousel-caption d-none d-md-block">
-                                            <h5>{{ slide.text }}</h5>
-                                        </div>
-                                    </a>
-                                </div>
-                            {% endfor %}
-                        </div>
-
-                        <button class="carousel-control-prev" type="button" data-bs-target="#newsCarousel"
-                                data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon"></span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#newsCarousel"
-                                data-bs-slide="next">
-                            <span class="carousel-control-next-icon"></span>
-                        </button>
-                    </div>
-                {% endif %}
-            </div>
-        </div>
-        {% if main_page.is_enabled %}
-            <div class="block-seo">
-                <div class="block-seo-title">
-                    <h6><b>CEO текст</b></h6>
+    <div class="container container-main">
+        <main>
+            <div class="block-watch-today">
+                <div class="block-watch-today-title">
+                    <h2><b>{% trans "watch-today" %}</b></h2>
+                    <h2 id="current-date"></h2>
                 </div>
-                <div class="block-seo-texts">
-                    {{ main_page.seo_text }}
+                <div class="block-movies">
+                    {% for m in movie_today %}
+                        <div class="block-movie-item">
+
+                            <a href="#">
+                                <img src="{{ m.main_image.url }}" alt="">
+                            </a>
+                            <a href="#"><b>{{ m.title }}</b></a>
+                            <div>
+                                <a class="button-movie-item" href="#">{% trans "buy-ticket" %}</a>
+                            </div>
+                        </div>
+                    {% endfor %}
                 </div>
             </div>
-        {% endif %}
-    </main>
-</div>
+            <div class="block-watch-soon">
+                <div class="block-watch-soon-title">
+                    <h2><b>{% trans "watch-soon" %}</b></h2>
+                </div>
+                <div class="block-movies">
+                    {% get_current_language as lang %}
+                    {% for m in movie_soon %}
+                        <div class="block-movie-item">
+                            <a href="#">
+                                <img src="{{ m.main_image.url }}" alt="">
+                            </a>
+                            <a><b>{{ m.title }}</b></a>
+                            <div>
+                                <a href="#"
+                                   class="movie-soon-link">с {{ m.published_at|format_date_localized:lang }}</a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+
+            </div>
+            <div class="block-shares">
+                <div class="sliders">
+                    {% if news_banner.is_enabled %}
+                        <div class="block-watch-soon-title">
+                            <h2><b>{% trans "news-shares-title" %}</b></h2>
+                        </div>
+                        <div id="newsCarousel" class="carousel slide" data-bs-ride="carousel"
+                             data-bs-interval="{% widthratio news_banner.rotation_speed 1 1000 %}">
+
+                            <div class="carousel-indicators">
+                                {% for item in news_banner_images %}
+                                    <button type="button" data-bs-target="#newsCarousel"
+                                            data-bs-slide-to="{{ forloop.counter0 }}"
+                                            class="{% if forloop.first %}active{% endif %}"
+                                            aria-current="{% if forloop.first %}true{% endif %}"
+                                            aria-label="{{ item.text }}"></button>
+                                {% endfor %}
+                            </div>
+
+                            <div class="carousel-inner carousel-inner-shares">
+                                {% for slide in news_banner_images %}
+                                    <div class="carousel-item carousel-item-shares {% if forloop.first %}active{% endif %}">
+                                        <a href="{{ slide.url }}" target="_blank">
+                                            <img src="{{ slide.image.image_url.url }}"
+                                                 class="d-block w-100"
+                                                 alt="{{ slide.text }}">
+                                            <div class="carousel-caption d-none d-md-block">
+                                                <h5>{{ slide.text }}</h5>
+                                            </div>
+                                        </a>
+                                    </div>
+                                {% endfor %}
+                            </div>
+
+                            <button class="carousel-control-prev" type="button" data-bs-target="#newsCarousel"
+                                    data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon"></span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#newsCarousel"
+                                    data-bs-slide="next">
+                                <span class="carousel-control-next-icon"></span>
+                            </button>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            {% if main_page.is_enabled %}
+                <div class="block-seo">
+                    <div class="block-seo-title">
+                        <h6><b>CEO текст</b></h6>
+                    </div>
+                    <div class="block-seo-texts">
+                        {{ main_page.seo_text }}
+                    </div>
+                </div>
+            {% endif %}
+        </main>
+    </div>
 {% endblock %}
 
 

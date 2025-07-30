@@ -1,0 +1,16 @@
+{% load static %}
+{% load i18n %}
+
+
+<h3><a href="{% url 'about_page' %}">{% trans "About-cinema" %}</a></h3>
+<ul>
+    <li><a class="dropdown-item" href="{% url 'news_page' %}">{% trans "News" %}</a></li>
+    <li><a class="dropdown-item" href="{% url 'cafe_bar_page' %}">{% trans "Cafe-Bar" %}</a></li>
+    <li><a class="dropdown-item" href="{% url 'vip_hall_page' %}">{% trans "vip-hall" %}</a></li>
+    <li><a class="dropdown-item" href="{% url 'children_room_page' %}">{% trans "children-room" %}</a></li>
+    <li><a class="dropdown-item" href="{% url 'advertising_page' %}">{% trans "Advertisement" %}</a></li>
+    <li><a class="dropdown-item" href="#">{% trans "Contacts" %}</a></li>
+    {% for n in news_pages %}
+        <li><a class="dropdown-item" href="">{{ n.title }}</a></li>
+    {% endfor %}
+</ul>

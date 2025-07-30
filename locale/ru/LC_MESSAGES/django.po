@@ -98,6 +98,14 @@ msgstr "Купить билет"
 msgid "watch-soon"
 msgstr "Смотрите скоро"
 
+msgid "news-h4"
+msgstr "Новости"
+
+
+msgid "promotions-and-discounts"
+msgstr "Акции и скидки"
+
+
 #: main/templates/main/page/index.html:310
 msgid "news-shares-title"
 msgstr "Новости и Акции"

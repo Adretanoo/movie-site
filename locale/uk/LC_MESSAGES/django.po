@@ -87,6 +87,14 @@ msgstr "Мобільні додатки"
 msgid "login"
 msgstr "Увійти"
 
+msgid "promotions-and-discounts"
+msgstr "Акції та знижки"
+
+
+msgid "news-h4"
+msgstr "Новини"
+
+
 #: main/templates/main/page/index.html:213
 msgid "register"
 msgstr "Зареєструватися"

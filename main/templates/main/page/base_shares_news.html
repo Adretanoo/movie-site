@@ -1,0 +1,143 @@
+{% extends 'main/page/base.html' %}
+{% load static %}
+{% load i18n %}
+
+
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'main/css/publication.css' %}">
+
+    {% if seo_global_page %}
+        {% for s in seo_global_page %}
+            <meta name="keywords" content="{{ s.keywords }}"/>
+            <meta name="description" content="{{ s.description }}"/>
+            <title>{{ s.title }}</title>
+        {% endfor %}
+    {% endif %}
+
+{% endblock %}
+
+
+{% block content %}
+    <div class="sliders">
+        {% if top_banner.is_enabled %}
+            <div id="customCarousel" class="carousel slide" data-bs-ride="carousel"
+                 data-bs-interval="{% widthratio top_banner.rotation_speed 1 1000 %}">
+
+
+                <div class="carousel-indicators">
+                    {% for item in top_banner_images %}
+                        <button type="button" data-bs-target="#customCarousel"
+                                data-bs-slide-to="{{ forloop.counter0 }}"
+                                class="{% if forloop.first %}active{% endif %}"
+                                aria-current="{% if forloop.first %}true{% endif %}"
+                                aria-label="{{ item.text }}"></button>
+                    {% endfor %}
+                </div>
+
+                <div class="carousel-inner">
+                    {% for slide in top_banner_images %}
+                        <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                            <a href="{{ slide.url }}" target="_blank">
+                                <img src="{{ slide.image.image_url.url }}"
+                                     class="d-block w-100"
+                                     alt="{{ slide.text }}">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5>{{ slide.text }}</h5>
+                                </div>
+                            </a>
+                        </div>
+                    {% endfor %}
+                </div>
+
+                <button class="carousel-control-prev" type="button" data-bs-target="#customCarousel"
+                        data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#customCarousel"
+                        data-bs-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </button>
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="container">
+        <div class="title-main">
+            {% if publication_type == pub_type.SHARES %}
+                <h2 class="title-main-shares">{% trans 'promotions-and-discounts' %}</h2>
+            {% else %}
+                <h2>{% trans 'news-h4' %}</h2>
+            {% endif %}
+        </div>
+
+        <div class="block-container-items">
+            {% for item in pub %}
+                <div class="block-item">
+                    <div class="block-item-img">
+                        <img src="{{ item.main_image.url }}" alt="image">
+                    </div>
+                    <div class="block-item-content">
+                        <a href="
+
+
+
+                                {% if publication_type == pub_type.SHARES %}{% url 'shares_card' item.pk %}{% else %}{% url 'news_card' item.pk %}{% endif %}">{{ item.title }}</a>
+                        <div class="block-item-date">
+                            <p>{{ item.published_at|date:"d.m.Y" }}</p>
+                            <div class="block-name-icon">
+                                Dreamtown
+                            </div>
+                            <div class="block-name-icon">
+                                Gulliver
+                            </div>
+                        </div>
+                        <p class="block-item-description">{{ item.description }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        {% if pub.paginator.count > 3 %}
+            <div class="pagination-container">
+                {% if pub.has_previous %}
+                    <a href="?page={{ pub.previous_page_number }}" class="pagination-item pagination-prev">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M14 17L9 12L14 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                  stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                {% endif %}
+                {% for page_num in pub.paginator.page_range %}
+                    <a href="?page={{ page_num }}"
+                       class="pagination-item {% if page_num == pub.number %}active-page{% endif %}">
+                        {{ page_num }}
+                    </a>
+                {% endfor %}
+
+                {% if pub.has_next %}
+                    <a href="?page={{ pub.next_page_number }}" class="pagination-item pagination-next-button">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M10 17L15 12L10 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                  stroke-linejoin="round"/>
+                            <path d="M15 17L20 12L15 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                  stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                {% endif %}
+            </div>
+        {% endif %}
+
+
+    </div>
+
+{% endblock %}
+
+
+
+
+
+
+
+
+{% block scripts %}
+{% endblock %}
