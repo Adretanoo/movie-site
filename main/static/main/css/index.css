@@ -505,7 +505,7 @@ footer {
 .footer-section ul li a {
     text-decoration: none;
     color: #555;
-    font-size: 15px;
+    font-size: .8rem;
 }
 
 .footer-section ul li a:hover {
@@ -558,7 +558,11 @@ footer {
     background-color: black;
     border-radius: 5px;
 }
-
+.block-wrapper-items-footer {
+    flex-wrap: wrap;
+    display: flex;
+    gap: 15px;
+}
 @media (max-width: 768px) {
     .footer-content {
         flex-direction: column;
@@ -635,6 +639,16 @@ footer {
 
     .search-col, .social-icons-col {
         display: none !important;
+    }
+}
+
+
+@media (max-width: 575px){
+    .main-navbar-row {
+        margin-right: 15px;
+    }
+    .logo-link {
+        margin-left: 15px;
     }
 }
 

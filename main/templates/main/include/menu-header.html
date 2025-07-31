@@ -1,23 +1,40 @@
 {% load static %}
 {% load i18n %}
 
-
-<div class="block-about-cinema-a" style="gap: 5px;">
-    <a class="nav-link" href="{% url 'about_page' %}">{% trans "About-cinema" %}</a>
-    <a class="nav-link dropdown-toggle dropdown-toggle-split"
-       href="#" id="aboutUsDropdown"
-       role="button" data-bs-toggle="dropdown" aria-expanded="false">
-        <span class="visually-hidden">Toggle Dropdown</span>
+<div class="block-about-cinema-a dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="aboutUsDropdown" role="button" data-bs-toggle="dropdown"
+       aria-expanded="false">
+        {% trans "About-cinema" %}
     </a>
     <ul class="dropdown-menu" aria-labelledby="aboutUsDropdown">
+        {% if menu_header.about.is_enabled %}
+            <li><a class="dropdown-item" href="{% url 'about_page' %}">{% trans "About-cinema" %}</a></li>
+        {% endif %}
+
         <li><a class="dropdown-item" href="{% url 'news_page' %}">{% trans "News" %}</a></li>
-        <li><a class="dropdown-item" href="{% url 'cafe_bar_page' %}">{% trans "Cafe-Bar" %}</a></li>
-        <li><a class="dropdown-item" href="{% url 'vip_hall_page' %}">{% trans "vip-hall" %}</a></li>
-        <li><a class="dropdown-item" href="{% url 'children_room_page' %}">{% trans "children-room" %}</a></li>
-        <li><a class="dropdown-item" href="{% url 'advertising_page' %}">{% trans "Advertisement" %}</a></li>
-        <li><a class="dropdown-item" href="#">{% trans "Contacts" %}</a></li>
+
+        {% if menu_header.cafe_bar.is_enabled %}
+            <li><a class="dropdown-item" href="{% url 'cafe_bar_page' %}">{% trans "Cafe-Bar" %}</a></li>
+        {% endif %}
+
+        {% if menu_header.vip_hall.is_enabled %}
+            <li><a class="dropdown-item" href="{% url 'vip_hall_page' %}">{% trans "vip-hall" %}</a></li>
+        {% endif %}
+
+        {% if menu_header.children_room.is_enabled %}
+            <li><a class="dropdown-item" href="{% url 'children_room_page' %}">{% trans "children-room" %}</a></li>
+        {% endif %}
+
+        {% if menu_header.advertisement.is_enabled %}
+            <li><a class="dropdown-item" href="{% url 'advertising_page' %}">{% trans "Advertisement" %}</a></li>
+        {% endif %}
+
+
+        <li><a class="dropdown-item" href="{% url 'contact_page' %}">{% trans "Contacts" %}</a></li>
         {% for n in news_pages %}
-            <li><a class="dropdown-item" href="">{{ n.title }}</a></li>
+            {% if n.is_enabled %}
+                <li><a class="dropdown-item" href="{% url 'new_page' n.pk %}">{{ n.title }}</a></li>
+            {% endif %}
         {% endfor %}
     </ul>
 </div>

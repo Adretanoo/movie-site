@@ -29,12 +29,12 @@ class BackgroundType(models.TextChoices):
 class PublicationType(models.TextChoices):
     NEWS = 'news', 'Новости'
     SHARES = 'shares', 'Акции'
-    ABOUT = 'about', 'Про нас'
-    CAFE_BAR = 'cafe_bar', 'Кафе/Бар'
-    VIP_HALL = 'vip_hall', 'VIP-зал'
-    ADVERTISING = 'advertising', 'Реклама'
-    CHILDREN_ROOM = 'children_room', 'Дитяча кімната'
-    NEW_PAGE = 'new_page','Новая страница'
+    ABOUT = 'about', ''
+    CAFE_BAR = 'cafe_bar', ''
+    VIP_HALL = 'vip_hall', ''
+    ADVERTISING = 'advertising', ''
+    CHILDREN_ROOM = 'children_room', ''
+    NEW_PAGE = 'new_page','страници'
 
 # END ENUMS
 

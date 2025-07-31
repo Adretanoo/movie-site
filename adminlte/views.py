@@ -659,6 +659,13 @@ def contacts_page(request):
 
         with transaction.atomic():
             if form.is_valid() and formset.is_valid() and seo_form.is_valid():
+
+                instances = formset.save(commit=False)
+                for i, instance in enumerate(instances):
+                    if i == 0:
+                        instance.is_enabled = True
+                    instance.save()
+
                 contacts_page_instance = form.save(commit=False)
                 seo_instance = seo_form.save()
                 contacts_page_instance.seo = seo_instance
@@ -757,9 +764,7 @@ def user_edit(request, pk):
     return render(request, 'adminlte/pages/edit/user_edit.html', context)
 
 
-
 def mailing(request):
-
     context = {
         'menu': menu
     }

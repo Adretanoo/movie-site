@@ -10,6 +10,8 @@ urlpatterns = [
     path('vip-hall/', views.vip_hall_page, name='vip_hall_page'),
     path('advertising/', views.advertising_page, name='advertising_page'),
     path('children-room/', views.children_room_page, name='children_room_page'),
+    path('contacts/', views.contact_page, name='contact_page'),
+    path('page/<int:pk>/',views.new_page, name='new_page'),
 
     path('shares/', views.shares_page, name='shares_page'),
     path('news/', views.news_page, name='news_page'),
