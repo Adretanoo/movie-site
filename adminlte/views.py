@@ -7,16 +7,13 @@ from django.db.models.aggregates import Count
 from django.db.models.functions.datetime import ExtractYear, TruncDate
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
-from django.urls.base import reverse_lazy, reverse
+from django.urls.base import reverse
 from django.utils.formats import date_format
 from django.views.decorators.http import require_POST
 from ajax_datatable.views import AjaxDatatableView
-from django.contrib.auth.models import Permission
-
+from user.models import User
 from adminlte.models import Publication, Images, PublicationType, TopBanner, NewsBanner, BackgroundBanner, \
-    TopBannerImage, NewsBannerImage, Movie, MovieGallery, SeoMetadata, CardCinema, CardHall, MainPage, ContactsPage, \
-    User, Gender, City
-from .fake_data import generate_fake_users
+    TopBannerImage, NewsBannerImage, Movie, MovieGallery, SeoMetadata, CardCinema, CardHall, MainPage, ContactsPage, Gender, City
 from .forms import PublicationForm, SeoMetadataForm, BackgroundBannerForm, TopBannerForm, TopBannerImageForm, \
     TopBannerImageFormSet, NewsBannerForm, NewsBannerImageFormSet, MovieForm, MovieGalleryFormSet, CardCinemaForm, \
     CardCinemaGalleryFormSet, CardHallForm, CardHallGalleryForm, CardHallGalleryFormSet, PublicationGalleryFormSet, \

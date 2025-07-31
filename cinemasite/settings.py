@@ -30,6 +30,8 @@ menu = [
     {'title': 'Рассылка', 'url_name': 'mailing', 'group': ['mailing'], 'icon': 'fa-envelope'},
 ]
 
+
+AUTH_USER_MODEL = "user.User"
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -58,6 +60,7 @@ INSTALLED_APPS = [
     'django_extensions',
     'ajax_datatable',
     'main',
+    'user',
     'widget_tweaks',
     'modeltranslation',
     "debug_toolbar",

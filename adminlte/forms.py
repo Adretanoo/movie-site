@@ -1,9 +1,10 @@
 from django import forms
 from django.forms import DateInput, ClearableFileInput, inlineformset_factory
 
+from user.models import User
 from .models import Publication, SeoMetadata, Images, TopBanner, TopBannerImage, NewsBanner, NewsBannerImage, \
     BackgroundBanner, Movie, MovieGallery, CardCinema, CardCinemaGallery, CardHall, CardHallGallery, PublicationType, \
-    PublicationGallery, MainPage, ContactsPage, ContactsPageLocation, User, Language, Gender, City
+    PublicationGallery, MainPage, ContactsPage, ContactsPageLocation, Language, Gender, City
 
 
 class PublicationForm(forms.ModelForm):
