@@ -189,6 +189,16 @@ msgid "hall_title"
 msgstr "Количество залов"
 
 
+msgid "cinema_session_title"
+msgstr "Смотрите сегодня"
+
+msgid "session_schedule_button_all"
+msgstr "Расписание всех сеансов"
+
+
+msgid "is_no_card_title"
+msgstr "Нету"
+
 msgid "session_schedule_button"
 msgstr "Расписание сеансов"
 

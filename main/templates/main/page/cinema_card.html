@@ -24,17 +24,32 @@
             <div class="col-md-2 col-lg-2 block-nav">
                 <div class="block_halls">
 
-                    <ul class="list-group mt-5">
-                        <h4 class="mb-4">{% trans 'hall_title' %}: {{ halls_count }}</h4>
-                        {% if halls_count > 0 %}
-                            {% for h in cinema_halls %}
-                                <a href="{% url 'hall_card_page' cinema.pk %}" class="list-group-item list-group-item-action">{{ h.name }}</a>
-                            {% endfor %}
-                        {% else %}
-                            <p class="list-group-item list-group-item-action">Нету</p>
-                        {% endif %}
 
-                    </ul>
+                    <div class="block_nav mt-5">
+                        <div class="block_nav_halls">
+                            <h4 class="mb-4">{% trans 'hall_title' %}: {{ halls_count }}</h4>
+                            <ul class="list-group">
+
+                                {% if halls_count > 0 %}
+                                    {% for h in cinema_halls %}
+                                        <a href="{% url 'hall_card_page' cinema.pk %}"
+                                           class="list-group-item list-group-item-action">{{ h.name }}</a>
+                                    {% endfor %}
+                                {% else %}
+                                    <li class="list-group-item list-group-item-action">{% trans 'is_no_card_title' %}</li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                        <div class="block_nav_session mb-5">
+                            <h4 class="mb-4">{% trans 'cinema_session_title' %}:</h4>
+                            <ul class="list-group">
+                                <li class="list-group-item list-group-item-action">{% trans 'is_no_card_title' %}</li>
+                            </ul>
+                        </div>
+                        <a class="session_schedule_button_all" href="#">
+                            {% trans 'session_schedule_button_all' %}
+                        </a>
+                    </div>
                 </div>
             </div>
 

@@ -131,6 +131,16 @@ msgstr "Кінотеатри"
 msgid "card_number_register"
 msgstr "Номер карти"
 
+msgid "cinema_session_title"
+msgstr "Дивіться сьогодні"
+
+
+msgid "session_schedule_button_all"
+msgstr "Розклад усіх сеансів"
+
+
+msgid "is_no_card_title"
+msgstr "Нема"
 
 msgid "session_schedule_button"
 msgstr "Розклад сеансів"
