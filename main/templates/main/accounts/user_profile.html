@@ -1,11 +1,55 @@
 {% extends 'main/page/base.html' %}
 {% load i18n %}
+{% load static %}
 
+{% block head %}
+    <link rel="stylesheet" href="{% static 'main/css/profile_user.css' %}">
+{% endblock %}
 {% block content %}
-    <div class="container mt-5">
-        <h2>{% trans "my_profile" %}</h2>
-        <p>{% trans "hello" %}, {{ request.user.username }}!</p>
-        <p>Email: {{ request.user.email }}</p>
-        <p>Телефон: {{ request.user.phone }}</p>
+    <div class="container my-5">
+
+        <div class="card-body p-4">
+            <h2 class="card-title text-center mb-4">{% trans "my_profile" %}</h2>
+            <div class="row">
+                <div class="col-md-6">
+
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <strong>{% trans 'first_name_register' %}</strong>: {{ request.user.first_name }}</li>
+                        <li class="list-group-item">
+                            <strong>{% trans 'last_name_register' %}</strong>: {{ request.user.last_name }}</li>
+                        <li class="list-group-item">
+                            <strong>{% trans 'username_register' %}</strong>: {{ request.user.username }}</li>
+                        <li class="list-group-item"><strong>Email</strong>: {{ request.user.email }}</li>
+                        <li class="list-group-item">
+                            <strong>{% trans 'address_register' %}</strong>: {{ request.user.address }}</li>
+
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><strong>Город</strong>: {{ request.user.city }}</li>
+                        <li class="list-group-item">
+                            <strong>{% trans 'language_register' %}</strong>: {{ request.user.get_language_display }}
+                        </li>
+                        <li class="list-group-item">
+                            <strong>{% trans 'gender_register' %}</strong>: {{ request.user.get_gender_display }}
+                        </li>
+                        <li class="list-group-item"><strong>Телефон</strong>: {{ request.user.phone }}</li>
+                        <li class="list-group-item">
+                            <strong>{% trans 'birthday_register' %}</strong>: {{ request.user.birthday }}</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="block-buttons-control mt-5">
+                <a href="{% url 'user_profile_edit' request.user.username%}" class="btn btn-primary">{% trans "edit_profile" %}</a>
+                <a href="#" class="btn red btn-danger">{% trans "delete_profile" %}</a>
+                <form action="{% url 'logout' %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" style="height: 100%"
+                            class="btn btn-dark w-100 ">{% trans "logout" %}</button>
+                </form>
+            </div>
         </div>
+    </div>
 {% endblock %}

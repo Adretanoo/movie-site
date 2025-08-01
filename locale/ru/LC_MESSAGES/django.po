@@ -154,7 +154,28 @@ msgstr "Зарегистрироваться"
 msgid "personal_cabinet"
 msgstr "Кабинет"
 
+msgid "gender_w"
+msgstr "Женский "
 
+msgid "gender_m"
+msgstr "Мужской"
+
+msgid "button_submit_edit"
+msgstr "Сохранить"
+
+msgid "edit_profile"
+msgstr "Редактировать"
+
+msgid "my_profile"
+msgstr "Профиль"
+msgid "delete_profile"
+msgstr "Удалить"
+
+msgid "language_uk"
+msgstr "Украинский"
+
+msgid "language_ru"
+msgstr "Русский"
 #: main/templates/main/page/base.html:143
 msgid "logout"
 msgstr "Выйти"

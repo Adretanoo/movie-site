@@ -551,7 +551,9 @@ footer {
     font-size: 14px;
     color: #777;
 }
-
+.personal_cabinet_button {
+    width: 150px;
+}
 
 .line-block {
     height: 3px;

@@ -83,6 +83,38 @@ msgstr "Вийти"
 msgid "first_name_register"
 msgstr "Ім'я"
 
+
+
+msgid "my_profile"
+msgstr "Профіль"
+
+
+
+msgid "language_uk"
+msgstr "Українська"
+
+msgid "language_ru"
+msgstr "Російська"
+
+
+
+
+
+
+
+msgid "gender_w"
+msgstr "Жіночий"
+
+msgid "gender_m"
+msgstr "Чоловічий"
+
+msgid "edit_profile"
+msgstr "Редагувати"
+
+
+msgid "delete_profile"
+msgstr "Видалити"
+
 msgid "last_name_register"
 msgstr "Прізвище"
 
@@ -96,6 +128,10 @@ msgstr "Адреса"
 
 msgid "card_number_register"
 msgstr "Номер карти"
+
+
+msgid "button_submit_edit"
+msgstr "Зберегти"
 
 
 msgid "language_register"

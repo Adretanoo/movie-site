@@ -1,0 +1,29 @@
+
+
+
+.list-group-item {
+    border: none;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/* Виділення останнього елемента списку */
+.list-group-item:last-child {
+    border-bottom: none;
+}
+
+/* Стилі для заголовка */
+.card-title {
+    color: #495057;
+    font-weight: 600;
+}
+
+.text-primary {
+    font-weight: bold;
+}
+
+.block-buttons-control  {
+    display: flex;
+    justify-content: start;
+    gap: 10px;
+}

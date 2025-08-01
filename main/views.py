@@ -1,14 +1,16 @@
 from datetime import date
 
-from django.contrib.auth import login
+from django.contrib.auth import login, update_session_auth_hash
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
+from poetry.puzzle import transaction
 
 from adminlte.models import MainPage, TopBanner, TopBannerImage, BackgroundBanner, BackgroundType, Movie, NewsBanner, \
     NewsBannerImage, Publication, PublicationType, PublicationGallery, ContactsPage, ContactsPageLocation
-from user.forms import UserRegisterForm
+from user.forms import UserRegisterForm, UserEditProfileForm
+from user.models import User
 
 
 def main(request):
@@ -55,6 +57,31 @@ def register_view(request):
         form = UserRegisterForm()
 
     return render(request, 'main/page/register.html', {'form': form})
+
+
+
+
+
+@login_required
+def user_edit_profile(request, username):
+    if request.user.username != username:
+        return redirect('user_profile', username=request.user.username)
+
+    user = get_object_or_404(User, username=username)
+
+    if request.method == 'POST':
+        form = UserEditProfileForm(request.POST, instance=user)
+        if form.is_valid():
+            form.save()
+
+            if form.cleaned_data.get('new_password1'):
+                update_session_auth_hash(request,user)
+            return redirect('user_profile', username=user.username)
+    else:
+        form = UserEditProfileForm(instance=user)
+
+
+    return render(request, 'main/page/edit_profile_user.html', context={'form': form})
 
 
 

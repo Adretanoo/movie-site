@@ -20,4 +20,5 @@ urlpatterns = [
     path('news/card/<int:pk>/', views.news_card, name='news_card'),
 
     path('profile/<str:username>/', views.user_profile, name='user_profile'),
+    path('profile/edit/<str:username>/', views.user_edit_profile, name='user_profile_edit'),
 ]

@@ -72,8 +72,11 @@
 }
 
 .save-block {
+    display: flex;
+    gap: 5px;
     margin: 60px auto 0;
     width: max-content;
+    align-items: center;
 }
 
 .all-save-button {
@@ -84,6 +87,7 @@
     cursor: pointer;
     font-weight: 500;
     transition: all 0.2s ease;
+
 
 }
 
