@@ -11,13 +11,15 @@ from django.urls.base import reverse
 from django.utils.formats import date_format
 from django.views.decorators.http import require_POST
 from ajax_datatable.views import AjaxDatatableView
+
+from user.forms import UserRegisterForm
 from user.models import User
 from adminlte.models import Publication, Images, PublicationType, TopBanner, NewsBanner, BackgroundBanner, \
     TopBannerImage, NewsBannerImage, Movie, MovieGallery, SeoMetadata, CardCinema, CardHall, MainPage, ContactsPage, Gender, City
 from .forms import PublicationForm, SeoMetadataForm, BackgroundBannerForm, TopBannerForm, TopBannerImageForm, \
     TopBannerImageFormSet, NewsBannerForm, NewsBannerImageFormSet, MovieForm, MovieGalleryFormSet, CardCinemaForm, \
     CardCinemaGalleryFormSet, CardHallForm, CardHallGalleryForm, CardHallGalleryFormSet, PublicationGalleryFormSet, \
-    MainPageForm, ContactsPageForm, ContactsPageLocationFormSet, UserForm
+    MainPageForm, ContactsPageForm, ContactsPageLocationFormSet
 from django.shortcuts import render, redirect
 from cinemasite.settings import menu
 
@@ -745,13 +747,13 @@ def user_edit(request, pk):
     user = User.objects.get(pk=pk)
 
     if request.method == 'POST':
-        form = UserForm(request.POST, instance=user)
+        form = UserRegisterForm(request.POST, instance=user)
         if form.is_valid():
             with transaction.atomic():
                 form.save()
             return redirect('users')
     else:
-        form = UserForm(instance=user)
+        form = UserRegisterForm(instance=user)
 
     context = {
         'menu': menu,

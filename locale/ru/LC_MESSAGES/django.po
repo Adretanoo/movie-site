@@ -102,6 +102,63 @@ msgid "news-h4"
 msgstr "Новости"
 
 
+msgid "register_title"
+msgstr "Регистрация"
+
+
+msgid "first_name_register"
+msgstr "Имя"
+
+msgid "last_name_register"
+msgstr "Фамилия"
+
+msgid "username_register"
+msgstr "Псевдоним"
+
+
+msgid "address_register"
+msgstr "Адресс"
+
+
+msgid "card_number_register"
+msgstr "Номер карты"
+
+
+msgid "language_register"
+msgstr "Язык"
+
+
+
+msgid "gender_register"
+msgstr "Пол"
+
+msgid "password_repat"
+msgstr "Повторить пароль"
+
+
+
+msgid "birthday_register"
+msgstr "Дата рождения"
+
+
+
+msgid "login_title"
+msgstr "Войти"
+
+
+msgid "button_submit_register"
+msgstr "Зарегистрироваться"
+
+
+#: main/templates/main/page/base.html:139
+msgid "personal_cabinet"
+msgstr "Кабинет"
+
+
+#: main/templates/main/page/base.html:143
+msgid "logout"
+msgstr "Выйти"
+
 msgid "promotions-and-discounts"
 msgstr "Акции и скидки"
 

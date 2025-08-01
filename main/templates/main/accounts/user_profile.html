@@ -1,0 +1,11 @@
+{% extends 'main/page/base.html' %}
+{% load i18n %}
+
+{% block content %}
+    <div class="container mt-5">
+        <h2>{% trans "my_profile" %}</h2>
+        <p>{% trans "hello" %}, {{ request.user.username }}!</p>
+        <p>Email: {{ request.user.email }}</p>
+        <p>Телефон: {{ request.user.phone }}</p>
+        </div>
+{% endblock %}

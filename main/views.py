@@ -1,10 +1,15 @@
 from datetime import date
 
+from django.contrib.auth import login
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import UserCreationForm
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from adminlte.models import MainPage, TopBanner, TopBannerImage, BackgroundBanner, BackgroundType, Movie, NewsBanner, \
     NewsBannerImage, Publication, PublicationType, PublicationGallery, ContactsPage, ContactsPageLocation
+from user.forms import UserRegisterForm
+
 
 def main(request):
     main_page = MainPage.objects.first()
@@ -19,7 +24,6 @@ def main(request):
 
     news_pages = Publication.objects.filter(publication_type=PublicationType.NEW_PAGE)
     publication = Publication.objects.all()
-
 
     context = {
         'main_page': main_page,
@@ -37,6 +41,28 @@ def main(request):
     }
     return render(request, 'main/page/index.html', context)
 
+
+def register_view(request):
+    if request.method == 'POST':
+        form = UserRegisterForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+
+            login(request, user)
+
+            return redirect('user_profile', username=user.username)
+    else:
+        form = UserRegisterForm()
+
+    return render(request, 'main/page/register.html', {'form': form})
+
+
+
+@login_required(login_url='login')
+def user_profile(request, username):
+    if request.user.username != username:
+        return redirect('user_profile', username=request.user.username)
+    return render(request, 'main/accounts/user_profile.html')
 
 def shares_page(request):
     seo_page = [{

@@ -4,9 +4,9 @@ from adminlte.models import City, Gender, Language
 from django.contrib.auth.models import AbstractUser
 
 class User(AbstractUser):
+    email = models.EmailField(unique=True)
     phone = models.CharField(max_length=20)
     address = models.TextField()
-    password_hash = models.CharField(max_length=255)
     card_number = models.CharField(max_length=32)  # зашифруй неможна такі дані у відкритому тримати
     language = models.CharField(choices=Language.choices, max_length=2)
     gender = models.CharField(choices=Gender.choices, max_length=1)

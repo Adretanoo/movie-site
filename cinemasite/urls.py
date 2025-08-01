@@ -21,13 +21,14 @@ from debug_toolbar.toolbar import debug_toolbar_urls
 
 from django.conf import settings
 from django.conf.urls.static import static
-
-from adminlte import views
+from main.views import register_view
 
 urlpatterns = [
     path('adminlte/',include('adminlte.urls')),
     path('',include('main.urls')),
     path('i18n/', include('django.conf.urls.i18n')),
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('register/', register_view, name='register'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + debug_toolbar_urls()
 
 urlpatterns += i18n_patterns(

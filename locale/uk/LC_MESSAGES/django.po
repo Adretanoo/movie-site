@@ -67,6 +67,63 @@ msgstr "Новини"
 msgid "Advertisement"
 msgstr "Реклама"
 
+
+msgid "register_title"
+msgstr "Реєстрація"
+
+#: main/templates/main/page/base.html:139
+msgid "personal_cabinet"
+msgstr "Кабінет"
+
+
+#: main/templates/main/page/base.html:143
+msgid "logout"
+msgstr "Вийти"
+
+msgid "first_name_register"
+msgstr "Ім'я"
+
+msgid "last_name_register"
+msgstr "Прізвище"
+
+msgid "username_register"
+msgstr "Псевдонім"
+
+
+msgid "address_register"
+msgstr "Адреса"
+
+
+msgid "card_number_register"
+msgstr "Номер карти"
+
+
+msgid "language_register"
+msgstr "Мова"
+
+
+
+msgid "gender_register"
+msgstr "Стать"
+
+
+
+msgid "birthday_register"
+msgstr "Дата народження"
+
+
+msgid "login_title"
+msgstr "Увійти"
+
+
+
+msgid "password_repat"
+msgstr "Повторити пароль"
+
+msgid "button_submit_register"
+msgstr "Зареєструватися"
+
+
 #: main/templates/main/page/index.html:126
 #: main/templates/main/page/index.html:193
 #: main/templates/main/page/index.html:406
