@@ -2,6 +2,7 @@ import datetime
 import json
 
 from django.contrib import messages
+from django.contrib.auth import update_session_auth_hash
 from django.db import transaction
 from django.db.models.aggregates import Count
 from django.db.models.functions.datetime import ExtractYear, TruncDate
@@ -12,10 +13,11 @@ from django.utils.formats import date_format
 from django.views.decorators.http import require_POST
 from ajax_datatable.views import AjaxDatatableView
 
-from user.forms import UserRegisterForm
+from user.forms import UserRegisterForm, UserEditProfileForm
 from user.models import User
 from adminlte.models import Publication, Images, PublicationType, TopBanner, NewsBanner, BackgroundBanner, \
-    TopBannerImage, NewsBannerImage, Movie, MovieGallery, SeoMetadata, CardCinema, CardHall, MainPage, ContactsPage, Gender, City
+    TopBannerImage, NewsBannerImage, Movie, MovieGallery, SeoMetadata, CardCinema, CardHall, MainPage, ContactsPage, \
+    Gender, City
 from .forms import PublicationForm, SeoMetadataForm, BackgroundBannerForm, TopBannerForm, TopBannerImageForm, \
     TopBannerImageFormSet, NewsBannerForm, NewsBannerImageFormSet, MovieForm, MovieGalleryFormSet, CardCinemaForm, \
     CardCinemaGalleryFormSet, CardHallForm, CardHallGalleryForm, CardHallGalleryFormSet, PublicationGalleryFormSet, \
@@ -747,13 +749,15 @@ def user_edit(request, pk):
     user = User.objects.get(pk=pk)
 
     if request.method == 'POST':
-        form = UserRegisterForm(request.POST, instance=user)
+        form = UserEditProfileForm(request.POST, instance=user)
         if form.is_valid():
             with transaction.atomic():
                 form.save()
+                if form.cleaned_data.get('new_password1'):
+                    update_session_auth_hash(request, user)
             return redirect('users')
     else:
-        form = UserRegisterForm(instance=user)
+        form = UserEditProfileForm(instance=user)
 
     context = {
         'menu': menu,
