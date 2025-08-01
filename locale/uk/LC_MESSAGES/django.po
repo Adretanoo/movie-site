@@ -111,10 +111,6 @@ msgstr "Чоловічий"
 msgid "edit_profile"
 msgstr "Редагувати"
 
-
-msgid "delete_profile"
-msgstr "Видалити"
-
 msgid "last_name_register"
 msgstr "Прізвище"
 

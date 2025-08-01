@@ -168,8 +168,6 @@ msgstr "Редактировать"
 
 msgid "my_profile"
 msgstr "Профиль"
-msgid "delete_profile"
-msgstr "Удалить"
 
 msgid "language_uk"
 msgstr "Украинский"

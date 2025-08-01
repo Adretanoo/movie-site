@@ -5,8 +5,8 @@
     "fields": {
       "name": "main",
       "address": "main",
-      "coordinates": "0.0.0.0",
-      "is_enabled": false,
+      "coordinates": "44.5, 23.6",
+      "is_enabled": true,
       "logo": "contacts/2025/07/23/foxi_insta_bpE0WfZ.jpg",
       "contacts_page": 1
     }
