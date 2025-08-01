@@ -1,0 +1,139 @@
+{% extends 'main/page/base.html' %}
+{% load static %}
+{% load i18n %}
+
+
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'main/css/cinema_card.css' %}">
+    <meta name="keywords" content="{{ hall.seo.keywords }}"/>
+    <meta name="description" content="{{ hall.seo.description }}"/>
+    <title>{{ hall.seo.title }}</title>
+
+{% endblock %}
+
+
+{% block content %}
+    <div class="block-image">
+        <img src="{{ hall.top_banner.url }}" alt="top_banner">
+    </div>
+
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-2 col-lg-2 block-nav">
+                <div class="block_halls">
+
+                    <ul class="list-group mt-5">
+                        <h4 class="mb-4">Жвіап</h4>
+                        <li class="list-group-item list-group-item-action">Нету</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md-8 col-lg-8">
+                <div class="my-content-wrapper mt-5">
+                    <div class="block_cinema_desc">
+
+                        <div class="block_hall_logo_session mb-5">
+                            <h1>{{ hall.name }}</h1>
+                        </div>
+                        <img class="cinema-logo-float" src="{{ hall.schema_image.url }}" alt="logo">
+                        <p class="break-words whitespace-normal">
+                            {% if hall.description|length < 195 %}
+                                {{ hall.description|linebreaksbr }}
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            {% else %}
+                                {{ hall.description|linebreaksbr }}
+                            {% endif %}
+                        </p>
+                    </div>
+                    {% if hall_gallery %}
+                        <div class="block_cinema_gallery">
+                            <h2>Фотогалерея</h2>
+                            <div class="sliders">
+                                <div id="customCarousel" class="carousel slide" data-bs-ride="carousel"
+                                     data-bs-interval="10000">
+                                    <div class="carousel-indicators">
+                                        {% for item in hall_gallery %}
+                                            <button type="button" data-bs-target="#customCarousel"
+                                                    data-bs-slide-to="{{ forloop.counter0 }}"
+                                                    class="{% if forloop.first %}active{% endif %}"
+                                                    aria-current="{% if forloop.first %}true{% endif %}"
+                                                    aria-label="{{ item.text }}"></button>
+                                        {% endfor %}
+                                    </div>
+                                    <div class="carousel-inner">
+                                        {% for slide in hall_gallery %}
+                                            <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                                                <a href="{{ slide.url }}" target="_blank">
+                                                    <img src="{{ slide.image.image_url.url }}"
+                                                         class="d-block w-100"
+                                                         alt="{{ slide.text }}">
+                                                    <div class="carousel-caption d-none d-md-block">
+                                                        <h5>{{ slide.text }}</h5>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#customCarousel"
+                                            data-bs-slide="prev">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                             fill="currentColor"
+                                             class="bi bi-chevron-left" viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd"
+                                                  d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+                                        </svg>
+                                    </button>
+                                    <button class="carousel-control-next" type="button" data-bs-target="#customCarousel"
+                                            data-bs-slide="next">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                             fill="currentColor"
+                                             class="bi bi-chevron-right" viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd"
+                                                  d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="col-md-3 col-lg-3 plug-block"></div>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
+
+
+
+
+
+
+
+
+{% block scripts %}
+{% endblock %}

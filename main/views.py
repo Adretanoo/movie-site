@@ -8,7 +8,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 from poetry.puzzle import transaction
 
 from adminlte.models import MainPage, TopBanner, TopBannerImage, BackgroundBanner, BackgroundType, Movie, NewsBanner, \
-    NewsBannerImage, Publication, PublicationType, PublicationGallery, ContactsPage, ContactsPageLocation
+    NewsBannerImage, Publication, PublicationType, PublicationGallery, ContactsPage, ContactsPageLocation, CardCinema, \
+    CardCinemaGallery, CardHall, CardHallGallery
 from user.forms import UserRegisterForm, UserEditProfileForm
 from user.models import User
 
@@ -59,6 +60,47 @@ def register_view(request):
     return render(request, 'main/page/register.html', {'form': form})
 
 
+def cinemas_page(request):
+
+    cinemas = CardCinema.objects.all()
+    top_banner = TopBanner.objects.first()
+    top_banner_images = TopBannerImage.objects.all()
+
+    context = {
+        'cinemas': cinemas,
+        'top_banner': top_banner,
+        'top_banner_images': top_banner_images,
+
+    }
+    return render(request, 'main/page/cinemas.html', context)
+
+
+
+def cinema_card_page(request,pk):
+
+    cinema = CardCinema.objects.get(pk=pk)
+    cinema_gallery_card = CardCinemaGallery.objects.filter(card_cinema=cinema.pk)
+    cinema_halls = CardHall.objects.filter(card_cinema=cinema.pk)
+    halls_count = len(cinema_halls)
+
+    context = {
+        'cinema': cinema,
+        'cinema_gallery_card': cinema_gallery_card,
+        'cinema_halls': cinema_halls,
+        'halls_count': halls_count,
+    }
+    return render(request,'main/page/cinema_card.html',context)
+
+
+def hall_card_page(request,pk):
+    hall = CardHall.objects.get(card_cinema=pk)
+    hall_gallery = CardHallGallery.objects.filter(card_hall=hall)
+
+    context = {
+        'hall': hall,
+        'hall_gallery': hall_gallery,
+    }
+    return render(request, 'main/page/hall_card.html',context)
 
 
 

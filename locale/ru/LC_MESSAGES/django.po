@@ -169,11 +169,33 @@ msgstr "Редактировать"
 msgid "my_profile"
 msgstr "Профиль"
 
+
+msgid "cinema_title"
+msgstr "Кинотеатры"
+
+msgid "block_cinema_title"
+msgstr "Наши кинотеатры"
+
+
 msgid "language_uk"
 msgstr "Украинский"
 
 msgid "language_ru"
 msgstr "Русский"
+
+
+
+msgid "hall_title"
+msgstr "Количество залов"
+
+
+msgid "session_schedule_button"
+msgstr "Расписание сеансов"
+
+
+msgid "trem_title"
+msgstr "Условия"
+
 #: main/templates/main/page/base.html:143
 msgid "logout"
 msgstr "Выйти"

@@ -86,7 +86,7 @@
                             <a class="nav-link" href="#">{% trans "Soon" %}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">{% trans "Movie-theaters" %}</a>
+                            <a class="nav-link" href="{% url 'cinemas_page' %}">{% trans "Movie-theaters" %}</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'shares_page' %}">{% trans "Promotions" %}</a>
@@ -157,7 +157,7 @@
                 <li><a href="#">{% trans "Poster" %}</a></li>
                 <li><a href="#">{% trans "Schedule" %}</a></li>
                 <li><a href="#">{% trans "Soon" %}</a></li>
-                <li><a href="#">{% trans "Movie-theaters" %}</a></li>
+                <li><a href="{% url 'cinemas_page' %}">{% trans "Movie-theaters" %}</a></li>
                 <li><a href="{% url 'shares_page' %}">{% trans "Promotions" %}</a></li>
 
                 <li class="nav-item dropdown position-relative">
@@ -253,7 +253,7 @@
                 <ul>
                     <li><a href="#">{% trans "Schedule" %}</a></li>
                     <li><a href="#">{% trans "coming-soon" %}</a></li>
-                    <li><a href="#">{% trans "Movie-theaters" %}</a></li>
+                    <li><a href="{% url 'cinemas_page' %}">{% trans "Movie-theaters" %}</a></li>
                     <li><a href="#">{% trans "Promotions" %}</a></li>
                 </ul>
             </div>

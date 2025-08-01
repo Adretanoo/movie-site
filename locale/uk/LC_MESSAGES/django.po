@@ -122,9 +122,25 @@ msgid "address_register"
 msgstr "Адреса"
 
 
+msgid "block_cinema_title"
+msgstr "Наші кінотеатри"
+
+msgid "cinema_title"
+msgstr "Кінотеатри"
+
 msgid "card_number_register"
 msgstr "Номер карти"
 
+
+msgid "session_schedule_button"
+msgstr "Розклад сеансів"
+
+
+msgid "hall_title"
+msgstr "Кількість залів"
+
+msgid "trem_title"
+msgstr "Умови"
 
 msgid "button_submit_edit"
 msgstr "Зберегти"

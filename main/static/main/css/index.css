@@ -511,24 +511,28 @@ footer {
 .footer-section ul li a:hover {
     text-decoration: underline;
 }
+
 .app-links {
     align-items: center;
     display: flex;
     gap: 15px;
 
 }
+
 .app-links img {
     margin-right: 10px;
     vertical-align: middle;
     width: 35px;
     height: 35px;
 }
+
 .app-links a {
     color: white;
     background-color: black;
     padding: 10px;
     border-radius: 5px;
 }
+
 .social-icons {
     display: flex;
     align-items: flex-start;
@@ -551,6 +555,7 @@ footer {
     font-size: 14px;
     color: #777;
 }
+
 .personal_cabinet_button {
     width: 150px;
 }
@@ -560,11 +565,13 @@ footer {
     background-color: black;
     border-radius: 5px;
 }
+
 .block-wrapper-items-footer {
     flex-wrap: wrap;
     display: flex;
     gap: 15px;
 }
+
 @media (max-width: 768px) {
     .footer-content {
         flex-direction: column;
@@ -586,6 +593,7 @@ footer {
         text-align: center;
         margin-left: 0;
     }
+
     .block-movies {
         width: max-content;
         margin: 0 auto;
@@ -607,8 +615,9 @@ footer {
     .block-buttons {
         display: flex;
         flex-direction: column;
-        width: 70%;
+        width: max-content;
         text-align: center;
+        margin: 0 auto;
     }
 
     .block-main-menu {
@@ -645,10 +654,11 @@ footer {
 }
 
 
-@media (max-width: 575px){
+@media (max-width: 575px) {
     .main-navbar-row {
         margin-right: 15px;
     }
+
     .logo-link {
         margin-left: 15px;
     }

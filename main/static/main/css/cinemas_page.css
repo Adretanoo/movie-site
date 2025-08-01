@@ -1,0 +1,47 @@
+.block_cinema_title {
+    width: max-content;
+    margin: 20px auto 50px;
+}
+
+.block_wrapper_cinemas {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.block_cinema_item {
+    margin-top: 4rem;
+    flex-basis: calc(50% - 7.5px);
+    flex-grow: 0;
+
+    height: 22rem;
+}
+.block_cinema_item-href {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.block_cinema_item-href img {
+    width: 90%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.block_cinema_item-href h5 {
+    margin: .5rem auto;
+    text-align: center;
+}
+@media (max-width: 767px){
+
+    .block_wrapper_cinemas {;
+        flex-wrap: wrap;
+    }
+    .block_wrapper_cinemas .block_cinema_item {
+        flex-basis: 100%;
+    }
+    .block_cinema_item {
+
+    }
+}
