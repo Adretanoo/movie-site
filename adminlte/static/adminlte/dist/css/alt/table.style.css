@@ -9,7 +9,6 @@ a {
     justify-content: center;
 
 }
-
 .title__block {
     display: flex;
     flex-direction: column;
@@ -87,6 +86,12 @@ a {
     background: #ccc;
 }
 
+.table-block td:first-child {
+    max-width: 2rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
 .table-block td:last-child {
     text-align: center;
     white-space: nowrap;

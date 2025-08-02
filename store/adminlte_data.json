@@ -1,0 +1,1283 @@
+[
+  {
+    "model": "adminlte.city",
+    "pk": 1,
+    "fields": {
+      "name": "Київ"
+    }
+  },
+  {
+    "model": "adminlte.city",
+    "pk": 2,
+    "fields": {
+      "name": "Ужгород"
+    }
+  },
+  {
+    "model": "adminlte.images",
+    "pk": 1,
+    "fields": {
+      "image_url": "images/2025/08/01/cinema.webp"
+    }
+  },
+  {
+    "model": "adminlte.images",
+    "pk": 2,
+    "fields": {
+      "image_url": "images/2025/08/01/bexa3.jpg"
+    }
+  },
+  {
+    "model": "adminlte.images",
+    "pk": 3,
+    "fields": {
+      "image_url": "images/2025/08/01/bambolbi.webp"
+    }
+  },
+  {
+    "model": "adminlte.images",
+    "pk": 4,
+    "fields": {
+      "image_url": "images/2025/08/01/bexa1.webp"
+    }
+  },
+  {
+    "model": "adminlte.images",
+    "pk": 5,
+    "fields": {
+      "image_url": "images/2025/08/01/foxi_insta.jpg"
+    }
+  },
+  {
+    "model": "adminlte.images",
+    "pk": 6,
+    "fields": {
+      "image_url": "images/2025/08/01/cow.jpg"
+    }
+  },
+  {
+    "model": "adminlte.images",
+    "pk": 7,
+    "fields": {
+      "image_url": "images/2025/08/01/koni.jpg"
+    }
+  },
+  {
+    "model": "adminlte.images",
+    "pk": 8,
+    "fields": {
+      "image_url": "images/2025/08/01/cow_Y0RPLzO.jpg"
+    }
+  },
+  {
+    "model": "adminlte.images",
+    "pk": 9,
+    "fields": {
+      "image_url": "images/2025/08/01/kino.webp"
+    }
+  },
+  {
+    "model": "adminlte.images",
+    "pk": 10,
+    "fields": {
+      "image_url": "images/2025/08/01/nice.webp"
+    }
+  },
+  {
+    "model": "adminlte.images",
+    "pk": 11,
+    "fields": {
+      "image_url": "images/2025/08/01/cinema_7R7nzaD.webp"
+    }
+  },
+  {
+    "model": "adminlte.images",
+    "pk": 12,
+    "fields": {
+      "image_url": "images/2025/08/01/nice_7gLs1aw.webp"
+    }
+  },
+  {
+    "model": "adminlte.images",
+    "pk": 13,
+    "fields": {
+      "image_url": "images/2025/08/01/koni_x8suFzw.jpg"
+    }
+  },
+  {
+    "model": "adminlte.images",
+    "pk": 14,
+    "fields": {
+      "image_url": "images/2025/08/02/IMAGE_3_1_2_XL.jpg"
+    }
+  },
+  {
+    "model": "adminlte.images",
+    "pk": 15,
+    "fields": {
+      "image_url": "images/2025/08/02/naked2-w.jpg"
+    }
+  },
+  {
+    "model": "adminlte.images",
+    "pk": 16,
+    "fields": {
+      "image_url": "images/2025/08/02/Bad2-w.jpg"
+    }
+  },
+  {
+    "model": "adminlte.images",
+    "pk": 17,
+    "fields": {
+      "image_url": "images/2025/08/02/Fantastic4-w1.jpg"
+    }
+  },
+  {
+    "model": "adminlte.images",
+    "pk": 18,
+    "fields": {
+      "image_url": "images/2025/08/02/dss.jpg"
+    }
+  },
+  {
+    "model": "adminlte.images",
+    "pk": 19,
+    "fields": {
+      "image_url": "images/2025/08/02/smorfi.jpg"
+    }
+  },
+  {
+    "model": "adminlte.images",
+    "pk": 20,
+    "fields": {
+      "image_url": "images/2025/08/02/period.jpg"
+    }
+  },
+  {
+    "model": "adminlte.images",
+    "pk": 21,
+    "fields": {
+      "image_url": "images/2025/08/02/img_6130.jpeg"
+    }
+  },
+  {
+    "model": "adminlte.images",
+    "pk": 22,
+    "fields": {
+      "image_url": "images/2025/08/02/img_4048.jpeg"
+    }
+  },
+  {
+    "model": "adminlte.images",
+    "pk": 23,
+    "fields": {
+      "image_url": "images/2025/08/02/1920x960px_school.jpg"
+    }
+  },
+  {
+    "model": "adminlte.images",
+    "pk": 24,
+    "fields": {
+      "image_url": "images/2025/08/02/vibor_home_cinema.jpg"
+    }
+  },
+  {
+    "model": "adminlte.images",
+    "pk": 25,
+    "fields": {
+      "image_url": "images/2025/08/02/grafik5.png.webp"
+    }
+  },
+  {
+    "model": "adminlte.images",
+    "pk": 26,
+    "fields": {
+      "image_url": "images/2025/08/02/genzi_1.jpg"
+    }
+  },
+  {
+    "model": "adminlte.images",
+    "pk": 27,
+    "fields": {
+      "image_url": "images/2025/08/02/genzi2.jpg"
+    }
+  },
+  {
+    "model": "adminlte.images",
+    "pk": 28,
+    "fields": {
+      "image_url": "images/2025/08/02/cafe-banners-1920x950.jpg"
+    }
+  },
+  {
+    "model": "adminlte.images",
+    "pk": 29,
+    "fields": {
+      "image_url": "images/2025/08/02/0_Cocoabean-Twynholm.webp"
+    }
+  },
+  {
+    "model": "adminlte.images",
+    "pk": 30,
+    "fields": {
+      "image_url": "images/2025/08/02/Cocoa_070_4768-1920x950.jpg"
+    }
+  },
+  {
+    "model": "adminlte.images",
+    "pk": 31,
+    "fields": {
+      "image_url": "images/2025/08/02/optimus.jpg"
+    }
+  },
+  {
+    "model": "adminlte.images",
+    "pk": 32,
+    "fields": {
+      "image_url": "images/2025/08/02/IMAGE_3_1_2_XL_Y7kKSfL.jpg"
+    }
+  },
+  {
+    "model": "adminlte.images",
+    "pk": 33,
+    "fields": {
+      "image_url": "images/2025/08/02/dytyachi-hobbi-rozvagy.jpg"
+    }
+  },
+  {
+    "model": "adminlte.images",
+    "pk": 34,
+    "fields": {
+      "image_url": "images/2025/08/02/child_room_main.jpg"
+    }
+  },
+  {
+    "model": "adminlte.images",
+    "pk": 35,
+    "fields": {
+      "image_url": "images/2025/08/02/childe2.jpg"
+    }
+  },
+  {
+    "model": "adminlte.images",
+    "pk": 36,
+    "fields": {
+      "image_url": "images/2025/08/02/mobile1.png"
+    }
+  },
+  {
+    "model": "adminlte.images",
+    "pk": 37,
+    "fields": {
+      "image_url": "images/2025/08/02/mobile2.jpg"
+    }
+  },
+  {
+    "model": "adminlte.images",
+    "pk": 38,
+    "fields": {
+      "image_url": "images/2025/08/02/mobile3.jpg"
+    }
+  },
+  {
+    "model": "adminlte.images",
+    "pk": 39,
+    "fields": {
+      "image_url": "images/2025/08/02/6f17d7d3aaa8f75f31e9cb2d82dfe6e1.jpeg"
+    }
+  },
+  {
+    "model": "adminlte.images",
+    "pk": 40,
+    "fields": {
+      "image_url": "images/2025/08/02/2341.jpg"
+    }
+  },
+  {
+    "model": "adminlte.images",
+    "pk": 41,
+    "fields": {
+      "image_url": "images/2025/08/02/IMG_4375-1024x768.jpg"
+    }
+  },
+  {
+    "model": "adminlte.images",
+    "pk": 42,
+    "fields": {
+      "image_url": "images/2025/08/02/duk-4.jpg"
+    }
+  },
+  {
+    "model": "adminlte.images",
+    "pk": 43,
+    "fields": {
+      "image_url": "images/2025/08/02/duk-2.jpg"
+    }
+  },
+  {
+    "model": "adminlte.images",
+    "pk": 44,
+    "fields": {
+      "image_url": "images/2025/08/02/duk-1.jpg"
+    }
+  },
+  {
+    "model": "adminlte.images",
+    "pk": 45,
+    "fields": {
+      "image_url": "images/2025/08/02/multi_flex_4.jpeg"
+    }
+  },
+  {
+    "model": "adminlte.images",
+    "pk": 46,
+    "fields": {
+      "image_url": "images/2025/08/02/multiflex_kiviu_1.jpeg"
+    }
+  },
+  {
+    "model": "adminlte.images",
+    "pk": 47,
+    "fields": {
+      "image_url": "images/2025/08/02/mulit_flex_2.jpg"
+    }
+  },
+  {
+    "model": "adminlte.images",
+    "pk": 48,
+    "fields": {
+      "image_url": "images/2025/08/02/hall1_card.jpg"
+    }
+  },
+  {
+    "model": "adminlte.images",
+    "pk": 49,
+    "fields": {
+      "image_url": "images/2025/08/02/hall2_card.jpg"
+    }
+  },
+  {
+    "model": "adminlte.images",
+    "pk": 50,
+    "fields": {
+      "image_url": "images/2025/08/02/hall3_card.jpg"
+    }
+  },
+  {
+    "model": "adminlte.images",
+    "pk": 51,
+    "fields": {
+      "image_url": "images/2025/08/02/hall4_card.jpg"
+    }
+  },
+  {
+    "model": "adminlte.images",
+    "pk": 52,
+    "fields": {
+      "image_url": "images/2025/08/02/hall2_card_mmcoQdr.jpg"
+    }
+  },
+  {
+    "model": "adminlte.images",
+    "pk": 53,
+    "fields": {
+      "image_url": "images/2025/08/02/hall1_card_BjYsYrl.jpg"
+    }
+  },
+  {
+    "model": "adminlte.images",
+    "pk": 54,
+    "fields": {
+      "image_url": "images/2025/08/02/hall4_card_H0uYVaL.jpg"
+    }
+  },
+  {
+    "model": "adminlte.images",
+    "pk": 55,
+    "fields": {
+      "image_url": "images/2025/08/02/hall4_card_eo5FdgE.jpg"
+    }
+  },
+  {
+    "model": "adminlte.images",
+    "pk": 56,
+    "fields": {
+      "image_url": "images/2025/08/02/hall2_card_zXjFoGv.jpg"
+    }
+  },
+  {
+    "model": "adminlte.images",
+    "pk": 57,
+    "fields": {
+      "image_url": "images/2025/08/02/hall1_card_c70FZWp.jpg"
+    }
+  },
+  {
+    "model": "adminlte.images",
+    "pk": 58,
+    "fields": {
+      "image_url": "images/2025/08/02/hall2.webp"
+    }
+  },
+  {
+    "model": "adminlte.images",
+    "pk": 59,
+    "fields": {
+      "image_url": "images/2025/08/02/hall1.jpg"
+    }
+  },
+  {
+    "model": "adminlte.images",
+    "pk": 60,
+    "fields": {
+      "image_url": "images/2025/08/02/hall3.jpg"
+    }
+  },
+  {
+    "model": "adminlte.topbanner",
+    "pk": 1,
+    "fields": {
+      "rotation_speed": 10,
+      "is_enabled": true
+    }
+  },
+  {
+    "model": "adminlte.topbannerimage",
+    "pk": 1,
+    "fields": {
+      "banner": 1,
+      "image": 15,
+      "url": "https://www.youtube.com/watch?v=QcaX71EBZ24",
+      "text": "Голий пістолет"
+    }
+  },
+  {
+    "model": "adminlte.topbannerimage",
+    "pk": 2,
+    "fields": {
+      "banner": 1,
+      "image": 16,
+      "url": "https://www.youtube.com/watch?v=QcaX71EBZ24",
+      "text": "Поганці"
+    }
+  },
+  {
+    "model": "adminlte.topbannerimage",
+    "pk": 3,
+    "fields": {
+      "banner": 1,
+      "image": 18,
+      "url": "https://www.youtube.com/embed/E1x8FuYVF_o?autoplay=0&rel=0&showinfo=0&controls=1&modestbranding=1&enablejsapi=1&origin=https%3A%2F%2Fvkino.com.ua&widgetid=1&forigin=https%3A%2F%2Fvkino.com.ua%2Fua%2Fs",
+      "text": "Поверни її мені"
+    }
+  },
+  {
+    "model": "adminlte.topbannerimage",
+    "pk": 4,
+    "fields": {
+      "banner": 1,
+      "image": 19,
+      "url": "https://www.youtube.com/",
+      "text": "Смурфи"
+    }
+  },
+  {
+    "model": "adminlte.topbannerimage",
+    "pk": 5,
+    "fields": {
+      "banner": 1,
+      "image": 20,
+      "url": "https://www.youtube.com/",
+      "text": "Світ Юрського періоду"
+    }
+  },
+  {
+    "model": "adminlte.backgroundbanner",
+    "pk": 1,
+    "fields": {
+      "image": "banners/bg/2025/08/02/Bad2-w_DqqG8Q7.jpg",
+      "background_type": "just_background"
+    }
+  },
+  {
+    "model": "adminlte.newsbanner",
+    "pk": 1,
+    "fields": {
+      "rotation_speed": 5,
+      "is_enabled": true
+    }
+  },
+  {
+    "model": "adminlte.newsbannerimage",
+    "pk": 1,
+    "fields": {
+      "banner": 1,
+      "image": 21,
+      "url": "https://www.youtube.com/watch?v=QcaX71EBZ24",
+      "text": "Літо"
+    }
+  },
+  {
+    "model": "adminlte.newsbannerimage",
+    "pk": 2,
+    "fields": {
+      "banner": 1,
+      "image": 22,
+      "url": "https://www.youtube.com/watch?v=QcaX71EBZ24",
+      "text": "Жара"
+    }
+  },
+  {
+    "model": "adminlte.newsbannerimage",
+    "pk": 3,
+    "fields": {
+      "banner": 1,
+      "image": 23,
+      "url": "https://www.youtube.com/watch?v=QcaX71EBZ24",
+      "text": "Старт"
+    }
+  },
+  {
+    "model": "adminlte.seometadata",
+    "pk": 1,
+    "fields": {
+      "url": "https://www.youtube.com/",
+      "title": "CINEMAX",
+      "keywords": "купить билет в кино, кинотеатр онлайн, расписание кино, фильмы в кино, новинки кино 2025, трейлеры фильмов, киноафиша, кино сегодня, бронирование билетов, премьеры в кинотеатре, выбрать место в зале",
+      "description": "Покупай билеты в кино онлайн! Смотри расписание сеансов, выбирай удобные места, трейлеры и новинки кино 2025. Киноафиша, премьеры, бронирование — всё на одном сайте!"
+    }
+  },
+  {
+    "model": "adminlte.seometadata",
+    "pk": 2,
+    "fields": {
+      "url": "https://www.youtube.com/",
+      "title": "О кинотетаре",
+      "keywords": "кинотетр, о кинотеатре",
+      "description": "Кинокомплекс \"Золотой Дюк\", последний из проектировавшихся во время Советского Союза одесских кинотеатров, был открыт 15 декабря 1993 г. Из трёх залов кинотеатра, первоначально работал один, а в сентябре 1994 г. был открыт второй зал."
+    }
+  },
+  {
+    "model": "adminlte.seometadata",
+    "pk": 3,
+    "fields": {
+      "url": "https://www.youtube.com/",
+      "title": "Кафе-Бар",
+      "keywords": "кафе,бар,бар",
+      "description": "Добро пожаловать в наш Кафе-Бар!"
+    }
+  },
+  {
+    "model": "adminlte.seometadata",
+    "pk": 4,
+    "fields": {
+      "url": "https://www.youtube.com/embed/j-iheFkstFQ",
+      "title": "Vip-зал",
+      "keywords": "Vip-зал",
+      "description": "Vip-зал"
+    }
+  },
+  {
+    "model": "adminlte.seometadata",
+    "pk": 5,
+    "fields": {
+      "url": "https://www.youtube.com/",
+      "title": "Рекламодателям",
+      "keywords": "Рекламодателям",
+      "description": "Рекламодателям"
+    }
+  },
+  {
+    "model": "adminlte.seometadata",
+    "pk": 6,
+    "fields": {
+      "url": "https://www.youtube.com/embed/j-iheFkstFQ",
+      "title": "Детская комната",
+      "keywords": "Детская комната",
+      "description": "Детская комната"
+    }
+  },
+  {
+    "model": "adminlte.seometadata",
+    "pk": 7,
+    "fields": {
+      "url": "https://www.youtube.com/",
+      "title": "Контакты",
+      "keywords": "Контакты",
+      "description": "Контакты"
+    }
+  },
+  {
+    "model": "adminlte.seometadata",
+    "pk": 8,
+    "fields": {
+      "url": "https://www.youtube.com/watch?v=QcaX71EBZ24",
+      "title": "Кинотетар 1",
+      "keywords": "Кинотетар 1",
+      "description": "Кинотетар 1"
+    }
+  },
+  {
+    "model": "adminlte.seometadata",
+    "pk": 9,
+    "fields": {
+      "url": "https://www.youtube.com/",
+      "title": "Кинотетар 3",
+      "keywords": "Кинотетар 3",
+      "description": "Кинотетар 3"
+    }
+  },
+  {
+    "model": "adminlte.seometadata",
+    "pk": 10,
+    "fields": {
+      "url": "https://www.youtube.com/watch?v=QcaX71EBZ24",
+      "title": "Кинотетар 2",
+      "keywords": "Кинотетар 2",
+      "description": "Кинотетар 2"
+    }
+  },
+  {
+    "model": "adminlte.seometadata",
+    "pk": 11,
+    "fields": {
+      "url": "https://www.youtube.com/watch?v=uUqMNk5XdJk",
+      "title": "Зал 1",
+      "keywords": "іва",
+      "description": "івфа"
+    }
+  },
+  {
+    "model": "adminlte.seometadata",
+    "pk": 35,
+    "fields": {
+      "url": "https://www.youtube.com/embed/j-iheFkstFQ",
+      "title": "Джоанна Вірджинія",
+      "keywords": "джордж",
+      "description": "джоржа крч"
+    }
+  },
+  {
+    "model": "adminlte.seometadata",
+    "pk": 36,
+    "fields": {
+      "url": "https://www.youtube.com/embed/j-iheFkstFQ",
+      "title": "Празднуйте новогодние и рождественские праздники всей семьей в CINEMAX!",
+      "keywords": "празднуйте праздники",
+      "description": "Приходите вместе с близкими и друзьями в кинотеатры CINEMAX в ТРЦ Гулливер и ТРЦ Смарт Плаза"
+    }
+  },
+  {
+    "model": "adminlte.seometadata",
+    "pk": 37,
+    "fields": {
+      "url": "https://www.youtube.com/",
+      "title": "Мобильные приложения",
+      "keywords": "Мобильные приложения",
+      "description": "Мобильные приложения"
+    }
+  },
+  {
+    "model": "adminlte.seometadata",
+    "pk": 38,
+    "fields": {
+      "url": "https://www.youtube.com/watch?v=QcaX71EBZ24",
+      "title": "Зал 1",
+      "keywords": "Зал 1",
+      "description": "Зал 1"
+    }
+  },
+  {
+    "model": "adminlte.seometadata",
+    "pk": 39,
+    "fields": {
+      "url": "https://www.youtube.com/embed/j-iheFkstFQ",
+      "title": "Зал 2",
+      "keywords": "Зал 2",
+      "description": "Зал 2"
+    }
+  },
+  {
+    "model": "adminlte.seometadata",
+    "pk": 40,
+    "fields": {
+      "url": "https://www.youtube.com/",
+      "title": "Зал 1",
+      "keywords": "Зал 1",
+      "description": "Зал 1"
+    }
+  },
+  {
+    "model": "adminlte.cardcinema",
+    "pk": 1,
+    "fields": {
+      "name": "Кинотетар 1",
+      "name_ru": "Кинотетар 1",
+      "name_uk": "Кинотетар 1",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi fringilla congue ante, in blandit arcu tincidunt a. Nullam tristique lorem quis nisl volutpat dapibus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Vestibulum rutrum eros nec massa ultricies, et accumsan erat fermentum. Suspendisse potenti. Aliquam euismod libero nec nulla luctus lacinia. Curabitur rhoncus magna a sapien suscipit, vitae fermentum eros ultricies. Proin in viverra nisi. Donec vel erat nec nulla iaculis volutpat nec sed neque.\r\n\r\nPhasellus imperdiet, ex sed cursus blandit, justo nunc facilisis metus, ac posuere erat odio id nisi. Vivamus cursus, sapien sed porta ullamcorper, libero diam convallis sem, non tristique purus magna sit amet metus. Mauris lacinia diam eu mauris pulvinar, nec viverra erat tristique. Aenean feugiat lorem vel ex pharetra, nec rutrum augue tempor. Morbi in mattis sapien. Aenean sit amet fermentum erat. Maecenas non tellus sit amet sapien vulputate pretium at sed mauris. Aliquam erat volutpat. Sed tincidunt lacus in lectus finibus, eget rutrum nulla mattis.\r\n\r\nCras eget bibendum nisi. Duis ut turpis sed turpis efficitur facilisis. Suspendisse convallis lacus sed convallis fermentum. Curabitur dignissim libero a ex viverra, nec mattis leo sodales. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Duis fringilla leo in lorem rhoncus, vel dapibus purus laoreet. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc ac efficitur velit, non dapibus justo. Integer sed rutrum ligula. Pellentesque id diam id ex blandit gravida. Praesent ut augue ex.\r\n\r\nInteger vestibulum justo id bibendum tempus. Donec mattis, nunc sed sollicitudin ullamcorper, nulla nulla ultricies neque, at finibus sapien nunc non libero. Aenean rutrum lorem lorem, nec volutpat erat malesuada a. Etiam tristique, ligula nec facilisis commodo, felis lorem pretium lacus, vel facilisis ex nunc in leo. Vivamus eget lacus risus. Suspendisse potenti. Vivamus vitae nulla sit amet mi blandit rutrum. Ut ornare tortor vitae lorem blandit, nec fermentum risus rhoncus.\r\n\r\nAliquam eu felis mauris. Pellentesque non nunc diam. Integer dignissim erat nec finibus volutpat. Nullam vitae turpis turpis. Suspendisse potenti. Fusce volutpat massa vel libero lacinia, nec pretium sapien tristique. Sed lobortis metus id sem tristique, et pretium erat sollicitudin. Proin vitae turpis vitae tortor luctus porttitor. Quisque vehicula, magna nec dictum pretium, magna risus volutpat turpis, in tempus augue felis ac metus.",
+      "description_ru": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi fringilla congue ante, in blandit arcu tincidunt a. Nullam tristique lorem quis nisl volutpat dapibus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Vestibulum rutrum eros nec massa ultricies, et accumsan erat fermentum. Suspendisse potenti. Aliquam euismod libero nec nulla luctus lacinia. Curabitur rhoncus magna a sapien suscipit, vitae fermentum eros ultricies. Proin in viverra nisi. Donec vel erat nec nulla iaculis volutpat nec sed neque.\r\n\r\nPhasellus imperdiet, ex sed cursus blandit, justo nunc facilisis metus, ac posuere erat odio id nisi. Vivamus cursus, sapien sed porta ullamcorper, libero diam convallis sem, non tristique purus magna sit amet metus. Mauris lacinia diam eu mauris pulvinar, nec viverra erat tristique. Aenean feugiat lorem vel ex pharetra, nec rutrum augue tempor. Morbi in mattis sapien. Aenean sit amet fermentum erat. Maecenas non tellus sit amet sapien vulputate pretium at sed mauris. Aliquam erat volutpat. Sed tincidunt lacus in lectus finibus, eget rutrum nulla mattis.\r\n\r\nCras eget bibendum nisi. Duis ut turpis sed turpis efficitur facilisis. Suspendisse convallis lacus sed convallis fermentum. Curabitur dignissim libero a ex viverra, nec mattis leo sodales. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Duis fringilla leo in lorem rhoncus, vel dapibus purus laoreet. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc ac efficitur velit, non dapibus justo. Integer sed rutrum ligula. Pellentesque id diam id ex blandit gravida. Praesent ut augue ex.\r\n\r\nInteger vestibulum justo id bibendum tempus. Donec mattis, nunc sed sollicitudin ullamcorper, nulla nulla ultricies neque, at finibus sapien nunc non libero. Aenean rutrum lorem lorem, nec volutpat erat malesuada a. Etiam tristique, ligula nec facilisis commodo, felis lorem pretium lacus, vel facilisis ex nunc in leo. Vivamus eget lacus risus. Suspendisse potenti. Vivamus vitae nulla sit amet mi blandit rutrum. Ut ornare tortor vitae lorem blandit, nec fermentum risus rhoncus.\r\n\r\nAliquam eu felis mauris. Pellentesque non nunc diam. Integer dignissim erat nec finibus volutpat. Nullam vitae turpis turpis. Suspendisse potenti. Fusce volutpat massa vel libero lacinia, nec pretium sapien tristique. Sed lobortis metus id sem tristique, et pretium erat sollicitudin. Proin vitae turpis vitae tortor luctus porttitor. Quisque vehicula, magna nec dictum pretium, magna risus volutpat turpis, in tempus augue felis ac metus.",
+      "description_uk": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi fringilla congue ante, in blandit arcu tincidunt a. Nullam tristique lorem quis nisl volutpat dapibus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Vestibulum rutrum eros nec massa ultricies, et accumsan erat fermentum. Suspendisse potenti. Aliquam euismod libero nec nulla luctus lacinia. Curabitur rhoncus magna a sapien suscipit, vitae fermentum eros ultricies. Proin in viverra nisi. Donec vel erat nec nulla iaculis volutpat nec sed neque.\r\n\r\nPhasellus imperdiet, ex sed cursus blandit, justo nunc facilisis metus, ac posuere erat odio id nisi. Vivamus cursus, sapien sed porta ullamcorper, libero diam convallis sem, non tristique purus magna sit amet metus. Mauris lacinia diam eu mauris pulvinar, nec viverra erat tristique. Aenean feugiat lorem vel ex pharetra, nec rutrum augue tempor. Morbi in mattis sapien. Aenean sit amet fermentum erat. Maecenas non tellus sit amet sapien vulputate pretium at sed mauris. Aliquam erat volutpat. Sed tincidunt lacus in lectus finibus, eget rutrum nulla mattis.\r\n\r\nCras eget bibendum nisi. Duis ut turpis sed turpis efficitur facilisis. Suspendisse convallis lacus sed convallis fermentum. Curabitur dignissim libero a ex viverra, nec mattis leo sodales. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Duis fringilla leo in lorem rhoncus, vel dapibus purus laoreet. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc ac efficitur velit, non dapibus justo. Integer sed rutrum ligula. Pellentesque id diam id ex blandit gravida. Praesent ut augue ex.\r\n\r\nInteger vestibulum justo id bibendum tempus. Donec mattis, nunc sed sollicitudin ullamcorper, nulla nulla ultricies neque, at finibus sapien nunc non libero. Aenean rutrum lorem lorem, nec volutpat erat malesuada a. Etiam tristique, ligula nec facilisis commodo, felis lorem pretium lacus, vel facilisis ex nunc in leo. Vivamus eget lacus risus. Suspendisse potenti. Vivamus vitae nulla sit amet mi blandit rutrum. Ut ornare tortor vitae lorem blandit, nec fermentum risus rhoncus.\r\n\r\nAliquam eu felis mauris. Pellentesque non nunc diam. Integer dignissim erat nec finibus volutpat. Nullam vitae turpis turpis. Suspendisse potenti. Fusce volutpat massa vel libero lacinia, nec pretium sapien tristique. Sed lobortis metus id sem tristique, et pretium erat sollicitudin. Proin vitae turpis vitae tortor luctus porttitor. Quisque vehicula, magna nec dictum pretium, magna risus volutpat turpis, in tempus augue felis ac metus.",
+      "term": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi fringilla congue ante, in blandit arcu tincidunt a. Nullam tristique lorem quis nisl volutpat dapibus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Vestibulum rutrum eros nec massa ultricies, et accumsan erat fermentum. Suspendisse potenti. Aliquam euismod libero nec nulla luctus lacinia. Curabitur rhoncus magna a sapien suscipit, vitae fermentum eros ultricies. Proin in viverra nisi. Donec vel erat nec nulla iaculis volutpat nec sed neque.\r\n\r\nPhasellus imperdiet, ex sed cursus blandit, justo nunc facilisis metus, ac posuere erat odio id nisi. Vivamus cursus, sapien sed porta ullamcorper, libero diam convallis sem, non tristique purus magna sit amet metus. Mauris lacinia diam eu mauris pulvinar, nec viverra erat tristique. Aenean feugiat lorem vel ex pharetra, nec rutrum augue tempor. Morbi in mattis sapien. Aenean sit amet fermentum erat. Maecenas non tellus sit amet sapien vulputate pretium at sed mauris. Aliquam erat volutpat. Sed tincidunt lacus in lectus finibus, eget rutrum nulla mattis.\r\n\r\nCras eget bibendum nisi. Duis ut turpis sed turpis efficitur facilisis. Suspendisse convallis lacus sed convallis fermentum. Curabitur dignissim libero a ex viverra, nec mattis leo sodales. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Duis fringilla leo in lorem rhoncus, vel dapibus purus laoreet. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc ac efficitur velit, non dapibus justo. Integer sed rutrum ligula. Pellentesque id diam id ex blandit gravida. Praesent ut augue ex.\r\n\r\nInteger vestibulum justo id bibendum tempus. Donec mattis, nunc sed sollicitudin ullamcorper, nulla nulla ultricies neque, at finibus sapien nunc non libero. Aenean rutrum lorem lorem, nec volutpat erat malesuada a. Etiam tristique, ligula nec facilisis commodo, felis lorem pretium lacus, vel facilisis ex nunc in leo. Vivamus eget lacus risus. Suspendisse potenti. Vivamus vitae nulla sit amet mi blandit rutrum. Ut ornare tortor vitae lorem blandit, nec fermentum risus rhoncus.\r\n\r\nAliquam eu felis mauris. Pellentesque non nunc diam. Integer dignissim erat nec finibus volutpat. Nullam vitae turpis turpis. Suspendisse potenti. Fusce volutpat massa vel libero lacinia, nec pretium sapien tristique. Sed lobortis metus id sem tristique, et pretium erat sollicitudin. Proin vitae turpis vitae tortor luctus porttitor. Quisque vehicula, magna nec dictum pretium, magna risus volutpat turpis, in tempus augue felis ac metus.",
+      "term_ru": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi fringilla congue ante, in blandit arcu tincidunt a. Nullam tristique lorem quis nisl volutpat dapibus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Vestibulum rutrum eros nec massa ultricies, et accumsan erat fermentum. Suspendisse potenti. Aliquam euismod libero nec nulla luctus lacinia. Curabitur rhoncus magna a sapien suscipit, vitae fermentum eros ultricies. Proin in viverra nisi. Donec vel erat nec nulla iaculis volutpat nec sed neque.\r\n\r\nPhasellus imperdiet, ex sed cursus blandit, justo nunc facilisis metus, ac posuere erat odio id nisi. Vivamus cursus, sapien sed porta ullamcorper, libero diam convallis sem, non tristique purus magna sit amet metus. Mauris lacinia diam eu mauris pulvinar, nec viverra erat tristique. Aenean feugiat lorem vel ex pharetra, nec rutrum augue tempor. Morbi in mattis sapien. Aenean sit amet fermentum erat. Maecenas non tellus sit amet sapien vulputate pretium at sed mauris. Aliquam erat volutpat. Sed tincidunt lacus in lectus finibus, eget rutrum nulla mattis.\r\n\r\nCras eget bibendum nisi. Duis ut turpis sed turpis efficitur facilisis. Suspendisse convallis lacus sed convallis fermentum. Curabitur dignissim libero a ex viverra, nec mattis leo sodales. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Duis fringilla leo in lorem rhoncus, vel dapibus purus laoreet. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc ac efficitur velit, non dapibus justo. Integer sed rutrum ligula. Pellentesque id diam id ex blandit gravida. Praesent ut augue ex.\r\n\r\nInteger vestibulum justo id bibendum tempus. Donec mattis, nunc sed sollicitudin ullamcorper, nulla nulla ultricies neque, at finibus sapien nunc non libero. Aenean rutrum lorem lorem, nec volutpat erat malesuada a. Etiam tristique, ligula nec facilisis commodo, felis lorem pretium lacus, vel facilisis ex nunc in leo. Vivamus eget lacus risus. Suspendisse potenti. Vivamus vitae nulla sit amet mi blandit rutrum. Ut ornare tortor vitae lorem blandit, nec fermentum risus rhoncus.\r\n\r\nAliquam eu felis mauris. Pellentesque non nunc diam. Integer dignissim erat nec finibus volutpat. Nullam vitae turpis turpis. Suspendisse potenti. Fusce volutpat massa vel libero lacinia, nec pretium sapien tristique. Sed lobortis metus id sem tristique, et pretium erat sollicitudin. Proin vitae turpis vitae tortor luctus porttitor. Quisque vehicula, magna nec dictum pretium, magna risus volutpat turpis, in tempus augue felis ac metus.",
+      "term_uk": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi fringilla congue ante, in blandit arcu tincidunt a. Nullam tristique lorem quis nisl volutpat dapibus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Vestibulum rutrum eros nec massa ultricies, et accumsan erat fermentum. Suspendisse potenti. Aliquam euismod libero nec nulla luctus lacinia. Curabitur rhoncus magna a sapien suscipit, vitae fermentum eros ultricies. Proin in viverra nisi. Donec vel erat nec nulla iaculis volutpat nec sed neque.\r\n\r\nPhasellus imperdiet, ex sed cursus blandit, justo nunc facilisis metus, ac posuere erat odio id nisi. Vivamus cursus, sapien sed porta ullamcorper, libero diam convallis sem, non tristique purus magna sit amet metus. Mauris lacinia diam eu mauris pulvinar, nec viverra erat tristique. Aenean feugiat lorem vel ex pharetra, nec rutrum augue tempor. Morbi in mattis sapien. Aenean sit amet fermentum erat. Maecenas non tellus sit amet sapien vulputate pretium at sed mauris. Aliquam erat volutpat. Sed tincidunt lacus in lectus finibus, eget rutrum nulla mattis.\r\n\r\nCras eget bibendum nisi. Duis ut turpis sed turpis efficitur facilisis. Suspendisse convallis lacus sed convallis fermentum. Curabitur dignissim libero a ex viverra, nec mattis leo sodales. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Duis fringilla leo in lorem rhoncus, vel dapibus purus laoreet. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc ac efficitur velit, non dapibus justo. Integer sed rutrum ligula. Pellentesque id diam id ex blandit gravida. Praesent ut augue ex.\r\n\r\nInteger vestibulum justo id bibendum tempus. Donec mattis, nunc sed sollicitudin ullamcorper, nulla nulla ultricies neque, at finibus sapien nunc non libero. Aenean rutrum lorem lorem, nec volutpat erat malesuada a. Etiam tristique, ligula nec facilisis commodo, felis lorem pretium lacus, vel facilisis ex nunc in leo. Vivamus eget lacus risus. Suspendisse potenti. Vivamus vitae nulla sit amet mi blandit rutrum. Ut ornare tortor vitae lorem blandit, nec fermentum risus rhoncus.\r\n\r\nAliquam eu felis mauris. Pellentesque non nunc diam. Integer dignissim erat nec finibus volutpat. Nullam vitae turpis turpis. Suspendisse potenti. Fusce volutpat massa vel libero lacinia, nec pretium sapien tristique. Sed lobortis metus id sem tristique, et pretium erat sollicitudin. Proin vitae turpis vitae tortor luctus porttitor. Quisque vehicula, magna nec dictum pretium, magna risus volutpat turpis, in tempus augue felis ac metus.",
+      "logo_image": "cinemas/logos/2025/08/02/duk-logo.jpg",
+      "top_banner": "cinemas/banners/2025/08/02/caption.jpg",
+      "seo": 8
+    }
+  },
+  {
+    "model": "adminlte.cardcinema",
+    "pk": 2,
+    "fields": {
+      "name": "Кинотетар 3",
+      "name_ru": "Кинотетар 3",
+      "name_uk": "Кинотетар 3",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi fringilla congue ante, in blandit arcu tincidunt a. Nullam tristique lorem quis nisl volutpat dapibus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Vestibulum rutrum eros nec massa ultricies, et accumsan erat fermentum. Suspendisse potenti. Aliquam euismod libero nec nulla luctus lacinia. Curabitur rhoncus magna a sapien suscipit, vitae fermentum eros ultricies. Proin in viverra nisi. Donec vel erat nec nulla iaculis volutpat nec sed neque.\r\n\r\nPhasellus imperdiet, ex sed cursus blandit, justo nunc facilisis metus, ac posuere erat odio id nisi. Vivamus cursus, sapien sed porta ullamcorper, libero diam convallis sem, non tristique purus magna sit amet metus. Mauris lacinia diam eu mauris pulvinar, nec viverra erat tristique. Aenean feugiat lorem vel ex pharetra, nec rutrum augue tempor. Morbi in mattis sapien. Aenean sit amet fermentum erat. Maecenas non tellus sit amet sapien vulputate pretium at sed mauris. Aliquam erat volutpat. Sed tincidunt lacus in lectus finibus, eget rutrum nulla mattis.\r\n\r\nCras eget bibendum nisi. Duis ut turpis sed turpis efficitur facilisis. Suspendisse convallis lacus sed convallis fermentum. Curabitur dignissim libero a ex viverra, nec mattis leo sodales. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Duis fringilla leo in lorem rhoncus, vel dapibus purus laoreet. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc ac efficitur velit, non dapibus justo. Integer sed rutrum ligula. Pellentesque id diam id ex blandit gravida. Praesent ut augue ex.\r\n\r\nInteger vestibulum justo id bibendum tempus. Donec mattis, nunc sed sollicitudin ullamcorper, nulla nulla ultricies neque, at finibus sapien nunc non libero. Aenean rutrum lorem lorem, nec volutpat erat malesuada a. Etiam tristique, ligula nec facilisis commodo, felis lorem pretium lacus, vel facilisis ex nunc in leo. Vivamus eget lacus risus. Suspendisse potenti. Vivamus vitae nulla sit amet mi blandit rutrum. Ut ornare tortor vitae lorem blandit, nec fermentum risus rhoncus.\r\n\r\nAliquam eu felis mauris. Pellentesque non nunc diam. Integer dignissim erat nec finibus volutpat. Nullam vitae turpis turpis. Suspendisse potenti. Fusce volutpat massa vel libero lacinia, nec pretium sapien tristique. Sed lobortis metus id sem tristique, et pretium erat sollicitudin. Proin vitae turpis vitae tortor luctus porttitor. Quisque vehicula, magna nec dictum pretium, magna risus volutpat turpis, in tempus augue felis ac metus.",
+      "description_ru": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi fringilla congue ante, in blandit arcu tincidunt a. Nullam tristique lorem quis nisl volutpat dapibus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Vestibulum rutrum eros nec massa ultricies, et accumsan erat fermentum. Suspendisse potenti. Aliquam euismod libero nec nulla luctus lacinia. Curabitur rhoncus magna a sapien suscipit, vitae fermentum eros ultricies. Proin in viverra nisi. Donec vel erat nec nulla iaculis volutpat nec sed neque.\r\n\r\nPhasellus imperdiet, ex sed cursus blandit, justo nunc facilisis metus, ac posuere erat odio id nisi. Vivamus cursus, sapien sed porta ullamcorper, libero diam convallis sem, non tristique purus magna sit amet metus. Mauris lacinia diam eu mauris pulvinar, nec viverra erat tristique. Aenean feugiat lorem vel ex pharetra, nec rutrum augue tempor. Morbi in mattis sapien. Aenean sit amet fermentum erat. Maecenas non tellus sit amet sapien vulputate pretium at sed mauris. Aliquam erat volutpat. Sed tincidunt lacus in lectus finibus, eget rutrum nulla mattis.\r\n\r\nCras eget bibendum nisi. Duis ut turpis sed turpis efficitur facilisis. Suspendisse convallis lacus sed convallis fermentum. Curabitur dignissim libero a ex viverra, nec mattis leo sodales. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Duis fringilla leo in lorem rhoncus, vel dapibus purus laoreet. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc ac efficitur velit, non dapibus justo. Integer sed rutrum ligula. Pellentesque id diam id ex blandit gravida. Praesent ut augue ex.\r\n\r\nInteger vestibulum justo id bibendum tempus. Donec mattis, nunc sed sollicitudin ullamcorper, nulla nulla ultricies neque, at finibus sapien nunc non libero. Aenean rutrum lorem lorem, nec volutpat erat malesuada a. Etiam tristique, ligula nec facilisis commodo, felis lorem pretium lacus, vel facilisis ex nunc in leo. Vivamus eget lacus risus. Suspendisse potenti. Vivamus vitae nulla sit amet mi blandit rutrum. Ut ornare tortor vitae lorem blandit, nec fermentum risus rhoncus.\r\n\r\nAliquam eu felis mauris. Pellentesque non nunc diam. Integer dignissim erat nec finibus volutpat. Nullam vitae turpis turpis. Suspendisse potenti. Fusce volutpat massa vel libero lacinia, nec pretium sapien tristique. Sed lobortis metus id sem tristique, et pretium erat sollicitudin. Proin vitae turpis vitae tortor luctus porttitor. Quisque vehicula, magna nec dictum pretium, magna risus volutpat turpis, in tempus augue felis ac metus.",
+      "description_uk": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi fringilla congue ante, in blandit arcu tincidunt a. Nullam tristique lorem quis nisl volutpat dapibus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Vestibulum rutrum eros nec massa ultricies, et accumsan erat fermentum. Suspendisse potenti. Aliquam euismod libero nec nulla luctus lacinia. Curabitur rhoncus magna a sapien suscipit, vitae fermentum eros ultricies. Proin in viverra nisi. Donec vel erat nec nulla iaculis volutpat nec sed neque.\r\n\r\nPhasellus imperdiet, ex sed cursus blandit, justo nunc facilisis metus, ac posuere erat odio id nisi. Vivamus cursus, sapien sed porta ullamcorper, libero diam convallis sem, non tristique purus magna sit amet metus. Mauris lacinia diam eu mauris pulvinar, nec viverra erat tristique. Aenean feugiat lorem vel ex pharetra, nec rutrum augue tempor. Morbi in mattis sapien. Aenean sit amet fermentum erat. Maecenas non tellus sit amet sapien vulputate pretium at sed mauris. Aliquam erat volutpat. Sed tincidunt lacus in lectus finibus, eget rutrum nulla mattis.\r\n\r\nCras eget bibendum nisi. Duis ut turpis sed turpis efficitur facilisis. Suspendisse convallis lacus sed convallis fermentum. Curabitur dignissim libero a ex viverra, nec mattis leo sodales. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Duis fringilla leo in lorem rhoncus, vel dapibus purus laoreet. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc ac efficitur velit, non dapibus justo. Integer sed rutrum ligula. Pellentesque id diam id ex blandit gravida. Praesent ut augue ex.\r\n\r\nInteger vestibulum justo id bibendum tempus. Donec mattis, nunc sed sollicitudin ullamcorper, nulla nulla ultricies neque, at finibus sapien nunc non libero. Aenean rutrum lorem lorem, nec volutpat erat malesuada a. Etiam tristique, ligula nec facilisis commodo, felis lorem pretium lacus, vel facilisis ex nunc in leo. Vivamus eget lacus risus. Suspendisse potenti. Vivamus vitae nulla sit amet mi blandit rutrum. Ut ornare tortor vitae lorem blandit, nec fermentum risus rhoncus.\r\n\r\nAliquam eu felis mauris. Pellentesque non nunc diam. Integer dignissim erat nec finibus volutpat. Nullam vitae turpis turpis. Suspendisse potenti. Fusce volutpat massa vel libero lacinia, nec pretium sapien tristique. Sed lobortis metus id sem tristique, et pretium erat sollicitudin. Proin vitae turpis vitae tortor luctus porttitor. Quisque vehicula, magna nec dictum pretium, magna risus volutpat turpis, in tempus augue felis ac metus.",
+      "term": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi fringilla congue ante, in blandit arcu tincidunt a. Nullam tristique lorem quis nisl volutpat dapibus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Vestibulum rutrum eros nec massa ultricies, et accumsan erat fermentum. Suspendisse potenti. Aliquam euismod libero nec nulla luctus lacinia. Curabitur rhoncus magna a sapien suscipit, vitae fermentum eros ultricies. Proin in viverra nisi. Donec vel erat nec nulla iaculis volutpat nec sed neque.\r\n\r\nPhasellus imperdiet, ex sed cursus blandit, justo nunc facilisis metus, ac posuere erat odio id nisi. Vivamus cursus, sapien sed porta ullamcorper, libero diam convallis sem, non tristique purus magna sit amet metus. Mauris lacinia diam eu mauris pulvinar, nec viverra erat tristique. Aenean feugiat lorem vel ex pharetra, nec rutrum augue tempor. Morbi in mattis sapien. Aenean sit amet fermentum erat. Maecenas non tellus sit amet sapien vulputate pretium at sed mauris. Aliquam erat volutpat. Sed tincidunt lacus in lectus finibus, eget rutrum nulla mattis.\r\n\r\nCras eget bibendum nisi. Duis ut turpis sed turpis efficitur facilisis. Suspendisse convallis lacus sed convallis fermentum. Curabitur dignissim libero a ex viverra, nec mattis leo sodales. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Duis fringilla leo in lorem rhoncus, vel dapibus purus laoreet. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc ac efficitur velit, non dapibus justo. Integer sed rutrum ligula. Pellentesque id diam id ex blandit gravida. Praesent ut augue ex.",
+      "term_ru": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi fringilla congue ante, in blandit arcu tincidunt a. Nullam tristique lorem quis nisl volutpat dapibus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Vestibulum rutrum eros nec massa ultricies, et accumsan erat fermentum. Suspendisse potenti. Aliquam euismod libero nec nulla luctus lacinia. Curabitur rhoncus magna a sapien suscipit, vitae fermentum eros ultricies. Proin in viverra nisi. Donec vel erat nec nulla iaculis volutpat nec sed neque.\r\n\r\nPhasellus imperdiet, ex sed cursus blandit, justo nunc facilisis metus, ac posuere erat odio id nisi. Vivamus cursus, sapien sed porta ullamcorper, libero diam convallis sem, non tristique purus magna sit amet metus. Mauris lacinia diam eu mauris pulvinar, nec viverra erat tristique. Aenean feugiat lorem vel ex pharetra, nec rutrum augue tempor. Morbi in mattis sapien. Aenean sit amet fermentum erat. Maecenas non tellus sit amet sapien vulputate pretium at sed mauris. Aliquam erat volutpat. Sed tincidunt lacus in lectus finibus, eget rutrum nulla mattis.\r\n\r\nCras eget bibendum nisi. Duis ut turpis sed turpis efficitur facilisis. Suspendisse convallis lacus sed convallis fermentum. Curabitur dignissim libero a ex viverra, nec mattis leo sodales. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Duis fringilla leo in lorem rhoncus, vel dapibus purus laoreet. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc ac efficitur velit, non dapibus justo. Integer sed rutrum ligula. Pellentesque id diam id ex blandit gravida. Praesent ut augue ex.",
+      "term_uk": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi fringilla congue ante, in blandit arcu tincidunt a. Nullam tristique lorem quis nisl volutpat dapibus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Vestibulum rutrum eros nec massa ultricies, et accumsan erat fermentum. Suspendisse potenti. Aliquam euismod libero nec nulla luctus lacinia. Curabitur rhoncus magna a sapien suscipit, vitae fermentum eros ultricies. Proin in viverra nisi. Donec vel erat nec nulla iaculis volutpat nec sed neque.\r\n\r\nPhasellus imperdiet, ex sed cursus blandit, justo nunc facilisis metus, ac posuere erat odio id nisi. Vivamus cursus, sapien sed porta ullamcorper, libero diam convallis sem, non tristique purus magna sit amet metus. Mauris lacinia diam eu mauris pulvinar, nec viverra erat tristique. Aenean feugiat lorem vel ex pharetra, nec rutrum augue tempor. Morbi in mattis sapien. Aenean sit amet fermentum erat. Maecenas non tellus sit amet sapien vulputate pretium at sed mauris. Aliquam erat volutpat. Sed tincidunt lacus in lectus finibus, eget rutrum nulla mattis.\r\n\r\nCras eget bibendum nisi. Duis ut turpis sed turpis efficitur facilisis. Suspendisse convallis lacus sed convallis fermentum. Curabitur dignissim libero a ex viverra, nec mattis leo sodales. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Duis fringilla leo in lorem rhoncus, vel dapibus purus laoreet. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc ac efficitur velit, non dapibus justo. Integer sed rutrum ligula. Pellentesque id diam id ex blandit gravida. Praesent ut augue ex.",
+      "logo_image": "cinemas/logos/2025/08/02/multi_flex_kiefv.jpeg",
+      "top_banner": "cinemas/banners/2025/08/02/multi_flex_top.jpg",
+      "seo": 9
+    }
+  },
+  {
+    "model": "adminlte.cardcinema",
+    "pk": 3,
+    "fields": {
+      "name": "Кинотетар 2",
+      "name_ru": "Кинотетар 2",
+      "name_uk": "Кинотетар 2",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi fringilla congue ante, in blandit arcu tincidunt a. Nullam tristique lorem quis nisl volutpat dapibus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Vestibulum rutrum eros nec massa ultricies, et accumsan erat fermentum. Suspendisse potenti. Aliquam euismod libero nec nulla luctus lacinia. Curabitur rhoncus magna a sapien suscipit, vitae fermentum eros ultricies. Proin in viverra nisi. Donec vel erat nec nulla iaculis volutpat nec sed neque.\r\n\r\nPhasellus imperdiet, ex sed cursus blandit, justo nunc facilisis metus, ac posuere erat odio id nisi. Vivamus cursus, sapien sed porta ullamcorper, libero diam convallis sem, non tristique purus magna sit amet metus. Mauris lacinia diam eu mauris pulvinar, nec viverra erat tristique. Aenean feugiat lorem vel ex pharetra, nec rutrum augue tempor. Morbi in mattis sapien. Aenean sit amet fermentum erat. Maecenas non tellus sit amet sapien vulputate pretium at sed mauris. Aliquam erat volutpat. Sed tincidunt lacus in lectus finibus, eget rutrum nulla mattis.\r\n\r\nCras eget bibendum nisi. Duis ut turpis sed turpis efficitur facilisis. Suspendisse convallis lacus sed convallis fermentum. Curabitur dignissim libero a ex viverra, nec mattis leo sodales. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Duis fringilla leo in lorem rhoncus, vel dapibus purus laoreet. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc ac efficitur velit, non dapibus justo. Integer sed rutrum ligula. Pellentesque id diam id ex blandit gravida. Praesent ut augue ex.\r\n\r\nInteger vestibulum justo id bibendum tempus. Donec mattis, nunc sed sollicitudin ullamcorper, nulla nulla ultricies neque, at finibus sapien nunc non libero. Aenean rutrum lorem lorem, nec volutpat erat malesuada a. Etiam tristique, ligula nec facilisis commodo, felis lorem pretium lacus, vel facilisis ex nunc in leo. Vivamus eget lacus risus. Suspendisse potenti. Vivamus vitae nulla sit amet mi blandit rutrum. Ut ornare tortor vitae lorem blandit, nec fermentum risus rhoncus.\r\n\r\nAliquam eu felis mauris. Pellentesque non nunc diam. Integer dignissim erat nec finibus volutpat. Nullam vitae turpis turpis. Suspendisse potenti. Fusce volutpat massa vel libero lacinia, nec pretium sapien tristique. Sed lobortis metus id sem tristique, et pretium erat sollicitudin. Proin vitae turpis vitae tortor luctus porttitor. Quisque vehicula, magna nec dictum pretium, magna risus volutpat turpis, in tempus augue felis ac metus.",
+      "description_ru": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi fringilla congue ante, in blandit arcu tincidunt a. Nullam tristique lorem quis nisl volutpat dapibus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Vestibulum rutrum eros nec massa ultricies, et accumsan erat fermentum. Suspendisse potenti. Aliquam euismod libero nec nulla luctus lacinia. Curabitur rhoncus magna a sapien suscipit, vitae fermentum eros ultricies. Proin in viverra nisi. Donec vel erat nec nulla iaculis volutpat nec sed neque.\r\n\r\nPhasellus imperdiet, ex sed cursus blandit, justo nunc facilisis metus, ac posuere erat odio id nisi. Vivamus cursus, sapien sed porta ullamcorper, libero diam convallis sem, non tristique purus magna sit amet metus. Mauris lacinia diam eu mauris pulvinar, nec viverra erat tristique. Aenean feugiat lorem vel ex pharetra, nec rutrum augue tempor. Morbi in mattis sapien. Aenean sit amet fermentum erat. Maecenas non tellus sit amet sapien vulputate pretium at sed mauris. Aliquam erat volutpat. Sed tincidunt lacus in lectus finibus, eget rutrum nulla mattis.\r\n\r\nCras eget bibendum nisi. Duis ut turpis sed turpis efficitur facilisis. Suspendisse convallis lacus sed convallis fermentum. Curabitur dignissim libero a ex viverra, nec mattis leo sodales. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Duis fringilla leo in lorem rhoncus, vel dapibus purus laoreet. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc ac efficitur velit, non dapibus justo. Integer sed rutrum ligula. Pellentesque id diam id ex blandit gravida. Praesent ut augue ex.\r\n\r\nInteger vestibulum justo id bibendum tempus. Donec mattis, nunc sed sollicitudin ullamcorper, nulla nulla ultricies neque, at finibus sapien nunc non libero. Aenean rutrum lorem lorem, nec volutpat erat malesuada a. Etiam tristique, ligula nec facilisis commodo, felis lorem pretium lacus, vel facilisis ex nunc in leo. Vivamus eget lacus risus. Suspendisse potenti. Vivamus vitae nulla sit amet mi blandit rutrum. Ut ornare tortor vitae lorem blandit, nec fermentum risus rhoncus.\r\n\r\nAliquam eu felis mauris. Pellentesque non nunc diam. Integer dignissim erat nec finibus volutpat. Nullam vitae turpis turpis. Suspendisse potenti. Fusce volutpat massa vel libero lacinia, nec pretium sapien tristique. Sed lobortis metus id sem tristique, et pretium erat sollicitudin. Proin vitae turpis vitae tortor luctus porttitor. Quisque vehicula, magna nec dictum pretium, magna risus volutpat turpis, in tempus augue felis ac metus.",
+      "description_uk": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi fringilla congue ante, in blandit arcu tincidunt a. Nullam tristique lorem quis nisl volutpat dapibus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Vestibulum rutrum eros nec massa ultricies, et accumsan erat fermentum. Suspendisse potenti. Aliquam euismod libero nec nulla luctus lacinia. Curabitur rhoncus magna a sapien suscipit, vitae fermentum eros ultricies. Proin in viverra nisi. Donec vel erat nec nulla iaculis volutpat nec sed neque.\r\n\r\nPhasellus imperdiet, ex sed cursus blandit, justo nunc facilisis metus, ac posuere erat odio id nisi. Vivamus cursus, sapien sed porta ullamcorper, libero diam convallis sem, non tristique purus magna sit amet metus. Mauris lacinia diam eu mauris pulvinar, nec viverra erat tristique. Aenean feugiat lorem vel ex pharetra, nec rutrum augue tempor. Morbi in mattis sapien. Aenean sit amet fermentum erat. Maecenas non tellus sit amet sapien vulputate pretium at sed mauris. Aliquam erat volutpat. Sed tincidunt lacus in lectus finibus, eget rutrum nulla mattis.\r\n\r\nCras eget bibendum nisi. Duis ut turpis sed turpis efficitur facilisis. Suspendisse convallis lacus sed convallis fermentum. Curabitur dignissim libero a ex viverra, nec mattis leo sodales. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Duis fringilla leo in lorem rhoncus, vel dapibus purus laoreet. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc ac efficitur velit, non dapibus justo. Integer sed rutrum ligula. Pellentesque id diam id ex blandit gravida. Praesent ut augue ex.\r\n\r\nInteger vestibulum justo id bibendum tempus. Donec mattis, nunc sed sollicitudin ullamcorper, nulla nulla ultricies neque, at finibus sapien nunc non libero. Aenean rutrum lorem lorem, nec volutpat erat malesuada a. Etiam tristique, ligula nec facilisis commodo, felis lorem pretium lacus, vel facilisis ex nunc in leo. Vivamus eget lacus risus. Suspendisse potenti. Vivamus vitae nulla sit amet mi blandit rutrum. Ut ornare tortor vitae lorem blandit, nec fermentum risus rhoncus.\r\n\r\nAliquam eu felis mauris. Pellentesque non nunc diam. Integer dignissim erat nec finibus volutpat. Nullam vitae turpis turpis. Suspendisse potenti. Fusce volutpat massa vel libero lacinia, nec pretium sapien tristique. Sed lobortis metus id sem tristique, et pretium erat sollicitudin. Proin vitae turpis vitae tortor luctus porttitor. Quisque vehicula, magna nec dictum pretium, magna risus volutpat turpis, in tempus augue felis ac metus.",
+      "term": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi fringilla congue ante, in blandit arcu tincidunt a. Nullam tristique lorem quis nisl volutpat dapibus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Vestibulum rutrum eros nec massa ultricies, et accumsan erat fermentum. Suspendisse potenti. Aliquam euismod libero nec nulla luctus lacinia. Curabitur rhoncus magna a sapien suscipit, vitae fermentum eros ultricies. Proin in viverra nisi. Donec vel erat nec nulla iaculis volutpat nec sed neque.\r\n\r\nPhasellus imperdiet, ex sed cursus blandit, justo nunc facilisis metus, ac posuere erat odio id nisi. Vivamus cursus, sapien sed porta ullamcorper, libero diam convallis sem, non tristique purus magna sit amet metus. Mauris lacinia diam eu mauris pulvinar, nec viverra erat tristique. Aenean feugiat lorem vel ex pharetra, nec rutrum augue tempor. Morbi in mattis sapien. Aenean sit amet fermentum erat. Maecenas non tellus sit amet sapien vulputate pretium at sed mauris. Aliquam erat volutpat. Sed tincidunt lacus in lectus finibus, eget rutrum nulla mattis.\r\n\r\nCras eget bibendum nisi. Duis ut turpis sed turpis efficitur facilisis. Suspendisse convallis lacus sed convallis fermentum. Curabitur dignissim libero a ex viverra, nec mattis leo sodales. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Duis fringilla leo in lorem rhoncus, vel dapibus purus laoreet. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc ac efficitur velit, non dapibus justo. Integer sed rutrum ligula. Pellentesque id diam id ex blandit gravida. Praesent ut augue ex.",
+      "term_ru": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi fringilla congue ante, in blandit arcu tincidunt a. Nullam tristique lorem quis nisl volutpat dapibus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Vestibulum rutrum eros nec massa ultricies, et accumsan erat fermentum. Suspendisse potenti. Aliquam euismod libero nec nulla luctus lacinia. Curabitur rhoncus magna a sapien suscipit, vitae fermentum eros ultricies. Proin in viverra nisi. Donec vel erat nec nulla iaculis volutpat nec sed neque.\r\n\r\nPhasellus imperdiet, ex sed cursus blandit, justo nunc facilisis metus, ac posuere erat odio id nisi. Vivamus cursus, sapien sed porta ullamcorper, libero diam convallis sem, non tristique purus magna sit amet metus. Mauris lacinia diam eu mauris pulvinar, nec viverra erat tristique. Aenean feugiat lorem vel ex pharetra, nec rutrum augue tempor. Morbi in mattis sapien. Aenean sit amet fermentum erat. Maecenas non tellus sit amet sapien vulputate pretium at sed mauris. Aliquam erat volutpat. Sed tincidunt lacus in lectus finibus, eget rutrum nulla mattis.\r\n\r\nCras eget bibendum nisi. Duis ut turpis sed turpis efficitur facilisis. Suspendisse convallis lacus sed convallis fermentum. Curabitur dignissim libero a ex viverra, nec mattis leo sodales. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Duis fringilla leo in lorem rhoncus, vel dapibus purus laoreet. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc ac efficitur velit, non dapibus justo. Integer sed rutrum ligula. Pellentesque id diam id ex blandit gravida. Praesent ut augue ex.",
+      "term_uk": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi fringilla congue ante, in blandit arcu tincidunt a. Nullam tristique lorem quis nisl volutpat dapibus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Vestibulum rutrum eros nec massa ultricies, et accumsan erat fermentum. Suspendisse potenti. Aliquam euismod libero nec nulla luctus lacinia. Curabitur rhoncus magna a sapien suscipit, vitae fermentum eros ultricies. Proin in viverra nisi. Donec vel erat nec nulla iaculis volutpat nec sed neque.\r\n\r\nPhasellus imperdiet, ex sed cursus blandit, justo nunc facilisis metus, ac posuere erat odio id nisi. Vivamus cursus, sapien sed porta ullamcorper, libero diam convallis sem, non tristique purus magna sit amet metus. Mauris lacinia diam eu mauris pulvinar, nec viverra erat tristique. Aenean feugiat lorem vel ex pharetra, nec rutrum augue tempor. Morbi in mattis sapien. Aenean sit amet fermentum erat. Maecenas non tellus sit amet sapien vulputate pretium at sed mauris. Aliquam erat volutpat. Sed tincidunt lacus in lectus finibus, eget rutrum nulla mattis.\r\n\r\nCras eget bibendum nisi. Duis ut turpis sed turpis efficitur facilisis. Suspendisse convallis lacus sed convallis fermentum. Curabitur dignissim libero a ex viverra, nec mattis leo sodales. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Duis fringilla leo in lorem rhoncus, vel dapibus purus laoreet. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc ac efficitur velit, non dapibus justo. Integer sed rutrum ligula. Pellentesque id diam id ex blandit gravida. Praesent ut augue ex.",
+      "logo_image": "cinemas/logos/2025/08/02/multuplex_uzhorod.jpeg",
+      "top_banner": "cinemas/banners/2025/08/02/top_multiplex_uzhorod.jpg",
+      "seo": 10
+    }
+  },
+  {
+    "model": "adminlte.cardcinemagallery",
+    "pk": 2,
+    "fields": {
+      "card_cinema": 1,
+      "image": 42
+    }
+  },
+  {
+    "model": "adminlte.cardcinemagallery",
+    "pk": 3,
+    "fields": {
+      "card_cinema": 1,
+      "image": 43
+    }
+  },
+  {
+    "model": "adminlte.cardcinemagallery",
+    "pk": 4,
+    "fields": {
+      "card_cinema": 1,
+      "image": 44
+    }
+  },
+  {
+    "model": "adminlte.cardcinemagallery",
+    "pk": 8,
+    "fields": {
+      "card_cinema": 3,
+      "image": 39
+    }
+  },
+  {
+    "model": "adminlte.cardcinemagallery",
+    "pk": 9,
+    "fields": {
+      "card_cinema": 3,
+      "image": 40
+    }
+  },
+  {
+    "model": "adminlte.cardcinemagallery",
+    "pk": 10,
+    "fields": {
+      "card_cinema": 3,
+      "image": 41
+    }
+  },
+  {
+    "model": "adminlte.cardcinemagallery",
+    "pk": 11,
+    "fields": {
+      "card_cinema": 2,
+      "image": 45
+    }
+  },
+  {
+    "model": "adminlte.cardcinemagallery",
+    "pk": 12,
+    "fields": {
+      "card_cinema": 2,
+      "image": 46
+    }
+  },
+  {
+    "model": "adminlte.cardcinemagallery",
+    "pk": 13,
+    "fields": {
+      "card_cinema": 2,
+      "image": 47
+    }
+  },
+  {
+    "model": "adminlte.cardhall",
+    "pk": 1,
+    "fields": {
+      "name": "Зал 1",
+      "name_ru": "Зал 1",
+      "name_uk": "Зал 1",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi fringilla congue ante, in blandit arcu tincidunt a. Nullam tristique lorem quis nisl volutpat dapibus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Vestibulum rutrum eros nec massa ultricies, et accumsan erat fermentum. Suspendisse potenti. Aliquam euismod libero nec nulla luctus lacinia. Curabitur rhoncus magna a sapien suscipit, vitae fermentum eros ultricies. Proin in viverra nisi. Donec vel erat nec nulla iaculis volutpat nec sed neque.\r\n\r\nPhasellus imperdiet, ex sed cursus blandit, justo nunc facilisis metus, ac posuere erat odio id nisi. Vivamus cursus, sapien sed porta ullamcorper, libero diam convallis sem, non tristique purus magna sit amet metus. Mauris lacinia diam eu mauris pulvinar, nec viverra erat tristique. Aenean feugiat lorem vel ex pharetra, nec rutrum augue tempor. Morbi in mattis sapien. Aenean sit amet fermentum erat. Maecenas non tellus sit amet sapien vulputate pretium at sed mauris. Aliquam erat volutpat. Sed tincidunt lacus in lectus finibus, eget rutrum nulla mattis.\r\n\r\nCras eget bibendum nisi. Duis ut turpis sed turpis efficitur facilisis. Suspendisse convallis lacus sed convallis fermentum. Curabitur dignissim libero a ex viverra, nec mattis leo sodales. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Duis fringilla leo in lorem rhoncus, vel dapibus purus laoreet. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc ac efficitur velit, non dapibus justo. Integer sed rutrum ligula. Pellentesque id diam id ex blandit gravida. Praesent ut augue ex.\r\n\r\nInteger vestibulum justo id bibendum tempus. Donec mattis, nunc sed sollicitudin ullamcorper, nulla nulla ultricies neque, at finibus sapien nunc non libero. Aenean rutrum lorem lorem, nec volutpat erat malesuada a. Etiam tristique, ligula nec facilisis commodo, felis lorem pretium lacus, vel facilisis ex nunc in leo. Vivamus eget lacus risus. Suspendisse potenti. Vivamus vitae nulla sit amet mi blandit rutrum. Ut ornare tortor vitae lorem blandit, nec fermentum risus rhoncus.\r\n\r\nAliquam eu felis mauris. Pellentesque non nunc diam. Integer dignissim erat nec finibus volutpat. Nullam vitae turpis turpis. Suspendisse potenti. Fusce volutpat massa vel libero lacinia, nec pretium sapien tristique. Sed lobortis metus id sem tristique, et pretium erat sollicitudin. Proin vitae turpis vitae tortor luctus porttitor. Quisque vehicula, magna nec dictum pretium, magna risus volutpat turpis, in tempus augue felis ac metus.",
+      "description_ru": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi fringilla congue ante, in blandit arcu tincidunt a. Nullam tristique lorem quis nisl volutpat dapibus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Vestibulum rutrum eros nec massa ultricies, et accumsan erat fermentum. Suspendisse potenti. Aliquam euismod libero nec nulla luctus lacinia. Curabitur rhoncus magna a sapien suscipit, vitae fermentum eros ultricies. Proin in viverra nisi. Donec vel erat nec nulla iaculis volutpat nec sed neque.\r\n\r\nPhasellus imperdiet, ex sed cursus blandit, justo nunc facilisis metus, ac posuere erat odio id nisi. Vivamus cursus, sapien sed porta ullamcorper, libero diam convallis sem, non tristique purus magna sit amet metus. Mauris lacinia diam eu mauris pulvinar, nec viverra erat tristique. Aenean feugiat lorem vel ex pharetra, nec rutrum augue tempor. Morbi in mattis sapien. Aenean sit amet fermentum erat. Maecenas non tellus sit amet sapien vulputate pretium at sed mauris. Aliquam erat volutpat. Sed tincidunt lacus in lectus finibus, eget rutrum nulla mattis.\r\n\r\nCras eget bibendum nisi. Duis ut turpis sed turpis efficitur facilisis. Suspendisse convallis lacus sed convallis fermentum. Curabitur dignissim libero a ex viverra, nec mattis leo sodales. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Duis fringilla leo in lorem rhoncus, vel dapibus purus laoreet. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc ac efficitur velit, non dapibus justo. Integer sed rutrum ligula. Pellentesque id diam id ex blandit gravida. Praesent ut augue ex.\r\n\r\nInteger vestibulum justo id bibendum tempus. Donec mattis, nunc sed sollicitudin ullamcorper, nulla nulla ultricies neque, at finibus sapien nunc non libero. Aenean rutrum lorem lorem, nec volutpat erat malesuada a. Etiam tristique, ligula nec facilisis commodo, felis lorem pretium lacus, vel facilisis ex nunc in leo. Vivamus eget lacus risus. Suspendisse potenti. Vivamus vitae nulla sit amet mi blandit rutrum. Ut ornare tortor vitae lorem blandit, nec fermentum risus rhoncus.\r\n\r\nAliquam eu felis mauris. Pellentesque non nunc diam. Integer dignissim erat nec finibus volutpat. Nullam vitae turpis turpis. Suspendisse potenti. Fusce volutpat massa vel libero lacinia, nec pretium sapien tristique. Sed lobortis metus id sem tristique, et pretium erat sollicitudin. Proin vitae turpis vitae tortor luctus porttitor. Quisque vehicula, magna nec dictum pretium, magna risus volutpat turpis, in tempus augue felis ac metus.",
+      "description_uk": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi fringilla congue ante, in blandit arcu tincidunt a. Nullam tristique lorem quis nisl volutpat dapibus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Vestibulum rutrum eros nec massa ultricies, et accumsan erat fermentum. Suspendisse potenti. Aliquam euismod libero nec nulla luctus lacinia. Curabitur rhoncus magna a sapien suscipit, vitae fermentum eros ultricies. Proin in viverra nisi. Donec vel erat nec nulla iaculis volutpat nec sed neque.\r\n\r\nPhasellus imperdiet, ex sed cursus blandit, justo nunc facilisis metus, ac posuere erat odio id nisi. Vivamus cursus, sapien sed porta ullamcorper, libero diam convallis sem, non tristique purus magna sit amet metus. Mauris lacinia diam eu mauris pulvinar, nec viverra erat tristique. Aenean feugiat lorem vel ex pharetra, nec rutrum augue tempor. Morbi in mattis sapien. Aenean sit amet fermentum erat. Maecenas non tellus sit amet sapien vulputate pretium at sed mauris. Aliquam erat volutpat. Sed tincidunt lacus in lectus finibus, eget rutrum nulla mattis.\r\n\r\nCras eget bibendum nisi. Duis ut turpis sed turpis efficitur facilisis. Suspendisse convallis lacus sed convallis fermentum. Curabitur dignissim libero a ex viverra, nec mattis leo sodales. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Duis fringilla leo in lorem rhoncus, vel dapibus purus laoreet. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc ac efficitur velit, non dapibus justo. Integer sed rutrum ligula. Pellentesque id diam id ex blandit gravida. Praesent ut augue ex.\r\n\r\nInteger vestibulum justo id bibendum tempus. Donec mattis, nunc sed sollicitudin ullamcorper, nulla nulla ultricies neque, at finibus sapien nunc non libero. Aenean rutrum lorem lorem, nec volutpat erat malesuada a. Etiam tristique, ligula nec facilisis commodo, felis lorem pretium lacus, vel facilisis ex nunc in leo. Vivamus eget lacus risus. Suspendisse potenti. Vivamus vitae nulla sit amet mi blandit rutrum. Ut ornare tortor vitae lorem blandit, nec fermentum risus rhoncus.\r\n\r\nAliquam eu felis mauris. Pellentesque non nunc diam. Integer dignissim erat nec finibus volutpat. Nullam vitae turpis turpis. Suspendisse potenti. Fusce volutpat massa vel libero lacinia, nec pretium sapien tristique. Sed lobortis metus id sem tristique, et pretium erat sollicitudin. Proin vitae turpis vitae tortor luctus porttitor. Quisque vehicula, magna nec dictum pretium, magna risus volutpat turpis, in tempus augue felis ac metus.",
+      "schema_image": "halls/schema/2025/08/02/card_hall_shecma_tbcIkFp.jpg",
+      "top_banner": "halls/banners/2025/08/02/hall4.jpg",
+      "created_at": "2025-08-01T15:19:45.073Z",
+      "seo": 11,
+      "card_cinema": 1
+    }
+  },
+  {
+    "model": "adminlte.cardhall",
+    "pk": 2,
+    "fields": {
+      "name": "Зал 1",
+      "name_ru": "Зал 1",
+      "name_uk": "Зал 1",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi fringilla congue ante, in blandit arcu tincidunt a. Nullam tristique lorem quis nisl volutpat dapibus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Vestibulum rutrum eros nec massa ultricies, et accumsan erat fermentum. Suspendisse potenti. Aliquam euismod libero nec nulla luctus lacinia. Curabitur rhoncus magna a sapien suscipit, vitae fermentum eros ultricies. Proin in viverra nisi. Donec vel erat nec nulla iaculis volutpat nec sed neque.\r\n\r\nPhasellus imperdiet, ex sed cursus blandit, justo nunc facilisis metus, ac posuere erat odio id nisi. Vivamus cursus, sapien sed porta ullamcorper, libero diam convallis sem, non tristique purus magna sit amet metus. Mauris lacinia diam eu mauris pulvinar, nec viverra erat tristique. Aenean feugiat lorem vel ex pharetra, nec rutrum augue tempor. Morbi in mattis sapien. Aenean sit amet fermentum erat. Maecenas non tellus sit amet sapien vulputate pretium at sed mauris. Aliquam erat volutpat. Sed tincidunt lacus in lectus finibus, eget rutrum nulla mattis.\r\n\r\nCras eget bibendum nisi. Duis ut turpis sed turpis efficitur facilisis. Suspendisse convallis lacus sed convallis fermentum. Curabitur dignissim libero a ex viverra, nec mattis leo sodales. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Duis fringilla leo in lorem rhoncus, vel dapibus purus laoreet. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc ac efficitur velit, non dapibus justo. Integer sed rutrum ligula. Pellentesque id diam id ex blandit gravida. Praesent ut augue ex.\r\n\r\nInteger vestibulum justo id bibendum tempus. Donec mattis, nunc sed sollicitudin ullamcorper, nulla nulla ultricies neque, at finibus sapien nunc non libero. Aenean rutrum lorem lorem, nec volutpat erat malesuada a. Etiam tristique, ligula nec facilisis commodo, felis lorem pretium lacus, vel facilisis ex nunc in leo. Vivamus eget lacus risus. Suspendisse potenti. Vivamus vitae nulla sit amet mi blandit rutrum. Ut ornare tortor vitae lorem blandit, nec fermentum risus rhoncus.\r\n\r\nAliquam eu felis mauris. Pellentesque non nunc diam. Integer dignissim erat nec finibus volutpat. Nullam vitae turpis turpis. Suspendisse potenti. Fusce volutpat massa vel libero lacinia, nec pretium sapien tristique. Sed lobortis metus id sem tristique, et pretium erat sollicitudin. Proin vitae turpis vitae tortor luctus porttitor. Quisque vehicula, magna nec dictum pretium, magna risus volutpat turpis, in tempus augue felis ac metus.",
+      "description_ru": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi fringilla congue ante, in blandit arcu tincidunt a. Nullam tristique lorem quis nisl volutpat dapibus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Vestibulum rutrum eros nec massa ultricies, et accumsan erat fermentum. Suspendisse potenti. Aliquam euismod libero nec nulla luctus lacinia. Curabitur rhoncus magna a sapien suscipit, vitae fermentum eros ultricies. Proin in viverra nisi. Donec vel erat nec nulla iaculis volutpat nec sed neque.\r\n\r\nPhasellus imperdiet, ex sed cursus blandit, justo nunc facilisis metus, ac posuere erat odio id nisi. Vivamus cursus, sapien sed porta ullamcorper, libero diam convallis sem, non tristique purus magna sit amet metus. Mauris lacinia diam eu mauris pulvinar, nec viverra erat tristique. Aenean feugiat lorem vel ex pharetra, nec rutrum augue tempor. Morbi in mattis sapien. Aenean sit amet fermentum erat. Maecenas non tellus sit amet sapien vulputate pretium at sed mauris. Aliquam erat volutpat. Sed tincidunt lacus in lectus finibus, eget rutrum nulla mattis.\r\n\r\nCras eget bibendum nisi. Duis ut turpis sed turpis efficitur facilisis. Suspendisse convallis lacus sed convallis fermentum. Curabitur dignissim libero a ex viverra, nec mattis leo sodales. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Duis fringilla leo in lorem rhoncus, vel dapibus purus laoreet. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc ac efficitur velit, non dapibus justo. Integer sed rutrum ligula. Pellentesque id diam id ex blandit gravida. Praesent ut augue ex.\r\n\r\nInteger vestibulum justo id bibendum tempus. Donec mattis, nunc sed sollicitudin ullamcorper, nulla nulla ultricies neque, at finibus sapien nunc non libero. Aenean rutrum lorem lorem, nec volutpat erat malesuada a. Etiam tristique, ligula nec facilisis commodo, felis lorem pretium lacus, vel facilisis ex nunc in leo. Vivamus eget lacus risus. Suspendisse potenti. Vivamus vitae nulla sit amet mi blandit rutrum. Ut ornare tortor vitae lorem blandit, nec fermentum risus rhoncus.\r\n\r\nAliquam eu felis mauris. Pellentesque non nunc diam. Integer dignissim erat nec finibus volutpat. Nullam vitae turpis turpis. Suspendisse potenti. Fusce volutpat massa vel libero lacinia, nec pretium sapien tristique. Sed lobortis metus id sem tristique, et pretium erat sollicitudin. Proin vitae turpis vitae tortor luctus porttitor. Quisque vehicula, magna nec dictum pretium, magna risus volutpat turpis, in tempus augue felis ac metus.",
+      "description_uk": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi fringilla congue ante, in blandit arcu tincidunt a. Nullam tristique lorem quis nisl volutpat dapibus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Vestibulum rutrum eros nec massa ultricies, et accumsan erat fermentum. Suspendisse potenti. Aliquam euismod libero nec nulla luctus lacinia. Curabitur rhoncus magna a sapien suscipit, vitae fermentum eros ultricies. Proin in viverra nisi. Donec vel erat nec nulla iaculis volutpat nec sed neque.\r\n\r\nPhasellus imperdiet, ex sed cursus blandit, justo nunc facilisis metus, ac posuere erat odio id nisi. Vivamus cursus, sapien sed porta ullamcorper, libero diam convallis sem, non tristique purus magna sit amet metus. Mauris lacinia diam eu mauris pulvinar, nec viverra erat tristique. Aenean feugiat lorem vel ex pharetra, nec rutrum augue tempor. Morbi in mattis sapien. Aenean sit amet fermentum erat. Maecenas non tellus sit amet sapien vulputate pretium at sed mauris. Aliquam erat volutpat. Sed tincidunt lacus in lectus finibus, eget rutrum nulla mattis.\r\n\r\nCras eget bibendum nisi. Duis ut turpis sed turpis efficitur facilisis. Suspendisse convallis lacus sed convallis fermentum. Curabitur dignissim libero a ex viverra, nec mattis leo sodales. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Duis fringilla leo in lorem rhoncus, vel dapibus purus laoreet. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc ac efficitur velit, non dapibus justo. Integer sed rutrum ligula. Pellentesque id diam id ex blandit gravida. Praesent ut augue ex.\r\n\r\nInteger vestibulum justo id bibendum tempus. Donec mattis, nunc sed sollicitudin ullamcorper, nulla nulla ultricies neque, at finibus sapien nunc non libero. Aenean rutrum lorem lorem, nec volutpat erat malesuada a. Etiam tristique, ligula nec facilisis commodo, felis lorem pretium lacus, vel facilisis ex nunc in leo. Vivamus eget lacus risus. Suspendisse potenti. Vivamus vitae nulla sit amet mi blandit rutrum. Ut ornare tortor vitae lorem blandit, nec fermentum risus rhoncus.\r\n\r\nAliquam eu felis mauris. Pellentesque non nunc diam. Integer dignissim erat nec finibus volutpat. Nullam vitae turpis turpis. Suspendisse potenti. Fusce volutpat massa vel libero lacinia, nec pretium sapien tristique. Sed lobortis metus id sem tristique, et pretium erat sollicitudin. Proin vitae turpis vitae tortor luctus porttitor. Quisque vehicula, magna nec dictum pretium, magna risus volutpat turpis, in tempus augue felis ac metus.",
+      "schema_image": "halls/schema/2025/08/02/card_hall_shecma.jpg",
+      "top_banner": "halls/banners/2025/08/02/hall1.jpg",
+      "created_at": "2025-08-02T17:13:59.658Z",
+      "seo": 38,
+      "card_cinema": 2
+    }
+  },
+  {
+    "model": "adminlte.cardhall",
+    "pk": 3,
+    "fields": {
+      "name": "Зал 2",
+      "name_ru": "Зал 2",
+      "name_uk": "Зал 2",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi fringilla congue ante, in blandit arcu tincidunt a. Nullam tristique lorem quis nisl volutpat dapibus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Vestibulum rutrum eros nec massa ultricies, et accumsan erat fermentum. Suspendisse potenti. Aliquam euismod libero nec nulla luctus lacinia. Curabitur rhoncus magna a sapien suscipit, vitae fermentum eros ultricies. Proin in viverra nisi. Donec vel erat nec nulla iaculis volutpat nec sed neque.\r\n\r\nPhasellus imperdiet, ex sed cursus blandit, justo nunc facilisis metus, ac posuere erat odio id nisi. Vivamus cursus, sapien sed porta ullamcorper, libero diam convallis sem, non tristique purus magna sit amet metus. Mauris lacinia diam eu mauris pulvinar, nec viverra erat tristique. Aenean feugiat lorem vel ex pharetra, nec rutrum augue tempor. Morbi in mattis sapien. Aenean sit amet fermentum erat. Maecenas non tellus sit amet sapien vulputate pretium at sed mauris. Aliquam erat volutpat. Sed tincidunt lacus in lectus finibus, eget rutrum nulla mattis.\r\n\r\nCras eget bibendum nisi. Duis ut turpis sed turpis efficitur facilisis. Suspendisse convallis lacus sed convallis fermentum. Curabitur dignissim libero a ex viverra, nec mattis leo sodales. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Duis fringilla leo in lorem rhoncus, vel dapibus purus laoreet. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc ac efficitur velit, non dapibus justo. Integer sed rutrum ligula. Pellentesque id diam id ex blandit gravida. Praesent ut augue ex.\r\n\r\nInteger vestibulum justo id bibendum tempus. Donec mattis, nunc sed sollicitudin ullamcorper, nulla nulla ultricies neque, at finibus sapien nunc non libero. Aenean rutrum lorem lorem, nec volutpat erat malesuada a. Etiam tristique, ligula nec facilisis commodo, felis lorem pretium lacus, vel facilisis ex nunc in leo. Vivamus eget lacus risus. Suspendisse potenti. Vivamus vitae nulla sit amet mi blandit rutrum. Ut ornare tortor vitae lorem blandit, nec fermentum risus rhoncus.\r\n\r\nAliquam eu felis mauris. Pellentesque non nunc diam. Integer dignissim erat nec finibus volutpat. Nullam vitae turpis turpis. Suspendisse potenti. Fusce volutpat massa vel libero lacinia, nec pretium sapien tristique. Sed lobortis metus id sem tristique, et pretium erat sollicitudin. Proin vitae turpis vitae tortor luctus porttitor. Quisque vehicula, magna nec dictum pretium, magna risus volutpat turpis, in tempus augue felis ac metus.",
+      "description_ru": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi fringilla congue ante, in blandit arcu tincidunt a. Nullam tristique lorem quis nisl volutpat dapibus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Vestibulum rutrum eros nec massa ultricies, et accumsan erat fermentum. Suspendisse potenti. Aliquam euismod libero nec nulla luctus lacinia. Curabitur rhoncus magna a sapien suscipit, vitae fermentum eros ultricies. Proin in viverra nisi. Donec vel erat nec nulla iaculis volutpat nec sed neque.\r\n\r\nPhasellus imperdiet, ex sed cursus blandit, justo nunc facilisis metus, ac posuere erat odio id nisi. Vivamus cursus, sapien sed porta ullamcorper, libero diam convallis sem, non tristique purus magna sit amet metus. Mauris lacinia diam eu mauris pulvinar, nec viverra erat tristique. Aenean feugiat lorem vel ex pharetra, nec rutrum augue tempor. Morbi in mattis sapien. Aenean sit amet fermentum erat. Maecenas non tellus sit amet sapien vulputate pretium at sed mauris. Aliquam erat volutpat. Sed tincidunt lacus in lectus finibus, eget rutrum nulla mattis.\r\n\r\nCras eget bibendum nisi. Duis ut turpis sed turpis efficitur facilisis. Suspendisse convallis lacus sed convallis fermentum. Curabitur dignissim libero a ex viverra, nec mattis leo sodales. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Duis fringilla leo in lorem rhoncus, vel dapibus purus laoreet. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc ac efficitur velit, non dapibus justo. Integer sed rutrum ligula. Pellentesque id diam id ex blandit gravida. Praesent ut augue ex.\r\n\r\nInteger vestibulum justo id bibendum tempus. Donec mattis, nunc sed sollicitudin ullamcorper, nulla nulla ultricies neque, at finibus sapien nunc non libero. Aenean rutrum lorem lorem, nec volutpat erat malesuada a. Etiam tristique, ligula nec facilisis commodo, felis lorem pretium lacus, vel facilisis ex nunc in leo. Vivamus eget lacus risus. Suspendisse potenti. Vivamus vitae nulla sit amet mi blandit rutrum. Ut ornare tortor vitae lorem blandit, nec fermentum risus rhoncus.\r\n\r\nAliquam eu felis mauris. Pellentesque non nunc diam. Integer dignissim erat nec finibus volutpat. Nullam vitae turpis turpis. Suspendisse potenti. Fusce volutpat massa vel libero lacinia, nec pretium sapien tristique. Sed lobortis metus id sem tristique, et pretium erat sollicitudin. Proin vitae turpis vitae tortor luctus porttitor. Quisque vehicula, magna nec dictum pretium, magna risus volutpat turpis, in tempus augue felis ac metus.",
+      "description_uk": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi fringilla congue ante, in blandit arcu tincidunt a. Nullam tristique lorem quis nisl volutpat dapibus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Vestibulum rutrum eros nec massa ultricies, et accumsan erat fermentum. Suspendisse potenti. Aliquam euismod libero nec nulla luctus lacinia. Curabitur rhoncus magna a sapien suscipit, vitae fermentum eros ultricies. Proin in viverra nisi. Donec vel erat nec nulla iaculis volutpat nec sed neque.\r\n\r\nPhasellus imperdiet, ex sed cursus blandit, justo nunc facilisis metus, ac posuere erat odio id nisi. Vivamus cursus, sapien sed porta ullamcorper, libero diam convallis sem, non tristique purus magna sit amet metus. Mauris lacinia diam eu mauris pulvinar, nec viverra erat tristique. Aenean feugiat lorem vel ex pharetra, nec rutrum augue tempor. Morbi in mattis sapien. Aenean sit amet fermentum erat. Maecenas non tellus sit amet sapien vulputate pretium at sed mauris. Aliquam erat volutpat. Sed tincidunt lacus in lectus finibus, eget rutrum nulla mattis.\r\n\r\nCras eget bibendum nisi. Duis ut turpis sed turpis efficitur facilisis. Suspendisse convallis lacus sed convallis fermentum. Curabitur dignissim libero a ex viverra, nec mattis leo sodales. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Duis fringilla leo in lorem rhoncus, vel dapibus purus laoreet. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc ac efficitur velit, non dapibus justo. Integer sed rutrum ligula. Pellentesque id diam id ex blandit gravida. Praesent ut augue ex.\r\n\r\nInteger vestibulum justo id bibendum tempus. Donec mattis, nunc sed sollicitudin ullamcorper, nulla nulla ultricies neque, at finibus sapien nunc non libero. Aenean rutrum lorem lorem, nec volutpat erat malesuada a. Etiam tristique, ligula nec facilisis commodo, felis lorem pretium lacus, vel facilisis ex nunc in leo. Vivamus eget lacus risus. Suspendisse potenti. Vivamus vitae nulla sit amet mi blandit rutrum. Ut ornare tortor vitae lorem blandit, nec fermentum risus rhoncus.\r\n\r\nAliquam eu felis mauris. Pellentesque non nunc diam. Integer dignissim erat nec finibus volutpat. Nullam vitae turpis turpis. Suspendisse potenti. Fusce volutpat massa vel libero lacinia, nec pretium sapien tristique. Sed lobortis metus id sem tristique, et pretium erat sollicitudin. Proin vitae turpis vitae tortor luctus porttitor. Quisque vehicula, magna nec dictum pretium, magna risus volutpat turpis, in tempus augue felis ac metus.",
+      "schema_image": "halls/schema/2025/08/02/card_hall_shecma_54SlWaW.jpg",
+      "top_banner": "halls/banners/2025/08/02/hall2.webp",
+      "created_at": "2025-08-02T17:19:00.749Z",
+      "seo": 39,
+      "card_cinema": 2
+    }
+  },
+  {
+    "model": "adminlte.cardhall",
+    "pk": 4,
+    "fields": {
+      "name": "Зал 1",
+      "name_ru": "Зал 1",
+      "name_uk": "Зал 1",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi fringilla congue ante, in blandit arcu tincidunt a. Nullam tristique lorem quis nisl volutpat dapibus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Vestibulum rutrum eros nec massa ultricies, et accumsan erat fermentum. Suspendisse potenti. Aliquam euismod libero nec nulla luctus lacinia. Curabitur rhoncus magna a sapien suscipit, vitae fermentum eros ultricies. Proin in viverra nisi. Donec vel erat nec nulla iaculis volutpat nec sed neque.\r\n\r\nPhasellus imperdiet, ex sed cursus blandit, justo nunc facilisis metus, ac posuere erat odio id nisi. Vivamus cursus, sapien sed porta ullamcorper, libero diam convallis sem, non tristique purus magna sit amet metus. Mauris lacinia diam eu mauris pulvinar, nec viverra erat tristique. Aenean feugiat lorem vel ex pharetra, nec rutrum augue tempor. Morbi in mattis sapien. Aenean sit amet fermentum erat. Maecenas non tellus sit amet sapien vulputate pretium at sed mauris. Aliquam erat volutpat. Sed tincidunt lacus in lectus finibus, eget rutrum nulla mattis.\r\n\r\nCras eget bibendum nisi. Duis ut turpis sed turpis efficitur facilisis. Suspendisse convallis lacus sed convallis fermentum. Curabitur dignissim libero a ex viverra, nec mattis leo sodales. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Duis fringilla leo in lorem rhoncus, vel dapibus purus laoreet. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc ac efficitur velit, non dapibus justo. Integer sed rutrum ligula. Pellentesque id diam id ex blandit gravida. Praesent ut augue ex.\r\n\r\nInteger vestibulum justo id bibendum tempus. Donec mattis, nunc sed sollicitudin ullamcorper, nulla nulla ultricies neque, at finibus sapien nunc non libero. Aenean rutrum lorem lorem, nec volutpat erat malesuada a. Etiam tristique, ligula nec facilisis commodo, felis lorem pretium lacus, vel facilisis ex nunc in leo. Vivamus eget lacus risus. Suspendisse potenti. Vivamus vitae nulla sit amet mi blandit rutrum. Ut ornare tortor vitae lorem blandit, nec fermentum risus rhoncus.\r\n\r\nAliquam eu felis mauris. Pellentesque non nunc diam. Integer dignissim erat nec finibus volutpat. Nullam vitae turpis turpis. Suspendisse potenti. Fusce volutpat massa vel libero lacinia, nec pretium sapien tristique. Sed lobortis metus id sem tristique, et pretium erat sollicitudin. Proin vitae turpis vitae tortor luctus porttitor. Quisque vehicula, magna nec dictum pretium, magna risus volutpat turpis, in tempus augue felis ac metus.",
+      "description_ru": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi fringilla congue ante, in blandit arcu tincidunt a. Nullam tristique lorem quis nisl volutpat dapibus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Vestibulum rutrum eros nec massa ultricies, et accumsan erat fermentum. Suspendisse potenti. Aliquam euismod libero nec nulla luctus lacinia. Curabitur rhoncus magna a sapien suscipit, vitae fermentum eros ultricies. Proin in viverra nisi. Donec vel erat nec nulla iaculis volutpat nec sed neque.\r\n\r\nPhasellus imperdiet, ex sed cursus blandit, justo nunc facilisis metus, ac posuere erat odio id nisi. Vivamus cursus, sapien sed porta ullamcorper, libero diam convallis sem, non tristique purus magna sit amet metus. Mauris lacinia diam eu mauris pulvinar, nec viverra erat tristique. Aenean feugiat lorem vel ex pharetra, nec rutrum augue tempor. Morbi in mattis sapien. Aenean sit amet fermentum erat. Maecenas non tellus sit amet sapien vulputate pretium at sed mauris. Aliquam erat volutpat. Sed tincidunt lacus in lectus finibus, eget rutrum nulla mattis.\r\n\r\nCras eget bibendum nisi. Duis ut turpis sed turpis efficitur facilisis. Suspendisse convallis lacus sed convallis fermentum. Curabitur dignissim libero a ex viverra, nec mattis leo sodales. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Duis fringilla leo in lorem rhoncus, vel dapibus purus laoreet. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc ac efficitur velit, non dapibus justo. Integer sed rutrum ligula. Pellentesque id diam id ex blandit gravida. Praesent ut augue ex.\r\n\r\nInteger vestibulum justo id bibendum tempus. Donec mattis, nunc sed sollicitudin ullamcorper, nulla nulla ultricies neque, at finibus sapien nunc non libero. Aenean rutrum lorem lorem, nec volutpat erat malesuada a. Etiam tristique, ligula nec facilisis commodo, felis lorem pretium lacus, vel facilisis ex nunc in leo. Vivamus eget lacus risus. Suspendisse potenti. Vivamus vitae nulla sit amet mi blandit rutrum. Ut ornare tortor vitae lorem blandit, nec fermentum risus rhoncus.\r\n\r\nAliquam eu felis mauris. Pellentesque non nunc diam. Integer dignissim erat nec finibus volutpat. Nullam vitae turpis turpis. Suspendisse potenti. Fusce volutpat massa vel libero lacinia, nec pretium sapien tristique. Sed lobortis metus id sem tristique, et pretium erat sollicitudin. Proin vitae turpis vitae tortor luctus porttitor. Quisque vehicula, magna nec dictum pretium, magna risus volutpat turpis, in tempus augue felis ac metus.",
+      "description_uk": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi fringilla congue ante, in blandit arcu tincidunt a. Nullam tristique lorem quis nisl volutpat dapibus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Vestibulum rutrum eros nec massa ultricies, et accumsan erat fermentum. Suspendisse potenti. Aliquam euismod libero nec nulla luctus lacinia. Curabitur rhoncus magna a sapien suscipit, vitae fermentum eros ultricies. Proin in viverra nisi. Donec vel erat nec nulla iaculis volutpat nec sed neque.\r\n\r\nPhasellus imperdiet, ex sed cursus blandit, justo nunc facilisis metus, ac posuere erat odio id nisi. Vivamus cursus, sapien sed porta ullamcorper, libero diam convallis sem, non tristique purus magna sit amet metus. Mauris lacinia diam eu mauris pulvinar, nec viverra erat tristique. Aenean feugiat lorem vel ex pharetra, nec rutrum augue tempor. Morbi in mattis sapien. Aenean sit amet fermentum erat. Maecenas non tellus sit amet sapien vulputate pretium at sed mauris. Aliquam erat volutpat. Sed tincidunt lacus in lectus finibus, eget rutrum nulla mattis.\r\n\r\nCras eget bibendum nisi. Duis ut turpis sed turpis efficitur facilisis. Suspendisse convallis lacus sed convallis fermentum. Curabitur dignissim libero a ex viverra, nec mattis leo sodales. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Duis fringilla leo in lorem rhoncus, vel dapibus purus laoreet. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc ac efficitur velit, non dapibus justo. Integer sed rutrum ligula. Pellentesque id diam id ex blandit gravida. Praesent ut augue ex.\r\n\r\nInteger vestibulum justo id bibendum tempus. Donec mattis, nunc sed sollicitudin ullamcorper, nulla nulla ultricies neque, at finibus sapien nunc non libero. Aenean rutrum lorem lorem, nec volutpat erat malesuada a. Etiam tristique, ligula nec facilisis commodo, felis lorem pretium lacus, vel facilisis ex nunc in leo. Vivamus eget lacus risus. Suspendisse potenti. Vivamus vitae nulla sit amet mi blandit rutrum. Ut ornare tortor vitae lorem blandit, nec fermentum risus rhoncus.\r\n\r\nAliquam eu felis mauris. Pellentesque non nunc diam. Integer dignissim erat nec finibus volutpat. Nullam vitae turpis turpis. Suspendisse potenti. Fusce volutpat massa vel libero lacinia, nec pretium sapien tristique. Sed lobortis metus id sem tristique, et pretium erat sollicitudin. Proin vitae turpis vitae tortor luctus porttitor. Quisque vehicula, magna nec dictum pretium, magna risus volutpat turpis, in tempus augue felis ac metus.",
+      "schema_image": "halls/schema/2025/08/02/card_hall_shecma_QPtJnSu.jpg",
+      "top_banner": "halls/banners/2025/08/02/hall3.jpg",
+      "created_at": "2025-08-02T18:11:15.489Z",
+      "seo": 40,
+      "card_cinema": 3
+    }
+  },
+  {
+    "model": "adminlte.cardhallgallery",
+    "pk": 4,
+    "fields": {
+      "card_hall": 2,
+      "image": 48
+    }
+  },
+  {
+    "model": "adminlte.cardhallgallery",
+    "pk": 5,
+    "fields": {
+      "card_hall": 2,
+      "image": 49
+    }
+  },
+  {
+    "model": "adminlte.cardhallgallery",
+    "pk": 7,
+    "fields": {
+      "card_hall": 2,
+      "image": 51
+    }
+  },
+  {
+    "model": "adminlte.cardhallgallery",
+    "pk": 8,
+    "fields": {
+      "card_hall": 3,
+      "image": 52
+    }
+  },
+  {
+    "model": "adminlte.cardhallgallery",
+    "pk": 9,
+    "fields": {
+      "card_hall": 3,
+      "image": 53
+    }
+  },
+  {
+    "model": "adminlte.cardhallgallery",
+    "pk": 10,
+    "fields": {
+      "card_hall": 3,
+      "image": 54
+    }
+  },
+  {
+    "model": "adminlte.cardhallgallery",
+    "pk": 11,
+    "fields": {
+      "card_hall": 4,
+      "image": 55
+    }
+  },
+  {
+    "model": "adminlte.cardhallgallery",
+    "pk": 12,
+    "fields": {
+      "card_hall": 4,
+      "image": 56
+    }
+  },
+  {
+    "model": "adminlte.cardhallgallery",
+    "pk": 13,
+    "fields": {
+      "card_hall": 4,
+      "image": 57
+    }
+  },
+  {
+    "model": "adminlte.cardhallgallery",
+    "pk": 14,
+    "fields": {
+      "card_hall": 1,
+      "image": 58
+    }
+  },
+  {
+    "model": "adminlte.cardhallgallery",
+    "pk": 15,
+    "fields": {
+      "card_hall": 1,
+      "image": 59
+    }
+  },
+  {
+    "model": "adminlte.cardhallgallery",
+    "pk": 16,
+    "fields": {
+      "card_hall": 1,
+      "image": 60
+    }
+  },
+  {
+    "model": "adminlte.publication",
+    "pk": 1,
+    "fields": {
+      "title": "О кинотетаре",
+      "title_ru": "О кинотетаре",
+      "title_uk": "Про кінотеатр",
+      "published_at": "2025-07-24T00:00:00Z",
+      "description": "Кинокомплекс \"Золотой Дюк\", последний из проектировавшихся во время Советского Союза одесских кинотеатров, был открыт 15 декабря 1993 г. Из трёх залов кинотеатра, первоначально работал один, а в сентябре 1994 г. был открыт второй зал.\r\nВпоследствии, в связи с развалом кинопроката, \"Золотой Дюк\" фактически перестал работать как кинотеатр. В 1996 г. в первом зале разместился клуб \"Чикаго\", а третий зал так и не начал работать, был сдан в аренду спортивному клубу. Второй же зал был просто закрыт.\r\n\r\n14 мая 2002 года началась реконструкция кинокомплекса, в результате которой 20 сентября 2002 года был открыт самый большой на тот момент на Украине трёхзальный кинокомплекс \"Золотой Дюк\".\r\n\r\nВ 2005 году были достроены ещё 2 зала и кинокомплекс \"Золотой Дюк\" стал Первым Одесским пятизальным мультиплексом.\r\n\r\n1 июля 2009 года в Мультиплексе «Золотой Дюк» открылся первый 3D-зал №1 на 378 мест, с объёмным цифровым изображением и специальными поляризованными очками, а 1 ноября 2009 открылся второй 3D-зал №4 на 180 мест и третий 3D-зал №5 на 180 мест.\r\n\r\nЗалы 3D считаются сегодня самой зрелищной системой кинопоказа. Их экраны, объёмный звук и чёткая, гиперреалистичная картинка почти полностью разрушили границу между экраном и публикой...\r\n\r\nВ феврале 2012 был построен ещё один, VIP-зал на 20 мест. Этот зал оборудован цифровым проектором NEC, который использует новую \"активную\" технологию Xpant для 3D. К слову, эта технология применена на Украине впервые.\r\n\r\nВ общем, наш мультиплекс стал шестизальным.\r\n\r\nВ нашем Мультиплексе зрителям обеспечен максимальный комфорт. Судите сами: благодаря наличию именно шести залов мы можем предложить Вам наибольший выбор фильмов, причем Вы всегда имеете возможность выбрать наиболее удобный для Вас сеанс.\r\n\r\n[VIDEO]\r\n<h3><b>Оборудование</b></h3>\r\nОбщая площадь кинотеатра 1600 метров и он занимает весь четвёртый этаж универмага «Украина». В интерьере кинотеатра использованы два стиля – high-tech и минимализм. Яркое оформление гостевой зоны фойе, бара, гардероба (оранжевые стены, потолок и кассы) контрастируют с мягким уютным оформлением небольших залов. Вы входите в кинотеатр, выбираете фильм, зал, место, оплачиваете стоимость билета, то есть выполняете некую работу. Активная фаза пребывания в кинотеатре проходит в активном фойе, а отдых – это просмотр фильма в уютном зале.\r\n\r\nКстати о залах. Кинотеатр ОДЕССА-КИНО отличается небольшими залами, в каждом 127 зрительских кресел. Потому, что мы считаем, что намного приятнее смотреть кино в относительно небольшой компании, чем на крытом стадионе. 4 зала в ОДЕССА-КИНО отличаются друг от друга по цветовому решению. Удобные кресла, с большими подставками для кока-колы и поп-корна. Мягкая облицовка стен и потолка создаёт неповторимую, комфортную атмосферу. В такой атмосфере легко можно забыть о реальности.\r\n\r\nИ, наконец, то, ради чего мы приходим в кинотеатр.\r\n\r\nЭкран, звук, качество копий. Все залы в кинотеатре ОДЕССА-КИНО оснащены самым современным немецким проекционным оборудованием немецкой фирмы Kinoton с экранами 10Х4 метра. Немаловажная подробность. Экраны расположены достаточно близко к зрителям. Мы хотим сломать стереотип, о том, что кино на большом экране лучше смотреть издалека. Чем ближе вы к экрану, тем ближе вам перипетии сюжета. Ещё глубже погрузиться в фильм помогает американская звуковая система Dolby Digital EX фирмы Elektrovoice. Возможности этой системы превращают в звукового гурмана любого. Точно такой же звук вы можете услышать в лучших кинотеатрах мира. И, безусловно, высочайшее качество изображения на экране. Его гарантирует наше стремление использовать только лучшие копии фильмов.",
+      "description_ru": "Кинокомплекс \"Золотой Дюк\", последний из проектировавшихся во время Советского Союза одесских кинотеатров, был открыт 15 декабря 1993 г. Из трёх залов кинотеатра, первоначально работал один, а в сентябре 1994 г. был открыт второй зал.\r\nВпоследствии, в связи с развалом кинопроката, \"Золотой Дюк\" фактически перестал работать как кинотеатр. В 1996 г. в первом зале разместился клуб \"Чикаго\", а третий зал так и не начал работать, был сдан в аренду спортивному клубу. Второй же зал был просто закрыт.\r\n\r\n14 мая 2002 года началась реконструкция кинокомплекса, в результате которой 20 сентября 2002 года был открыт самый большой на тот момент на Украине трёхзальный кинокомплекс \"Золотой Дюк\".\r\n\r\nВ 2005 году были достроены ещё 2 зала и кинокомплекс \"Золотой Дюк\" стал Первым Одесским пятизальным мультиплексом.\r\n\r\n1 июля 2009 года в Мультиплексе «Золотой Дюк» открылся первый 3D-зал №1 на 378 мест, с объёмным цифровым изображением и специальными поляризованными очками, а 1 ноября 2009 открылся второй 3D-зал №4 на 180 мест и третий 3D-зал №5 на 180 мест.\r\n\r\nЗалы 3D считаются сегодня самой зрелищной системой кинопоказа. Их экраны, объёмный звук и чёткая, гиперреалистичная картинка почти полностью разрушили границу между экраном и публикой...\r\n\r\nВ феврале 2012 был построен ещё один, VIP-зал на 20 мест. Этот зал оборудован цифровым проектором NEC, который использует новую \"активную\" технологию Xpant для 3D. К слову, эта технология применена на Украине впервые.\r\n\r\nВ общем, наш мультиплекс стал шестизальным.\r\n\r\nВ нашем Мультиплексе зрителям обеспечен максимальный комфорт. Судите сами: благодаря наличию именно шести залов мы можем предложить Вам наибольший выбор фильмов, причем Вы всегда имеете возможность выбрать наиболее удобный для Вас сеанс.\r\n\r\n[VIDEO]\r\n<h3><b>Оборудование</b></h3>\r\nОбщая площадь кинотеатра 1600 метров и он занимает весь четвёртый этаж универмага «Украина». В интерьере кинотеатра использованы два стиля – high-tech и минимализм. Яркое оформление гостевой зоны фойе, бара, гардероба (оранжевые стены, потолок и кассы) контрастируют с мягким уютным оформлением небольших залов. Вы входите в кинотеатр, выбираете фильм, зал, место, оплачиваете стоимость билета, то есть выполняете некую работу. Активная фаза пребывания в кинотеатре проходит в активном фойе, а отдых – это просмотр фильма в уютном зале.\r\n\r\nКстати о залах. Кинотеатр ОДЕССА-КИНО отличается небольшими залами, в каждом 127 зрительских кресел. Потому, что мы считаем, что намного приятнее смотреть кино в относительно небольшой компании, чем на крытом стадионе. 4 зала в ОДЕССА-КИНО отличаются друг от друга по цветовому решению. Удобные кресла, с большими подставками для кока-колы и поп-корна. Мягкая облицовка стен и потолка создаёт неповторимую, комфортную атмосферу. В такой атмосфере легко можно забыть о реальности.\r\n\r\nИ, наконец, то, ради чего мы приходим в кинотеатр.\r\n\r\nЭкран, звук, качество копий. Все залы в кинотеатре ОДЕССА-КИНО оснащены самым современным немецким проекционным оборудованием немецкой фирмы Kinoton с экранами 10Х4 метра. Немаловажная подробность. Экраны расположены достаточно близко к зрителям. Мы хотим сломать стереотип, о том, что кино на большом экране лучше смотреть издалека. Чем ближе вы к экрану, тем ближе вам перипетии сюжета. Ещё глубже погрузиться в фильм помогает американская звуковая система Dolby Digital EX фирмы Elektrovoice. Возможности этой системы превращают в звукового гурмана любого. Точно такой же звук вы можете услышать в лучших кинотеатрах мира. И, безусловно, высочайшее качество изображения на экране. Его гарантирует наше стремление использовать только лучшие копии фильмов.",
+      "description_uk": "Кінокомплекс \"Золотий Дюк\", останній із тих, що проєктувалися ще за часів Радянського Союзу серед одеських кінотеатрів, було відкрито 15 грудня 1993 року. Із трьох залів кінотеатру спочатку працював лише один, а у вересні 1994 року відкрили другий зал.\r\nЗгодом, через занепад кінопрокату, \"Золотий Дюк\" фактично припинив функціонування як кінотеатр. У 1996 році в першому залі розмістився клуб \"Чикаго\", а третій зал так і не запрацював — його здали в оренду спортивному клубу. Другий зал було просто закрито.\r\n\r\n14 травня 2002 року розпочалась реконструкція кінокомплексу, внаслідок якої 20 вересня 2002 року відкрився на той момент найбільший в Україні тризальний кінокомплекс \"Золотий Дюк\".\r\n\r\nУ 2005 році добудували ще 2 зали, і кінокомплекс \"Золотий Дюк\" став першим в Одесі п’ятизальним мультиплексом.\r\n\r\n1 липня 2009 року в мультиплексі «Золотий Дюк» відкрився перший 3D-зал №1 на 378 місць, із об’ємним цифровим зображенням та спеціальними поляризованими окулярами, а 1 листопада 2009 року відкрився другий 3D-зал №4 на 180 місць і третій 3D-зал №5 на 180 місць.\r\n\r\n3D-зали сьогодні вважаються найвидовищнішою системою кінопоказу. Їхні екрани, об’ємний звук та чітка, гіперреалістична картинка майже повністю стирають межу між екраном і глядачем…\r\n\r\nУ лютому 2012 року було збудовано ще один VIP-зал на 20 місць. Цей зал обладнаний цифровим проєктором NEC, який використовує нову \"активну\" технологію Xpant для 3D. До речі, цю технологію вперше застосували в Україні.\r\n\r\nЗагалом наш мультиплекс став шестизальним.\r\n\r\nУ нашому мультиплексі глядачам забезпечено максимальний комфорт. Судіть самі: завдяки наявності саме шести залів ми можемо запропонувати Вам найбільший вибір фільмів, і Ви завжди маєте можливість обрати найзручніший для себе сеанс.\r\n\r\n[VIDEO]\r\n<h3><b>Обладнення</b></h3>\r\n\r\nЗагальна площа кінотеатру становить 1600 квадратних метрів, і він займає весь четвертий поверх універмагу «Україна». В інтер'єрі кінотеатру поєднано два стилі – high-tech та мінімалізм. Яскраве оформлення гостьової зони фойє, бару, гардеробу (помаранчеві стіни, стеля і каси) контрастує з м’яким і затишним дизайном невеликих залів. Ви заходите до кінотеатру, обираєте фільм, зал, місце, оплачуєте квиток — тобто виконуєте певну активну дію. Активна фаза перебування — у фойє, а відпочинок — це перегляд фільму в затишному кінозалі.\r\n\r\nДо речі, про зали. Кінотеатр ОДЕСА-КІНО вирізняється невеликими залами — у кожному по 127 глядацьких крісел. Адже ми вважаємо, що приємніше дивитися кіно в невеликій компанії, ніж на закритому стадіоні. 4 зали ОДЕСА-КІНО відрізняються кольоровими рішеннями. Зручні крісла з великими підставками для Coca-Cola та попкорну. М’яка обробка стін і стелі створює неповторну, комфортну атмосферу. У такій атмосфері легко забути про реальність.\r\n\r\nІ, нарешті, те, заради чого ми йдемо в кіно.\r\n\r\nЕкран, звук, якість копій. Усі зали кінотеатру ОДЕСА-КІНО оснащені найсучаснішим німецьким проєкційним обладнанням компанії Kinoton з екранами розміром 10×4 метри. Важлива деталь — екрани розташовані досить близько до глядачів. Ми хочемо зруйнувати стереотип, що кіно на великому екрані краще дивитися здалеку. Чим ближче до екрана — тим ближче сюжет. А ще глибше зануритись у фільм допомагає американська звукова система Dolby Digital EX від компанії Elektrovoice. Можливості цієї системи перетворюють будь-кого на справжнього звукового гурмана. Такий звук можна почути лише в найкращих кінотеатрах світу. І, безумовно, найвища якість зображення на екрані — це те, що гарантує наше прагнення використовувати тільки найкращі копії фільмів.",
+      "main_image": "publications/2025/08/02/caption.jpg",
+      "video_url": "https://www.youtube.com/embed/j-iheFkstFQ",
+      "is_enabled": true,
+      "seo": 2,
+      "publication_type": "about"
+    }
+  },
+  {
+    "model": "adminlte.publication",
+    "pk": 3,
+    "fields": {
+      "title": "Кафе-Бар",
+      "title_ru": "Кафе-Бар",
+      "title_uk": "Кафе-Бар",
+      "published_at": "2025-07-24T00:00:00Z",
+      "description": "<b>Добро пожаловать в наш Кафе-Бар!</b><br><br>\r\n<i>Ищешь место, где можно не просто перекусить, а по-настоящему отдохнуть в уютной атмосфере? Тогда ты попал точно по адресу!</i><br><br>\r\n<b>В нашем кафе-баре</b> ты сможешь насладиться вкусными блюдами, приготовленными из самых свежих продуктов. Меню включает широкий выбор блюд европейской и украинской кухни — от ароматных первых блюд до авторских десертов.<br><br>\r\n[VIDEO]\r\n<b>Наш бар</b> — это настоящая гордость. Здесь ты найдёшь изысканные коктейли, классические напитки, а также эксклюзивные позиции, которые приятно удивят даже самых взыскательных гостей. И всё это — по доступным ценам.<br><br>\r\n<b>Интерьер заведения</b> создан для твоего комфорта: уютные столики, мягкое освещение, спокойная музыка и дружелюбный персонал сделают твой визит приятным и запоминающимся.<br><br><b>Планируешь встречу с друзьями, романтический вечер или просто хочешь поесть после сеанса в кино?</b> Наш кафе-бар — идеальное место для любого повода.<br><br>\r\n<i>Загляни к нам и убедись сам! Мы ждём именно тебя.</i>",
+      "description_ru": "<b>Добро пожаловать в наш Кафе-Бар!</b><br><br>\r\n<i>Ищешь место, где можно не просто перекусить, а по-настоящему отдохнуть в уютной атмосфере? Тогда ты попал точно по адресу!</i><br><br>\r\n<b>В нашем кафе-баре</b> ты сможешь насладиться вкусными блюдами, приготовленными из самых свежих продуктов. Меню включает широкий выбор блюд европейской и украинской кухни — от ароматных первых блюд до авторских десертов.<br><br>\r\n[VIDEO]\r\n<b>Наш бар</b> — это настоящая гордость. Здесь ты найдёшь изысканные коктейли, классические напитки, а также эксклюзивные позиции, которые приятно удивят даже самых взыскательных гостей. И всё это — по доступным ценам.<br><br>\r\n<b>Интерьер заведения</b> создан для твоего комфорта: уютные столики, мягкое освещение, спокойная музыка и дружелюбный персонал сделают твой визит приятным и запоминающимся.<br><br><b>Планируешь встречу с друзьями, романтический вечер или просто хочешь поесть после сеанса в кино?</b> Наш кафе-бар — идеальное место для любого повода.<br><br>\r\n<i>Загляни к нам и убедись сам! Мы ждём именно тебя.</i>",
+      "description_uk": "<b>Ласкаво просимо до нашого Кафе-Бар!</b><br><br>\r\n<i>Шукаєш місце, де можна не лише перекусити, а й відпочити у затишній атмосфері? Тоді ти потрапив саме туди, куди потрібно!</i><br><br>\r\n<b>У нашому кафе-барі</b> ти зможеш насолодитися смачними стравами, приготованими з найсвіжіших продуктів. Меню включає широкий вибір страв європейської та української кухні — від ароматних перших страв до авторських десертів.<br><br>\r\n[VIDEO]\r\n<b>Наш бар</b> — це справжня гордість. Тут ти знайдеш вишукані коктейлі, класичні напої, а також ексклюзивні позиції, які приємно здивують навіть найвибагливіших гостей. Усе це — за доступними цінами.<br><br><b>Інтер’єр закладу</b> створений для твого комфорту: затишні столики, м’яке освітлення, спокійна музика та привітний персонал зроблять твій візит приємним і незабутнім.<br><br>\r\n<b>Плануєш зустріч з друзями, романтичний вечір або просто хочеш поїсти після перегляду фільму?</b> Наше кафе-бар — ідеальне місце для будь-якого приводу.<br><br>\r\n<i>Завітай до нас і переконайся сам! Ми чекаємо саме на тебе.</i>",
+      "main_image": "publications/2025/08/02/cafe-1600px.jpg",
+      "video_url": "https://www.youtube.com/embed/j-iheFkstFQ",
+      "is_enabled": true,
+      "seo": 3,
+      "publication_type": "cafe_bar"
+    }
+  },
+  {
+    "model": "adminlte.publication",
+    "pk": 4,
+    "fields": {
+      "title": "Vip-зал",
+      "title_ru": "Vip-зал",
+      "title_uk": "Vip-зал",
+      "published_at": "2025-07-24T00:00:00Z",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi fringilla congue ante, in blandit arcu tincidunt a. Nullam tristique lorem quis nisl volutpat dapibus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Vestibulum rutrum eros nec massa ultricies, et accumsan erat fermentum. Suspendisse potenti. Aliquam euismod libero nec nulla luctus lacinia. Curabitur rhoncus magna a sapien suscipit, vitae fermentum eros ultricies. Proin in viverra nisi. Donec vel erat nec nulla iaculis volutpat nec sed neque.\r\n\r\nPhasellus imperdiet, ex sed cursus blandit, justo nunc facilisis metus, ac posuere erat odio id nisi. Vivamus cursus, sapien sed porta ullamcorper, libero diam convallis sem, non tristique purus magna sit amet metus. Mauris lacinia diam eu mauris pulvinar, nec viverra erat tristique. Aenean feugiat lorem vel ex pharetra, nec rutrum augue tempor. Morbi in mattis sapien. Aenean sit amet fermentum erat. Maecenas non tellus sit amet sapien vulputate pretium at sed mauris. Aliquam erat volutpat. Sed tincidunt lacus in lectus finibus, eget rutrum nulla mattis.\r\n\r\nCras eget bibendum nisi. Duis ut turpis sed turpis efficitur facilisis. Suspendisse convallis lacus sed convallis fermentum. Curabitur dignissim libero a ex viverra, nec mattis leo sodales. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Duis fringilla leo in lorem rhoncus, vel dapibus purus laoreet. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc ac efficitur velit, non dapibus justo. Integer sed rutrum ligula. Pellentesque id diam id ex blandit gravida. Praesent ut augue ex.\r\n[VIDEO]\r\nInteger vestibulum justo id bibendum tempus. Donec mattis, nunc sed sollicitudin ullamcorper, nulla nulla ultricies neque, at finibus sapien nunc non libero. Aenean rutrum lorem lorem, nec volutpat erat malesuada a. Etiam tristique, ligula nec facilisis commodo, felis lorem pretium lacus, vel facilisis ex nunc in leo. Vivamus eget lacus risus. Suspendisse potenti. Vivamus vitae nulla sit amet mi blandit rutrum. Ut ornare tortor vitae lorem blandit, nec fermentum risus rhoncus.\r\n\r\nAliquam eu felis mauris. Pellentesque non nunc diam. Integer dignissim erat nec finibus volutpat. Nullam vitae turpis turpis. Suspendisse potenti. Fusce volutpat massa vel libero lacinia, nec pretium sapien tristique. Sed lobortis metus id sem tristique, et pretium erat sollicitudin. Proin vitae turpis vitae tortor luctus porttitor. Quisque vehicula, magna nec dictum pretium, magna risus volutpat turpis, in tempus augue felis ac metus.",
+      "description_ru": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi fringilla congue ante, in blandit arcu tincidunt a. Nullam tristique lorem quis nisl volutpat dapibus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Vestibulum rutrum eros nec massa ultricies, et accumsan erat fermentum. Suspendisse potenti. Aliquam euismod libero nec nulla luctus lacinia. Curabitur rhoncus magna a sapien suscipit, vitae fermentum eros ultricies. Proin in viverra nisi. Donec vel erat nec nulla iaculis volutpat nec sed neque.\r\n\r\nPhasellus imperdiet, ex sed cursus blandit, justo nunc facilisis metus, ac posuere erat odio id nisi. Vivamus cursus, sapien sed porta ullamcorper, libero diam convallis sem, non tristique purus magna sit amet metus. Mauris lacinia diam eu mauris pulvinar, nec viverra erat tristique. Aenean feugiat lorem vel ex pharetra, nec rutrum augue tempor. Morbi in mattis sapien. Aenean sit amet fermentum erat. Maecenas non tellus sit amet sapien vulputate pretium at sed mauris. Aliquam erat volutpat. Sed tincidunt lacus in lectus finibus, eget rutrum nulla mattis.\r\n\r\nCras eget bibendum nisi. Duis ut turpis sed turpis efficitur facilisis. Suspendisse convallis lacus sed convallis fermentum. Curabitur dignissim libero a ex viverra, nec mattis leo sodales. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Duis fringilla leo in lorem rhoncus, vel dapibus purus laoreet. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc ac efficitur velit, non dapibus justo. Integer sed rutrum ligula. Pellentesque id diam id ex blandit gravida. Praesent ut augue ex.\r\n[VIDEO]\r\nInteger vestibulum justo id bibendum tempus. Donec mattis, nunc sed sollicitudin ullamcorper, nulla nulla ultricies neque, at finibus sapien nunc non libero. Aenean rutrum lorem lorem, nec volutpat erat malesuada a. Etiam tristique, ligula nec facilisis commodo, felis lorem pretium lacus, vel facilisis ex nunc in leo. Vivamus eget lacus risus. Suspendisse potenti. Vivamus vitae nulla sit amet mi blandit rutrum. Ut ornare tortor vitae lorem blandit, nec fermentum risus rhoncus.\r\n\r\nAliquam eu felis mauris. Pellentesque non nunc diam. Integer dignissim erat nec finibus volutpat. Nullam vitae turpis turpis. Suspendisse potenti. Fusce volutpat massa vel libero lacinia, nec pretium sapien tristique. Sed lobortis metus id sem tristique, et pretium erat sollicitudin. Proin vitae turpis vitae tortor luctus porttitor. Quisque vehicula, magna nec dictum pretium, magna risus volutpat turpis, in tempus augue felis ac metus.",
+      "description_uk": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi fringilla congue ante, in blandit arcu tincidunt a. Nullam tristique lorem quis nisl volutpat dapibus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Vestibulum rutrum eros nec massa ultricies, et accumsan erat fermentum. Suspendisse potenti. Aliquam euismod libero nec nulla luctus lacinia. Curabitur rhoncus magna a sapien suscipit, vitae fermentum eros ultricies. Proin in viverra nisi. Donec vel erat nec nulla iaculis volutpat nec sed neque.\r\n\r\nPhasellus imperdiet, ex sed cursus blandit, justo nunc facilisis metus, ac posuere erat odio id nisi. Vivamus cursus, sapien sed porta ullamcorper, libero diam convallis sem, non tristique purus magna sit amet metus. Mauris lacinia diam eu mauris pulvinar, nec viverra erat tristique. Aenean feugiat lorem vel ex pharetra, nec rutrum augue tempor. Morbi in mattis sapien. Aenean sit amet fermentum erat. Maecenas non tellus sit amet sapien vulputate pretium at sed mauris. Aliquam erat volutpat. Sed tincidunt lacus in lectus finibus, eget rutrum nulla mattis.\r\n\r\nCras eget bibendum nisi. Duis ut turpis sed turpis efficitur facilisis. Suspendisse convallis lacus sed convallis fermentum. Curabitur dignissim libero a ex viverra, nec mattis leo sodales. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Duis fringilla leo in lorem rhoncus, vel dapibus purus laoreet. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc ac efficitur velit, non dapibus justo. Integer sed rutrum ligula. Pellentesque id diam id ex blandit gravida. Praesent ut augue ex.\r\n[VIDEO]\r\nInteger vestibulum justo id bibendum tempus. Donec mattis, nunc sed sollicitudin ullamcorper, nulla nulla ultricies neque, at finibus sapien nunc non libero. Aenean rutrum lorem lorem, nec volutpat erat malesuada a. Etiam tristique, ligula nec facilisis commodo, felis lorem pretium lacus, vel facilisis ex nunc in leo. Vivamus eget lacus risus. Suspendisse potenti. Vivamus vitae nulla sit amet mi blandit rutrum. Ut ornare tortor vitae lorem blandit, nec fermentum risus rhoncus.\r\n\r\nAliquam eu felis mauris. Pellentesque non nunc diam. Integer dignissim erat nec finibus volutpat. Nullam vitae turpis turpis. Suspendisse potenti. Fusce volutpat massa vel libero lacinia, nec pretium sapien tristique. Sed lobortis metus id sem tristique, et pretium erat sollicitudin. Proin vitae turpis vitae tortor luctus porttitor. Quisque vehicula, magna nec dictum pretium, magna risus volutpat turpis, in tempus augue felis ac metus.",
+      "main_image": "publications/2025/08/02/hallss.png",
+      "video_url": "https://www.youtube.com/embed/j-iheFkstFQ",
+      "is_enabled": true,
+      "seo": 4,
+      "publication_type": "vip_hall"
+    }
+  },
+  {
+    "model": "adminlte.publication",
+    "pk": 5,
+    "fields": {
+      "title": "Рекламодателям",
+      "title_ru": "Рекламодателям",
+      "title_uk": "Рекламодавцям",
+      "published_at": "2025-07-24T00:00:00Z",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi fringilla congue ante, in blandit arcu tincidunt a. Nullam tristique lorem quis nisl volutpat dapibus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Vestibulum rutrum eros nec massa ultricies, et accumsan erat fermentum. Suspendisse potenti. Aliquam euismod libero nec nulla luctus lacinia. Curabitur rhoncus magna a sapien suscipit, vitae fermentum eros ultricies. Proin in viverra nisi. Donec vel erat nec nulla iaculis volutpat nec sed neque.\r\n[VIDEO]\r\nPhasellus imperdiet, ex sed cursus blandit, justo nunc facilisis metus, ac posuere erat odio id nisi. Vivamus cursus, sapien sed porta ullamcorper, libero diam convallis sem, non tristique purus magna sit amet metus. Mauris lacinia diam eu mauris pulvinar, nec viverra erat tristique. Aenean feugiat lorem vel ex pharetra, nec rutrum augue tempor. Morbi in mattis sapien. Aenean sit amet fermentum erat. Maecenas non tellus sit amet sapien vulputate pretium at sed mauris. Aliquam erat volutpat. Sed tincidunt lacus in lectus finibus, eget rutrum nulla mattis.\r\n\r\nCras eget bibendum nisi. Duis ut turpis sed turpis efficitur facilisis. Suspendisse convallis lacus sed convallis fermentum. Curabitur dignissim libero a ex viverra, nec mattis leo sodales. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Duis fringilla leo in lorem rhoncus, vel dapibus purus laoreet. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc ac efficitur velit, non dapibus justo. Integer sed rutrum ligula. Pellentesque id diam id ex blandit gravida. Praesent ut augue ex.\r\n\r\nInteger vestibulum justo id bibendum tempus. Donec mattis, nunc sed sollicitudin ullamcorper, nulla nulla ultricies neque, at finibus sapien nunc non libero. Aenean rutrum lorem lorem, nec volutpat erat malesuada a. Etiam tristique, ligula nec facilisis commodo, felis lorem pretium lacus, vel facilisis ex nunc in leo. Vivamus eget lacus risus. Suspendisse potenti. Vivamus vitae nulla sit amet mi blandit rutrum. Ut ornare tortor vitae lorem blandit, nec fermentum risus rhoncus.\r\n\r\nAliquam eu felis mauris. Pellentesque non nunc diam. Integer dignissim erat nec finibus volutpat. Nullam vitae turpis turpis. Suspendisse potenti. Fusce volutpat massa vel libero lacinia, nec pretium sapien tristique. Sed lobortis metus id sem tristique, et pretium erat sollicitudin. Proin vitae turpis vitae tortor luctus porttitor. Quisque vehicula, magna nec dictum pretium, magna risus volutpat turpis, in tempus augue felis ac metus.",
+      "description_ru": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi fringilla congue ante, in blandit arcu tincidunt a. Nullam tristique lorem quis nisl volutpat dapibus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Vestibulum rutrum eros nec massa ultricies, et accumsan erat fermentum. Suspendisse potenti. Aliquam euismod libero nec nulla luctus lacinia. Curabitur rhoncus magna a sapien suscipit, vitae fermentum eros ultricies. Proin in viverra nisi. Donec vel erat nec nulla iaculis volutpat nec sed neque.\r\n[VIDEO]\r\nPhasellus imperdiet, ex sed cursus blandit, justo nunc facilisis metus, ac posuere erat odio id nisi. Vivamus cursus, sapien sed porta ullamcorper, libero diam convallis sem, non tristique purus magna sit amet metus. Mauris lacinia diam eu mauris pulvinar, nec viverra erat tristique. Aenean feugiat lorem vel ex pharetra, nec rutrum augue tempor. Morbi in mattis sapien. Aenean sit amet fermentum erat. Maecenas non tellus sit amet sapien vulputate pretium at sed mauris. Aliquam erat volutpat. Sed tincidunt lacus in lectus finibus, eget rutrum nulla mattis.\r\n\r\nCras eget bibendum nisi. Duis ut turpis sed turpis efficitur facilisis. Suspendisse convallis lacus sed convallis fermentum. Curabitur dignissim libero a ex viverra, nec mattis leo sodales. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Duis fringilla leo in lorem rhoncus, vel dapibus purus laoreet. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc ac efficitur velit, non dapibus justo. Integer sed rutrum ligula. Pellentesque id diam id ex blandit gravida. Praesent ut augue ex.\r\n\r\nInteger vestibulum justo id bibendum tempus. Donec mattis, nunc sed sollicitudin ullamcorper, nulla nulla ultricies neque, at finibus sapien nunc non libero. Aenean rutrum lorem lorem, nec volutpat erat malesuada a. Etiam tristique, ligula nec facilisis commodo, felis lorem pretium lacus, vel facilisis ex nunc in leo. Vivamus eget lacus risus. Suspendisse potenti. Vivamus vitae nulla sit amet mi blandit rutrum. Ut ornare tortor vitae lorem blandit, nec fermentum risus rhoncus.\r\n\r\nAliquam eu felis mauris. Pellentesque non nunc diam. Integer dignissim erat nec finibus volutpat. Nullam vitae turpis turpis. Suspendisse potenti. Fusce volutpat massa vel libero lacinia, nec pretium sapien tristique. Sed lobortis metus id sem tristique, et pretium erat sollicitudin. Proin vitae turpis vitae tortor luctus porttitor. Quisque vehicula, magna nec dictum pretium, magna risus volutpat turpis, in tempus augue felis ac metus.",
+      "description_uk": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi fringilla congue ante, in blandit arcu tincidunt a. Nullam tristique lorem quis nisl volutpat dapibus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Vestibulum rutrum eros nec massa ultricies, et accumsan erat fermentum. Suspendisse potenti. Aliquam euismod libero nec nulla luctus lacinia. Curabitur rhoncus magna a sapien suscipit, vitae fermentum eros ultricies. Proin in viverra nisi. Donec vel erat nec nulla iaculis volutpat nec sed neque.\r\n[VIDEO]\r\nPhasellus imperdiet, ex sed cursus blandit, justo nunc facilisis metus, ac posuere erat odio id nisi. Vivamus cursus, sapien sed porta ullamcorper, libero diam convallis sem, non tristique purus magna sit amet metus. Mauris lacinia diam eu mauris pulvinar, nec viverra erat tristique. Aenean feugiat lorem vel ex pharetra, nec rutrum augue tempor. Morbi in mattis sapien. Aenean sit amet fermentum erat. Maecenas non tellus sit amet sapien vulputate pretium at sed mauris. Aliquam erat volutpat. Sed tincidunt lacus in lectus finibus, eget rutrum nulla mattis.\r\n\r\nCras eget bibendum nisi. Duis ut turpis sed turpis efficitur facilisis. Suspendisse convallis lacus sed convallis fermentum. Curabitur dignissim libero a ex viverra, nec mattis leo sodales. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Duis fringilla leo in lorem rhoncus, vel dapibus purus laoreet. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc ac efficitur velit, non dapibus justo. Integer sed rutrum ligula. Pellentesque id diam id ex blandit gravida. Praesent ut augue ex.\r\n\r\nInteger vestibulum justo id bibendum tempus. Donec mattis, nunc sed sollicitudin ullamcorper, nulla nulla ultricies neque, at finibus sapien nunc non libero. Aenean rutrum lorem lorem, nec volutpat erat malesuada a. Etiam tristique, ligula nec facilisis commodo, felis lorem pretium lacus, vel facilisis ex nunc in leo. Vivamus eget lacus risus. Suspendisse potenti. Vivamus vitae nulla sit amet mi blandit rutrum. Ut ornare tortor vitae lorem blandit, nec fermentum risus rhoncus.\r\n\r\nAliquam eu felis mauris. Pellentesque non nunc diam. Integer dignissim erat nec finibus volutpat. Nullam vitae turpis turpis. Suspendisse potenti. Fusce volutpat massa vel libero lacinia, nec pretium sapien tristique. Sed lobortis metus id sem tristique, et pretium erat sollicitudin. Proin vitae turpis vitae tortor luctus porttitor. Quisque vehicula, magna nec dictum pretium, magna risus volutpat turpis, in tempus augue felis ac metus.",
+      "main_image": "publications/2025/08/02/віаффффффффф.jpg",
+      "video_url": "https://www.youtube.com/embed/j-iheFkstFQ",
+      "is_enabled": true,
+      "seo": 5,
+      "publication_type": "advertising"
+    }
+  },
+  {
+    "model": "adminlte.publication",
+    "pk": 6,
+    "fields": {
+      "title": "Детская комната",
+      "title_ru": "Детская комната",
+      "title_uk": "Дитяча комната",
+      "published_at": "2025-07-24T00:00:00Z",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi fringilla congue ante, in blandit arcu tincidunt a. Nullam tristique lorem quis nisl volutpat dapibus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Vestibulum rutrum eros nec massa ultricies, et accumsan erat fermentum. Suspendisse potenti. Aliquam euismod libero nec nulla luctus lacinia. Curabitur rhoncus magna a sapien suscipit, vitae fermentum eros ultricies. Proin in viverra nisi. Donec vel erat nec nulla iaculis volutpat nec sed neque.\r\n\r\nPhasellus imperdiet, ex sed cursus blandit, justo nunc facilisis metus, ac posuere erat odio id nisi. Vivamus cursus, sapien sed porta ullamcorper, libero diam convallis sem, non tristique purus magna sit amet metus. Mauris lacinia diam eu mauris pulvinar, nec viverra erat tristique. Aenean feugiat lorem vel ex pharetra, nec rutrum augue tempor. Morbi in mattis sapien. Aenean sit amet fermentum erat. Maecenas non tellus sit amet sapien vulputate pretium at sed mauris. Aliquam erat volutpat. Sed tincidunt lacus in lectus finibus, eget rutrum nulla mattis.\r\n\r\nCras eget bibendum nisi. Duis ut turpis sed turpis efficitur facilisis. Suspendisse convallis lacus sed convallis fermentum. Curabitur dignissim libero a ex viverra, nec mattis leo sodales. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Duis fringilla leo in lorem rhoncus, vel dapibus purus laoreet. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc ac efficitur velit, non dapibus justo. Integer sed rutrum ligula. Pellentesque id diam id ex blandit gravida. Praesent ut augue ex.\r\n\r\nInteger vestibulum justo id bibendum tempus. Donec mattis, nunc sed sollicitudin ullamcorper, nulla nulla ultricies neque, at finibus sapien nunc non libero. Aenean rutrum lorem lorem, nec volutpat erat malesuada a. Etiam tristique, ligula nec facilisis commodo, felis lorem pretium lacus, vel facilisis ex nunc in leo. Vivamus eget lacus risus. Suspendisse potenti. Vivamus vitae nulla sit amet mi blandit rutrum. Ut ornare tortor vitae lorem blandit, nec fermentum risus rhoncus.\r\n[VIDEO]\r\nAliquam eu felis mauris. Pellentesque non nunc diam. Integer dignissim erat nec finibus volutpat. Nullam vitae turpis turpis. Suspendisse potenti. Fusce volutpat massa vel libero lacinia, nec pretium sapien tristique. Sed lobortis metus id sem tristique, et pretium erat sollicitudin. Proin vitae turpis vitae tortor luctus porttitor. Quisque vehicula, magna nec dictum pretium, magna risus volutpat turpis, in tempus augue felis ac metus.",
+      "description_ru": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi fringilla congue ante, in blandit arcu tincidunt a. Nullam tristique lorem quis nisl volutpat dapibus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Vestibulum rutrum eros nec massa ultricies, et accumsan erat fermentum. Suspendisse potenti. Aliquam euismod libero nec nulla luctus lacinia. Curabitur rhoncus magna a sapien suscipit, vitae fermentum eros ultricies. Proin in viverra nisi. Donec vel erat nec nulla iaculis volutpat nec sed neque.\r\n\r\nPhasellus imperdiet, ex sed cursus blandit, justo nunc facilisis metus, ac posuere erat odio id nisi. Vivamus cursus, sapien sed porta ullamcorper, libero diam convallis sem, non tristique purus magna sit amet metus. Mauris lacinia diam eu mauris pulvinar, nec viverra erat tristique. Aenean feugiat lorem vel ex pharetra, nec rutrum augue tempor. Morbi in mattis sapien. Aenean sit amet fermentum erat. Maecenas non tellus sit amet sapien vulputate pretium at sed mauris. Aliquam erat volutpat. Sed tincidunt lacus in lectus finibus, eget rutrum nulla mattis.\r\n\r\nCras eget bibendum nisi. Duis ut turpis sed turpis efficitur facilisis. Suspendisse convallis lacus sed convallis fermentum. Curabitur dignissim libero a ex viverra, nec mattis leo sodales. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Duis fringilla leo in lorem rhoncus, vel dapibus purus laoreet. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc ac efficitur velit, non dapibus justo. Integer sed rutrum ligula. Pellentesque id diam id ex blandit gravida. Praesent ut augue ex.\r\n\r\nInteger vestibulum justo id bibendum tempus. Donec mattis, nunc sed sollicitudin ullamcorper, nulla nulla ultricies neque, at finibus sapien nunc non libero. Aenean rutrum lorem lorem, nec volutpat erat malesuada a. Etiam tristique, ligula nec facilisis commodo, felis lorem pretium lacus, vel facilisis ex nunc in leo. Vivamus eget lacus risus. Suspendisse potenti. Vivamus vitae nulla sit amet mi blandit rutrum. Ut ornare tortor vitae lorem blandit, nec fermentum risus rhoncus.\r\n[VIDEO]\r\nAliquam eu felis mauris. Pellentesque non nunc diam. Integer dignissim erat nec finibus volutpat. Nullam vitae turpis turpis. Suspendisse potenti. Fusce volutpat massa vel libero lacinia, nec pretium sapien tristique. Sed lobortis metus id sem tristique, et pretium erat sollicitudin. Proin vitae turpis vitae tortor luctus porttitor. Quisque vehicula, magna nec dictum pretium, magna risus volutpat turpis, in tempus augue felis ac metus.",
+      "description_uk": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi fringilla congue ante, in blandit arcu tincidunt a. Nullam tristique lorem quis nisl volutpat dapibus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Vestibulum rutrum eros nec massa ultricies, et accumsan erat fermentum. Suspendisse potenti. Aliquam euismod libero nec nulla luctus lacinia. Curabitur rhoncus magna a sapien suscipit, vitae fermentum eros ultricies. Proin in viverra nisi. Donec vel erat nec nulla iaculis volutpat nec sed neque.\r\n\r\nPhasellus imperdiet, ex sed cursus blandit, justo nunc facilisis metus, ac posuere erat odio id nisi. Vivamus cursus, sapien sed porta ullamcorper, libero diam convallis sem, non tristique purus magna sit amet metus. Mauris lacinia diam eu mauris pulvinar, nec viverra erat tristique. Aenean feugiat lorem vel ex pharetra, nec rutrum augue tempor. Morbi in mattis sapien. Aenean sit amet fermentum erat. Maecenas non tellus sit amet sapien vulputate pretium at sed mauris. Aliquam erat volutpat. Sed tincidunt lacus in lectus finibus, eget rutrum nulla mattis.\r\n\r\nCras eget bibendum nisi. Duis ut turpis sed turpis efficitur facilisis. Suspendisse convallis lacus sed convallis fermentum. Curabitur dignissim libero a ex viverra, nec mattis leo sodales. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Duis fringilla leo in lorem rhoncus, vel dapibus purus laoreet. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc ac efficitur velit, non dapibus justo. Integer sed rutrum ligula. Pellentesque id diam id ex blandit gravida. Praesent ut augue ex.\r\n\r\nInteger vestibulum justo id bibendum tempus. Donec mattis, nunc sed sollicitudin ullamcorper, nulla nulla ultricies neque, at finibus sapien nunc non libero. Aenean rutrum lorem lorem, nec volutpat erat malesuada a. Etiam tristique, ligula nec facilisis commodo, felis lorem pretium lacus, vel facilisis ex nunc in leo. Vivamus eget lacus risus. Suspendisse potenti. Vivamus vitae nulla sit amet mi blandit rutrum. Ut ornare tortor vitae lorem blandit, nec fermentum risus rhoncus.\r\n[VIDEO]\r\nAliquam eu felis mauris. Pellentesque non nunc diam. Integer dignissim erat nec finibus volutpat. Nullam vitae turpis turpis. Suspendisse potenti. Fusce volutpat massa vel libero lacinia, nec pretium sapien tristique. Sed lobortis metus id sem tristique, et pretium erat sollicitudin. Proin vitae turpis vitae tortor luctus porttitor. Quisque vehicula, magna nec dictum pretium, magna risus volutpat turpis, in tempus augue felis ac metus.",
+      "main_image": "publications/2025/08/02/animator.jpg",
+      "video_url": "https://www.youtube.com/embed/j-iheFkstFQ",
+      "is_enabled": true,
+      "seo": 6,
+      "publication_type": "children_room"
+    }
+  },
+  {
+    "model": "adminlte.publication",
+    "pk": 7,
+    "fields": {
+      "title": "Звезде «Бегущего по лезвию» Джоанне Кэссиди исполнилось 80 лет",
+      "title_ru": "Звезде «Бегущего по лезвию» Джоанне Кэссиди исполнилось 80 лет",
+      "title_uk": "Зірці «Того, хто біжить по лезу» Джоанні Кессіді виповнилося 80 років",
+      "published_at": "2025-08-16T00:00:00Z",
+      "description": "Джоанна Вирджиния Кэски родилась 2 августа 1945 года в Хэддонфилде, штат Нью-Джерси. В детстве посещала художественную школу и занималась рисованием и лепкой. Изучала искусство в Сиракузском университете в Нью-Йорке. В 1964-м вышла замуж за доктора Кеннарда С. Кобрина и вместе с ним переехала в Сан-Франциско, где родила двоих детей — дочь Наоми Кобрин и сына Дэниела Кобрина. Здесь же начала свою карьеру в качестве фотомодели, а в 1968-м засветилась в эпизоде криминального триллера Питера Йейтса «Буллит», в котором ее партнерами выступили Стив Маккуин, Жаклин Биссет и Роберт Дюваль. После развода в 1974-м переехала в Лос-Анджелес и сыграла Элеонору в криминальной комедии «Налет на банк». После ряда ролей второго плана пришла на телевидение, где в 1978-м возглавила актерский ансамбль ситкома NBC «Девушки на роликах», закрытого после четырех эпизодов. Год спустя появилась в процедурале «240-Роберт» на ABC, который также недолго продержался.\r\n[VIDEO]\r\nВ 1982 году получила одну из своих самых известных ролей, представ в качестве репликанта Зоры в культовом «Бегущем по лезвию». Спустя год актрисе вручили «Золотой глобус» за ситком NBC «Буффало Билл». В 1985-м снялась в мини-сериале по роману Джеки Коллинз «Голливудские жены», а в 1988-м предстала в образе Долорес в знаменитой картине «Кто подставил кролика Роджера». В 80-е также снялась в таких фильмах и сериалах, как «Под огнем», «Приглашение в ад», «Четвертый протокол», «Доставить по назначению», «Театр Рэя Брэдбери», «Даллас» и «Фэлкон Крест».",
+      "description_ru": "Джоанна Вирджиния Кэски родилась 2 августа 1945 года в Хэддонфилде, штат Нью-Джерси. В детстве посещала художественную школу и занималась рисованием и лепкой. Изучала искусство в Сиракузском университете в Нью-Йорке. В 1964-м вышла замуж за доктора Кеннарда С. Кобрина и вместе с ним переехала в Сан-Франциско, где родила двоих детей — дочь Наоми Кобрин и сына Дэниела Кобрина. Здесь же начала свою карьеру в качестве фотомодели, а в 1968-м засветилась в эпизоде криминального триллера Питера Йейтса «Буллит», в котором ее партнерами выступили Стив Маккуин, Жаклин Биссет и Роберт Дюваль. После развода в 1974-м переехала в Лос-Анджелес и сыграла Элеонору в криминальной комедии «Налет на банк». После ряда ролей второго плана пришла на телевидение, где в 1978-м возглавила актерский ансамбль ситкома NBC «Девушки на роликах», закрытого после четырех эпизодов. Год спустя появилась в процедурале «240-Роберт» на ABC, который также недолго продержался.\r\n[VIDEO]\r\nВ 1982 году получила одну из своих самых известных ролей, представ в качестве репликанта Зоры в культовом «Бегущем по лезвию». Спустя год актрисе вручили «Золотой глобус» за ситком NBC «Буффало Билл». В 1985-м снялась в мини-сериале по роману Джеки Коллинз «Голливудские жены», а в 1988-м предстала в образе Долорес в знаменитой картине «Кто подставил кролика Роджера». В 80-е также снялась в таких фильмах и сериалах, как «Под огнем», «Приглашение в ад», «Четвертый протокол», «Доставить по назначению», «Театр Рэя Брэдбери», «Даллас» и «Фэлкон Крест».",
+      "description_uk": "Джоанна Вірджинія Кескі народилася 2 серпня 1945 року в Хеддонфілді, штат Нью-Джерсі. У дитинстві відвідувала художню школу і займалася малюванням та ліпленням. Вивчала мистецтво в Сіракузькому університеті в Нью-Йорку. У 1964-му вийшла заміж за доктора Кеннарда С. Кобріна і разом з ним переїхала до Сан-Франциско, де народила двох дітей — дочку Наомі Кобрін і сина Деніела Кобріна. Тут же почала свою кар'єру в якості фотомоделі, а в 1968-му з'явилася в епізоді кримінального трилера Пітера Йейтса «Булліт», в якому її партнерами виступили Стів Маккуїн, Жаклін Біссет і Роберт Дюваль. Після розлучення в 1974-му переїхала до Лос-Анджелеса і зіграла Елеонору в кримінальній комедії «Наліт на банк». Після низки ролей другого плану прийшла на телебачення, де в 1978-му очолила акторський ансамбль ситкому NBC «Дівчата на роликах», закритого після чотирьох епізодів. Рік по тому з'явилася в процедуралі «240-Роберт» на ABC, який також недовго протримався.\r\n[VIDEO]\r\nУ 1982 році отримала одну зі своїх найвідоміших ролей, з'явившись в якості репліканта Зори в культовому «Біжучому по лезу». Через рік актрисі вручили «Золотий глобус» за ситком NBC «Буффало Білл». У 1985-му знялася в міні-серіалі за романом Джекі Коллінз «Голлівудські дружини», а в 1988-му з'явилася в образі Долорес у знаменитій картині «Хто підставив кролика Роджера». У 80-ті також знялася в таких фільмах і серіалах, як «Під вогнем», «Запрошення в пекло», «Четвертий протокол», «Доставити за призначенням», «Театр Рея Бредбері», «Даллас» і «Фелкон Крест».",
+      "main_image": "publications/2025/08/02/rize.jpg",
+      "video_url": "https://www.youtube.com/embed/j-iheFkstFQ",
+      "is_enabled": true,
+      "seo": 35,
+      "publication_type": "news"
+    }
+  },
+  {
+    "model": "adminlte.publication",
+    "pk": 8,
+    "fields": {
+      "title": "Празднуйте новогодние и рождественские праздники всей семьей в CINEMAX!",
+      "title_ru": "Празднуйте новогодние и рождественские праздники всей семьей в CINEMAX!",
+      "title_uk": "Святкуйте новорічні та різдвяні свята усією сімʼєю в CINEMAX!",
+      "published_at": "2025-08-09T00:00:00Z",
+      "description": "Приходите вместе с близкими и друзьями в кинотеатры CINEMAX в ТРЦ Гулливер и ТРЦ Смарт Плаза, покупайте 4 билета одним чеком, а платите за 3! Разделите теплые воспоминания с самыми близкими! Акция «4 билета по цене 3-х» действует с 01.12.2024 по 31.12.2024 в сети кинотеатров CINEMAX.\r\n\r\n[VIDEO]",
+      "description_ru": "Приходите вместе с близкими и друзьями в кинотеатры CINEMAX в ТРЦ Гулливер и ТРЦ Смарт Плаза, покупайте 4 билета одним чеком, а платите за 3! Разделите теплые воспоминания с самыми близкими! Акция «4 билета по цене 3-х» действует с 01.12.2024 по 31.12.2024 в сети кинотеатров CINEMAX.\r\n\r\n[VIDEO]",
+      "description_uk": "Приходьте разом з близькими та друзями у кінотеатри CINEMAX в ТРЦ Гуллівер та ТРЦ Смарт Плаза, купуйте 4 квитка одним чеком, а платіть за 3! Розділіть теплі спогади з найріднішими! Акція \"4 квитки по ціні 3-х\" діє з 01.12.2024 по 31.12.2024 в мережі кінотеатрів CINEMAX.\r\n\r\n[VIDEO]",
+      "main_image": "publications/2025/08/02/gWu4sjvZCDvS1jPfZgtq.JPG",
+      "video_url": "https://www.youtube.com/embed/j-iheFkstFQ",
+      "is_enabled": true,
+      "seo": 36,
+      "publication_type": "shares"
+    }
+  },
+  {
+    "model": "adminlte.publication",
+    "pk": 9,
+    "fields": {
+      "title": "Мобильные приложения",
+      "title_ru": "Мобильные приложения",
+      "title_uk": "Мобільні додатки",
+      "published_at": "2025-08-08T00:00:00Z",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi fringilla congue ante, in blandit arcu tincidunt a. Nullam tristique lorem quis nisl volutpat dapibus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Vestibulum rutrum eros nec massa ultricies, et accumsan erat fermentum. Suspendisse potenti. Aliquam euismod libero nec nulla luctus lacinia. Curabitur rhoncus magna a sapien suscipit, vitae fermentum eros ultricies. Proin in viverra nisi. Donec vel erat nec nulla iaculis volutpat nec sed neque.\r\n\r\nPhasellus imperdiet, ex sed cursus blandit, justo nunc facilisis metus, ac posuere erat odio id nisi. Vivamus cursus, sapien sed porta ullamcorper, libero diam convallis sem, non tristique purus magna sit amet metus. Mauris lacinia diam eu mauris pulvinar, nec viverra erat tristique. Aenean feugiat lorem vel ex pharetra, nec rutrum augue tempor. Morbi in mattis sapien. Aenean sit amet fermentum erat. Maecenas non tellus sit amet sapien vulputate pretium at sed mauris. Aliquam erat volutpat. Sed tincidunt lacus in lectus finibus, eget rutrum nulla mattis.\r\n\r\nCras eget bibendum nisi. Duis ut turpis sed turpis efficitur facilisis. Suspendisse convallis lacus sed convallis fermentum. Curabitur dignissim libero a ex viverra, nec mattis leo sodales. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Duis fringilla leo in lorem rhoncus, vel dapibus purus laoreet. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc ac efficitur velit, non dapibus justo. Integer sed rutrum ligula. Pellentesque id diam id ex blandit gravida. Praesent ut augue ex.",
+      "description_ru": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi fringilla congue ante, in blandit arcu tincidunt a. Nullam tristique lorem quis nisl volutpat dapibus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Vestibulum rutrum eros nec massa ultricies, et accumsan erat fermentum. Suspendisse potenti. Aliquam euismod libero nec nulla luctus lacinia. Curabitur rhoncus magna a sapien suscipit, vitae fermentum eros ultricies. Proin in viverra nisi. Donec vel erat nec nulla iaculis volutpat nec sed neque.\r\n\r\nPhasellus imperdiet, ex sed cursus blandit, justo nunc facilisis metus, ac posuere erat odio id nisi. Vivamus cursus, sapien sed porta ullamcorper, libero diam convallis sem, non tristique purus magna sit amet metus. Mauris lacinia diam eu mauris pulvinar, nec viverra erat tristique. Aenean feugiat lorem vel ex pharetra, nec rutrum augue tempor. Morbi in mattis sapien. Aenean sit amet fermentum erat. Maecenas non tellus sit amet sapien vulputate pretium at sed mauris. Aliquam erat volutpat. Sed tincidunt lacus in lectus finibus, eget rutrum nulla mattis.\r\n\r\nCras eget bibendum nisi. Duis ut turpis sed turpis efficitur facilisis. Suspendisse convallis lacus sed convallis fermentum. Curabitur dignissim libero a ex viverra, nec mattis leo sodales. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Duis fringilla leo in lorem rhoncus, vel dapibus purus laoreet. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc ac efficitur velit, non dapibus justo. Integer sed rutrum ligula. Pellentesque id diam id ex blandit gravida. Praesent ut augue ex.",
+      "description_uk": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi fringilla congue ante, in blandit arcu tincidunt a. Nullam tristique lorem quis nisl volutpat dapibus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Vestibulum rutrum eros nec massa ultricies, et accumsan erat fermentum. Suspendisse potenti. Aliquam euismod libero nec nulla luctus lacinia. Curabitur rhoncus magna a sapien suscipit, vitae fermentum eros ultricies. Proin in viverra nisi. Donec vel erat nec nulla iaculis volutpat nec sed neque.\r\n\r\nPhasellus imperdiet, ex sed cursus blandit, justo nunc facilisis metus, ac posuere erat odio id nisi. Vivamus cursus, sapien sed porta ullamcorper, libero diam convallis sem, non tristique purus magna sit amet metus. Mauris lacinia diam eu mauris pulvinar, nec viverra erat tristique. Aenean feugiat lorem vel ex pharetra, nec rutrum augue tempor. Morbi in mattis sapien. Aenean sit amet fermentum erat. Maecenas non tellus sit amet sapien vulputate pretium at sed mauris. Aliquam erat volutpat. Sed tincidunt lacus in lectus finibus, eget rutrum nulla mattis.\r\n\r\nCras eget bibendum nisi. Duis ut turpis sed turpis efficitur facilisis. Suspendisse convallis lacus sed convallis fermentum. Curabitur dignissim libero a ex viverra, nec mattis leo sodales. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Duis fringilla leo in lorem rhoncus, vel dapibus purus laoreet. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc ac efficitur velit, non dapibus justo. Integer sed rutrum ligula. Pellentesque id diam id ex blandit gravida. Praesent ut augue ex.",
+      "main_image": "publications/2025/08/02/o_1ejungc5v2hamr81811omo1odt1k.jpg",
+      "video_url": "https://www.youtube.com/",
+      "is_enabled": true,
+      "seo": 37,
+      "publication_type": "new_page"
+    }
+  },
+  {
+    "model": "adminlte.publicationgallery",
+    "pk": 1,
+    "fields": {
+      "publication": 1,
+      "image": 24
+    }
+  },
+  {
+    "model": "adminlte.publicationgallery",
+    "pk": 2,
+    "fields": {
+      "publication": 1,
+      "image": 25
+    }
+  },
+  {
+    "model": "adminlte.publicationgallery",
+    "pk": 3,
+    "fields": {
+      "publication": 7,
+      "image": 26
+    }
+  },
+  {
+    "model": "adminlte.publicationgallery",
+    "pk": 4,
+    "fields": {
+      "publication": 7,
+      "image": 27
+    }
+  },
+  {
+    "model": "adminlte.publicationgallery",
+    "pk": 5,
+    "fields": {
+      "publication": 3,
+      "image": 28
+    }
+  },
+  {
+    "model": "adminlte.publicationgallery",
+    "pk": 6,
+    "fields": {
+      "publication": 3,
+      "image": 29
+    }
+  },
+  {
+    "model": "adminlte.publicationgallery",
+    "pk": 7,
+    "fields": {
+      "publication": 3,
+      "image": 30
+    }
+  },
+  {
+    "model": "adminlte.publicationgallery",
+    "pk": 10,
+    "fields": {
+      "publication": 6,
+      "image": 33
+    }
+  },
+  {
+    "model": "adminlte.publicationgallery",
+    "pk": 11,
+    "fields": {
+      "publication": 6,
+      "image": 34
+    }
+  },
+  {
+    "model": "adminlte.publicationgallery",
+    "pk": 12,
+    "fields": {
+      "publication": 6,
+      "image": 35
+    }
+  },
+  {
+    "model": "adminlte.publicationgallery",
+    "pk": 13,
+    "fields": {
+      "publication": 9,
+      "image": 36
+    }
+  },
+  {
+    "model": "adminlte.publicationgallery",
+    "pk": 14,
+    "fields": {
+      "publication": 9,
+      "image": 37
+    }
+  },
+  {
+    "model": "adminlte.publicationgallery",
+    "pk": 15,
+    "fields": {
+      "publication": 9,
+      "image": 38
+    }
+  },
+  {
+    "model": "adminlte.mainpage",
+    "pk": 1,
+    "fields": {
+      "is_enabled": true,
+      "published_at": "2025-07-31T20:55:31.215Z",
+      "phone_1": "+380 66 456 3454",
+      "phone_2": "+380 50 555 5055",
+      "seo_text": "Добро пожаловать в онлайн-кинотеатр!\r\nЗдесь ты можешь легко и быстро купить билеты в кино, не выходя из дома.\r\n\r\nНаш сайт — это твоя личная киноафиша, где есть:\r\n\r\n    расписание всех актуальных сеансов в твоем городе\r\n\r\n    официальные трейлеры, описания фильмов, жанры, возрастные ограничения\r\n\r\n    возможность выбрать место в зале и оплатить билет онлайн\r\n\r\n    новинки кино 2025, премьеры, российское и мировое кино\r\n\r\nПростой интерфейс, удобное бронирование, поддержка смартфонов — всё для твоего удобства.\r\n\r\n Не пропусти любимый фильм — выбирай сеанс и приходи в кино уже сегодня!",
+      "seo_text_ru": "Добро пожаловать в онлайн-кинотеатр!\r\nЗдесь ты можешь легко и быстро купить билеты в кино, не выходя из дома.\r\n\r\nНаш сайт — это твоя личная киноафиша, где есть:\r\n\r\n    расписание всех актуальных сеансов в твоем городе\r\n\r\n    официальные трейлеры, описания фильмов, жанры, возрастные ограничения\r\n\r\n    возможность выбрать место в зале и оплатить билет онлайн\r\n\r\n    новинки кино 2025, премьеры, российское и мировое кино\r\n\r\nПростой интерфейс, удобное бронирование, поддержка смартфонов — всё для твоего удобства.\r\n\r\n Не пропусти любимый фильм — выбирай сеанс и приходи в кино уже сегодня!",
+      "seo_text_uk": "Вітаємо в онлайн-кінотеатрі!\r\nТут ти можеш зручно й швидко купити квитки у кіно, не виходячи з дому.\r\n\r\nНаш сайт — це твоя персональна кіноафіша, де доступні:\r\n\r\n    розклад усіх актуальних сеансів у твоєму місті\r\n\r\n    офіційні трейлери, описи фільмів, жанри, вікові обмеження\r\n\r\n    можливість вибрати місце в залі та оплатити квиток онлайн\r\n\r\n    новинки кіно 2025, прем’єри, українське та світове кіно\r\n\r\nШвидкий інтерфейс, зручне бронювання, підтримка смартфонів — усе для твого комфорту.\r\n\r\nНе пропусти улюблений фільм — обирай сеанс і приходь у кіно вже сьогодні!",
+      "seo": 1
+    }
+  },
+  {
+    "model": "adminlte.contactspage",
+    "pk": 1,
+    "fields": {
+      "is_enabled": true,
+      "published_at": "2025-07-22T08:53:05.492Z",
+      "seo": 7
+    }
+  },
+  {
+    "model": "adminlte.contactspagelocation",
+    "pk": 2,
+    "fields": {
+      "name": "Кинотеатр 1",
+      "address": "«Золотой Дюк» Одесса, Украина \r\nпроспект Академика Глушко, \r\n11Ж тел: +380 (48) 746-33-66",
+      "coordinates": "46.398575, 30.725157",
+      "is_enabled": true,
+      "logo": "contacts/2025/08/02/unnamed.jpg",
+      "contacts_page": 1
+    }
+  }
+]

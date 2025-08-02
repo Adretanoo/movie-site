@@ -32,7 +32,7 @@
 
                                 {% if halls_count > 0 %}
                                     {% for h in cinema_halls %}
-                                        <a href="{% url 'hall_card_page' cinema.pk %}"
+                                        <a href="{% url 'hall_card_page' cinema.pk forloop.counter0 %}"
                                            class="list-group-item list-group-item-action">{{ h.name }}</a>
                                     {% endfor %}
                                 {% else %}

@@ -52,7 +52,7 @@
                             <a href="#">
                                 <img src="{{ m.main_image.url }}" alt="">
                             </a>
-                            <a href="#"><b>{{ m.title }}</b></a>
+                            <a href="#"><b class="block_movie_item-text">{{ m.title }}</b></a>
                             <div>
                                 <a class="button-movie-item" href="#">{% trans "buy-ticket" %}</a>
                             </div>
@@ -71,10 +71,10 @@
                             <a href="#">
                                 <img src="{{ m.main_image.url }}" alt="">
                             </a>
-                            <a><b>{{ m.title }}</b></a>
+                            <a><b class="block_movie_item-text">{{ m.title }}</b></a>
                             <div>
                                 <a href="#"
-                                   class="movie-soon-link">с {{ m.published_at|format_date_localized:lang }}</a>
+                                   class="movie-soon-link">{% trans 'with_title' %} {{ m.published_at|format_date_localized:lang }}</a>
                             </div>
                         </div>
                     {% endfor %}

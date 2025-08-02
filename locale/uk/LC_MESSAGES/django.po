@@ -117,6 +117,8 @@ msgstr "Прізвище"
 msgid "username_register"
 msgstr "Псевдонім"
 
+msgid "with_title"
+msgstr "з"
 
 msgid "address_register"
 msgstr "Адреса"

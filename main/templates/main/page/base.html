@@ -35,7 +35,7 @@
             <!-- 1. ЛОГОТИП -->
             <div class="col-lg-2 col-md-5  d-flex justify-content-center justify-content-md-start mb-2 mb-md-0 logo-col order-0">
                 <a href="{% url 'main' %}" class="logo-link">
-                    <img src="{% static 'adminlte/dist/img/img-none.jpg' %}" alt="Логотип"
+                    <img src="{% static 'main/img/Cinemax_new.png' %}" alt="Логотип"
                          class="img-fluid logo-img">
                 </a>
             </div>
@@ -133,7 +133,7 @@
                         </li>
 
                     </ul>
-                    <div class="block-buttons mt-4">
+                    <div class="block-buttons">
                         {% if user.is_authenticated %}
                             <a href="{% url 'user_profile' username=user.username %}"
                                class="btn btn-primary w-150 personal_cabinet_button">{% trans "personal_cabinet" %}</a>

@@ -121,7 +121,9 @@ class Movie(models.Model):
     published_at = models.DateTimeField()
     description = models.TextField()
     main_image = models.ImageField(upload_to="movies/main/%Y/%m/%d/")
+
     url = models.URLField()
+
     is_2d = models.BooleanField(default=False)
     is_3d = models.BooleanField(default=True)
     is_imax = models.BooleanField(default=False)

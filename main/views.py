@@ -61,7 +61,6 @@ def register_view(request):
 
 
 def cinemas_page(request):
-
     cinemas = CardCinema.objects.all()
     top_banner = TopBanner.objects.first()
     top_banner_images = TopBannerImage.objects.all()
@@ -75,9 +74,7 @@ def cinemas_page(request):
     return render(request, 'main/page/cinemas.html', context)
 
 
-
-def cinema_card_page(request,pk):
-
+def cinema_card_page(request, pk):
     cinema = CardCinema.objects.get(pk=pk)
     cinema_gallery_card = CardCinemaGallery.objects.filter(card_cinema=cinema.pk)
     cinema_halls = CardHall.objects.filter(card_cinema=cinema.pk)
@@ -89,19 +86,20 @@ def cinema_card_page(request,pk):
         'cinema_halls': cinema_halls,
         'halls_count': halls_count,
     }
-    return render(request,'main/page/cinema_card.html',context)
+    return render(request, 'main/page/cinema_card.html', context)
 
 
-def hall_card_page(request,pk):
-    hall = CardHall.objects.get(card_cinema=pk)
+def hall_card_page(request, pk, hall_index):
+    halls = CardHall.objects.filter(card_cinema=pk).order_by('id')
+    hall = halls[hall_index]
+
     hall_gallery = CardHallGallery.objects.filter(card_hall=hall)
 
     context = {
         'hall': hall,
         'hall_gallery': hall_gallery,
     }
-    return render(request, 'main/page/hall_card.html',context)
-
+    return render(request, 'main/page/hall_card.html', context)
 
 
 @login_required
@@ -117,14 +115,12 @@ def user_edit_profile(request, username):
             form.save()
 
             if form.cleaned_data.get('new_password1'):
-                update_session_auth_hash(request,user)
+                update_session_auth_hash(request, user)
             return redirect('user_profile', username=user.username)
     else:
         form = UserEditProfileForm(instance=user)
 
-
     return render(request, 'main/page/edit_profile_user.html', context={'form': form})
-
 
 
 @login_required(login_url='login')
@@ -133,10 +129,11 @@ def user_profile(request, username):
         return redirect('user_profile', username=request.user.username)
     return render(request, 'main/accounts/user_profile.html')
 
+
 def shares_page(request):
     seo_page = [{
         'title': 'Акции',
-        'keywords': 'dsfja',
+        'keywords': 'акции,лутшие акции',
         'description': 'text'
     }]
     return shares_news_page(request, PublicationType.SHARES, seo_page)
@@ -144,8 +141,8 @@ def shares_page(request):
 
 def news_page(request):
     seo_page = [{
-        'title': 'Новини',
-        'keywords': 'dsfja',
+        'title': 'Новости',
+        'keywords': 'новости,лутшие новости',
         'description': 'text'
     }]
     return shares_news_page(request, PublicationType.NEWS, seo_page)
