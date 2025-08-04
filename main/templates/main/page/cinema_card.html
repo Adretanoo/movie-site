@@ -33,20 +33,27 @@
                                 {% if halls_count > 0 %}
                                     {% for h in cinema_halls %}
                                         <a href="{% url 'hall_card_page' cinema.pk forloop.counter0 %}"
-                                           class="list-group-item list-group-item-action">{{ h.name }}</a>
+                                           class="list-group-item list-group-item-action list-group-item-p">{{ h.name }}</a>
                                     {% endfor %}
                                 {% else %}
                                     <li class="list-group-item list-group-item-action">{% trans 'is_no_card_title' %}</li>
                                 {% endif %}
                             </ul>
                         </div>
-                        <div class="block_nav_session mb-5">
+                        <div class="block_nav_session mb-3">
                             <h4 class="mb-4">{% trans 'cinema_session_title' %}:</h4>
                             <ul class="list-group">
-                                <li class="list-group-item list-group-item-action">{% trans 'is_no_card_title' %}</li>
+                                {% if sessions %}
+                                    {% for s in sessions %}
+                                        <li class="list-group-item list-group-item-action"><a
+                                                class="list-group-item-p">{{ s.movie }}</a></li>
+                                    {% endfor %}
+                                {% else %}
+                                    <li class="list-group-item list-group-item-action">{% trans 'is_no_card_title' %}</li>
+                                {% endif %}
                             </ul>
                         </div>
-                        <a class="session_schedule_button_all" href="#">
+                        <a class="session_schedule_button_all" href="{% url 'schedule' %}?=true&cinema={{ cinema.pk }}">
                             {% trans 'session_schedule_button_all' %}
                         </a>
                     </div>
@@ -59,7 +66,8 @@
 
                         <div class="block_cinema_logo_session mb-5">
                             <h1>{{ cinema.name }}</h1>
-                            <a class="session_schedule_button" href="#">
+                            <a class="session_schedule_button"
+                               href="{% url 'schedule' %}?=true&cinema={{ cinema.pk }}&start_time={{ today_date|date:"Y-m-d" }}">
                                 {% trans 'session_schedule_button' %}
                             </a>
                         </div>

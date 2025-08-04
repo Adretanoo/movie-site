@@ -13,6 +13,7 @@ from django.utils.formats import date_format
 from django.views.decorators.http import require_POST
 from ajax_datatable.views import AjaxDatatableView
 
+from main.models import Seat
 from user.forms import UserRegisterForm, UserEditProfileForm
 from user.models import User
 from adminlte.models import Publication, Images, PublicationType, TopBanner, NewsBanner, BackgroundBanner, \
@@ -237,6 +238,8 @@ def movies_delete(request):
     return redirect('movies')
 
 
+
+
 def movie_add(request):
     lang = request.GET.get('lang', 'ru')
 
@@ -255,7 +258,6 @@ def movie_add(request):
                 formset.instance = movie_instance
                 formset.save()
 
-            messages.success(request, 'Фільм успішно додано!')
             return redirect('movies')
         else:
             messages.error(request, 'Будь ласка, виправте помилки у формі.')
@@ -363,6 +365,12 @@ def cinemas_delete(request):
     return redirect('cinemas')
 
 
+def create_seats(hall, rows, colum):
+    for row in range(1, rows + 1):
+        for col in range(1, colum + 1):
+            Seat.objects.create(hall=hall, row=row, column=col)
+
+
 def hall_add(request):
     lang = request.GET.get('lang', 'ru')
     cinema = get_object_or_404(CardCinema, pk=request.GET.get('cinema_id'))
@@ -379,6 +387,7 @@ def hall_add(request):
                 hall_instance.seo = seo_instance
                 hall_instance.card_cinema = cinema
                 hall_instance.save()
+                create_seats(hall_instance,10,10)
 
                 formset.instance = hall_instance
                 formset.save()
@@ -442,8 +451,10 @@ def hall_edit(request, pk):
 @require_POST
 def hall_delete(request, pk):
     hall = get_object_or_404(CardHall, pk=pk)
+    seat = Seat.objects.filter(hall=hall.pk)
     cinema_pk = hall.card_cinema.pk
     hall.delete()
+    seat.delete()
     return redirect('cinemas_edit', pk=cinema_pk)
 
 

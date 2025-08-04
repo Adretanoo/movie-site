@@ -1,0 +1,162 @@
+{% extends 'main/page/base.html' %}
+{% load static %}
+{% load l10n i18n %}
+{% load date_filters %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'main/css/schedule.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <form method="get" id="filter-form">
+            <div class="block_filters">
+                <div class="block_filters_format_movie">
+                    <h6>{% trans 'show_only' %}:</h6>
+                    <div class="checkboxes">
+                        <div class="checkbox_filters_item">
+                            <input id="3d" name="is_3d" type="checkbox"
+                                   {% if request.GET.is_3d %}checked{% endif %}>
+                            <label class="label_color-1" for="3d">3D</label>
+                        </div>
+                        <div class="checkbox_filters_item">
+                            <input id="2d" name="is_2d" type="checkbox"
+                                   {% if request.GET.is_2d %}checked{% endif %}>
+                            <label class="label_color-2" for="2d">2D</label>
+                        </div>
+                        <div class="checkbox_filters_item">
+                            <input id="IMAX" name="is_imax" type="checkbox"
+                                   {% if request.GET.is_imax %}checked{% endif %}>
+                            <label class="label_color-3" for="IMAX">IMAX</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="block_filters_format">
+                    <div class="block_list_item">
+                        <select class="form-select custom-select-style" aria-label="Кинотеатр"
+                                name="{{ filter.form.cinema.name }}">
+                            {% for c in filter.form.cinema %}
+                                <option value="{{ c.data.value }}"
+                                        {% if c.data.value|stringformat:"s" == request.GET.cinema %}
+                                        selected
+                                        {% endif %}>
+                                    {{ c.data.label }}
+                                </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="block_list_item">
+                        <select class="form-select custom-select-style filter-select" name="start_time"
+                                aria-label="Дата">
+                            <option value="" {% if not request.GET.start_time %}selected{% endif %}>Дата</option>
+                            {% for date in unique_data_sessions %}
+                                <option value="{{ date|date:'Y-m-d' }}"
+                                        {% if date|date:'Y-m-d' == request.GET.start_time %}selected{% endif %}>
+                                    {{ date|date:"Y-m-d"|localize }}
+                                </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="block_list_item">
+                        <select class="form-select custom-select-style" name="{{ filter.form.movie.name }}"
+                                style="width: 200px;"
+                                aria-label="Фильм">
+                            {% for c in filter.form.movie %}
+                                <option value="{{ c.data.value }}"
+                                        {% if c.data.value|stringformat:"s" == request.GET.movie %}selected{% endif %}>
+                                    {{ c.data.label }}
+                                </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="block_list_item">
+                        <select class="form-select custom-select-style" name="{{ filter.form.card_hall.name }}"
+                                aria-label="Зали">
+                            {% for c in filter.form.card_hall %}
+                                <option value="{{ c.data.value }}"
+                                        {% if c.data.value|stringformat:"s" == request.GET.card_hall %}selected{% endif %}>
+                                    {{ c.data.label }}
+                                </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="block_content_wrapper">
+            {% for t in unique_data_sessions %}
+                <h6 class="mt-5 mb-3">{{ t|format_date_localized_schedule:lang }}</h6>
+
+
+                <div class="block_content">
+                    <table class="schedule_table">
+                        <tr>
+                            <th>{% trans "time_schedule" %}</th>
+                            <th>{% trans "movie_schedule" %}</th>
+                            <th>Зал</th>
+                            <th>{% trans "cost_schedule" %}</th>
+                            <th>{% trans "reservation_schedule" %}</th>
+                        </tr>
+
+                        {% for s in sessions %}
+                            {% if t|date:'Y-m-d' == s.start_time|date:'Y-m-d' %}
+                                <tr>
+                                    <td>{{ s.start_time|time }}</td>
+                                    <td>{{ s.movie.title }}</td>
+                                    <td>{{ s.card_hall.pk }}</td>
+                                    <td>{{ s.price }}</td>
+                                    <td>
+                                        <a href="#">
+                                            <div class="block-ticket-wrapper">
+                                                <div class="left-ticket"></div>
+                                                <div class="center-ticket"></div>
+                                                <div class="right-ticket">+</div>
+                                            </div>
+                                        </a>
+                                    </td>
+                                </tr>
+                            {% endif %}
+                        {% endfor %}
+
+                    </table>
+                </div>
+            {% endfor %}
+
+        </div>
+    </div>
+
+{% endblock %}
+
+
+{% block scripts %}
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const filterElements = document.querySelectorAll('select, input[type="checkbox"]');
+
+            filterElements.forEach(element => {
+                element.addEventListener('change', function () {
+                    const url = new URL(window.location.href);
+
+                    url.searchParams.delete('is_3d');
+                    url.searchParams.delete('is_2d');
+                    url.searchParams.delete('is_imax');
+
+                    document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+                        if (checkbox.checked) {
+                            url.searchParams.set(checkbox.name, 'true');
+                        }
+                    });
+
+                    document.querySelectorAll('select').forEach(select => {
+                        if (select.value) {
+                            url.searchParams.set(select.name, select.value);
+                        } else {
+                            url.searchParams.delete(select.name);
+                        }
+                    });
+                    window.location.href = url.href;
+                });
+            });
+        });
+    </script>
+{% endblock %}

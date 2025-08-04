@@ -21,7 +21,9 @@ urlpatterns = [
 
     path('profile/<str:username>/', views.user_profile, name='user_profile'),
     path('profile/edit/<str:username>/', views.user_edit_profile, name='user_profile_edit'),
-    path('cinemas/',views.cinemas_page, name='cinemas_page'),
+    path('cinemas/', views.cinemas_page, name='cinemas_page'),
     path('cinema/<int:pk>', views.cinema_card_page, name='cinema_card_page'),
     path('cinema/<int:pk>/hall/<int:hall_index>/', views.hall_card_page, name='hall_card_page'),
+
+    path('schedule', views.schedule, name='schedule'),
 ]

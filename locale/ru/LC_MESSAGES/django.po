@@ -179,6 +179,35 @@ msgstr "Наши кинотеатры"
 msgid "with_title"
 msgstr "с"
 
+
+msgid "show_only"
+msgstr "Показать только"
+
+
+msgid "all_schedule"
+msgstr "все"
+
+
+msgid "time_schedule"
+msgstr "Время"
+
+
+msgid "movie_schedule"
+msgstr "Фильм"
+
+
+msgid "cost_schedule"
+msgstr "Цена в грн"
+
+
+msgid "reservation_schedule"
+msgstr "Бронировать"
+
+
+
+
+
+
 msgid "language_uk"
 msgstr "Украинский"
 

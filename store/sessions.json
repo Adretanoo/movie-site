@@ -1,0 +1,2402 @@
+[
+    {
+        "model": "main.Session",
+        "pk": 0,
+        "fields": {
+            "movie": 0,
+            "card_hall": 1,
+            "start_time": "2025-08-06T00:21:50Z",
+            "price": 14
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 1,
+        "fields": {
+            "movie": 1,
+            "card_hall": 1,
+            "start_time": "2025-08-02T16:24:29Z",
+            "price": 29
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 2,
+        "fields": {
+            "movie": 2,
+            "card_hall": 1,
+            "start_time": "2025-08-04T19:31:22Z",
+            "price": 12
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 3,
+        "fields": {
+            "movie": 3,
+            "card_hall": 1,
+            "start_time": "2025-08-03T03:13:33Z",
+            "price": 25
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 4,
+        "fields": {
+            "movie": 5,
+            "card_hall": 1,
+            "start_time": "2025-08-06T14:35:11Z",
+            "price": 64
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 5,
+        "fields": {
+            "movie": 6,
+            "card_hall": 1,
+            "start_time": "2025-08-07T03:17:51Z",
+            "price": 60
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 6,
+        "fields": {
+            "movie": 7,
+            "card_hall": 1,
+            "start_time": "2025-08-05T08:56:15Z",
+            "price": 59
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 7,
+        "fields": {
+            "movie": 8,
+            "card_hall": 1,
+            "start_time": "2025-08-03T12:54:59Z",
+            "price": 93
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 8,
+        "fields": {
+            "movie": 9,
+            "card_hall": 1,
+            "start_time": "2025-08-07T04:45:13Z",
+            "price": 53
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 9,
+        "fields": {
+            "movie": 10,
+            "card_hall": 1,
+            "start_time": "2025-08-02T17:25:07Z",
+            "price": 54
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 10,
+        "fields": {
+            "movie": 11,
+            "card_hall": 1,
+            "start_time": "2025-08-02T22:26:33Z",
+            "price": 34
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 11,
+        "fields": {
+            "movie": 12,
+            "card_hall": 1,
+            "start_time": "2025-08-03T06:59:10Z",
+            "price": 25
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 12,
+        "fields": {
+            "movie": 13,
+            "card_hall": 1,
+            "start_time": "2025-08-03T20:34:02Z",
+            "price": 61
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 13,
+        "fields": {
+            "movie": 19,
+            "card_hall": 1,
+            "start_time": "2025-08-06T10:22:30Z",
+            "price": 47
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 14,
+        "fields": {
+            "movie": 14,
+            "card_hall": 1,
+            "start_time": "2025-08-06T11:09:31Z",
+            "price": 33
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 15,
+        "fields": {
+            "movie": 15,
+            "card_hall": 1,
+            "start_time": "2025-08-04T08:30:39Z",
+            "price": 73
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 16,
+        "fields": {
+            "movie": 16,
+            "card_hall": 1,
+            "start_time": "2025-08-04T08:47:18Z",
+            "price": 54
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 17,
+        "fields": {
+            "movie": 17,
+            "card_hall": 1,
+            "start_time": "2025-08-05T06:06:45Z",
+            "price": 44
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 18,
+        "fields": {
+            "movie": 18,
+            "card_hall": 1,
+            "start_time": "2025-08-04T02:42:39Z",
+            "price": 94
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 19,
+        "fields": {
+            "movie": 20,
+            "card_hall": 1,
+            "start_time": "2025-08-05T16:05:22Z",
+            "price": 50
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 20,
+        "fields": {
+            "movie": 21,
+            "card_hall": 1,
+            "start_time": "2025-08-04T11:52:28Z",
+            "price": 88
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 21,
+        "fields": {
+            "movie": 22,
+            "card_hall": 1,
+            "start_time": "2025-08-02T20:10:41Z",
+            "price": 63
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 22,
+        "fields": {
+            "movie": 23,
+            "card_hall": 1,
+            "start_time": "2025-08-06T02:33:14Z",
+            "price": 44
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 23,
+        "fields": {
+            "movie": 24,
+            "card_hall": 1,
+            "start_time": "2025-08-04T13:13:04Z",
+            "price": 39
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 24,
+        "fields": {
+            "movie": 25,
+            "card_hall": 1,
+            "start_time": "2025-08-05T04:27:54Z",
+            "price": 92
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 25,
+        "fields": {
+            "movie": 26,
+            "card_hall": 1,
+            "start_time": "2025-08-06T18:47:57Z",
+            "price": 83
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 26,
+        "fields": {
+            "movie": 27,
+            "card_hall": 1,
+            "start_time": "2025-08-05T10:45:08Z",
+            "price": 61
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 27,
+        "fields": {
+            "movie": 28,
+            "card_hall": 1,
+            "start_time": "2025-08-03T13:21:25Z",
+            "price": 98
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 28,
+        "fields": {
+            "movie": 29,
+            "card_hall": 1,
+            "start_time": "2025-08-02T18:04:42Z",
+            "price": 37
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 29,
+        "fields": {
+            "movie": 30,
+            "card_hall": 1,
+            "start_time": "2025-08-03T18:18:20Z",
+            "price": 56
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 30,
+        "fields": {
+            "movie": 31,
+            "card_hall": 1,
+            "start_time": "2025-08-07T08:44:14Z",
+            "price": 49
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 31,
+        "fields": {
+            "movie": 32,
+            "card_hall": 1,
+            "start_time": "2025-08-05T00:55:02Z",
+            "price": 43
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 32,
+        "fields": {
+            "movie": 33,
+            "card_hall": 1,
+            "start_time": "2025-08-03T00:52:54Z",
+            "price": 59
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 33,
+        "fields": {
+            "movie": 34,
+            "card_hall": 1,
+            "start_time": "2025-08-03T23:03:33Z",
+            "price": 88
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 34,
+        "fields": {
+            "movie": 35,
+            "card_hall": 1,
+            "start_time": "2025-08-04T13:42:28Z",
+            "price": 99
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 35,
+        "fields": {
+            "movie": 36,
+            "card_hall": 1,
+            "start_time": "2025-08-02T20:37:15Z",
+            "price": 97
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 36,
+        "fields": {
+            "movie": 37,
+            "card_hall": 1,
+            "start_time": "2025-08-06T08:57:44Z",
+            "price": 92
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 37,
+        "fields": {
+            "movie": 38,
+            "card_hall": 1,
+            "start_time": "2025-08-03T10:12:36Z",
+            "price": 99
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 38,
+        "fields": {
+            "movie": 39,
+            "card_hall": 1,
+            "start_time": "2025-08-02T14:25:59Z",
+            "price": 98
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 39,
+        "fields": {
+            "movie": 40,
+            "card_hall": 1,
+            "start_time": "2025-08-05T07:31:02Z",
+            "price": 36
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 40,
+        "fields": {
+            "movie": 41,
+            "card_hall": 1,
+            "start_time": "2025-08-05T10:28:42Z",
+            "price": 17
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 41,
+        "fields": {
+            "movie": 42,
+            "card_hall": 1,
+            "start_time": "2025-08-02T12:49:23Z",
+            "price": 23
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 42,
+        "fields": {
+            "movie": 43,
+            "card_hall": 1,
+            "start_time": "2025-08-05T07:30:33Z",
+            "price": 74
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 43,
+        "fields": {
+            "movie": 44,
+            "card_hall": 1,
+            "start_time": "2025-08-03T03:05:47Z",
+            "price": 24
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 44,
+        "fields": {
+            "movie": 45,
+            "card_hall": 1,
+            "start_time": "2025-08-03T22:25:20Z",
+            "price": 76
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 45,
+        "fields": {
+            "movie": 46,
+            "card_hall": 1,
+            "start_time": "2025-08-05T19:21:25Z",
+            "price": 18
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 46,
+        "fields": {
+            "movie": 47,
+            "card_hall": 1,
+            "start_time": "2025-08-04T15:23:39Z",
+            "price": 48
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 47,
+        "fields": {
+            "movie": 48,
+            "card_hall": 1,
+            "start_time": "2025-08-03T10:01:40Z",
+            "price": 97
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 48,
+        "fields": {
+            "movie": 49,
+            "card_hall": 1,
+            "start_time": "2025-08-04T16:37:27Z",
+            "price": 80
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 49,
+        "fields": {
+            "movie": 50,
+            "card_hall": 1,
+            "start_time": "2025-08-02T17:56:43Z",
+            "price": 57
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 50,
+        "fields": {
+            "movie": 51,
+            "card_hall": 1,
+            "start_time": "2025-08-07T00:51:09Z",
+            "price": 56
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 51,
+        "fields": {
+            "movie": 52,
+            "card_hall": 1,
+            "start_time": "2025-08-02T20:04:09Z",
+            "price": 22
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 52,
+        "fields": {
+            "movie": 53,
+            "card_hall": 1,
+            "start_time": "2025-08-04T20:38:15Z",
+            "price": 16
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 53,
+        "fields": {
+            "movie": 54,
+            "card_hall": 1,
+            "start_time": "2025-08-03T17:14:26Z",
+            "price": 52
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 54,
+        "fields": {
+            "movie": 55,
+            "card_hall": 1,
+            "start_time": "2025-08-05T11:45:07Z",
+            "price": 53
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 55,
+        "fields": {
+            "movie": 56,
+            "card_hall": 1,
+            "start_time": "2025-08-05T03:16:04Z",
+            "price": 32
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 56,
+        "fields": {
+            "movie": 57,
+            "card_hall": 1,
+            "start_time": "2025-08-03T13:47:48Z",
+            "price": 58
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 57,
+        "fields": {
+            "movie": 58,
+            "card_hall": 1,
+            "start_time": "2025-08-03T21:45:33Z",
+            "price": 51
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 58,
+        "fields": {
+            "movie": 59,
+            "card_hall": 1,
+            "start_time": "2025-08-03T12:29:10Z",
+            "price": 56
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 59,
+        "fields": {
+            "movie": 4,
+            "card_hall": 1,
+            "start_time": "2025-08-03T17:24:58Z",
+            "price": 67
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 60,
+        "fields": {
+            "movie": 0,
+            "card_hall": 2,
+            "start_time": "2025-08-03T08:25:55Z",
+            "price": 62
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 61,
+        "fields": {
+            "movie": 1,
+            "card_hall": 2,
+            "start_time": "2025-08-06T00:45:08Z",
+            "price": 31
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 62,
+        "fields": {
+            "movie": 2,
+            "card_hall": 2,
+            "start_time": "2025-08-02T14:31:42Z",
+            "price": 76
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 63,
+        "fields": {
+            "movie": 3,
+            "card_hall": 2,
+            "start_time": "2025-08-02T14:44:54Z",
+            "price": 96
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 64,
+        "fields": {
+            "movie": 5,
+            "card_hall": 2,
+            "start_time": "2025-08-04T05:23:27Z",
+            "price": 56
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 65,
+        "fields": {
+            "movie": 6,
+            "card_hall": 2,
+            "start_time": "2025-08-03T00:23:13Z",
+            "price": 23
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 66,
+        "fields": {
+            "movie": 7,
+            "card_hall": 2,
+            "start_time": "2025-08-06T08:30:04Z",
+            "price": 15
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 67,
+        "fields": {
+            "movie": 8,
+            "card_hall": 2,
+            "start_time": "2025-08-06T13:56:07Z",
+            "price": 95
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 68,
+        "fields": {
+            "movie": 9,
+            "card_hall": 2,
+            "start_time": "2025-08-07T08:13:07Z",
+            "price": 79
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 69,
+        "fields": {
+            "movie": 10,
+            "card_hall": 2,
+            "start_time": "2025-08-07T04:22:15Z",
+            "price": 88
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 70,
+        "fields": {
+            "movie": 11,
+            "card_hall": 2,
+            "start_time": "2025-08-07T01:37:28Z",
+            "price": 17
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 71,
+        "fields": {
+            "movie": 12,
+            "card_hall": 2,
+            "start_time": "2025-08-06T06:40:51Z",
+            "price": 49
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 72,
+        "fields": {
+            "movie": 13,
+            "card_hall": 2,
+            "start_time": "2025-08-07T01:41:16Z",
+            "price": 64
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 73,
+        "fields": {
+            "movie": 19,
+            "card_hall": 2,
+            "start_time": "2025-08-05T01:09:20Z",
+            "price": 59
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 74,
+        "fields": {
+            "movie": 14,
+            "card_hall": 2,
+            "start_time": "2025-08-03T18:36:40Z",
+            "price": 47
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 75,
+        "fields": {
+            "movie": 15,
+            "card_hall": 2,
+            "start_time": "2025-08-03T20:18:50Z",
+            "price": 85
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 76,
+        "fields": {
+            "movie": 16,
+            "card_hall": 2,
+            "start_time": "2025-08-04T12:24:58Z",
+            "price": 57
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 77,
+        "fields": {
+            "movie": 17,
+            "card_hall": 2,
+            "start_time": "2025-08-03T07:03:56Z",
+            "price": 14
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 78,
+        "fields": {
+            "movie": 18,
+            "card_hall": 2,
+            "start_time": "2025-08-03T05:01:07Z",
+            "price": 69
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 79,
+        "fields": {
+            "movie": 20,
+            "card_hall": 2,
+            "start_time": "2025-08-05T00:55:12Z",
+            "price": 83
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 80,
+        "fields": {
+            "movie": 21,
+            "card_hall": 2,
+            "start_time": "2025-08-03T03:43:17Z",
+            "price": 57
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 81,
+        "fields": {
+            "movie": 22,
+            "card_hall": 2,
+            "start_time": "2025-08-06T13:44:12Z",
+            "price": 18
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 82,
+        "fields": {
+            "movie": 23,
+            "card_hall": 2,
+            "start_time": "2025-08-03T15:07:48Z",
+            "price": 97
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 83,
+        "fields": {
+            "movie": 24,
+            "card_hall": 2,
+            "start_time": "2025-08-05T19:05:22Z",
+            "price": 93
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 84,
+        "fields": {
+            "movie": 25,
+            "card_hall": 2,
+            "start_time": "2025-08-05T17:57:30Z",
+            "price": 67
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 85,
+        "fields": {
+            "movie": 26,
+            "card_hall": 2,
+            "start_time": "2025-08-05T18:45:25Z",
+            "price": 66
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 86,
+        "fields": {
+            "movie": 27,
+            "card_hall": 2,
+            "start_time": "2025-08-03T22:07:57Z",
+            "price": 95
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 87,
+        "fields": {
+            "movie": 28,
+            "card_hall": 2,
+            "start_time": "2025-08-06T10:23:33Z",
+            "price": 93
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 88,
+        "fields": {
+            "movie": 29,
+            "card_hall": 2,
+            "start_time": "2025-08-02T15:12:47Z",
+            "price": 30
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 89,
+        "fields": {
+            "movie": 30,
+            "card_hall": 2,
+            "start_time": "2025-08-03T20:23:13Z",
+            "price": 64
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 90,
+        "fields": {
+            "movie": 31,
+            "card_hall": 2,
+            "start_time": "2025-08-06T07:53:38Z",
+            "price": 66
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 91,
+        "fields": {
+            "movie": 32,
+            "card_hall": 2,
+            "start_time": "2025-08-06T19:36:46Z",
+            "price": 48
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 92,
+        "fields": {
+            "movie": 33,
+            "card_hall": 2,
+            "start_time": "2025-08-04T01:32:39Z",
+            "price": 98
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 93,
+        "fields": {
+            "movie": 34,
+            "card_hall": 2,
+            "start_time": "2025-08-03T21:03:31Z",
+            "price": 62
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 94,
+        "fields": {
+            "movie": 35,
+            "card_hall": 2,
+            "start_time": "2025-08-03T12:43:58Z",
+            "price": 45
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 95,
+        "fields": {
+            "movie": 36,
+            "card_hall": 2,
+            "start_time": "2025-08-05T23:50:44Z",
+            "price": 74
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 96,
+        "fields": {
+            "movie": 37,
+            "card_hall": 2,
+            "start_time": "2025-08-05T04:23:31Z",
+            "price": 49
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 97,
+        "fields": {
+            "movie": 38,
+            "card_hall": 2,
+            "start_time": "2025-08-07T08:55:49Z",
+            "price": 90
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 98,
+        "fields": {
+            "movie": 39,
+            "card_hall": 2,
+            "start_time": "2025-08-03T18:30:00Z",
+            "price": 82
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 99,
+        "fields": {
+            "movie": 40,
+            "card_hall": 2,
+            "start_time": "2025-08-07T05:29:35Z",
+            "price": 44
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 100,
+        "fields": {
+            "movie": 41,
+            "card_hall": 2,
+            "start_time": "2025-08-05T14:48:21Z",
+            "price": 43
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 101,
+        "fields": {
+            "movie": 42,
+            "card_hall": 2,
+            "start_time": "2025-08-07T04:51:19Z",
+            "price": 69
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 102,
+        "fields": {
+            "movie": 43,
+            "card_hall": 2,
+            "start_time": "2025-08-06T16:30:35Z",
+            "price": 21
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 103,
+        "fields": {
+            "movie": 44,
+            "card_hall": 2,
+            "start_time": "2025-08-02T15:28:24Z",
+            "price": 51
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 104,
+        "fields": {
+            "movie": 45,
+            "card_hall": 2,
+            "start_time": "2025-08-04T14:26:48Z",
+            "price": 97
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 105,
+        "fields": {
+            "movie": 46,
+            "card_hall": 2,
+            "start_time": "2025-08-06T03:30:56Z",
+            "price": 80
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 106,
+        "fields": {
+            "movie": 47,
+            "card_hall": 2,
+            "start_time": "2025-08-03T10:13:03Z",
+            "price": 13
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 107,
+        "fields": {
+            "movie": 48,
+            "card_hall": 2,
+            "start_time": "2025-08-07T12:17:51Z",
+            "price": 45
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 108,
+        "fields": {
+            "movie": 49,
+            "card_hall": 2,
+            "start_time": "2025-08-03T01:23:46Z",
+            "price": 55
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 109,
+        "fields": {
+            "movie": 50,
+            "card_hall": 2,
+            "start_time": "2025-08-05T13:43:07Z",
+            "price": 19
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 110,
+        "fields": {
+            "movie": 51,
+            "card_hall": 2,
+            "start_time": "2025-08-02T20:08:58Z",
+            "price": 73
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 111,
+        "fields": {
+            "movie": 52,
+            "card_hall": 2,
+            "start_time": "2025-08-05T17:28:33Z",
+            "price": 64
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 112,
+        "fields": {
+            "movie": 53,
+            "card_hall": 2,
+            "start_time": "2025-08-06T12:40:15Z",
+            "price": 54
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 113,
+        "fields": {
+            "movie": 54,
+            "card_hall": 2,
+            "start_time": "2025-08-04T05:26:06Z",
+            "price": 86
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 114,
+        "fields": {
+            "movie": 55,
+            "card_hall": 2,
+            "start_time": "2025-08-07T00:16:57Z",
+            "price": 53
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 115,
+        "fields": {
+            "movie": 56,
+            "card_hall": 2,
+            "start_time": "2025-08-04T11:36:37Z",
+            "price": 62
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 116,
+        "fields": {
+            "movie": 57,
+            "card_hall": 2,
+            "start_time": "2025-08-06T04:46:58Z",
+            "price": 44
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 117,
+        "fields": {
+            "movie": 58,
+            "card_hall": 2,
+            "start_time": "2025-08-07T00:40:25Z",
+            "price": 32
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 118,
+        "fields": {
+            "movie": 59,
+            "card_hall": 2,
+            "start_time": "2025-08-05T04:43:11Z",
+            "price": 68
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 119,
+        "fields": {
+            "movie": 4,
+            "card_hall": 2,
+            "start_time": "2025-08-06T13:56:29Z",
+            "price": 20
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 120,
+        "fields": {
+            "movie": 0,
+            "card_hall": 3,
+            "start_time": "2025-08-03T05:26:49Z",
+            "price": 95
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 121,
+        "fields": {
+            "movie": 1,
+            "card_hall": 3,
+            "start_time": "2025-08-05T07:12:22Z",
+            "price": 32
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 122,
+        "fields": {
+            "movie": 2,
+            "card_hall": 3,
+            "start_time": "2025-08-06T02:44:49Z",
+            "price": 51
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 123,
+        "fields": {
+            "movie": 3,
+            "card_hall": 3,
+            "start_time": "2025-08-06T00:07:45Z",
+            "price": 93
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 124,
+        "fields": {
+            "movie": 5,
+            "card_hall": 3,
+            "start_time": "2025-08-02T13:17:04Z",
+            "price": 16
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 125,
+        "fields": {
+            "movie": 6,
+            "card_hall": 3,
+            "start_time": "2025-08-05T09:02:22Z",
+            "price": 80
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 126,
+        "fields": {
+            "movie": 7,
+            "card_hall": 3,
+            "start_time": "2025-08-03T12:00:14Z",
+            "price": 17
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 127,
+        "fields": {
+            "movie": 8,
+            "card_hall": 3,
+            "start_time": "2025-08-03T12:16:54Z",
+            "price": 50
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 128,
+        "fields": {
+            "movie": 9,
+            "card_hall": 3,
+            "start_time": "2025-08-07T02:26:38Z",
+            "price": 68
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 129,
+        "fields": {
+            "movie": 10,
+            "card_hall": 3,
+            "start_time": "2025-08-03T04:37:56Z",
+            "price": 52
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 130,
+        "fields": {
+            "movie": 11,
+            "card_hall": 3,
+            "start_time": "2025-08-04T16:41:32Z",
+            "price": 52
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 131,
+        "fields": {
+            "movie": 12,
+            "card_hall": 3,
+            "start_time": "2025-08-05T03:23:07Z",
+            "price": 78
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 132,
+        "fields": {
+            "movie": 13,
+            "card_hall": 3,
+            "start_time": "2025-08-07T01:15:02Z",
+            "price": 99
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 133,
+        "fields": {
+            "movie": 19,
+            "card_hall": 3,
+            "start_time": "2025-08-06T22:55:34Z",
+            "price": 53
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 134,
+        "fields": {
+            "movie": 14,
+            "card_hall": 3,
+            "start_time": "2025-08-05T22:46:17Z",
+            "price": 11
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 135,
+        "fields": {
+            "movie": 15,
+            "card_hall": 3,
+            "start_time": "2025-08-04T16:45:15Z",
+            "price": 28
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 136,
+        "fields": {
+            "movie": 16,
+            "card_hall": 3,
+            "start_time": "2025-08-05T05:41:12Z",
+            "price": 31
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 137,
+        "fields": {
+            "movie": 17,
+            "card_hall": 3,
+            "start_time": "2025-08-03T19:39:02Z",
+            "price": 48
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 138,
+        "fields": {
+            "movie": 18,
+            "card_hall": 3,
+            "start_time": "2025-08-05T21:50:58Z",
+            "price": 69
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 139,
+        "fields": {
+            "movie": 20,
+            "card_hall": 3,
+            "start_time": "2025-08-05T14:34:17Z",
+            "price": 61
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 140,
+        "fields": {
+            "movie": 21,
+            "card_hall": 3,
+            "start_time": "2025-08-04T10:32:12Z",
+            "price": 54
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 141,
+        "fields": {
+            "movie": 22,
+            "card_hall": 3,
+            "start_time": "2025-08-06T00:23:42Z",
+            "price": 45
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 142,
+        "fields": {
+            "movie": 23,
+            "card_hall": 3,
+            "start_time": "2025-08-03T00:54:45Z",
+            "price": 39
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 143,
+        "fields": {
+            "movie": 24,
+            "card_hall": 3,
+            "start_time": "2025-08-05T07:46:10Z",
+            "price": 53
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 144,
+        "fields": {
+            "movie": 25,
+            "card_hall": 3,
+            "start_time": "2025-08-03T16:07:30Z",
+            "price": 30
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 145,
+        "fields": {
+            "movie": 26,
+            "card_hall": 3,
+            "start_time": "2025-08-05T07:10:49Z",
+            "price": 11
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 146,
+        "fields": {
+            "movie": 27,
+            "card_hall": 3,
+            "start_time": "2025-08-06T10:19:41Z",
+            "price": 21
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 147,
+        "fields": {
+            "movie": 28,
+            "card_hall": 3,
+            "start_time": "2025-08-07T06:29:37Z",
+            "price": 56
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 148,
+        "fields": {
+            "movie": 29,
+            "card_hall": 3,
+            "start_time": "2025-08-02T21:05:28Z",
+            "price": 23
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 149,
+        "fields": {
+            "movie": 30,
+            "card_hall": 3,
+            "start_time": "2025-08-06T10:46:44Z",
+            "price": 90
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 150,
+        "fields": {
+            "movie": 31,
+            "card_hall": 3,
+            "start_time": "2025-08-03T00:11:23Z",
+            "price": 70
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 151,
+        "fields": {
+            "movie": 32,
+            "card_hall": 3,
+            "start_time": "2025-08-04T18:54:58Z",
+            "price": 16
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 152,
+        "fields": {
+            "movie": 33,
+            "card_hall": 3,
+            "start_time": "2025-08-02T13:59:43Z",
+            "price": 12
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 153,
+        "fields": {
+            "movie": 34,
+            "card_hall": 3,
+            "start_time": "2025-08-05T15:02:48Z",
+            "price": 70
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 154,
+        "fields": {
+            "movie": 35,
+            "card_hall": 3,
+            "start_time": "2025-08-03T23:53:52Z",
+            "price": 61
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 155,
+        "fields": {
+            "movie": 36,
+            "card_hall": 3,
+            "start_time": "2025-08-05T21:55:18Z",
+            "price": 22
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 156,
+        "fields": {
+            "movie": 37,
+            "card_hall": 3,
+            "start_time": "2025-08-05T18:51:01Z",
+            "price": 32
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 157,
+        "fields": {
+            "movie": 38,
+            "card_hall": 3,
+            "start_time": "2025-08-06T16:21:49Z",
+            "price": 35
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 158,
+        "fields": {
+            "movie": 39,
+            "card_hall": 3,
+            "start_time": "2025-08-05T11:33:41Z",
+            "price": 78
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 159,
+        "fields": {
+            "movie": 40,
+            "card_hall": 3,
+            "start_time": "2025-08-06T10:58:46Z",
+            "price": 19
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 160,
+        "fields": {
+            "movie": 41,
+            "card_hall": 3,
+            "start_time": "2025-08-04T03:54:29Z",
+            "price": 17
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 161,
+        "fields": {
+            "movie": 42,
+            "card_hall": 3,
+            "start_time": "2025-08-04T22:09:03Z",
+            "price": 61
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 162,
+        "fields": {
+            "movie": 43,
+            "card_hall": 3,
+            "start_time": "2025-08-04T16:30:15Z",
+            "price": 34
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 163,
+        "fields": {
+            "movie": 44,
+            "card_hall": 3,
+            "start_time": "2025-08-07T04:34:21Z",
+            "price": 62
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 164,
+        "fields": {
+            "movie": 45,
+            "card_hall": 3,
+            "start_time": "2025-08-05T17:17:15Z",
+            "price": 29
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 165,
+        "fields": {
+            "movie": 46,
+            "card_hall": 3,
+            "start_time": "2025-08-02T19:58:31Z",
+            "price": 99
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 166,
+        "fields": {
+            "movie": 47,
+            "card_hall": 3,
+            "start_time": "2025-08-03T12:52:10Z",
+            "price": 51
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 167,
+        "fields": {
+            "movie": 48,
+            "card_hall": 3,
+            "start_time": "2025-08-07T11:53:55Z",
+            "price": 80
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 168,
+        "fields": {
+            "movie": 49,
+            "card_hall": 3,
+            "start_time": "2025-08-05T11:30:21Z",
+            "price": 52
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 169,
+        "fields": {
+            "movie": 50,
+            "card_hall": 3,
+            "start_time": "2025-08-05T14:10:22Z",
+            "price": 89
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 170,
+        "fields": {
+            "movie": 51,
+            "card_hall": 3,
+            "start_time": "2025-08-03T07:03:57Z",
+            "price": 81
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 171,
+        "fields": {
+            "movie": 52,
+            "card_hall": 3,
+            "start_time": "2025-08-07T06:22:53Z",
+            "price": 32
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 172,
+        "fields": {
+            "movie": 53,
+            "card_hall": 3,
+            "start_time": "2025-08-04T03:58:05Z",
+            "price": 48
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 173,
+        "fields": {
+            "movie": 54,
+            "card_hall": 3,
+            "start_time": "2025-08-05T16:07:38Z",
+            "price": 73
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 174,
+        "fields": {
+            "movie": 55,
+            "card_hall": 3,
+            "start_time": "2025-08-02T13:03:40Z",
+            "price": 78
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 175,
+        "fields": {
+            "movie": 56,
+            "card_hall": 3,
+            "start_time": "2025-08-07T03:55:16Z",
+            "price": 64
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 176,
+        "fields": {
+            "movie": 57,
+            "card_hall": 3,
+            "start_time": "2025-08-03T22:50:46Z",
+            "price": 66
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 177,
+        "fields": {
+            "movie": 58,
+            "card_hall": 3,
+            "start_time": "2025-08-03T21:54:27Z",
+            "price": 28
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 178,
+        "fields": {
+            "movie": 59,
+            "card_hall": 3,
+            "start_time": "2025-08-06T00:03:30Z",
+            "price": 93
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 179,
+        "fields": {
+            "movie": 4,
+            "card_hall": 3,
+            "start_time": "2025-08-06T13:01:09Z",
+            "price": 89
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 180,
+        "fields": {
+            "movie": 0,
+            "card_hall": 4,
+            "start_time": "2025-08-05T02:44:55Z",
+            "price": 15
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 181,
+        "fields": {
+            "movie": 1,
+            "card_hall": 4,
+            "start_time": "2025-08-07T04:50:01Z",
+            "price": 43
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 182,
+        "fields": {
+            "movie": 2,
+            "card_hall": 4,
+            "start_time": "2025-08-02T19:27:04Z",
+            "price": 35
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 183,
+        "fields": {
+            "movie": 3,
+            "card_hall": 4,
+            "start_time": "2025-08-03T09:15:20Z",
+            "price": 27
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 184,
+        "fields": {
+            "movie": 5,
+            "card_hall": 4,
+            "start_time": "2025-08-05T20:35:36Z",
+            "price": 87
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 185,
+        "fields": {
+            "movie": 6,
+            "card_hall": 4,
+            "start_time": "2025-08-06T22:13:41Z",
+            "price": 46
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 186,
+        "fields": {
+            "movie": 7,
+            "card_hall": 4,
+            "start_time": "2025-08-04T02:48:00Z",
+            "price": 67
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 187,
+        "fields": {
+            "movie": 8,
+            "card_hall": 4,
+            "start_time": "2025-08-04T03:20:00Z",
+            "price": 42
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 188,
+        "fields": {
+            "movie": 9,
+            "card_hall": 4,
+            "start_time": "2025-08-05T02:33:48Z",
+            "price": 11
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 189,
+        "fields": {
+            "movie": 10,
+            "card_hall": 4,
+            "start_time": "2025-08-06T02:03:18Z",
+            "price": 32
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 190,
+        "fields": {
+            "movie": 11,
+            "card_hall": 4,
+            "start_time": "2025-08-04T05:19:44Z",
+            "price": 26
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 191,
+        "fields": {
+            "movie": 12,
+            "card_hall": 4,
+            "start_time": "2025-08-05T14:19:12Z",
+            "price": 72
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 192,
+        "fields": {
+            "movie": 13,
+            "card_hall": 4,
+            "start_time": "2025-08-07T03:47:35Z",
+            "price": 99
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 193,
+        "fields": {
+            "movie": 19,
+            "card_hall": 4,
+            "start_time": "2025-08-07T06:59:13Z",
+            "price": 20
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 194,
+        "fields": {
+            "movie": 14,
+            "card_hall": 4,
+            "start_time": "2025-08-07T03:38:05Z",
+            "price": 70
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 195,
+        "fields": {
+            "movie": 15,
+            "card_hall": 4,
+            "start_time": "2025-08-04T16:54:36Z",
+            "price": 76
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 196,
+        "fields": {
+            "movie": 16,
+            "card_hall": 4,
+            "start_time": "2025-08-05T09:30:46Z",
+            "price": 88
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 197,
+        "fields": {
+            "movie": 17,
+            "card_hall": 4,
+            "start_time": "2025-08-05T08:04:44Z",
+            "price": 70
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 198,
+        "fields": {
+            "movie": 18,
+            "card_hall": 4,
+            "start_time": "2025-08-05T03:54:52Z",
+            "price": 73
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 199,
+        "fields": {
+            "movie": 20,
+            "card_hall": 4,
+            "start_time": "2025-08-06T04:15:58Z",
+            "price": 14
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 200,
+        "fields": {
+            "movie": 21,
+            "card_hall": 4,
+            "start_time": "2025-08-02T22:31:10Z",
+            "price": 95
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 201,
+        "fields": {
+            "movie": 22,
+            "card_hall": 4,
+            "start_time": "2025-08-06T04:11:52Z",
+            "price": 15
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 202,
+        "fields": {
+            "movie": 23,
+            "card_hall": 4,
+            "start_time": "2025-08-05T03:16:08Z",
+            "price": 81
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 203,
+        "fields": {
+            "movie": 24,
+            "card_hall": 4,
+            "start_time": "2025-08-03T12:50:10Z",
+            "price": 81
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 204,
+        "fields": {
+            "movie": 25,
+            "card_hall": 4,
+            "start_time": "2025-08-05T03:30:55Z",
+            "price": 48
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 205,
+        "fields": {
+            "movie": 26,
+            "card_hall": 4,
+            "start_time": "2025-08-03T15:17:27Z",
+            "price": 12
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 206,
+        "fields": {
+            "movie": 27,
+            "card_hall": 4,
+            "start_time": "2025-08-06T23:17:02Z",
+            "price": 49
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 207,
+        "fields": {
+            "movie": 28,
+            "card_hall": 4,
+            "start_time": "2025-08-03T08:58:42Z",
+            "price": 84
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 208,
+        "fields": {
+            "movie": 29,
+            "card_hall": 4,
+            "start_time": "2025-08-06T18:54:28Z",
+            "price": 61
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 209,
+        "fields": {
+            "movie": 30,
+            "card_hall": 4,
+            "start_time": "2025-08-02T13:06:55Z",
+            "price": 71
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 210,
+        "fields": {
+            "movie": 31,
+            "card_hall": 4,
+            "start_time": "2025-08-02T22:17:42Z",
+            "price": 73
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 211,
+        "fields": {
+            "movie": 32,
+            "card_hall": 4,
+            "start_time": "2025-08-04T05:19:07Z",
+            "price": 47
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 212,
+        "fields": {
+            "movie": 33,
+            "card_hall": 4,
+            "start_time": "2025-08-05T06:47:30Z",
+            "price": 77
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 213,
+        "fields": {
+            "movie": 34,
+            "card_hall": 4,
+            "start_time": "2025-08-04T19:42:03Z",
+            "price": 88
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 214,
+        "fields": {
+            "movie": 35,
+            "card_hall": 4,
+            "start_time": "2025-08-03T00:57:52Z",
+            "price": 64
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 215,
+        "fields": {
+            "movie": 36,
+            "card_hall": 4,
+            "start_time": "2025-08-03T06:56:46Z",
+            "price": 40
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 216,
+        "fields": {
+            "movie": 37,
+            "card_hall": 4,
+            "start_time": "2025-08-03T07:11:49Z",
+            "price": 74
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 217,
+        "fields": {
+            "movie": 38,
+            "card_hall": 4,
+            "start_time": "2025-08-05T02:55:55Z",
+            "price": 42
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 218,
+        "fields": {
+            "movie": 39,
+            "card_hall": 4,
+            "start_time": "2025-08-03T03:06:17Z",
+            "price": 34
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 219,
+        "fields": {
+            "movie": 40,
+            "card_hall": 4,
+            "start_time": "2025-08-05T14:50:39Z",
+            "price": 30
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 220,
+        "fields": {
+            "movie": 41,
+            "card_hall": 4,
+            "start_time": "2025-08-05T12:20:04Z",
+            "price": 86
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 221,
+        "fields": {
+            "movie": 42,
+            "card_hall": 4,
+            "start_time": "2025-08-07T03:17:28Z",
+            "price": 13
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 222,
+        "fields": {
+            "movie": 43,
+            "card_hall": 4,
+            "start_time": "2025-08-07T09:18:51Z",
+            "price": 15
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 223,
+        "fields": {
+            "movie": 44,
+            "card_hall": 4,
+            "start_time": "2025-08-06T02:57:18Z",
+            "price": 53
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 224,
+        "fields": {
+            "movie": 45,
+            "card_hall": 4,
+            "start_time": "2025-08-05T07:05:59Z",
+            "price": 89
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 225,
+        "fields": {
+            "movie": 46,
+            "card_hall": 4,
+            "start_time": "2025-08-04T14:03:47Z",
+            "price": 59
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 226,
+        "fields": {
+            "movie": 47,
+            "card_hall": 4,
+            "start_time": "2025-08-06T23:42:17Z",
+            "price": 52
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 227,
+        "fields": {
+            "movie": 48,
+            "card_hall": 4,
+            "start_time": "2025-08-07T06:27:30Z",
+            "price": 29
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 228,
+        "fields": {
+            "movie": 49,
+            "card_hall": 4,
+            "start_time": "2025-08-02T14:13:18Z",
+            "price": 96
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 229,
+        "fields": {
+            "movie": 50,
+            "card_hall": 4,
+            "start_time": "2025-08-03T03:35:48Z",
+            "price": 58
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 230,
+        "fields": {
+            "movie": 51,
+            "card_hall": 4,
+            "start_time": "2025-08-03T03:36:46Z",
+            "price": 83
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 231,
+        "fields": {
+            "movie": 52,
+            "card_hall": 4,
+            "start_time": "2025-08-03T11:46:52Z",
+            "price": 84
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 232,
+        "fields": {
+            "movie": 53,
+            "card_hall": 4,
+            "start_time": "2025-08-07T03:15:02Z",
+            "price": 93
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 233,
+        "fields": {
+            "movie": 54,
+            "card_hall": 4,
+            "start_time": "2025-08-07T04:08:09Z",
+            "price": 74
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 234,
+        "fields": {
+            "movie": 55,
+            "card_hall": 4,
+            "start_time": "2025-08-04T01:49:02Z",
+            "price": 54
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 235,
+        "fields": {
+            "movie": 56,
+            "card_hall": 4,
+            "start_time": "2025-08-05T03:31:58Z",
+            "price": 39
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 236,
+        "fields": {
+            "movie": 57,
+            "card_hall": 4,
+            "start_time": "2025-08-03T02:37:44Z",
+            "price": 36
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 237,
+        "fields": {
+            "movie": 58,
+            "card_hall": 4,
+            "start_time": "2025-08-06T12:14:44Z",
+            "price": 55
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 238,
+        "fields": {
+            "movie": 59,
+            "card_hall": 4,
+            "start_time": "2025-08-06T03:04:30Z",
+            "price": 16
+        }
+    },
+    {
+        "model": "main.Session",
+        "pk": 239,
+        "fields": {
+            "movie": 4,
+            "card_hall": 4,
+            "start_time": "2025-08-05T11:21:02Z",
+            "price": 51
+        }
+    }
+]

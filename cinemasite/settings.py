@@ -30,7 +30,6 @@ menu = [
     {'title': 'Рассылка', 'url_name': 'mailing', 'group': ['mailing'], 'icon': 'fa-envelope'},
 ]
 
-
 AUTH_USER_MODEL = "user.User"
 LOGIN_URL = "login"
 LOGIN_REDIRECT_URL = "main"
@@ -67,7 +66,8 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'modeltranslation',
     "debug_toolbar",
-    'adminlte.apps.AdminlteConfig'
+    'adminlte.apps.AdminlteConfig',
+    'django_filters',
 ]
 
 MIDDLEWARE = [
@@ -140,21 +140,24 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
 
-LANGUAGE_CODE = 'ru'
 
-USE_I18N = True
-USE_L10N = True
+
 USE_TZ = True
 
 LANGUAGES = [
     ('ru', 'Рус'),
     ('uk', 'Укр'),
 ]
+
+LANGUAGE_CODE = 'ru'
+
+USE_I18N = True
+USE_L10N = True
+
 LOCALE_PATHS = [
     os.path.join(BASE_DIR, 'locale'),
 ]
 TIME_ZONE = 'UTC'
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/

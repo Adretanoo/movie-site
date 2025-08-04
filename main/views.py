@@ -1,17 +1,25 @@
-from datetime import date
+from datetime import date, datetime
 
 from django.contrib.auth import login, update_session_auth_hash
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from django.db.models.functions.datetime import TruncDate
+from django.db.models.query_utils import Q
 from django.shortcuts import render, redirect, get_object_or_404
 from poetry.puzzle import transaction
 
 from adminlte.models import MainPage, TopBanner, TopBannerImage, BackgroundBanner, BackgroundType, Movie, NewsBanner, \
     NewsBannerImage, Publication, PublicationType, PublicationGallery, ContactsPage, ContactsPageLocation, CardCinema, \
     CardCinemaGallery, CardHall, CardHallGallery
+from main.models import Session
 from user.forms import UserRegisterForm, UserEditProfileForm
 from user.models import User
+
+import django_filters
+
+from .filters import SessionFilter
+from .models import Session
 
 
 def main(request):
@@ -43,6 +51,8 @@ def main(request):
         'pub_type': PublicationType,
     }
     return render(request, 'main/page/index.html', context)
+
+
 
 
 def register_view(request):
@@ -78,6 +88,12 @@ def cinema_card_page(request, pk):
     cinema = CardCinema.objects.get(pk=pk)
     cinema_gallery_card = CardCinemaGallery.objects.filter(card_cinema=cinema.pk)
     cinema_halls = CardHall.objects.filter(card_cinema=cinema.pk)
+
+    today_date = datetime.now().date()
+
+    sessions = Session.objects.select_related('movie', 'card_hall__card_cinema').filter(card_hall__card_cinema=cinema,
+                                                                                        start_time__date=today_date).order_by(
+        'start_time')
     halls_count = len(cinema_halls)
 
     context = {
@@ -85,6 +101,8 @@ def cinema_card_page(request, pk):
         'cinema_gallery_card': cinema_gallery_card,
         'cinema_halls': cinema_halls,
         'halls_count': halls_count,
+        'sessions': sessions,
+        'today_date': today_date,
     }
     return render(request, 'main/page/cinema_card.html', context)
 
@@ -95,11 +113,32 @@ def hall_card_page(request, pk, hall_index):
 
     hall_gallery = CardHallGallery.objects.filter(card_hall=hall)
 
+    sessions = Session.objects.select_related('movie', 'card_hall__card_cinema').filter(card_hall__card_cinema=pk,card_hall=hall,
+                                                                                        start_time__date=datetime.now().date()).order_by('start_time')
+
     context = {
         'hall': hall,
         'hall_gallery': hall_gallery,
+        'lang': request.LANGUAGE_CODE,
+        'sessions': sessions,
     }
     return render(request, 'main/page/hall_card.html', context)
+
+
+def schedule(request):
+    sessions = Session.objects.select_related('movie', 'card_hall', 'card_hall__card_cinema').all()
+    f = SessionFilter(request.GET, queryset=sessions)
+
+    unique_data_sessions = f.qs.filter(
+        start_time__gte=datetime.now().date()
+    ).annotate(
+        data_only=TruncDate('start_time')).values_list('data_only', flat=True).distinct()
+    context = {
+        'filter': f,
+        'sessions': f.qs,
+        'unique_data_sessions': unique_data_sessions,
+    }
+    return render(request, 'main/page/schedule.html', context)
 
 
 @login_required

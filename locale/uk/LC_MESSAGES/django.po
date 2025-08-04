@@ -120,6 +120,34 @@ msgstr "Псевдонім"
 msgid "with_title"
 msgstr "з"
 
+
+msgid "time_schedule"
+msgstr "Час"
+
+
+msgid "movie_schedule"
+msgstr "Фільм"
+
+
+msgid "cost_schedule"
+msgstr "Ціна в грн"
+
+
+msgid "reservation_schedule"
+msgstr "Бронювати"
+
+msgid "all_schedule"
+msgstr "всі"
+
+
+
+msgid "show_only"
+msgstr "Показати тільки"
+
+
+
+
+
 msgid "address_register"
 msgstr "Адреса"
 

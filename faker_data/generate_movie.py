@@ -19,7 +19,7 @@ LANG_RU = "ru-RU"
 today_date = datetime.today()
 end_date = today_date + timedelta(days=30)
 
-page_total = 1
+page_total = 3
 item = 0
 seo_item = 15
 movies = []

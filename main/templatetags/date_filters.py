@@ -12,6 +12,14 @@ RU_MONTHS = [
     'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'
 ]
 
+UK_WEEKDAYS = [
+    'понеділок', 'вівторок', 'середа', 'четвер', 'пʼятниця', 'субота', 'неділя'
+]
+
+RU_WEEKDAYS = [
+    'понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота', 'воскресенье'
+]
+
 @register.filter
 def format_date_localized(date, lang='uk'):
     if not date:
@@ -21,3 +29,16 @@ def format_date_localized(date, lang='uk'):
     if lang == 'ru':
         return f"{day} {RU_MONTHS[month]}"
     return f"{day} {UK_MONTHS[month]}"
+
+
+@register.filter
+def format_date_localized_schedule(date, lang='uk'):
+    if not date:
+        return ''
+    day = date.day
+    month = date.month
+    weekday = date.weekday()
+
+    if lang == 'ru':
+        return f"{day} {RU_MONTHS[month]}, {RU_WEEKDAYS[weekday]}"
+    return f"{day} {UK_MONTHS[month]}, {UK_WEEKDAYS[weekday]}"
