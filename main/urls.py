@@ -26,5 +26,10 @@ urlpatterns = [
     path('cinema/<int:pk>/hall/<int:hall_index>/', views.hall_card_page, name='hall_card_page'),
 
     path('schedule', views.schedule, name='schedule'),
-    path('reverse-ticket/session/<int:pk>', views.reverse_ticket, name='reverse_ticket'),
+
+    path('session/<int:session_id>/reverse-ticket/', views.reverse_ticket_view, name='reverse_ticket'),
+    path('buy-tickets/', views.buy_or_reserve_tickets, name='buy_or_reserve_tickets'),
+
+    path('posters/', views.posters_page, name='posters_page'),
+
 ]

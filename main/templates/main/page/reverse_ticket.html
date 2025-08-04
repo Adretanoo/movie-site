@@ -42,16 +42,16 @@
                             <div class="block-order">
                                 <div class="block-order-one">
                                     <p>{% trans "tickets_title" %}&nbsp;:&nbsp;&nbsp;</p>
-                                    <span>0</span>
+                                    <span class="count_tickets">0</span>
                                 </div>
                                 <div class="block-order-two">
                                     <p>{% trans "suma_title" %}&nbsp;:&nbsp;&nbsp;</p>
-                                    <span>0</span><span>&nbsp;грн</span>
+                                    <span class="suma_cost">0</span><span>&nbsp;грн</span>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="block-seats-wrapper">
+                    <div class="block-seats-wrapper" data-session-id="{{ session.id }}">
                         <div class="block-seats-table">
 
                             <div class="block-row-title">
@@ -72,10 +72,12 @@
                                         <div class="block-rows">
                                             <div class="row-seats">
                                                 {% for seat in seats_in_row %}
-                                                    <div class="seat">
+                                                    <div data-id="{{ seat.pk }}"
+                                                         class="seat {% if seat.pk in purchased_seats %}purchased{% elif seat.pk in blocked_seats %}blocked{% endif %}">
                                                         {{ seat.column }}
                                                     </div>
                                                 {% endfor %}
+
                                             </div>
                                         </div>
                                     {% endfor %}
@@ -105,4 +107,8 @@
 
 
 {% block scripts %}
+    <script>
+        const ticketPrice = parseFloat("{{ session.price|floatformat:2 }}");
+    </script>
+    <script src="{% static 'main/js/reverse_ticket.js' %}" defer></script>
 {% endblock %}

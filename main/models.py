@@ -5,7 +5,7 @@ from user.models import User
 
 
 class StatusPayment(models.TextChoices):
-    BOUGHT = 'bought','Куплено'
+    PAID = 'paid','Куплено'
     BLOCKED = 'blocked','Заброньовано'
 
 

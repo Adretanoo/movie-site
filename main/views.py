@@ -1,23 +1,22 @@
+import json
 from collections import defaultdict
 from datetime import date, datetime
 
 from django.contrib.auth import login, update_session_auth_hash
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.forms import UserCreationForm
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db.models.functions.datetime import TruncDate
-from django.db.models.query_utils import Q
+from django.http.response import JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
-from poetry.puzzle import transaction
+from django.views.decorators.csrf import csrf_exempt
 
 from adminlte.models import MainPage, TopBanner, TopBannerImage, BackgroundBanner, BackgroundType, Movie, NewsBanner, \
     NewsBannerImage, Publication, PublicationType, PublicationGallery, ContactsPage, ContactsPageLocation, CardCinema, \
     CardCinemaGallery, CardHall, CardHallGallery
-from main.models import Session, Seat
+from main.models import Seat, Ticket, StatusPayment
 from user.forms import UserRegisterForm, UserEditProfileForm
 from user.models import User
 
-import django_filters
 
 from .filters import SessionFilter
 from .models import Session
@@ -54,27 +53,6 @@ def main(request):
     return render(request, 'main/page/index.html', context)
 
 
-def reverse_ticket(request, pk):
-    session = get_object_or_404(Session, pk=pk)
-    seats = Seat.objects.filter(hall=session.card_hall.pk)
-
-    group_seats = defaultdict(list)
-
-    for seat in seats:
-        row = seat.row
-        group_seats[row].append(seat)
-
-
-
-    lang = request.LANGUAGE_CODE
-    context = {
-        'seats': seats,
-        'session': session,
-        'lang': lang,
-        'group_seats': dict(group_seats),
-    }
-    return render(request,'main/page/reverse_ticket.html',context)
-
 def register_view(request):
     if request.method == 'POST':
         form = UserRegisterForm(request.POST)
@@ -88,6 +66,74 @@ def register_view(request):
         form = UserRegisterForm()
 
     return render(request, 'main/page/register.html', {'form': form})
+
+
+
+def posters_page(request):
+
+    context = {}
+    return render(request,'main/page/poster.html',context)
+
+
+
+@login_required
+def reverse_ticket_view(request, session_id):
+    session = get_object_or_404(Session, pk=session_id)
+
+    seats = Seat.objects.filter(hall=session.card_hall).order_by('row', 'column')
+    group_seats = defaultdict(list)
+    for seat in seats:
+        group_seats[seat.row].append(seat)
+
+    purchased_seats = Ticket.objects.filter(
+        session=session, status=StatusPayment.PAID
+    ).values_list('seat_id', flat=True)
+
+    blocked_seats = Ticket.objects.filter(
+        session=session, status=StatusPayment.BLOCKED
+    ).values_list('seat_id', flat=True)
+
+    return render(request, 'main/page/reverse_ticket.html', {
+        'session': session,
+        'group_seats': dict(group_seats),
+        'purchased_seats': list(purchased_seats),
+        'blocked_seats': list(blocked_seats),
+    })
+
+
+@csrf_exempt
+@login_required
+def buy_or_reserve_tickets(request):
+    if request.method == 'POST':
+        try:
+            data = json.loads(request.body)
+            session_id = data.get('session_id')
+            seat_ids = data.get('seat_ids')
+            status = data.get('status')
+
+            if status not in ['purchased', 'blocked']:
+                return JsonResponse({'success': False, 'error': 'Некоректний статус'})
+
+            session = Session.objects.get(id=session_id)
+
+            existing_tickets = Ticket.objects.filter(session=session, seat_id__in=seat_ids)
+            if existing_tickets.exists():
+                return JsonResponse({'success': False, 'error': 'Місця заняті'})
+
+            for seat_id in seat_ids:
+                seat = Seat.objects.get(id=seat_id)
+                Ticket.objects.create(
+                    user=request.user,
+                    session=session,
+                    seat=seat,
+                    status=StatusPayment.PAID if status == 'purchased' else StatusPayment.BLOCKED
+                )
+
+            return JsonResponse({'success': True})
+        except Exception as e:
+            return JsonResponse({'success': False, 'error': str(e)})
+
+    return JsonResponse({'success': False, 'error': 'Неправильний метод'})
 
 
 def cinemas_page(request):

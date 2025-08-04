@@ -78,7 +78,7 @@
                 <div class="collapse navbar-collapse justify-content-between" id="mainMenu">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 main-nav-list">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">{% trans "Poster" %}</a>
+                            <a class="nav-link" href="{% url 'posters_page' %}">{% trans "Poster" %}</a>
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'schedule' %}">{% trans "Schedule" %}</a>
                         </li>
@@ -154,7 +154,7 @@
             <button id="closeMenuButton" class="close-menu-button" aria-label="Закрити меню">&times;</button>
 
             <ul class="fullscreen-nav">
-                <li><a href="#">{% trans "Poster" %}</a></li>
+                <li><a href="{% url 'posters_page' %}">{% trans "Poster" %}</a></li>
                 <li><a href="{% url 'schedule' %}">{% trans "Schedule" %}</a></li>
                 <li><a href="#">{% trans "Soon" %}</a></li>
                 <li><a href="{% url 'cinemas_page' %}">{% trans "Movie-theaters" %}</a></li>
@@ -249,7 +249,7 @@
             </div>
 
             <div class="footer-section">
-                <h3><a href="#">{% trans "Poster" %}</a></h3>
+                <h3><a href="{% url 'posters_page' %}">{% trans "Poster" %}</a></h3>
                 <ul>
                     <li><a href="{% url 'schedule' %}">{% trans "Schedule" %}</a></li>
                     <li><a href="#">{% trans "coming-soon" %}</a></li>
