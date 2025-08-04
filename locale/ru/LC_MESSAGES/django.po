@@ -180,6 +180,10 @@ msgid "with_title"
 msgstr "с"
 
 
+
+msgid "watch_today"
+msgstr "Сейчас в кино"
+
 msgid "show_only"
 msgstr "Показать только"
 

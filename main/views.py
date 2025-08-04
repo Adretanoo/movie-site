@@ -70,11 +70,18 @@ def register_view(request):
 
 
 def posters_page(request):
-
-    context = {}
+    today = date.today()
+    movies = Session.objects.select_related('movie').filter(start_time__gt=today)
+    context = {
+        'movies': movies,
+        'today': today,
+    }
     return render(request,'main/page/poster.html',context)
 
+def poster_buy(request):
 
+    context = {}
+    return render(request,'main/page/poster_by.html',context)
 
 @login_required
 def reverse_ticket_view(request, session_id):

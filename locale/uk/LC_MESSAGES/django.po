@@ -85,6 +85,9 @@ msgstr "Ім'я"
 
 
 
+msgid "watch_today"
+msgstr "Зараз в кіно"
+
 msgid "reverse_ticket_buy_btn"
 msgstr "Купити"
 
