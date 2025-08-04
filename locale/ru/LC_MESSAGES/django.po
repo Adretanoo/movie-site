@@ -204,7 +204,23 @@ msgid "reservation_schedule"
 msgstr "Бронировать"
 
 
+msgid "screen_title"
+msgstr "экран"
 
+
+msgid "blocked_title"
+msgstr "Забронировано"
+
+
+msgid "order_title"
+msgstr "Ваш заказ"
+
+
+msgid "tickets_title"
+msgstr "Билетов"
+
+msgid "suma_title"
+msgstr "Сумма"
 
 
 
@@ -214,6 +230,22 @@ msgstr "Украинский"
 msgid "language_ru"
 msgstr "Русский"
 
+
+
+
+
+msgid "reverse_ticket_cost_text"
+msgstr "Стоимость услуги бронирования - 3 грн. за каждое место."
+
+msgid "reverse_ticket_cost_blocked_text"
+msgstr "Забронированные билеты нужно выкупить в кассе кинотеатра не позднее чем за полчаса до начала сеанса."
+
+msgid "reverse_ticket_buy_btn"
+msgstr "Купить"
+
+
+msgid "reverse_ticket_blocked_btn"
+msgstr "Забронировать"
 
 
 msgid "hall_title"

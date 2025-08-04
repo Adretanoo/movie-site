@@ -1,0 +1,108 @@
+{% extends 'main/page/base.html' %}
+{% load static %}
+{% load date_filters %}
+{% load i18n %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'main/css/reverse_ticket.css' %}">
+    <meta name="keywords" content="купить квиток"/>
+    <meta name="description" content="квиток"/>
+    <title>CINEMAX</title>
+{% endblock %}
+
+
+
+{% block content %}
+    <div class="block-image">
+        <img src="{{ session.card_hall.top_banner.url }}" alt="top_banner">
+    </div>
+    <div class="container">
+        <div class="block-wrapper">
+            <div class="block-img-movie">
+                <img src="{{ session.movie.main_image.url }}" alt="movie-img">
+            </div>
+            <div class="block-content">
+                <div class="block-content-top">
+                    <div class="block-card-title">
+                        <p>{{ session.movie.title }}</p>
+                    </div>
+                    <div class="block-time">
+                        <p>{{ session.start_time|format_date_localized_reverse_ticket:lang }}, {{ session.card_hall.name }}</p>
+                    </div>
+                    <div class="block-card-information">
+                        <div class="block-price">
+                            <p>{% trans "cost_schedule" %}&nbsp;:&nbsp;&nbsp;</p>
+                            <p>{{ session.price }}</p>
+                        </div>
+                        <div class="block-blocked">
+                            <p>{% trans "blocked_title" %}&nbsp;:&nbsp;&nbsp;</p>
+                            <div class="block-blocked-rt"></div>
+                        </div>
+                        <div class="block-order-wrapper">
+                            <p>{% trans 'order_title' %}&nbsp;:&nbsp;&nbsp;</p>
+                            <div class="block-order">
+                                <div class="block-order-one">
+                                    <p>{% trans "tickets_title" %}&nbsp;:&nbsp;&nbsp;</p>
+                                    <span>0</span>
+                                </div>
+                                <div class="block-order-two">
+                                    <p>{% trans "suma_title" %}&nbsp;:&nbsp;&nbsp;</p>
+                                    <span>0</span><span>&nbsp;грн</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="block-seats-wrapper">
+                        <div class="block-seats-table">
+
+                            <div class="block-row-title">
+                                <div class="block-screen"></div>
+                                <div class="block-row-items">
+                                    {% for r,c in group_seats.items %}
+                                        <div class="row-item">Ряд {{ r }}</div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="block-seats-title">
+                                <div class="block-screen">
+                                    <div class="block-screen-line"></div>
+                                    <p>{% trans "screen_title" %}</p>
+                                </div>
+                                <div class="block-seats-items">
+                                    {% for row_number, seats_in_row in group_seats.items %}
+                                        <div class="block-rows">
+                                            <div class="row-seats">
+                                                {% for seat in seats_in_row %}
+                                                    <div class="seat">
+                                                        {{ seat.column }}
+                                                    </div>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div class="block-text-wrapper">
+                        <div class="block-text">
+                            <p>{% trans 'reverse_ticket_cost_text' %}</p>
+                            <p>{% trans 'reverse_ticket_cost_blocked_text' %}</p>
+                        </div>
+                        <div class="block-buttons">
+                            <button class="reverse_ticket_blocked_btn">{% trans "reverse_ticket_blocked_btn" %}</button>
+                            <button class="reverse_ticket_buy_btn">{% trans "reverse_ticket_buy_btn" %}</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}
+
+
+
+{% block scripts %}
+{% endblock %}

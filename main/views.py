@@ -1,3 +1,4 @@
+from collections import defaultdict
 from datetime import date, datetime
 
 from django.contrib.auth import login, update_session_auth_hash
@@ -12,7 +13,7 @@ from poetry.puzzle import transaction
 from adminlte.models import MainPage, TopBanner, TopBannerImage, BackgroundBanner, BackgroundType, Movie, NewsBanner, \
     NewsBannerImage, Publication, PublicationType, PublicationGallery, ContactsPage, ContactsPageLocation, CardCinema, \
     CardCinemaGallery, CardHall, CardHallGallery
-from main.models import Session
+from main.models import Session, Seat
 from user.forms import UserRegisterForm, UserEditProfileForm
 from user.models import User
 
@@ -53,7 +54,26 @@ def main(request):
     return render(request, 'main/page/index.html', context)
 
 
+def reverse_ticket(request, pk):
+    session = get_object_or_404(Session, pk=pk)
+    seats = Seat.objects.filter(hall=session.card_hall.pk)
 
+    group_seats = defaultdict(list)
+
+    for seat in seats:
+        row = seat.row
+        group_seats[row].append(seat)
+
+
+
+    lang = request.LANGUAGE_CODE
+    context = {
+        'seats': seats,
+        'session': session,
+        'lang': lang,
+        'group_seats': dict(group_seats),
+    }
+    return render(request,'main/page/reverse_ticket.html',context)
 
 def register_view(request):
     if request.method == 'POST':

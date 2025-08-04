@@ -85,9 +85,31 @@ msgstr "Ім'я"
 
 
 
+msgid "reverse_ticket_buy_btn"
+msgstr "Купити"
+
+
+msgid "reverse_ticket_blocked_btn"
+msgstr "Забронювати"
+
+
+
+msgid "reverse_ticket_cost_text"
+msgstr "Вартість послуги бронювання – 3 грн. за кожне місце."
+
+msgid "reverse_ticket_cost_blocked_text"
+msgstr "Заброньовані квитки потрібно викупити у касі кінотеатру не пізніше ніж за півгодини до початку сеансу."
+
+
+
+
+
+
 msgid "my_profile"
 msgstr "Профіль"
 
+msgid "screen_title"
+msgstr "екран"
 
 
 msgid "language_uk"
@@ -96,6 +118,19 @@ msgstr "Українська"
 msgid "language_ru"
 msgstr "Російська"
 
+
+
+msgid "blocked_title"
+msgstr "Заброньовано"
+
+msgid "order_title"
+msgstr "Ваше замовлення"
+
+msgid "tickets_title"
+msgstr "Білетів"
+
+msgid "suma_title"
+msgstr "Сума"
 
 
 

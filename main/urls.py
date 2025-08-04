@@ -26,4 +26,5 @@ urlpatterns = [
     path('cinema/<int:pk>/hall/<int:hall_index>/', views.hall_card_page, name='hall_card_page'),
 
     path('schedule', views.schedule, name='schedule'),
+    path('reverse-ticket/session/<int:pk>', views.reverse_ticket, name='reverse_ticket'),
 ]

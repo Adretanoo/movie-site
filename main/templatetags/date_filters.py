@@ -42,3 +42,20 @@ def format_date_localized_schedule(date, lang='uk'):
     if lang == 'ru':
         return f"{day} {RU_MONTHS[month]}, {RU_WEEKDAYS[weekday]}"
     return f"{day} {UK_MONTHS[month]}, {UK_WEEKDAYS[weekday]}"
+
+
+
+@register.filter
+def format_date_localized_reverse_ticket(date, lang='uk'):
+    if not date:
+        return ''
+    day = date.day
+    month = date.month
+    formatted_time = date.time().strftime('%H:%M')
+
+    if lang == 'ru':
+        return f"{day} {RU_MONTHS[month]}, {formatted_time}"
+    return f"{day} {UK_MONTHS[month]}, {formatted_time}"
+
+
+
