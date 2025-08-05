@@ -31,7 +31,7 @@
 
 
         <li><a class="dropdown-item" href="{% url 'contact_page' %}">{% trans "Contacts" %}</a></li>
-        {% for n in news_pages %}
+        {% for n in menu_header.news_pages %}
             {% if n.is_enabled %}
                 <li><a class="dropdown-item" href="{% url 'new_page' n.pk %}">{{ n.title }}</a></li>
             {% endif %}

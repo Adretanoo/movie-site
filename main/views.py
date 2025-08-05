@@ -9,8 +9,6 @@ from django.db.models.functions.datetime import TruncDate
 from django.http.response import JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
-from django.views.generic.list import ListView
-from docs.conf import language
 
 from adminlte.models import MainPage, TopBanner, TopBannerImage, BackgroundBanner, BackgroundType, Movie, NewsBanner, \
     NewsBannerImage, Publication, PublicationType, PublicationGallery, ContactsPage, ContactsPageLocation, CardCinema, \
@@ -32,9 +30,9 @@ def main(request):
     movie_today = Movie.objects.filter(published_at__date=date.today())
     movie_soon = Movie.objects.filter(published_at__date__gt=date.today())
     news_banner = NewsBanner.objects.first()
+
     news_banner_images = NewsBannerImage.objects.all()
 
-    news_pages = Publication.objects.filter(publication_type=PublicationType.NEW_PAGE)
     publication = Publication.objects.all()
 
     context = {
@@ -47,7 +45,6 @@ def main(request):
         'movie_soon': movie_soon,
         'news_banner': news_banner,
         'news_banner_images': news_banner_images,
-        'news_pages': news_pages,
         'menu_pub': publication,
         'pub_type': PublicationType,
     }
@@ -86,7 +83,9 @@ def posters_page(request):
 def soon_posters_page(request):
     today = date.today()
 
-    movies = Session.objects.select_related('movie').filter(start_time__date__gt=today).order_by('movie','start_time').distinct('movie')
+    movies = Session.objects.select_related('movie').filter(start_time__date__gt=today).order_by('movie',
+                                                                                                 'start_time').distinct(
+        'movie')
     context = {
         'movies': movies,
         'today': today,
@@ -336,7 +335,6 @@ def shares_news_page(request, publication_type, seo_global_page):
     except EmptyPage:
         pub = paginator.page(paginator.num_pages)
 
-    news_pages = Publication.objects.filter(publication_type=PublicationType.NEW_PAGE)
     context = {
         'pub': pub,
         'seo_global_page': seo_global_page,
@@ -344,7 +342,6 @@ def shares_news_page(request, publication_type, seo_global_page):
         'top_banner_images': top_banner_images,
         'pub_type': PublicationType,
         'publication_type': publication_type,
-        'news_pages': news_pages,
     }
     return render(request, 'main/page/base_shares_news.html', context)
 
@@ -363,14 +360,12 @@ def contact_page(request):
 
     top_banner = TopBanner.objects.first()
     top_banner_images = TopBannerImage.objects.all()
-    news_pages = Publication.objects.filter(publication_type=PublicationType.NEW_PAGE)
 
     context = {
         'contacts_seo': contacts_seo,
         'contacts': contacts,
         'top_banner': top_banner,
         'top_banner_images': top_banner_images,
-        'news_pages': news_pages,
     }
     return render(request, 'main/page/contacts.html', context)
 
@@ -393,13 +388,11 @@ def new_page(request, pk):
 
     desc_with_breaks = pub.description.replace('\n', '<br>')
     desc_format = desc_with_breaks.replace('[VIDEO]', video_html)
-    news_pages = Publication.objects.filter(publication_type=PublicationType.NEW_PAGE)
 
     context = {
         'publication': pub,
         'desc_with_video': desc_format,
         'gallery': gallery,
-        'news_pages': news_pages,
     }
     return render(request, 'main/page/new_page.html', context)
 
@@ -414,7 +407,6 @@ def shares_news_card(request, publication_type, pk):
 
     top_banner = TopBanner.objects.first()
     top_banner_images = TopBannerImage.objects.all()
-    news_pages = Publication.objects.filter(publication_type=PublicationType.NEW_PAGE)
     video_html = f'''
             <div class="video-wrapper my-4">
                     <iframe width="100%" height="515"
@@ -437,7 +429,6 @@ def shares_news_card(request, publication_type, pk):
         'publication_type': publication_type,
         'desc_with_video': desc_format,
         'gallery': gallery,
-        'news_pages': news_pages,
     }
     return render(request, 'main/page/base_shares_news_card.html', context)
 
@@ -460,15 +451,11 @@ def publication_page(request, publication_type):
 
     desc_with_breaks = pub.description.replace('\n', '<br>')
     desc_format = desc_with_breaks.replace('[VIDEO]', video_html)
-    news_pages = Publication.objects.filter(publication_type=PublicationType.NEW_PAGE)
     context = {
         'publication': pub,
         'desc_with_video': desc_format,
         'gallery': gallery,
-        'news_pages': news_pages,
         'pub_type': PublicationType,
         'publication_type': publication_type,
     }
     return render(request, 'main/page/base_publication.html', context)
-
-
