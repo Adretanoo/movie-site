@@ -92,8 +92,7 @@ for page in range(1, page_total + 1):
                 "title": title_ru,
                 "title_ru": title_ru,
                 "title_uk": title_uk,
-                "published_at": faker.date_between(start_date=today_date, end_date=end_date, ).strftime(
-                    '%Y-%m-%dT%H:%M:%SZ'),
+                "published_at": faker.date_between(start_date=today_date, end_date=end_date),
                 "description": description_ru,
                 "description_ru": description_ru,
                 "description_uk": description_uk,

@@ -31,5 +31,6 @@ urlpatterns = [
     path('buy-tickets/', views.buy_or_reserve_tickets, name='buy_or_reserve_tickets'),
 
     path('posters/', views.posters_page, name='posters_page'),
+    path('poster/<int:pk>', views.poster_buy, name='poster_buy'),
 
 ]

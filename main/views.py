@@ -69,16 +69,17 @@ def register_view(request):
 
 
 
+
 def posters_page(request):
     today = date.today()
-    movies = Session.objects.select_related('movie').filter(start_time__gt=today)
+    movies = Movie.objects.select_related().filter(published_at__date__gte=today)
     context = {
         'movies': movies,
         'today': today,
     }
-    return render(request,'main/page/poster.html',context)
+    return render(request, 'main/page/poster.html', context)
 
-def poster_buy(request):
+def poster_buy(request,pk):
 
     context = {}
     return render(request,'main/page/poster_by.html',context)
