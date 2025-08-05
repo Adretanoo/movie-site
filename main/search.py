@@ -13,7 +13,8 @@ class SearchMain(ListView):
     context_object_name = 'movie_today'
 
     def get_queryset(self):
-        return Movie.objects.filter(title__icontains=self.request.GET.get('q'))
+        movies = Session.objects.select_related('movie').filter(movie__title__icontains=self.request.GET.get('q'))
+        return movies.distinct('movie')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -82,7 +83,8 @@ class SearchShares(ListView):
     context_object_name = 'pub'
 
     def get_queryset(self):
-        return Publication.objects.filter(publication_type=PublicationType.SHARES,title__icontains=self.request.GET.get('q'))
+        return Publication.objects.filter(publication_type=PublicationType.SHARES,
+                                          title__icontains=self.request.GET.get('q'))
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -90,12 +92,14 @@ class SearchShares(ListView):
         context['publication_type'] = PublicationType.SHARES
         return context
 
+
 class SearchNews(ListView):
     template_name = 'main/page/base_shares_news.html'
     context_object_name = 'pub'
 
     def get_queryset(self):
-        return Publication.objects.filter(publication_type=PublicationType.NEWS,title__icontains=self.request.GET.get('q'))
+        return Publication.objects.filter(publication_type=PublicationType.NEWS,
+                                          title__icontains=self.request.GET.get('q'))
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

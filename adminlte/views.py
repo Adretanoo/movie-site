@@ -13,7 +13,7 @@ from django.utils.formats import date_format
 from django.views.decorators.http import require_POST
 from ajax_datatable.views import AjaxDatatableView
 
-from main.models import Seat
+from main.models import Seat, Session
 from user.forms import UserRegisterForm, UserEditProfileForm
 from user.models import User
 from adminlte.models import Publication, Images, PublicationType, TopBanner, NewsBanner, BackgroundBanner, \
@@ -234,10 +234,10 @@ def movie_edit(request, pk):
 def movies_delete(request):
     movie_id = request.POST.get('movie_id')
     movie = get_object_or_404(Movie, id=movie_id)
-    movie.delete()
+    with transaction.atomic():
+        Session.objects.filter(movie=movie).delete()
+        movie.delete()
     return redirect('movies')
-
-
 
 
 def movie_add(request):
@@ -254,7 +254,9 @@ def movie_add(request):
                 movie_instance = main_form.save(commit=False)
                 movie_instance.seo = seo_instance
                 movie_instance.save()
-
+                card_hall = CardHall.objects.first()
+                Session.objects.create(movie=movie_instance, card_hall=card_hall,
+                                       start_time=movie_instance.published_at, price=10.00)
                 formset.instance = movie_instance
                 formset.save()
 
@@ -387,7 +389,7 @@ def hall_add(request):
                 hall_instance.seo = seo_instance
                 hall_instance.card_cinema = cinema
                 hall_instance.save()
-                create_seats(hall_instance,10,10)
+                create_seats(hall_instance, 10, 10)
 
                 formset.instance = hall_instance
                 formset.save()

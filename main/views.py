@@ -27,13 +27,14 @@ def main(request):
     top_banner_images = TopBannerImage.objects.all()
     bg_banner = BackgroundBanner.objects.first()
 
-    movie_today = Movie.objects.filter(published_at__date=date.today())
-    movie_soon = Movie.objects.filter(published_at__date__gt=date.today())
+    movie_today = Session.objects.select_related('movie').filter(start_time__date__gte=date.today()).order_by('movie','start_time').distinct('movie')
+    movie_soon = Session.objects.select_related('movie').filter(start_time__date__gt=date.today()).order_by('movie','start_time').distinct('movie')
     news_banner = NewsBanner.objects.first()
 
     news_banner_images = NewsBannerImage.objects.all()
 
     publication = Publication.objects.all()
+    lang = request.LANGUAGE_CODE
 
     context = {
         'main_page': main_page,
@@ -47,6 +48,8 @@ def main(request):
         'news_banner_images': news_banner_images,
         'menu_pub': publication,
         'pub_type': PublicationType,
+        'today': date.today(),
+        'lang': lang,
     }
     return render(request, 'main/page/index.html', context)
 
@@ -83,9 +86,7 @@ def posters_page(request):
 def soon_posters_page(request):
     today = date.today()
 
-    movies = Session.objects.select_related('movie').filter(start_time__date__gt=today).order_by('movie',
-                                                                                                 'start_time').distinct(
-        'movie')
+    movies = Session.objects.select_related('movie').filter(start_time__date__gt=today).order_by('movie','start_time').distinct('movie')
     context = {
         'movies': movies,
         'today': today,

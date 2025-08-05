@@ -54,19 +54,19 @@
             <div class="block-watch-today">
                 <div class="block-watch-today-title">
                     <h2><b>{% trans "watch-today" %}</b></h2>
-                    <h2 id="current-date"></h2>
+                    <h2 id="current-dates">{{ today|date:'d' }} {{ today|format_date_month:lang }}</h2>
                 </div>
                 <div class="block-movies">
                     {% for m in movie_today %}
                         <div class="block-movie-item">
 
-                            <a href="#">
-                                <img src="{{ m.main_image.url }}" alt="">
+                            <a href="{% url 'poster_buy' m.movie.pk %}">
+                                <img src="{{ m.movie.main_image.url }}" alt="">
                             </a>
-                            <a href="{% url 'poster_buy' m.pk %}"><b class="block_movie_item-text">{{ m.title }}</b></a>
+                            <a href="{% url 'poster_buy' m.movie.pk %}"><b class="block_movie_item-text">{{ m.movie.title }}</b></a>
                             <div>
                                 <a class="button-movie-item"
-                                   href="{% url 'poster_buy' m.pk %}">{% trans "buy-ticket" %}</a>
+                                   href="{% url 'poster_buy' m.movie.pk %}">{% trans "buy-ticket" %}</a>
                             </div>
                         </div>
                     {% endfor %}
@@ -80,13 +80,13 @@
                     {% get_current_language as lang %}
                     {% for m in movie_soon %}
                         <div class="block-movie-item">
-                            <a href="#">
-                                <img src="{{ m.main_image.url }}" alt="">
+                            <a href="{% url 'poster_buy' m.movie.pk %}">
+                                <img src="{{ m.movie.main_image.url }}" alt="">
                             </a>
-                            <a><b class="block_movie_item-text">{{ m.title }}</b></a>
+                            <a><b class="block_movie_item-text">{{ m.movie.movie.title }}</b></a>
                             <div>
-                                <a href="{% url 'poster_buy' m.pk %}"
-                                   class="movie-soon-link">{% trans 'with_title' %} {{ m.published_at|format_date_localized:lang }}</a>
+                                <a href="{% url 'poster_buy' m.movie.pk %}"
+                                   class="movie-soon-link">{% trans 'with_title' %} {{ m.start_time|format_date_localized:lang }}</a>
                             </div>
                         </div>
                     {% endfor %}
@@ -198,3 +198,4 @@
         {% endif %}
     </div>
 {% endblock %}
+

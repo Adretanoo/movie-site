@@ -14,7 +14,10 @@ p {
     gap: 10px;
     width: 100%;
 }
-
+.block-img img {
+    width: 500px;
+    height: 750px;
+}
 .custom-select-style {
     width: 24rem;
 }
