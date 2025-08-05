@@ -42,10 +42,8 @@
 
             <!-- 3. ПОШУК -->
             <div class="col-lg-3 col-md-4 col-12 mb-2 mb-md-0 search-col order-2 d-none d-lg-block">
-                <form class="d-flex search-form">
-                    <input class="form-control me-2" type="search" placeholder="{% trans 'search-title' %}"
-                           aria-label="Search">
-                </form>
+                {% block search_url %}
+                {% endblock %}
             </div>
 
             <!-- 4. СОЦМЕРЕЖІ -->
@@ -283,5 +281,6 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
+<script src="{% static 'main/js/search_input.js' %}"></script>
 </body>
 </html>

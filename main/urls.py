@@ -3,6 +3,8 @@ from django.urls import path
 from main import views
 from django.conf.urls.i18n import i18n_patterns
 
+from main.search import SearchMain, SearchPoster, SearchCinema, SearchSchedule, SearchShares, SearchNews
+
 urlpatterns = [
     path('', views.main, name='main'),
     path('about/', views.about_page, name='about_page'),
@@ -15,6 +17,10 @@ urlpatterns = [
 
     path('shares/', views.shares_page, name='shares_page'),
     path('news/', views.news_page, name='news_page'),
+
+
+
+
 
     path('shares/card/<int:pk>/', views.shares_card, name='shares_card'),
     path('news/card/<int:pk>/', views.news_card, name='news_card'),
@@ -34,4 +40,10 @@ urlpatterns = [
     path('poster/<int:pk>', views.poster_buy, name='poster_buy'),
     path('soon-posters/', views.soon_posters_page, name='soon_posters_page'),
 
+    path('search-main/', SearchMain.as_view(), name='main_search'),
+    path('search-poster/', SearchPoster.as_view(), name='poster_search'),
+    path('search-cinemas/', SearchCinema.as_view(), name='cinema_search'),
+    path('search-schedule/', SearchSchedule.as_view(), name='schedule_search'),
+    path('search-shares/', SearchShares.as_view(), name='shares_search'),
+    path('search-news/', SearchNews.as_view(), name='news_search'),
 ]

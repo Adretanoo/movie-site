@@ -10,7 +10,13 @@
     <meta name="description" content="расписания"/>
     <title>Расписание</title>
 {% endblock %}
-
+{% block search_url %}
+    <form action="{% url 'schedule_search' %}" class="d-flex search-form" method="get">
+        <input id="searchInput" value="{{ request.GET.q }}" name="q" class="form-control me-2"
+               type="search" placeholder="{% trans 'search-title' %}"
+               aria-label="Search">
+    </form>
+{% endblock %}
 {% block content %}
     <div class="container">
         <form method="get" id="filter-form">

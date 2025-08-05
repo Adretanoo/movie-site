@@ -9,6 +9,7 @@ from django.db.models.functions.datetime import TruncDate
 from django.http.response import JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
+from django.views.generic.list import ListView
 from docs.conf import language
 
 from adminlte.models import MainPage, TopBanner, TopBannerImage, BackgroundBanner, BackgroundType, Movie, NewsBanner, \
@@ -469,3 +470,5 @@ def publication_page(request, publication_type):
         'publication_type': publication_type,
     }
     return render(request, 'main/page/base_publication.html', context)
+
+

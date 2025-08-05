@@ -31,7 +31,7 @@
                                 {% if hall %}
                                     {% for s in sessions %}
                                         <li class="list-group-item list-group-item-action">
-                                            <a class="list-group-item-p">{{ s.movie }}</a>
+                                            <a href="{% url 'poster_buy' s.movie.pk %}" class="list-group-item-p">{{ s.movie }}</a>
 
                                         </li>
                                     {% endfor %}

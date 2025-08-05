@@ -18,6 +18,27 @@
 {% endblock %}
 
 
+
+{% block search_url %}
+    {% if publication_type == pub_type.SHARES %}
+        <form action="{% url 'shares_search' %}" class="d-flex search-form" method="get">
+            <input id="searchInput" value="{{ request.GET.q }}" name="q" class="form-control me-2"
+                   type="search" placeholder="{% trans 'search-title' %}"
+                   aria-label="Search">
+        </form>
+    {% endif %}
+    {% if publication_type == pub_type.NEWS %}
+        <form action="{% url 'news_search' %}" class="d-flex search-form" method="get">
+
+            <input id="searchInput" value="{{ request.GET.q }}" name="q" class="form-control me-2"
+                   type="search" placeholder="{% trans 'search-title' %}"
+                   aria-label="Search">
+        </form>
+    {% endif %}
+{% endblock %}
+
+
+
 {% block content %}
     <div class="sliders">
         {% if top_banner.is_enabled %}
@@ -78,11 +99,7 @@
                         <img src="{{ item.main_image.url }}" alt="image">
                     </div>
                     <div class="block-item-content">
-                        <a href="
-
-
-
-                                {% if publication_type == pub_type.SHARES %}{% url 'shares_card' item.pk %}{% else %}{% url 'news_card' item.pk %}{% endif %}">{{ item.title }}</a>
+                        <a href="{% if publication_type == pub_type.SHARES %}{% url 'shares_card' item.pk %}{% else %}{% url 'news_card' item.pk %}{% endif %}">{{ item.title }}</a>
                         <div class="block-item-date">
                             <p>{{ item.published_at|date:"d.m.Y" }}</p>
                             <div class="block-name-icon">

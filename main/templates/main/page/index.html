@@ -16,6 +16,17 @@
     <title>{{ main_page.seo.title }}</title>
 {% endblock %}
 
+
+
+{% block search_url %}
+    <form action="{% url 'main_search' %}" class="d-flex search-form" method="get">
+        <input id="searchInput" value="{{ request.GET.q }}" name="q" class="form-control me-2"
+               type="search" placeholder="{% trans 'search-title' %}"
+               aria-label="Search">
+    </form>
+{% endblock %}
+
+
 {% block content %}
 
     <div class="header-wrapper" style="
@@ -54,7 +65,8 @@
                             </a>
                             <a href="{% url 'poster_buy' m.pk %}"><b class="block_movie_item-text">{{ m.title }}</b></a>
                             <div>
-                                <a class="button-movie-item" href="{% url 'poster_buy' m.pk %}">{% trans "buy-ticket" %}</a>
+                                <a class="button-movie-item"
+                                   href="{% url 'poster_buy' m.pk %}">{% trans "buy-ticket" %}</a>
                             </div>
                         </div>
                     {% endfor %}

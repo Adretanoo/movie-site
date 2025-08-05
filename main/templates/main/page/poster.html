@@ -18,6 +18,13 @@
     {% endif %}
 {% endblock %}
 
+{% block search_url %}
+    <form action="{% url 'poster_search' %}" class="d-flex search-form" method="get">
+        <input id="searchInput" value="{{ request.GET.q }}" name="q" class="form-control me-2"
+               type="search" placeholder="{% trans 'search-title' %}"
+               aria-label="Search">
+    </form>
+{% endblock %}
 
 {% block content %}
     <div class="container">

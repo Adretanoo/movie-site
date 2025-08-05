@@ -9,6 +9,17 @@
     <link rel="stylesheet" href="{% static 'main/css/cinemas_page.css' %}">
 {% endblock %}
 
+
+
+{% block search_url %}
+    <form action="{% url 'cinema_search' %}" class="d-flex search-form" method="get">
+        <input id="searchInput" value="{{ request.GET.q }}" name="q" class="form-control me-2"
+               type="search" placeholder="{% trans 'search-title' %}"
+               aria-label="Search">
+    </form>
+{% endblock %}
+
+
 {% block content %}
     <div class="sliders">
         {% if top_banner.is_enabled %}
