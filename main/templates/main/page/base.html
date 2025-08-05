@@ -83,7 +83,7 @@
                             <a class="nav-link" href="{% url 'schedule' %}">{% trans "Schedule" %}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">{% trans "Soon" %}</a>
+                            <a class="nav-link" href="{% url 'soon_posters_page' %}">{% trans "Soon" %}</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'cinemas_page' %}">{% trans "Movie-theaters" %}</a>
@@ -156,7 +156,7 @@
             <ul class="fullscreen-nav">
                 <li><a href="{% url 'posters_page' %}">{% trans "Poster" %}</a></li>
                 <li><a href="{% url 'schedule' %}">{% trans "Schedule" %}</a></li>
-                <li><a href="#">{% trans "Soon" %}</a></li>
+                <li><a href="{% url 'soon_posters_page' %}">{% trans "Soon" %}</a></li>
                 <li><a href="{% url 'cinemas_page' %}">{% trans "Movie-theaters" %}</a></li>
                 <li><a href="{% url 'shares_page' %}">{% trans "Promotions" %}</a></li>
 
@@ -252,7 +252,7 @@
                 <h3><a href="{% url 'posters_page' %}">{% trans "Poster" %}</a></h3>
                 <ul>
                     <li><a href="{% url 'schedule' %}">{% trans "Schedule" %}</a></li>
-                    <li><a href="#">{% trans "coming-soon" %}</a></li>
+                    <li><a href="{% url 'soon_posters_page' %}">{% trans "coming-soon" %}</a></li>
                     <li><a href="{% url 'cinemas_page' %}">{% trans "Movie-theaters" %}</a></li>
                     <li><a href="#">{% trans "Promotions" %}</a></li>
                 </ul>

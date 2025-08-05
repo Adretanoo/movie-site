@@ -77,6 +77,18 @@ def posters_page(request):
     context = {
         'movies': movies,
         'today': today,
+        'type': 'poster_page'
+    }
+    return render(request, 'main/page/poster.html', context)
+
+
+def soon_posters_page(request):
+    today = date.today()
+
+    movies = Session.objects.select_related('movie').filter(start_time__date__gt=today).order_by('movie','start_time').distinct('movie')
+    context = {
+        'movies': movies,
+        'today': today,
     }
     return render(request, 'main/page/poster.html', context)
 
@@ -84,7 +96,7 @@ def posters_page(request):
 def poster_buy(request, pk):
     movie = get_object_or_404(Movie, pk=pk)
     today = date.today()
-    sessions = Session.objects.filter(movie=movie,start_time__date__gte=today).order_by('start_time')
+    sessions = Session.objects.filter(movie=movie, start_time__date__gte=today).order_by('start_time')
     f = SessionFilter(request.GET, queryset=sessions)
 
     if request.GET.get('cinema'):
@@ -106,7 +118,6 @@ def poster_buy(request, pk):
         'movie_gallery': movie_gallery,
     }
     return render(request, 'main/page/poster_by.html', context)
-
 
 
 @login_required

@@ -6,9 +6,16 @@
 {% block head %}
     <link rel="stylesheet" href="{% static 'main/css/poster.css' %}">
 
-    <meta name="keywords" content="афиша"/>
-    <meta name="description" content="афиша"/>
-    <title>Афиша</title>
+
+    {% if type == 'poster_page' %}
+        <meta name="keywords" content="афиша"/>
+        <meta name="description" content="афиша"/>
+        <title>Афиша</title>
+    {% else %}
+        <meta name="keywords" content="скоро"/>
+        <meta name="description" content="скоро"/>
+        <title>Скоро</title>
+    {% endif %}
 {% endblock %}
 
 
