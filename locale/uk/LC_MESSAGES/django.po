@@ -97,6 +97,10 @@ msgstr "Забронювати"
 
 
 
+msgid "poster_by_slider_title"
+msgstr "Кадри та постери"
+
+
 msgid "reverse_ticket_cost_text"
 msgstr "Вартість послуги бронювання – 3 грн. за кожне місце."
 

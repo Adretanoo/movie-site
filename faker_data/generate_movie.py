@@ -19,7 +19,7 @@ LANG_RU = "ru-RU"
 today_date = datetime.today()
 end_date = today_date + timedelta(days=30)
 
-page_total = 3
+page_total = 4
 item = 0
 seo_item = 15
 movies = []
@@ -92,7 +92,8 @@ for page in range(1, page_total + 1):
                 "title": title_ru,
                 "title_ru": title_ru,
                 "title_uk": title_uk,
-                "published_at": faker.date_between(start_date=today_date, end_date=end_date),
+                "published_at": faker.date_between(start_date=today_date, end_date=end_date, ).strftime(
+                    '%Y-%m-%dT%H:%M:%SZ'),
                 "description": description_ru,
                 "description_ru": description_ru,
                 "description_uk": description_uk,

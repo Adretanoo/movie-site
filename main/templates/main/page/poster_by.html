@@ -1,12 +1,194 @@
 {% extends 'main/page/base.html' %}
-
-
+{% load static %}
+{% load l10n i18n %}
+{% load date_filters %}
 
 {% block head %}
+    <link rel="stylesheet" href="{% static 'main/css/poster_by.css' %}">
+    <meta name="keywords" content="{{ movie.title }}"/>
+    <meta name="description" content="фильм"/>
+    <title>{{ movie.title }}</title>
 {% endblock %}
 
 {% block content %}
+    <iframe width="100%" height="515"
+            src="{{ movie.url }}"
+            title="Відео"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+    </iframe>
     <div class="container">
-    <h1>m.title</h1>
+        <div class="block-content-wrapper">
+            <div class="block-filters">
+                    <form class="block-filter-item1" id="filter-form" method="get">
+                        <select class="form-select custom-select-style" aria-label="Кинотеатр" name="cinema">
+                            {% for c in filter.form.cinema %}
+                                <option value="{{ c.data.value }}"
+                                        {% if c.data.value|stringformat:"s" == request.GET.cinema %}
+                                        selected
+                                        {% endif %}>
+                                    {{ c.data.label }}
+                                </option>
+                            {% endfor %}
+                        </select>
+                        <div class="checkboxes">
+                            <div class="checkbox_filters_item">
+                                <input id="3d" name="is_3d" type="checkbox" {% if request.GET.is_3d %}checked{% endif %}
+                                       value="on">
+                                <label class="label_color-1" for="3d">3D</label>
+                            </div>
+                            <div class="checkbox_filters_item">
+                                <input id="2d" name="is_2d" type="checkbox" {% if request.GET.is_2d %}checked{% endif %}
+                                       value="on">
+                                <label class="label_color-2" for="2d">2D</label>
+                            </div>
+                            <div class="checkbox_filters_item">
+                                <input id="IMAX" name="is_imax" type="checkbox"
+                                       {% if request.GET.is_imax %}checked{% endif %} value="on">
+                                <label class="label_color-3" for="IMAX">IMAX</label>
+                            </div>
+                        </div>
+                    </form>
+                <div class="block-filter-movie">
+                    {% for m in movie_dates %}
+                        <div class="block-movie-card" data-date="{{ m|date:'Y-m-d' }}">
+                            <p class="date-title">{{ m|format_date_weekdays_short }}</p>
+                            <div class="line"></div>
+                            <p class="month-title">{{ m|format_date_month:lang }}</p>
+                        </div>
+                    {% endfor %}
+
+                </div>
+                <div class="block-filter-movie-session">
+                    {% for s in all_sessions %}
+                        {% if s.movie.is_3d %}
+                            <div class="block-session-item" data-date="{{ s.start_time|date:'Y-m-d' }}"
+                                 data-format="3d"
+                                 data-session-id="{{ s.id }}"
+                                 style="display: none;">
+                                <div class="block-session-item-top">
+                                    <p class="top-name">{{ s.start_time|date:"H:i" }}</p>
+                                    <div class="line-session"></div>
+                                    <p>3D</p>
+                                </div>
+                                <div class="line"></div>
+                                <div class="block-session-item-bottom">
+                                    <p class="bottom-name">{{ s.card_hall.name }}</p>
+                                    <div class="line-session"></div>
+                                    <p>{{ s.start_time|date:'Y/m/d' }}</p>
+                                </div>
+                            </div>
+                        {% endif %}
+                        {% if s.movie.is_2d %}
+                            <div class="block-session-item" data-date="{{ s.start_time|date:'Y-m-d' }}"
+                                 data-format="2d"
+                                 data-session-id="{{ s.id }}"
+                                 style="display: none;">
+                                <div class="block-session-item-top">
+                                    <p class="top-name">{{ s.start_time|date:"H:i" }}</p>
+                                    <div class="line-session"></div>
+                                    <p>2D</p>
+                                </div>
+                                <div class="line"></div>
+                                <div class="block-session-item-bottom">
+                                    <p class="bottom-name">{{ s.card_hall.name }}</p>
+                                    <div class="line-session"></div>
+                                    <p>{{ s.start_time|date:'Y/m/d' }}</p>
+                                </div>
+                            </div>
+                        {% endif %}
+                        {% if s.movie.is_imax %}
+                            <div class="block-session-item" data-date="{{ s.start_time|date:'Y-m-d' }}"
+                                 data-format="imax"
+                                 data-session-id="{{ s.id }}"
+                                 style="display: none;">
+                                <div class="block-session-item-top">
+                                    <p class="top-name">{{ s.start_time|date:"H:i" }}</p>
+                                    <div class="line-session"></div>
+                                    <p>IMAX</p>
+                                </div>
+                                <div class="line"></div>
+                                <div class="block-session-item-bottom">
+                                    <p class="bottom-name">{{ s.card_hall.name }}</p>
+                                    <div class="line-session"></div>
+                                    <p>{{ s.start_time|date:'Y/m/d' }}</p>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="block-content-main">
+                <div class="block-img">
+                    <img src="{{ movie.main_image.url }}" alt="poster">
+                </div>
+                <div class="block-content-text">
+                    <div class="block-content-title">
+                        <a id="buy-ticket-btn" class="reverse_ticket_buy_btn disabled"
+                           href="javascript:void(0);">{% trans "buy-ticket" %}</a>
+                        <p>{{ movie.title }}</p>
+                    </div>
+                    <div class="block-texts">
+                        <p>{{ movie.description }}</p>
+                    </div>
+                    {% if movie_gallery %}
+                        <div class="block_cinema_gallery">
+                            <h2>{% trans 'poster_by_slider_title' %}</h2>
+                            <div class="sliders">
+                                <div id="customCarousel" class="carousel slide" data-bs-ride="carousel"
+                                     data-bs-interval="10000">
+                                    <div class="carousel-indicators">
+                                        {% for item in movie_gallery %}
+                                            <button type="button" data-bs-target="#customCarousel"
+                                                    data-bs-slide-to="{{ forloop.counter0 }}"
+                                                    class="{% if forloop.first %}active{% endif %}"
+                                                    aria-current="{% if forloop.first %}true{% endif %}"
+                                                    aria-label="{{ item.text }}"></button>
+                                        {% endfor %}
+                                    </div>
+                                    <div class="carousel-inner">
+                                        {% for slide in movie_gallery %}
+                                            <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                                                <a href="{{ slide.url }}" target="_blank">
+                                                    <img src="{{ slide.image.image_url.url }}"
+                                                         class="d-block w-100"
+                                                         alt="{{ slide.text }}">
+                                                    <div class="carousel-caption d-none d-md-block">
+                                                        <h5>{{ slide.text }}</h5>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#customCarousel"
+                                            data-bs-slide="prev">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                             fill="currentColor"
+                                             class="bi bi-chevron-left" viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd"
+                                                  d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+                                        </svg>
+                                    </button>
+                                    <button class="carousel-control-next" type="button" data-bs-target="#customCarousel"
+                                            data-bs-slide="next">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                             fill="currentColor"
+                                             class="bi bi-chevron-right" viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd"
+                                                  d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
     </div>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static 'main/js/poster_by.js' %}" defer></script>
 {% endblock %}

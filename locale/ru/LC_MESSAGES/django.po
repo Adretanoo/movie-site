@@ -102,6 +102,14 @@ msgid "news-h4"
 msgstr "Новости"
 
 
+
+
+msgid "poster_by_slider_title"
+msgstr "Кадры и постеры"
+
+
+
+
 msgid "register_title"
 msgstr "Регистрация"
 

@@ -18,18 +18,18 @@
             {% for m in movies %}
                 <div class="block-movie-item">
                     <div class="block-date">
-                        {% if m.published_at|date:"Y-m-d" == today|date:"Y-m-d" %}
+                        {% if m.start_time|date:"Y-m-d" == today|date:"Y-m-d" %}
                             {% trans 'watch_today' %}
                         {% else %}
-                            {% trans 'with_title' %}&nbsp;{{ m.published_at|date:"Y-m-d" }}
+                            {% trans 'with_title' %}&nbsp;{{ m.start_time|date:"Y-m-d" }}
                         {% endif %}
                     </div>
 
-                    <img src="{{ m.main_image.url }}" alt="main image">
-                    <a class="movie-title-href" href="{% url 'poster_buy' m.pk %}">
-                        {{ m.title }}
+                    <img src="{{ m.movie.main_image.url }}" alt="main image">
+                    <a class="movie-title-href" href="{% url 'poster_buy' m.movie.pk %}">
+                        {{ m.movie.title }}
                     </a>
-                    <a class="block-movie-btn" href="{% url 'poster_buy' m.pk %}">
+                    <a class="block-movie-btn" href="{% url 'poster_buy' m.movie.pk %}">
                         {% trans 'reverse_ticket_buy_btn' %}
                     </a>
                 </div>

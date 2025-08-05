@@ -1,0 +1,215 @@
+
+p {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.block-filters {
+    margin-top: 40px;
+    width: 100%;
+}
+
+.block-filter-item1 {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+}
+
+.custom-select-style {
+    width: 24rem;
+}
+
+.checkboxes {
+    display: flex;
+    gap: 10px;
+}
+
+.checkbox_filters_item {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.line {
+    background-color: black;
+    height: 1px;
+    width: 100%;
+}
+
+.block-filter-movie p {
+    font-size: 2rem;
+    padding: 3px 8px !important;
+}
+
+.block-filter-movie {
+    margin-top: 1.3rem;
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    width: 100%;
+}
+.block-movie-card{
+    border: 1px solid black;
+    text-align: center;
+    cursor: pointer;
+    width: max-content;
+}
+.month-title {
+    text-transform: capitalize;
+}
+
+.date-title {
+    font-weight: bold;
+}
+
+
+.checkbox_filters_item {
+    width: max-content;
+    border: 1px solid black;
+}
+
+.checkbox_filters_item input {
+    display: none;
+}
+
+.checkbox_filters_item label {
+    font-size: 1.5rem;
+    font-weight: bold;
+    align-items: center;
+    text-align: center;
+    padding: 4px 10px;
+    cursor: pointer;
+}
+
+
+.reverse_ticket_buy_btn {
+    padding: .6rem .3rem;
+    text-align: center;
+    border: 2px solid black;
+    color: black;
+    border-radius: .3rem;
+    width: 21rem;
+    transition: all 0.3s ease;
+    background-color: #92D36E;
+}
+
+
+.reverse_ticket_buy_btn:hover {
+    background-color: #72a654;
+    border-color: #333333;
+}
+
+
+.block-content-main {
+    flex-wrap: wrap;
+    margin-top: 4.5rem;
+    display: flex;
+    gap: 8.5rem;
+}
+
+.block_cinema_gallery h2 {
+    width: max-content;
+    margin: 0 auto;
+}
+
+.block_cinema_gallery {
+    margin-top: 2rem;
+
+}
+
+.block-content-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 40rem;
+}
+
+.sliders {
+    margin-top: 15px;
+}
+
+.block-content-title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.block-content-title p {
+    margin-top: 1.1rem !important;
+    font-size: 1.5rem;
+
+}
+
+.block-texts p {
+    margin-top: 4.1rem !important;
+}
+
+.carousel-inner {
+    height: 28rem;
+}
+.block-filter-movie-session {
+    margin-top: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+
+
+.checkbox_filters_item input[type="checkbox"]:checked + label {
+    background-color: black;
+    color: white;
+}
+
+
+
+.block-session-item {
+    display: none;
+    border: 1px solid black;
+    width: 13rem;
+    font-size: 1.3rem;
+    cursor: pointer;
+
+}
+.block-movie-card.active,.block-session-item.active {
+    background-color: black;
+    color: white;
+}
+.block-movie-card.active > .line, .block-session-item.active > .line,
+.block-session-item.active > .block-session-item-top > .line-session,
+.block-session-item.active > .block-session-item-bottom > .line-session{
+    background-color: white;
+}
+
+.reverse_ticket_buy_btn.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+.line-session {
+    width: 1px;
+    height: 100%;
+    background-color: black;
+    margin: 0 4px;
+}
+.line-session div {
+    height: 1rem;
+    width: 1rem;
+}
+.block-session-item-top {
+    display: flex;
+    align-items: center;
+}
+.bottom-name,.top-name {
+    width: 30%;
+}
+.block-session-item-bottom {
+    display: flex;
+}
+
+@media (max-width: 1399px) {
+    .block-content-main {
+        justify-content: center;
+    }
+}

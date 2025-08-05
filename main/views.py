@@ -9,14 +9,14 @@ from django.db.models.functions.datetime import TruncDate
 from django.http.response import JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
+from docs.conf import language
 
 from adminlte.models import MainPage, TopBanner, TopBannerImage, BackgroundBanner, BackgroundType, Movie, NewsBanner, \
     NewsBannerImage, Publication, PublicationType, PublicationGallery, ContactsPage, ContactsPageLocation, CardCinema, \
-    CardCinemaGallery, CardHall, CardHallGallery
+    CardCinemaGallery, CardHall, CardHallGallery, MovieGallery
 from main.models import Seat, Ticket, StatusPayment
 from user.forms import UserRegisterForm, UserEditProfileForm
 from user.models import User
-
 
 from .filters import SessionFilter
 from .models import Session
@@ -68,21 +68,46 @@ def register_view(request):
     return render(request, 'main/page/register.html', {'form': form})
 
 
-
-
 def posters_page(request):
     today = date.today()
-    movies = Movie.objects.select_related().filter(published_at__date__gte=today)
+
+    movies = Session.objects.select_related('movie').filter(start_time__date__gte=today).order_by('movie',
+                                                                                                  'start_time').distinct(
+        'movie')
     context = {
         'movies': movies,
         'today': today,
     }
     return render(request, 'main/page/poster.html', context)
 
-def poster_buy(request,pk):
 
-    context = {}
-    return render(request,'main/page/poster_by.html',context)
+def poster_buy(request, pk):
+    movie = get_object_or_404(Movie, pk=pk)
+    today = date.today()
+    sessions = Session.objects.filter(movie=movie,start_time__date__gte=today).order_by('start_time')
+    f = SessionFilter(request.GET, queryset=sessions)
+
+    if request.GET.get('cinema'):
+        filtered_sessions = f.qs
+    else:
+        filtered_sessions = sessions
+
+    movie_dates = filtered_sessions.values_list('start_time__date', flat=True).distinct().order_by('start_time__date')
+
+    movie_gallery = MovieGallery.objects.filter(movie=movie)
+    lang = request.LANGUAGE_CODE
+
+    context = {
+        'all_sessions': filtered_sessions,
+        'filter': f,
+        'movie_dates': movie_dates,
+        'movie': movie,
+        'lang': lang,
+        'movie_gallery': movie_gallery,
+    }
+    return render(request, 'main/page/poster_by.html', context)
+
+
 
 @login_required
 def reverse_ticket_view(request, session_id):
@@ -187,8 +212,10 @@ def hall_card_page(request, pk, hall_index):
 
     hall_gallery = CardHallGallery.objects.filter(card_hall=hall)
 
-    sessions = Session.objects.select_related('movie', 'card_hall__card_cinema').filter(card_hall__card_cinema=pk,card_hall=hall,
-                                                                                        start_time__date=datetime.now().date()).order_by('start_time')
+    sessions = Session.objects.select_related('movie', 'card_hall__card_cinema').filter(card_hall__card_cinema=pk,
+                                                                                        card_hall=hall,
+                                                                                        start_time__date=datetime.now().date()).order_by(
+        'start_time')
 
     context = {
         'hall': hall,
