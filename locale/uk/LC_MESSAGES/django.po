@@ -108,7 +108,8 @@ msgid "reverse_ticket_cost_blocked_text"
 msgstr "Заброньовані квитки потрібно викупити у касі кінотеатру не пізніше ніж за півгодини до початку сеансу."
 
 
-
+msgid "admin_panel"
+msgstr "Адмін панель"
 
 
 

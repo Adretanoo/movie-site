@@ -1,0 +1,23 @@
+[
+  {
+    "model": "adminlte.templatesmailing",
+    "pk": 1,
+    "fields": {
+      "template": "templates/2025/08/07/new_action.html"
+    }
+  },
+  {
+    "model": "adminlte.templatesmailing",
+    "pk": 2,
+    "fields": {
+      "template": "templates/2025/08/07/news.html"
+    }
+  },
+  {
+    "model": "adminlte.templatesmailing",
+    "pk": 3,
+    "fields": {
+      "template": "templates/2025/08/07/event.html"
+    }
+  }
+]

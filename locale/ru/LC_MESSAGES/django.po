@@ -108,7 +108,8 @@ msgid "poster_by_slider_title"
 msgstr "Кадры и постеры"
 
 
-
+msgid "admin_panel"
+msgstr "Админ панель"
 
 msgid "register_title"
 msgstr "Регистрация"

@@ -1,14 +1,9 @@
 import datetime
 import json
-import threading
-from celery.result import AsyncResult
-
-from django.core.mail import EmailMessage
-
+from django.contrib.auth.decorators import user_passes_test
 from django.contrib import messages
 from django.contrib.auth import update_session_auth_hash
 from django.db import transaction
-from django.db.models import QuerySet
 from django.db.models.aggregates import Count
 from django.db.models.functions.datetime import ExtractYear, TruncDate
 from django.http import JsonResponse
@@ -35,6 +30,10 @@ from django.shortcuts import render, redirect
 from cinemasite.settings import menu
 
 
+def is_superuser(user):
+    return user.is_authenticated and user.is_superuser
+
+@user_passes_test(is_superuser, login_url='login')
 def statistics(request):
     user_count = User.objects.count()
     context = {
@@ -43,7 +42,7 @@ def statistics(request):
     }
     return render(request, "adminlte/pages/statistics.html", context)
 
-
+@user_passes_test(is_superuser, login_url='login')
 def statistics_users(request):
     gender_labels = ['Мужчины', 'Женщины']
     gender_data = [User.objects.filter(gender=Gender.MALE).count(), User.objects.filter(gender=Gender.WOMEN).count()]
@@ -81,7 +80,7 @@ def statistics_users(request):
     }
     return render(request, 'adminlte/pages/statistics_users.html', context)
 
-
+@user_passes_test(is_superuser, login_url='login')
 def banners_sliders(request):
     bg_banner = BackgroundBanner.objects.first()
 
@@ -103,7 +102,7 @@ def banners_sliders(request):
     }
     return render(request, 'adminlte/pages/banners_sliders_display.html', context)
 
-
+@user_passes_test(is_superuser, login_url='login')
 def banners_sliders_add(request):
     top_banner_instance, _ = TopBanner.objects.get_or_create(id=1)
     news_banner_instance, _ = NewsBanner.objects.get_or_create(id=1)
@@ -181,7 +180,7 @@ def banners_sliders_add(request):
     }
     return render(request, 'adminlte/pages/add/banners_sliders_full.html', context)
 
-
+@user_passes_test(is_superuser, login_url='login')
 def movies(request):
     current_data = datetime.datetime.now()
 
@@ -197,7 +196,7 @@ def movies(request):
     }
     return render(request, 'adminlte/pages/movies_display.html', context)
 
-
+@user_passes_test(is_superuser, login_url='login')
 def movie_edit(request, pk):
     movie = get_object_or_404(Movie, pk=pk)
     seo = get_object_or_404(SeoMetadata, pk=movie.seo_id)
@@ -237,7 +236,7 @@ def movie_edit(request, pk):
     }
     return render(request, 'adminlte/pages/edit/movies_edit.html', context)
 
-
+@user_passes_test(is_superuser, login_url='login')
 @require_POST
 def movies_delete(request):
     movie_id = request.POST.get('movie_id')
@@ -247,7 +246,7 @@ def movies_delete(request):
         movie.delete()
     return redirect('movies')
 
-
+@user_passes_test(is_superuser, login_url='login')
 def movie_add(request):
     lang = request.GET.get('lang', 'ru')
 
@@ -285,7 +284,7 @@ def movie_add(request):
     }
     return render(request, 'adminlte/pages/add/movie_add.html', context)
 
-
+@user_passes_test(is_superuser, login_url='login')
 def cinemas(request):
     cinema = CardCinema.objects.all()
     context = {
@@ -294,7 +293,7 @@ def cinemas(request):
     }
     return render(request, 'adminlte/pages/cinemas_display.html', context)
 
-
+@user_passes_test(is_superuser, login_url='login')
 def cinemas_edit(request, pk):
     lang = request.GET.get('lang', 'ru')
     cinema = get_object_or_404(CardCinema, pk=pk)
@@ -333,7 +332,7 @@ def cinemas_edit(request, pk):
     }
     return render(request, 'adminlte/pages/edit/cinema_edit.html', context)
 
-
+@user_passes_test(is_superuser, login_url='login')
 def cinemas_add(request):
     lang = request.GET.get('lang', 'ru')
 
@@ -366,7 +365,7 @@ def cinemas_add(request):
     }
     return render(request, 'adminlte/pages/add/cinemas_add.html', context)
 
-
+@user_passes_test(is_superuser, login_url='login')
 @require_POST
 def cinemas_delete(request):
     cinema_id = request.POST.get('cinema_id')
@@ -374,13 +373,13 @@ def cinemas_delete(request):
     cinema.delete()
     return redirect('cinemas')
 
-
+@user_passes_test(is_superuser, login_url='login')
 def create_seats(hall, rows, colum):
     for row in range(1, rows + 1):
         for col in range(1, colum + 1):
             Seat.objects.create(hall=hall, row=row, column=col)
 
-
+@user_passes_test(is_superuser, login_url='login')
 def hall_add(request):
     lang = request.GET.get('lang', 'ru')
     cinema = get_object_or_404(CardCinema, pk=request.GET.get('cinema_id'))
@@ -417,7 +416,7 @@ def hall_add(request):
     }
     return render(request, 'adminlte/pages/add/hall_add.html', context)
 
-
+@user_passes_test(is_superuser, login_url='login')
 def hall_edit(request, pk):
     lang = request.GET.get('lang', 'ru')
     cinema = get_object_or_404(CardCinema, pk=request.GET.get('cinema_id'))
@@ -457,7 +456,7 @@ def hall_edit(request, pk):
     }
     return render(request, 'adminlte/pages/edit/hall_edit.html', context)
 
-
+@user_passes_test(is_superuser, login_url='login')
 @require_POST
 def hall_delete(request, pk):
     hall = get_object_or_404(CardHall, pk=pk)
@@ -467,12 +466,12 @@ def hall_delete(request, pk):
     seat.delete()
     return redirect('cinemas_edit', pk=cinema_pk)
 
-
+@user_passes_test(is_superuser, login_url='login')
 def news(request):
     publications = Publication.objects.filter(publication_type=PublicationType.NEWS)
     return render(request, 'adminlte/pages/news_tabel.html', context={'menu': menu, 'publications': publications})
 
-
+@user_passes_test(is_superuser, login_url='login')
 def news_add(request):
     return add_publication(
         request=request,
@@ -481,7 +480,7 @@ def news_add(request):
         redirect_url='news'
     )
 
-
+@user_passes_test(is_superuser, login_url='login')
 def edit_news(request, pk):
     return edit_publication(
         request=request,
@@ -491,26 +490,26 @@ def edit_news(request, pk):
         redirect_url='news'
     )
 
-
+@user_passes_test(is_superuser, login_url='login')
 def shares_delete(request, pk):
     return delete_publication(
         request=request,
         pk=pk,
     )
 
-
+@user_passes_test(is_superuser, login_url='login')
 def delete_news(request, pk):
     return delete_publication(
         request=request,
         pk=pk,
     )
 
-
+@user_passes_test(is_superuser, login_url='login')
 def shares(request):
     publications = Publication.objects.filter(publication_type=PublicationType.SHARES)
     return render(request, 'adminlte/pages/shares_table.html', context={'menu': menu, 'publications': publications})
 
-
+@user_passes_test(is_superuser, login_url='login')
 def shares_add(request):
     return add_publication(
         request=request,
@@ -519,7 +518,7 @@ def shares_add(request):
         redirect_url='shares'
     )
 
-
+@user_passes_test(is_superuser, login_url='login')
 def shares_edit(request, pk):
     return edit_publication(
         request=request,
@@ -529,7 +528,7 @@ def shares_edit(request, pk):
         redirect_url='shares'
     )
 
-
+@user_passes_test(is_superuser, login_url='login')
 def pages(request):
     publications = [
         {'name': 'Главная страница', 'obj': MainPage.objects.first(), 'url': 'main_page'},
@@ -564,7 +563,7 @@ def pages(request):
     }
     return render(request, 'adminlte/pages/pages_table.html', context)
 
-
+@user_passes_test(is_superuser, login_url='login')
 def main_page(request):
     lang = request.GET.get('lang', 'ru')
     main_page = MainPage.objects.get(pk=1)
@@ -593,7 +592,7 @@ def main_page(request):
     }
     return render(request, 'adminlte/pages/edit/main_page.html', context)
 
-
+@user_passes_test(is_superuser, login_url='login')
 def advertising(request):
     return edit_publication(
         request=request,
@@ -603,7 +602,7 @@ def advertising(request):
         redirect_url='pages'
     )
 
-
+@user_passes_test(is_superuser, login_url='login')
 def children_room(request):
     return edit_publication(
         request=request,
@@ -613,7 +612,7 @@ def children_room(request):
         redirect_url='pages'
     )
 
-
+@user_passes_test(is_superuser, login_url='login')
 def about(request):
     return edit_publication(
         request=request,
@@ -623,7 +622,7 @@ def about(request):
         redirect_url='pages'
     )
 
-
+@user_passes_test(is_superuser, login_url='login')
 def cafe_bar(request):
     return edit_publication(
         request=request,
@@ -633,7 +632,7 @@ def cafe_bar(request):
         redirect_url='pages'
     )
 
-
+@user_passes_test(is_superuser, login_url='login')
 def vip_hall(request):
     return edit_publication(
         request=request,
@@ -643,7 +642,7 @@ def vip_hall(request):
         redirect_url='pages'
     )
 
-
+@user_passes_test(is_superuser, login_url='login')
 def new_page_add(request):
     return add_publication(
         request=request,
@@ -652,7 +651,7 @@ def new_page_add(request):
         redirect_url='pages'
     )
 
-
+@user_passes_test(is_superuser, login_url='login')
 def new_page_edit(request, pk):
     return edit_publication(
         request=request,
@@ -662,14 +661,14 @@ def new_page_edit(request, pk):
         redirect_url='pages'
     )
 
-
+@user_passes_test(is_superuser, login_url='login')
 def new_page_delete(request, pk):
     return delete_publication(
         request=request,
         pk=pk,
     )
 
-
+@user_passes_test(is_superuser, login_url='login')
 def contacts_page(request):
     contacts_page_obj, created = ContactsPage.objects.get_or_create(pk=1)
 
@@ -786,11 +785,11 @@ class UsersAjaxDataTableMailing(AjaxDatatableView):
 
         return row
 
-
+@user_passes_test(is_superuser, login_url='login')
 def users(request):
     return render(request, 'adminlte/pages/users_table.html', context={'menu': menu})
 
-
+@user_passes_test(is_superuser, login_url='login')
 @require_POST
 def user_delete(request):
     user_id = request.POST.get('user_id')
@@ -798,7 +797,7 @@ def user_delete(request):
     user.delete()
     return redirect('users')
 
-
+@user_passes_test(is_superuser, login_url='login')
 def user_edit(request, pk):
     user = User.objects.get(pk=pk)
 
@@ -820,7 +819,7 @@ def user_edit(request, pk):
     }
     return render(request, 'adminlte/pages/edit/user_edit.html', context)
 
-
+@user_passes_test(is_superuser, login_url='login')
 def delete_template(request, pk):
     template = get_object_or_404(TemplatesMailing, pk=pk)
     if request.method == 'POST':
@@ -830,7 +829,7 @@ def delete_template(request, pk):
         return redirect(reverse('mailing'))
     return redirect(reverse('mailing'))
 
-
+@user_passes_test(is_superuser, login_url='login')
 def mailing(request):
     if request.method == 'POST' and 'template' in request.FILES:
         form = TemplatesMailingForm(request.POST, request.FILES)
@@ -854,7 +853,7 @@ def mailing(request):
     }
     return render(request, 'adminlte/pages/mailing.html', context)
 
-
+@user_passes_test(is_superuser, login_url='login')
 def start_mailing(request):
     if request.method == 'POST':
         try:
@@ -898,7 +897,7 @@ def start_mailing(request):
 
     return redirect('mailing')
 
-
+@user_passes_test(is_superuser, login_url='login')
 def mailing_progress_view(request, task_id):
     result = app.AsyncResult(task_id)
 
@@ -910,7 +909,7 @@ def mailing_progress_view(request, task_id):
         return JsonResponse({'current': 0, 'total': 100, 'status': result.state})
 
 
-
+@user_passes_test(is_superuser, login_url='login')
 def add_publication(request, publication_type, template_name, redirect_url):
     lang = request.GET.get('lang', 'ru')
 
@@ -944,7 +943,7 @@ def add_publication(request, publication_type, template_name, redirect_url):
         "menu": menu,
     })
 
-
+@user_passes_test(is_superuser, login_url='login')
 def edit_publication(request, pk, publication_type, template_name, redirect_url):
     lang = request.GET.get('lang', 'ru')
     publication = get_object_or_404(Publication, pk=pk)
@@ -981,7 +980,7 @@ def edit_publication(request, pk, publication_type, template_name, redirect_url)
         'formset': formset,
     })
 
-
+@user_passes_test(is_superuser, login_url='login')
 def delete_publication(request, pk):
     if request.method != 'POST':
         return JsonResponse({'success': False, 'error': 'Invalid request method'}, status=405)

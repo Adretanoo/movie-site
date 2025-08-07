@@ -12,9 +12,9 @@ class User(AbstractUser):
     language = models.CharField(choices=Language.choices, max_length=2)
     gender = models.CharField(choices=Gender.choices, max_length=1)
     created_at = models.DateTimeField(auto_now_add=True)
-    birthday = models.DateField()
+    birthday = models.DateField(null=True, blank=True)
 
-    city = models.ForeignKey(City, on_delete=models.CASCADE)
+    city = models.ForeignKey(City, on_delete=models.CASCADE, null=True, blank=True)
 
     def set_card_number(self, raw_card_number):
         self.card_number = make_password(raw_card_number)
