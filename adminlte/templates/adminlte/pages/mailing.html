@@ -3,6 +3,9 @@
 
 {% block links %}
     <link rel="stylesheet" href="{% static 'adminlte/dist/css/alt/malling.css' %}">
+    <link href="{% static 'ajax_datatable/css/style.css' %}" rel="stylesheet"/>
+    <link href="//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css"/>
+
 {% endblock %}
 {% block content %}
     <div class="block-wrapper">
@@ -42,7 +45,7 @@
             <div class="block-email-top">
                 <p>Выбрать пользователей кому слать</p>
                 <div>
-                    <label for="users-all-email">Все пользователи</label>
+                    <label id="all_users" for="users-all-email">Все пользователи</label>
                     <input name="user_filter_email" id="users-all-email" value="Все пользователи" type="radio" checked>
                 </div>
                 <div>
@@ -51,34 +54,100 @@
                 </div>
                 <button class="button-style button-email-users">Выбрать пользователей</button>
             </div>
-            <div class="block-full-email">
-                <div class="block-email-left">
-                    <div class="block-email-upload">
-                        <p>Загрузить HTML-письмо</p>
-                        <button class="button-style" id="upload-html-button">Загрузить</button>
-                        <input type="file" id="actual-file-input" accept=".html,.htm" style="display: none;">
-                    </div>
-                    <div class="block-email-info">
-                        <p>Загружен файл:&nbsp;</p>
-                        <span id="uploaded-file-name"></span>
-                    </div>
-                    <div class="block-email-used">
-                        <p>Шаблон используемый в текущей рассылке:&nbsp;</p>
-                        <span id="current-template-name"></span>
-                    </div>
-                    <div class="block-email-progress">
-                        <p>Кол-во писем:&nbsp;</p>
-                        <p>Рассылка выполнена на:&nbsp;</p>
-                    </div>
-                </div>
 
-                <div class="block-email-right">
-                    <p>Список последних загруженных шаблонов</p>
-                    <ul class="template-list" id="template-list">
-                    </ul>
+
+            <div class="block-table">
+                <div class="content-block">
+                    <div class="title__block">
+                        <div class="container-search">
+                            <input type="search" id="customSearchInput" class="form-control" placeholder="Пошук">
+                            <div class="input-group-append">
+                                <button id="searchButton">Поиск</button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="table-block">
+                        <table id="users_table" class="display">
+                            <thead>
+                            <tr>
+                                <th data-name="checkbox_column"></th>
+                                <th>ID</th>
+                                <th>Дата регистрации</th>
+                                <th>День рождения</th>
+                                <th>Email</th>
+                                <th>Телефон</th>
+                                <th>ФИО</th>
+                                <th>Псевдоним</th>
+                                <th>Город</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
-            <button class="button-style button-sms-submit" id="start-malling-button">Начать рассылку</button>
+
+            <div class="block-full-email">
+                <div class="block-email-left">
+                    <form class="block-email-upload" method="post" enctype="multipart/form-data">
+                        <div class="block-p">
+                            <p>Загрузить HTML-письмо</p>
+                        </div>
+                        <div class="block-upload">
+                            {% csrf_token %}
+                            {{ form.template }}
+                            <button type="submit" class="button-style" id="upload-html-button">Загрузить</button>
+                        </div>
+                    </form>
+                    <div class="block-email-progress">
+                        <p>Кол-во писем: <span id="email-total">-</span></p>
+                        <p>Рассылка выполнена на: <span id="email-progress">0%</span></p>
+
+                        <div class="progress" style="height: 20px;">
+                            <div id="email-progress-bar" class="progress-bar" role="progressbar"
+                                 style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <form action="{% url 'start_mailing' %}" method="post">
+                    {% csrf_token %}
+                    <div class="block-email-right">
+                        <p>Список останніх завантажених шаблонів</p>
+                        <ul>
+                            {% for t in templates %}
+                                <li>
+                                    <input type="radio" name="selected_template" value="{{ t.id }}"
+                                           id="template-{{ t.id }}"
+                                           {% if current_template and t.id == current_template.id %}checked{% endif %}>
+                                    <label for="template-{{ t.id }}">{{ t.filename }}</label>
+                                </li>
+                            {% empty %}
+                                <li>Нема шаблонів</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="block-buttons">
+                        <input type="hidden" name="selected_users_ids" id="selected-users-ids">
+                        <div class="block-buttons">
+                            <button id="start-mailing-btn" data-url="{% url 'start_mailing' %}" class="button-style"
+                                    name="action" value="show">
+                                Почати розсилку
+                            </button>
+                            <button id="delete-button" class="button-style" type="submit" name="action" value="delete">
+                                Видалити шаблон
+                            </button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
         </div>
     </div>
 
@@ -87,6 +156,207 @@
 
 {% endblock %}
 
+
+
 {% block scripts %}
-    <script src="{% static 'adminlte/dist/js/pages/mailing.js' %}"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script type="text/javascript" src="{% static 'ajax_datatable/js/utils.js' %}"></script>
+    <script src="//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+    <script src="{% static 'adminlte/dist/js/pages/mailing.js' %}" defer></script>
+    <script>
+        let tableInitialized = false;
+        let selectedUserIds = new Set();  // зберігає вибрані ID
+
+        function initializeUsersTable() {
+            if (!tableInitialized) {
+                AjaxDatatableViewUtils.initialize_table(
+                    $('#users_table'),
+                    "{% url 'ajax_mailing_data' %}",
+                    {
+                        dom: 'lrtip',
+                        info: false,
+                        processing: false,
+                        autoWidth: false,
+                        full_row_select: false,
+                        scrollX: false,
+                        lengthChange: false,
+                        order: [[1, 'asc']],
+                        language: {search: ""},
+                        pageLength: 10
+                    },
+                    {}
+                );
+
+                $('#users_table').on('draw.dt', function () {
+                    $('#users_table input[type="checkbox"]').each(function () {
+                        const userId = $(this).val();
+                        this.checked = selectedUserIds.has(userId);
+                    });
+                    checkButtonState();
+                });
+
+                tableInitialized = true;
+            }
+        }
+
+        function checkButtonState() {
+            const selectedTemplate = getSelectedTemplateId();
+            const startButton = document.getElementById('start-mailing-btn');
+            const deleteButton = document.getElementById('delete-button');
+            const isUsersSelected = document.getElementById('users-email').checked;
+
+            const checkedUsersCount = selectedUserIds.size;
+
+            deleteButton.disabled = !selectedTemplate;
+
+            if (!selectedTemplate) {
+                startButton.disabled = true;
+            } else if (isUsersSelected && checkedUsersCount === 0) {
+                startButton.disabled = true;
+            } else {
+                startButton.disabled = false;
+            }
+        }
+
+        // Події перемикання режимів вибору користувачів
+        document.getElementById('users-email').addEventListener('change', function () {
+            if (this.checked) {
+                for (const block of document.getElementsByClassName('block-table')) {
+                    block.style.display = 'block';
+                }
+                initializeUsersTable();
+            }
+            checkButtonState();
+        });
+
+        document.getElementById('users-all-email').addEventListener('change', function () {
+            for (const block of document.getElementsByClassName('block-table')) {
+                block.style.display = 'none';
+            }
+            checkButtonState();
+        });
+
+        document.addEventListener('change', function (event) {
+            if (event.target && event.target.name === 'selected_template') {
+                checkButtonState();
+            }
+        });
+
+        // Обробка вибору чекбоксів
+        $(document).on('change', '#users_table input[type="checkbox"]', function () {
+            const userId = $(this).val();
+            if (this.checked) {
+                selectedUserIds.add(userId);
+            } else {
+                selectedUserIds.delete(userId);
+            }
+            checkButtonState();
+        });
+
+        document.getElementById('start-mailing-btn').addEventListener('click', function (event) {
+            event.preventDefault();
+
+            this.disabled = true;
+            this.textContent = 'Відправлення...';
+
+            const url = this.dataset.url;
+            const csrftoken = getCookie('csrftoken');
+            const userFilterEmail = document.querySelector('input[name="user_filter_email"]:checked').id;
+
+            let usersIds = [];
+            if (userFilterEmail === 'users-email') {
+                usersIds = Array.from(selectedUserIds);
+            }
+
+            // 🔁 Оновлюємо hidden-поле
+            document.getElementById('selected-users-ids').value = usersIds.join(',');
+
+            const selectedTemplateId = getSelectedTemplateId();
+
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'X-CSRFToken': csrftoken,
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    action: 'show',
+                    selected_template: selectedTemplateId,
+                    selected_users_ids: usersIds.join(',')
+                })
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const taskId = data.task_id;
+                    startProgressPolling(taskId);
+                })
+                .catch(error => {
+                    this.disabled = false;
+                    this.textContent = 'Почати розсилку';
+                });
+        });
+
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+
+        function getSelectedTemplateId() {
+            const radio = document.querySelector('input[name="selected_template"]:checked');
+            return radio ? radio.value : null;
+        }
+
+        function startProgressPolling(taskId) {
+            const progressUrl = `/adminlte/mailing/progress/${taskId}/`;
+            const startButton = document.getElementById('start-mailing-btn');
+
+            const interval = setInterval(() => {
+                fetch(progressUrl)
+                    .then(response => response.json())
+                    .then(data => {
+                        const percent = Math.round((data.current / data.total) * 100);
+
+                        document.getElementById('email-total').textContent = data.total;
+                        document.getElementById('email-progress').textContent = percent + '%';
+
+                        const progressBar = document.getElementById('email-progress-bar');
+                        progressBar.style.width = percent + '%';
+                        progressBar.setAttribute('aria-valuenow', percent);
+
+                        if (percent >= 100 || data.status === 'SUCCESS' || data.status === 'FAILURE') {
+                            clearInterval(interval);
+                            startButton.disabled = false;
+                            startButton.textContent = 'Почати розсилку';
+                            checkButtonState();
+                        }
+                    })
+                    .catch(error => {
+                        clearInterval(interval);
+                        startButton.disabled = false;
+                        startButton.textContent = 'Почати розсилку';
+                        checkButtonState();
+                    });
+            }, 1000);
+        }
+
+        window.addEventListener('load', function () {
+            checkButtonState();
+        });
+    </script>
+
 {% endblock %}

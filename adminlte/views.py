@@ -1,28 +1,36 @@
 import datetime
 import json
+import threading
+from celery.result import AsyncResult
+
+from django.core.mail import EmailMessage
 
 from django.contrib import messages
 from django.contrib.auth import update_session_auth_hash
 from django.db import transaction
+from django.db.models import QuerySet
 from django.db.models.aggregates import Count
 from django.db.models.functions.datetime import ExtractYear, TruncDate
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
 from django.urls.base import reverse
 from django.utils.formats import date_format
+
+from cinemasite.celery import app
+from .tasks import  bulk_send_email_task
 from django.views.decorators.http import require_POST
 from ajax_datatable.views import AjaxDatatableView
 
 from main.models import Seat, Session
-from user.forms import UserRegisterForm, UserEditProfileForm
+from user.forms import UserEditProfileForm
 from user.models import User
 from adminlte.models import Publication, Images, PublicationType, TopBanner, NewsBanner, BackgroundBanner, \
-    TopBannerImage, NewsBannerImage, Movie, MovieGallery, SeoMetadata, CardCinema, CardHall, MainPage, ContactsPage, \
-    Gender, City
-from .forms import PublicationForm, SeoMetadataForm, BackgroundBannerForm, TopBannerForm, TopBannerImageForm, \
+    TopBannerImage, NewsBannerImage, Movie, SeoMetadata, CardCinema, CardHall, MainPage, ContactsPage, \
+    Gender, City, TemplatesMailing
+from .forms import PublicationForm, SeoMetadataForm, BackgroundBannerForm, TopBannerForm, \
     TopBannerImageFormSet, NewsBannerForm, NewsBannerImageFormSet, MovieForm, MovieGalleryFormSet, CardCinemaForm, \
-    CardCinemaGalleryFormSet, CardHallForm, CardHallGalleryForm, CardHallGalleryFormSet, PublicationGalleryFormSet, \
-    MainPageForm, ContactsPageForm, ContactsPageLocationFormSet
+    CardCinemaGalleryFormSet, CardHallForm, CardHallGalleryFormSet, PublicationGalleryFormSet, \
+    MainPageForm, ContactsPageForm, ContactsPageLocationFormSet, TemplatesMailingForm
 from django.shortcuts import render, redirect
 from cinemasite.settings import menu
 
@@ -746,6 +754,39 @@ class UsersAjaxDataTable(AjaxDatatableView):
         return row
 
 
+class UsersAjaxDataTableMailing(AjaxDatatableView):
+    model = User
+    title = "Користувачі"
+    initial_order = [["id", "asc"]]
+
+    column_defs = [
+        {"name": "checkbox_column", "title": "", "searchable": False, "orderable": False, "placeholder": True,
+         'width': 20},
+        {"name": "id", "title": "ID", "searchable": False, "orderable": True, 'width': 10},
+        {"name": "created_at", "title": "Дата регистрации", "searchable": True, "orderable": True, 'width': 90},
+        {"name": "birthday", "title": "День рождения", "searchable": True, "orderable": True, 'width': 80},
+        {"name": "email", "title": "Email", "searchable": True, "orderable": True, 'width': 20},
+        {"name": "phone", "title": "Телефон", "searchable": True, "orderable": True, 'width': 50},
+        {"name": "last_name", "title": "ФИО", "placeholder": True, "searchable": True, "orderable": True, 'width': 70},
+        {"name": "username", "title": "Псевдоним", "searchable": True, "orderable": True, 'width': 50},
+        {"name": "city", "title": "Город", "foreign_field": "city__name", "searchable": True, "orderable": True,
+         'width': 50},
+    ]
+
+    def get_queryset(self, request=None):
+        return self.model.objects.select_related('city')
+
+    def customize_row(self, row, obj):
+        checkbox_html = f'<input type="checkbox" name="selected_users" value="{obj.id}">'
+        row['checkbox_column'] = checkbox_html
+
+        row['last_name'] = obj.full_name
+        row['birthday'] = date_format(obj.birthday, 'Y-m-d')
+        row['created_at'] = date_format(obj.created_at, 'Y-m-d H:i')
+
+        return row
+
+
 def users(request):
     return render(request, 'adminlte/pages/users_table.html', context={'menu': menu})
 
@@ -780,11 +821,94 @@ def user_edit(request, pk):
     return render(request, 'adminlte/pages/edit/user_edit.html', context)
 
 
+def delete_template(request, pk):
+    template = get_object_or_404(TemplatesMailing, pk=pk)
+    if request.method == 'POST':
+        if request.session.get('current_template_id') == str(pk):
+            del request.session['current_template_id']
+        template.delete()
+        return redirect(reverse('mailing'))
+    return redirect(reverse('mailing'))
+
+
 def mailing(request):
+    if request.method == 'POST' and 'template' in request.FILES:
+        form = TemplatesMailingForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect(reverse('mailing'))
+    else:
+        form = TemplatesMailingForm()
+
+    if request.method == 'POST' and 'selected_template' in request.POST:
+        template_id = request.POST.get('selected_template')
+        request.session['current_template_id'] = template_id
+        return redirect(reverse('mailing'))
+
+    templates = TemplatesMailing.objects.all()
+
     context = {
-        'menu': menu
+        'menu': menu,
+        'form': form,
+        'templates': templates,
     }
     return render(request, 'adminlte/pages/mailing.html', context)
+
+
+def start_mailing(request):
+    if request.method == 'POST':
+        try:
+            data = json.loads(request.body)
+            action = data.get('action')
+            selected_template_id = data.get('selected_template')
+            selected_users_ids_str = data.get('selected_users_ids')
+        except json.JSONDecodeError:
+            action = request.POST.get('action')
+            selected_template_id = request.POST.get('selected_template')
+            selected_users_ids_str = request.POST.get('selected_users_ids')
+
+        if not selected_template_id:
+            return JsonResponse({'error': 'Template not selected'}, status=400)
+
+        if action == 'show':
+            if selected_users_ids_str:
+                users_ids = [int(i) for i in selected_users_ids_str.split(',') if i]
+            else:
+                users_ids = list(User.objects.values_list('id', flat=True))
+
+            if not users_ids:
+                return JsonResponse({'error': 'No users selected'}, status=400)
+            try:
+                TemplatesMailing.objects.get(id=selected_template_id)
+            except TemplatesMailing.DoesNotExist:
+                return JsonResponse({'error': 'Template not found'}, status=404)
+
+            task = bulk_send_email_task.delay(selected_template_id, users_ids)
+            return JsonResponse({'task_id': task.id})
+
+        elif action == 'delete':
+            try:
+                template = TemplatesMailing.objects.get(id=selected_template_id)
+                template.delete()
+                if request.session.get('current_template_id') == str(selected_template_id):
+                    del request.session['current_template_id']
+                return redirect('mailing')
+            except TemplatesMailing.DoesNotExist:
+                return redirect('mailing')
+
+    return redirect('mailing')
+
+
+def mailing_progress_view(request, task_id):
+    result = app.AsyncResult(task_id)
+
+    if result.state == 'PROGRESS':
+        return JsonResponse(result.info)
+    elif result.state == 'SUCCESS':
+        return JsonResponse(result.result or {'current': 100, 'total': 100, 'status': 'Готово'})
+    else:
+        return JsonResponse({'current': 0, 'total': 100, 'status': result.state})
+
 
 
 def add_publication(request, publication_type, template_name, redirect_url):

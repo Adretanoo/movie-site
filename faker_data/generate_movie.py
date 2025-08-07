@@ -12,10 +12,10 @@ from cinemasite import settings
 
 faker = Faker('ru_RU')
 
-API_KEY = '9a40da80a34cda55150f8479cef091f3'
+
 LANG_UK = "uk-UA"
 LANG_RU = "ru-RU"
-
+API_KEY = os.getenv('API_KEY')
 today_date = datetime.today()
 end_date = today_date + timedelta(days=30)
 

@@ -1,6 +1,9 @@
 {% extends 'main/page/base.html' %}
 {% load i18n %}
 {% load static %}
+{% load date_filters %}
+
+
 
 {% block head %}
     <link rel="stylesheet" href="{% static 'main/css/profile_user.css' %}">
@@ -41,7 +44,7 @@
                         </li>
                         <li class="list-group-item"><strong>Телефон</strong>: {{ request.user.phone }}</li>
                         <li class="list-group-item">
-                            <strong>{% trans 'birthday_register' %}</strong>: {{ request.user.birthday }}</li>
+                            <strong>{% trans 'birthday_register' %}</strong>: {{ request.user.birthday|format_date_localized_year:lang }}</li>
                     </ul>
                 </div>
             </div>

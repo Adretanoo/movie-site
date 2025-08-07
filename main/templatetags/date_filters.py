@@ -35,6 +35,19 @@ def format_date_localized(date, lang='uk'):
 
 
 @register.filter
+def format_date_localized_year(date, lang='uk'):
+    if not date:
+        return ''
+    day = date.day
+    month = date.month
+    year = date.year
+    if lang == 'ru':
+        return f"{day} {RU_MONTHS[month]} {year}"
+    return f"{day} {UK_MONTHS[month]} {year}"
+
+
+
+@register.filter
 def format_date_localized_schedule(date, lang='uk'):
     if not date:
         return ''

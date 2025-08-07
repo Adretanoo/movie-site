@@ -1,4 +1,5 @@
 import datetime
+import os
 from random import choices
 
 from django.db import models
@@ -188,7 +189,21 @@ class CardHallGallery(models.Model):
         db_table = "card_hall_gallery"
 
 
+class TemplatesMailing(models.Model):
+    template = models.FileField(upload_to='templates/%Y/%m/%d/')
 
+    class Meta:
+        db_table = "templates_mailing"
+        ordering = ['-id']
+
+    def filename(self):
+        return self.template.name.split('/')[-1]
+
+    def delete(self, *args, **kwargs):
+        if self.template:
+            if os.path.isfile(self.template.name):
+                os.remove(self.template.name)
+            super().delete(*args, **kwargs)
 
 
 

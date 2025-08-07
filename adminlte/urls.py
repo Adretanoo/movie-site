@@ -3,11 +3,11 @@ from . import views
 from django.conf import settings
 from django.conf.urls.static import static
 
-from .views import UsersAjaxDataTable
+from .views import UsersAjaxDataTable, UsersAjaxDataTableMailing
 
 urlpatterns = [
     path('statistics/', views.statistics, name='statistics'),
-    path('statistics/users/',views.statistics_users,name='statistics_users'),
+    path('statistics/users/', views.statistics_users, name='statistics_users'),
 
     path('banners-sliders/', views.banners_sliders, name='banners-sliders'),
     path('movies/', views.movies, name='movies'),
@@ -16,7 +16,10 @@ urlpatterns = [
     path('shares/', views.shares, name='shares'),
     path('pages/', views.pages, name='pages'),
     path('users/', views.users, name='users'),
+
     path('mailing/', views.mailing, name='mailing'),
+    path('delete_template/<int:pk>/', views.delete_template, name='delete_template'),
+    path('mailing/start/', views.start_mailing, name='start_mailing'),
 
     path('banners-sliders/add/', views.banners_sliders_add, name='banners-sliders-add'),
 
@@ -53,6 +56,8 @@ urlpatterns = [
     path('pages/new-page/delete/<int:pk>', views.new_page_delete, name='new_page_delete'),
 
     path('users-data/', UsersAjaxDataTable.as_view(), name='ajax_datatable_users'),
+    path('mailing-data/', UsersAjaxDataTableMailing.as_view(), name='ajax_mailing_data'),
+    path('mailing/progress/<str:task_id>/', views.mailing_progress_view, name='mailing_progress'),
 
     path('users/edit/<int:pk>/', views.user_edit, name='user_edit'),
     path('users/delete/', views.user_delete, name='user_delete'),
