@@ -20,11 +20,16 @@ from adminlte.models import Movie, CardHall
 faker = Faker()
 
 today_date = datetime.today() - timedelta(days=1)
-end_date = today_date + timedelta(days=5)
+end_date = today_date + timedelta(days=30)
+
 
 item = 0
-movies = Movie.objects.all()
+
+
+with open("../store/movies.json") as f:
+    movies = json.load(f)
 halls = CardHall.objects.all()
+
 session = []
 
 for h in halls:
@@ -33,8 +38,8 @@ for h in halls:
             "model": "main.Session",
             "pk": item,
             "fields": {
-                "movie": m.id,
-                "card_hall": h.id,
+                "movie": m["pk"],
+                "card_hall": h["pk"],
                 "start_time": faker.date_time_between(start_date=today_date, end_date=end_date, ).strftime(
                     '%Y-%m-%dT%H:%M:%SZ'),
                 "price": int(Decimal(str(round(random.uniform(10, 100))))),

@@ -19,7 +19,7 @@ API_KEY = os.getenv('API_KEY')
 today_date = datetime.today()
 end_date = today_date + timedelta(days=30)
 
-page_total = 4
+page_total = 6
 item = 0
 seo_item = 15
 movies = []

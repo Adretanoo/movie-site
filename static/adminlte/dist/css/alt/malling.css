@@ -1,0 +1,445 @@
+p {
+    margin: 0;
+}
+a {
+    text-decoration: none;
+    color: black;
+}
+
+label {
+    cursor: pointer;
+    font-weight: normal !important;
+    margin: 0;
+}
+.container-fluid {
+    padding: 20px 30px 60px;
+}
+.block-malling-email  {
+    margin-top: 30px;
+}
+.block-malling-sms,.block-malling-email {
+    padding: 16px;
+    border: 1px solid black;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 20px;
+}
+.block-malling-email {
+    padding: 16px 80px;
+}
+.block-malling-sms h2,.block-malling-email h2 {
+    max-width: max-content;
+    margin: 10px auto 30px;
+}
+
+.block-sms-top,.block-email-top {
+    display: flex;
+    gap: 40px;
+}
+
+
+.textarea-block {
+    width: 100%;
+    max-width: 600px;
+}
+
+.textarea-block textarea {
+    width: 100%;
+}
+
+.textarea-block div {
+    display: flex;
+    justify-content: space-between;
+    height: 30px;
+}
+
+.block-progress {
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    margin-top: 40px;
+}
+
+.block-sms-main {
+    width: 100%;
+
+    display: flex;
+    gap: 50px;
+}
+
+.button-style {
+    padding: 4px 14px;
+    border-radius: 6px;
+    border: 1px solid #000;
+    background-color: #f2f2f2;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.button-style:hover {
+    background-color: #ddd;
+}
+
+.button-sms-users {
+    padding: 4px 20px;
+    width: max-content;
+}
+
+.button-sms-submit {
+    padding: 4px 20px;
+    width: max-content;
+    margin: 10px auto;
+}
+
+
+.block-full-email {
+    margin-top: 20px;
+    display: flex;
+    gap: 30px;
+    align-items: start;
+
+}
+
+.block-email-upload,.block-email-info,.block-email-used {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin: 8px 0;
+}
+.block-email-upload {
+    flex-direction: column;
+    align-items: flex-start;
+}
+.block-email-progress {
+    display: flex;
+    margin-top: 30px;
+    gap: 80px;
+}
+.block-email-progress p {
+    width: max-content;
+    font-size: 1rem;
+}
+.block-email-progress p {
+    display: flex;
+    gap: 3px;
+}
+.block-email-progress p > span {
+    color: #0c84ff;
+}
+
+.block-email-left {
+    max-width: 500px;
+    width: 100%;
+}
+.block-email-right {
+    padding: 16px;
+    border: 1px solid black;
+    max-width: 400px;
+    min-height: 200px;
+    width: 100%;
+    display: flex;
+    border-radius: 10px;
+    flex-direction: column;
+}
+
+.block-email-right > ul {
+    list-style: none;
+}
+.block-email-used span, .block-email-right ul > li > label {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 150px;
+}
+.block-email-right ul > li {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+}
+.template-list {
+    list-style: none;
+    padding: 0;
+    margin: 5px 0 0 10px;
+}
+
+.template-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 3px;
+}
+
+.template-item input[type="radio"] {
+    margin-right: 10px;
+}
+
+.template-item button {
+    background: transparent;
+    border: none;
+    color: red;
+    cursor: pointer;
+}
+.template-item label {
+    max-width: 200px;
+    width: 100%;
+}
+.button-email-users {
+    display: none;
+}
+.block-buttons {
+    margin-top: .8rem;
+    display: flex;
+    gap: 5px;
+}
+#current-template-name, #uploaded-file-name {
+    color: #0c84ff;
+}
+
+
+
+
+
+
+
+
+
+
+
+.title__block {
+    display: flex;
+    gap: 50px;
+    justify-content: start;
+    flex-direction: row;
+}
+
+.container-search {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+}
+
+.dataTables_filter label>input{
+    width: 200px;
+    border:1px solid black;
+}
+th {
+    cursor: pointer;
+}
+.table-block table td.no-bg,
+.table-block table th.no-bg {
+    background-color: #F4F6F9 !important;
+    border: none !important;
+}
+
+#users_table td {
+    background-color: #ffffff;
+}
+.container-search {
+    margin-right: 114px;
+}
+.container-search input {
+    width: 250px;
+    border: 1px solid black;
+
+}
+
+.container-search button {
+    padding: 6px 50px;
+    border: none;
+
+}
+
+
+/* Загальна стрілка (для класу sorting) — покажемо ▲ */
+table.dataTable thead th.sorting:before {
+    content: '▲';
+    color: #aaa;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+/* Стрілка при сортуванні по зростанню */
+table.dataTable thead th.sorting_asc:before {
+    content: '▲';
+    color: #000;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+/* Стрілка при сортуванні по спаданні */
+table.dataTable thead th.sorting_desc:before {
+    content: '▼';
+    color: #000;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+#users_table_paginate span {
+    display: flex;
+    gap: 10px;
+}
+
+.dataTables_paginate {
+    margin: 40px auto 0;
+    width: max-content;
+    cursor: pointer;
+}
+
+.paging_simple_numbers {
+    font-size: 18px;
+}
+
+a:hover {
+    color: #6a6a6a;
+    text-decoration: underline;
+}
+
+/* table_users.css або table.style.css */
+
+#users_table th {
+    font-size: 15px;
+    font-weight: 600;
+    height: 30px;
+}
+
+#users_table td {
+    font-size: 16px;
+}
+
+
+#users_table_previous,
+#users_table_next {
+    display: none !important;
+}
+
+.datatable-column-filter-row {
+    display: none;
+}
+
+.title__block {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.title__button-text {
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.title__button-block {
+    position: absolute;
+    right: 20px;
+    top: 0;
+}
+.title__button-block a {
+    outline: none;
+    text-decoration: none;
+    color: black;
+}
+.create-button {
+    background: #e9e9e9;
+    border: 1px solid #000;
+    padding: 8px 14px;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-radius: 6px;
+    text-decoration: none;
+    color: #000;
+}
+
+.create-button:hover {
+    background: #d4d4d4;
+    transform: scale(1.03);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+
+.create-button i {
+    color: #4CAF50;
+    font-size: 18px;
+}
+
+
+
+.block-table {
+    margin-top: 1rem;
+    display: none;
+}
+
+
+
+
+
+.table-block {
+    width: 60vw;
+}
+
+.table-block table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.table-block th, .table-block td {
+    padding: 10px;
+    border: 1px solid #999;
+}
+
+.table-block th {
+    background: #ccc;
+}
+
+.table-block td:first-child {
+    max-width: 2rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.table-block td:last-child {
+    text-align: center;
+    white-space: nowrap;
+}
+
+.table-block i {
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+
+td.no-border {
+    border: none !important;
+    padding-left: 30px !important;
+    background: transparent !important;
+    text-align: unset !important;
+    max-width: 23px;
+}
+th.no-bg {
+    background: transparent !important;
+    border: none;
+}
+.fas.fa-trash-alt,
+.fas.fa-pencil-alt {
+    color: #000 !important;
+    font-size: 24px;
+}
+
+.fas.fa-pencil-alt:hover {
+    color: #23a7ff !important;
+}
+.fas.fa-trash-alt:hover {
+    color: red !important;
+}
+
+
+
+

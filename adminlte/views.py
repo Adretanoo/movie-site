@@ -728,8 +728,12 @@ class UsersAjaxDataTable(AjaxDatatableView):
          'width': 10},
     ]
 
-    def get_queryset(self, request=None):
-        return self.model.objects.select_related('city')
+    def get_initial_queryset(self, request=None):
+        return (
+            self.model.objects
+            .select_related('city')
+            .filter(is_staff=False, is_superuser=False)
+        )
 
     def customize_row(self, row, obj):
         edit_url = reverse('user_edit', args=[obj.id])
@@ -772,8 +776,12 @@ class UsersAjaxDataTableMailing(AjaxDatatableView):
          'width': 50},
     ]
 
-    def get_queryset(self, request=None):
-        return self.model.objects.select_related('city')
+    def get_initial_queryset(self, request=None):
+        return (
+            self.model.objects
+            .select_related('city')
+            .filter(is_staff=False, is_superuser=False)
+        )
 
     def customize_row(self, row, obj):
         checkbox_html = f'<input type="checkbox" name="selected_users" value="{obj.id}">'

@@ -1,0 +1,116 @@
+.block-image {
+    margin-top: 2rem;
+}
+
+.block-image img {
+    width: 100%;
+    height: 45rem;
+    object-fit: cover;
+}
+
+.block_cinema_logo_session {
+    align-items: center;
+    display: flex;
+    gap: 50px;
+}
+
+.block_halls, .block-nav, .plug-block {
+    max-width: 290px;
+}
+
+.session_schedule_button, .session_schedule_button_all {
+    border-radius: 5px;
+    border: 1px solid black;
+    background-color: #92D36E;
+    padding: 13px 40px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+    transition: all 0.2s ease;
+    font-size: 1rem;
+}
+
+.session_schedule_button_all {
+    font-size: .9rem;
+}
+
+.block_hall_logo_session h1, .block-schema h2 {
+    width: max-content;
+    margin: 0 auto;
+}
+
+
+.block_nav {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.cinema-shema-image {
+    width: 100%;
+}
+
+.session_schedule_button:hover, .session_schedule_button_all:hover {
+    background-color: #79a85d;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.session_schedule_button:active, .session_schedule_button_all:active {
+    background-color: #638a4d;
+    transform: translateY(2px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.block_cinema_desc {
+    min-height: 17rem;
+}
+
+.list-group h4 {
+    font-size: 1.1rem;
+}
+
+.row {
+    gap: 15px;
+}
+
+.block_cinema_desc img {
+    max-width: 15rem;
+    width: 100%;
+}
+
+.cinema-logo-float {
+    float: left;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+
+.block_cinema_trem h2, .block_cinema_gallery h2 {
+    width: max-content;
+    margin: 20px auto 10px;
+}
+
+.list-group-item {
+    cursor: pointer;
+}
+.list-group-item-p {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 260px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

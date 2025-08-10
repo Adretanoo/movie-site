@@ -1,0 +1,162 @@
+
+.title__block {
+    display: flex;
+    gap: 50px;
+    justify-content: end;
+    flex-direction: row;
+}
+
+.container-search {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+}
+
+.dataTables_filter label>input{
+    width: 200px;
+    border:1px solid black;
+}
+th {
+    cursor: pointer;
+}
+.table-block table td.no-bg,
+.table-block table th.no-bg {
+    background-color: #F4F6F9 !important;
+    border: none !important;
+}
+
+#users_table td {
+    background-color: #ffffff;
+}
+.container-search {
+    margin-right: 114px;
+}
+.container-search input {
+    width: 250px;
+    border: 1px solid black;
+
+}
+
+.container-search button {
+    padding: 6px 50px;
+    border: none;
+
+}
+
+.table-block td:last-child {
+    border: none
+}
+
+#users_table tr td:last-child, #users_table tr:last-child {
+    border: none;
+    background-color: #F4F6F9;
+}
+
+/* Загальна стрілка (для класу sorting) — покажемо ▲ */
+table.dataTable thead th.sorting:before {
+    content: '▲';
+    color: #aaa;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+/* Стрілка при сортуванні по зростанню */
+table.dataTable thead th.sorting_asc:before {
+    content: '▲';
+    color: #000;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+/* Стрілка при сортуванні по спаданні */
+table.dataTable thead th.sorting_desc:before {
+    content: '▼';
+    color: #000;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+#users_table_paginate span {
+    display: flex;
+    gap: 10px;
+}
+
+.dataTables_paginate {
+    margin: 40px auto 0;
+    width: max-content;
+    cursor: pointer;
+}
+
+.paging_simple_numbers {
+    font-size: 18px;
+}
+
+a:hover {
+    color: #6a6a6a;
+    text-decoration: underline;
+}
+
+/* table_users.css або table.style.css */
+
+#users_table th {
+    font-size: 15px;
+    font-weight: 600;
+    height: 30px;
+}
+
+#users_table td {
+    font-size: 16px;
+}
+
+.no-border {
+    border: none !important;
+    background: none !important;
+}
+
+#users_table_previous,
+#users_table_next {
+    display: none !important;
+}
+
+.datatable-column-filter-row {
+    display: none;
+}
+
+
+
+
+
+
+
+
+
+
+.modal {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0, 0, 0, 0.4);
+  display: block;
+  z-index: 9999;
+}
+
+.modal-content {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 30px;
+  border-radius: 8px;
+  text-align: center;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.25);
+}
+
+.block__model-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+

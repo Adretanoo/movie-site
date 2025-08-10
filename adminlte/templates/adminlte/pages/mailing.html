@@ -187,15 +187,15 @@
                     {}
                 );
 
-                $('#users_table').on('draw.dt', function () {
-                    $('#users_table input[type="checkbox"]').each(function () {
-                        const userId = $(this).val();
-                        this.checked = selectedUserIds.has(userId);
-                    });
-                    checkButtonState();
+                $('#searchButton').on('click', function () {
+                    const value = $('#customSearchInput').val();
+                    $('#users_table').DataTable().search(value).draw();
                 });
-
-                tableInitialized = true;
+                $('#customSearchInput').on('keypress', function (e) {
+                    if (e.which === 13) {
+                        $('#searchButton').click();
+                    }
+                });
             }
         }
 

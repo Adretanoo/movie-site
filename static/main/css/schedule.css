@@ -1,0 +1,225 @@
+/* Базові стилі */
+.block_filters {
+    padding: 50px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.block_content_wrapper h6 {
+    text-transform: uppercase;
+}
+
+.block_filters_format,
+.block_filters_format_movie {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.block_filters_format_movie h6 {
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.checkboxes {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.checkbox_filters_item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.checkbox_filters_item label {
+    padding: 3px 10px;
+    color: white;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.checkbox_filters_item input {
+    transform: scale(1.4);
+    cursor: pointer;
+}
+
+.label_color-1 {
+    background-color: #7D477A;
+}
+
+.label_color-2 {
+    background-color: #E8362B;
+}
+
+.label_color-3 {
+    background-color: #1363CC;
+}
+
+.form-select {
+    max-width: 9.1rem;
+    width: max-content;
+    cursor: pointer;
+}
+
+.block_content {
+    border: 3px solid #FFCB08;
+    padding: 1rem;
+}
+
+.schedule_table {
+    width: 100%;
+    border-collapse: collapse; /* Для кращого вигляду межі */
+}
+
+.schedule_table tr > th {
+    text-transform: uppercase;
+}
+
+.schedule_table th,
+.schedule_table td {
+    padding: 8px 12px;
+    text-align: left;
+}
+
+.schedule_table th:nth-child(2), .schedule_table th:nth-child(5) {
+    text-align: center;
+}
+.schedule_table td:nth-child(5) {
+    display: flex;
+    justify-content: center;
+}
+.schedule_table th:nth-child(3) {
+    text-align: center;
+}
+
+.schedule_table tr > td:nth-child(3) {
+    text-align: center;
+}
+
+.schedule_table tr > td:nth-child(4) {
+    text-align: right;
+}
+
+.schedule_table th:nth-child(4) {
+    text-align: right;
+}
+
+.schedule_table tr {
+    border-bottom: 1px solid #ccc;
+}
+
+.schedule_table tr:last-child {
+    border-bottom: none;
+}
+
+.schedule_table tr > th:last-child {
+    color: red;
+}
+
+.schedule_table tr > td:nth-child(2) {
+
+}
+
+
+.block-ticket-wrapper {
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease-in-out;
+}
+
+.center-ticket {
+    border-right: 2px dashed #CBCBCB;
+    height: 20px;
+}
+
+.left-ticket {
+    width: 15px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+
+}
+
+.right-ticket {
+    width: 50px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    color: white;
+    font-size: 1.3rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.left-ticket, .right-ticket {
+    background-color: #CBCBCB;
+}
+
+.left-ticket, .right-ticket {
+    height: 30px;
+}
+.block-ticket-wrapper:hover .left-ticket,
+.block-ticket-wrapper:hover .center-ticket,
+.block-ticket-wrapper:hover .right-ticket {
+    background-color: #FFCB08;
+}
+
+.block-ticket-wrapper:hover .center-ticket{
+    border-right: 2px dashed white;
+}
+
+
+@media (max-width: 991px) {
+    .schedule_table th {
+        font-size: .9rem;
+    }
+
+    .block_content {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+@media (max-width: 768px) {
+    .block_filters {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .block_filters_format {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+        width: 100%;
+    }
+
+    .form-select {
+        width: 100%;
+        max-width: none;
+    }
+
+    .block_filters_format_movie {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+    }
+
+
+    .schedule_table {
+        min-width: 600px;
+    }
+}
+
+@media (max-width: 575px) {
+    .container {
+        padding: 10px;
+    }
+}
