@@ -19,4 +19,4 @@ RUN chmod +x /usr/local/bin/entrypoint.sh
 
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+CMD ["uvicorn", "cinemasite.asgi:application", "--host", "0.0.0.0", "--port", "8000", "--workers", "4"]

@@ -13,6 +13,9 @@ import os
 from dotenv import load_dotenv
 from pathlib import Path
 
+
+load_dotenv()
+
 menu = [
     {'title': 'Статистика', 'url_name': 'statistics', 'group': ['statistics', 'statistics_users'],
      'icon': 'fa-chart-line'},
@@ -48,7 +51,20 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 INTERNAL_IPS = ["127.0.0.1"]
-CSRF_TRUSTED_ORIGINS = ['http://localhost:8000', 'http://127.0.0.1:8000', "http://localhost:1337","http://127.0.0.1:1337"]
+CSRF_TRUSTED_ORIGINS = ['http://localhost:8000', 'http://127.0.0.1:8000', "http://localhost:1337",
+                        "http://127.0.0.1:1337"]
+
+
+ASGI_APPLICATION = 'cinemasite.asgi.application'
+
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            'hosts': [('redis', 6379)],
+        },
+    },
+}
 
 # Application definition
 
@@ -67,6 +83,7 @@ INSTALLED_APPS = [
     'modeltranslation',
     'adminlte.apps.AdminlteConfig',
     'django_filters',
+    'channels',
 ]
 
 MIDDLEWARE = [
@@ -103,7 +120,6 @@ WSGI_APPLICATION = 'cinemasite.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-load_dotenv()
 
 DATABASES = {
     'default': {
@@ -138,7 +154,6 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
 
 
-
 USE_TZ = True
 
 LANGUAGES = [
@@ -164,12 +179,10 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
@@ -178,16 +191,6 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 
-
-CELERY_BROKER_URL = os.environ.get("CELERY_BROKER_URL","redis://redis:6379/0")
-CELERY_RESULT_BACKEND = os.environ.get("CELERY_RESULT_BACKEND","redis://redis:6379/0")
+CELERY_BROKER_URL = os.environ.get("CELERY_BROKER_URL", "redis://redis:6379/0")
+CELERY_RESULT_BACKEND = os.environ.get("CELERY_RESULT_BACKEND", "redis://redis:6379/0")
 CELERY_BROKER_CONNECTION_RETRY_ON_STARTUP = True
-
-
-
-
-
-
-
-
-

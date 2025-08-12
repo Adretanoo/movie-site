@@ -32,6 +32,9 @@ services:
     restart: always
     env_file:
       - .env
+    volumes:
+      - ./media:/code/media
+      - ./static:/code/static
 
   redis:
     image: redis:alpine

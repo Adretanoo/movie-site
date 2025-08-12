@@ -16,7 +16,8 @@ from adminlte.models import MainPage, TopBanner, TopBannerImage, BackgroundBanne
 from main.models import Seat, Ticket, StatusPayment
 from user.forms import UserRegisterForm, UserEditProfileForm
 from user.models import User
-
+from asgiref.sync import async_to_sync
+from channels.layers import get_channel_layer
 from .filters import SessionFilter
 from .models import Session
 
@@ -173,6 +174,17 @@ def buy_or_reserve_tickets(request):
                     seat=seat,
                     status=StatusPayment.PAID if status == 'purchased' else StatusPayment.BLOCKED
                 )
+
+            channel_layer = get_channel_layer()
+            group_name = f"session_{session_id}"
+
+            async_to_sync(channel_layer.group_send)(
+                group_name,
+                {
+                    'type': 'ticket_update',
+                    'tickets': [{'id': seat_id, 'status': status} for seat_id in seat_ids]
+                }
+            )
 
             return JsonResponse({'success': True})
         except Exception as e:
